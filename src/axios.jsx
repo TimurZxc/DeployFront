@@ -4,7 +4,7 @@ import axios from 'axios';
 const baseURL = 'http/teach2u.jcloud.kz/api/';
 
 const axiosInstance = axios.create({
-	baseURL: baseURL,
+	baseURL: 'http://teach2u.jcloud.kz/api/',
 	timeout: 5000,
 	headers: {
 		Authorization: localStorage.getItem('access_token')
@@ -12,10 +12,9 @@ const axiosInstance = axios.create({
 			: null,
 		'Content-Type': 'application/json',
 		accept: 'application/json',
-		'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
-		'Access-Control-Allow-Headers': 'Authorization, Content-Type',
-	},
+	}, 
 });
+
 
 
 axiosInstance.interceptors.response.use(
