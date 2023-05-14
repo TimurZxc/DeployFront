@@ -12,8 +12,12 @@ const axiosInstance = axios.create({
 			: null,
 		'Content-Type': 'application/json',
 		accept: 'application/json',
-	}, 
+		'Access-Control-Allow-Origin': 'https://deploy-front-nine.vercel.app',
+		'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+		'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+	},
 });
+
 
 axiosInstance.interceptors.response.use(
 	(response) => {
