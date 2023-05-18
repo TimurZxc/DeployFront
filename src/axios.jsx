@@ -5,7 +5,7 @@ const baseURL = 'https://teach2u.jcloud.kz/api/';
 
 const axiosInstance = axios.create({
 	baseURL: 'https://teach2u.jcloud.kz/api/',
-	timeout: 7000,
+	timeout: 20000,
 	headers: {
 		Authorization: localStorage.getItem('access_token')
 			? 'Bearer ' + localStorage.getItem('access_token')
