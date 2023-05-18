@@ -47,7 +47,7 @@ const SignUpTeacher = () => {
       .then(() =>
         console.log(`Data has been stored successfully: ${formattedData}`)
       )
-      .catch((error) => console.log(error.response.data))
+      .catch((error) => console.log(error))
   };
 
 
