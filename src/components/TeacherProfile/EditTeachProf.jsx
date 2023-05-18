@@ -55,7 +55,7 @@ const EditTeacherProfile = (props) => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [mainTeacherData]);
 
   React.useEffect(() => {
     mainTeachList.map(data => {
