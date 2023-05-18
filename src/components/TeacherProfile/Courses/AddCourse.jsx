@@ -26,7 +26,9 @@ const AddCourseTeach = (props) => {
           [name]: type === 'checkbox' ? checked : value
         }));
       };
-
+  
+      let id;
+  
       function handleSubmit(event){
         event.preventDefault()
         axiosInstance.post('create/course/',{
@@ -35,7 +37,7 @@ const AddCourseTeach = (props) => {
           price: formData.price,
           number_of_students: formData.number_of_students
         }).then((response)=>{
-            let id = response.data.id
+            id = response.data.id
         }).catch((error)=>{
             console.log(error)
         })
