@@ -35,7 +35,7 @@ const AddCourseTeach = (props) => {
           price: formData.price,
           number_of_students: formData.number_of_students
         }).then((response)=>{
-            const id = response.data.id
+            var id = response.data.id
         }).catch((error)=>{
             console.log(error)
         })
