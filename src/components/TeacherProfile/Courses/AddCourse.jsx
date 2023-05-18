@@ -40,7 +40,7 @@ const AddCourseTeach = (props) => {
             console.log(error)
         })
         routeHandler('/subjectsByHoursEdit/')
-        console.log(props.courses)
+        console.log(props.courses.slice(-1))
     };
 
   return (
