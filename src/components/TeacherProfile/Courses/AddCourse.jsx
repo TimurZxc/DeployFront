@@ -36,7 +36,7 @@ const AddCourseTeach = (props) => {
           price: formData.price,
           number_of_students: formData.number_of_students
         }).then((response)=>{
-            setId(response.data.id);
+            console.log('New id:', response.data.id);
             routeHandler(`/subjectsByHoursEdit/${response.data.id}`);
         }).catch((error)=>{
             console.log(error);
