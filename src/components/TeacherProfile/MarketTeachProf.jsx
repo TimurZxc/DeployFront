@@ -21,16 +21,16 @@ const MarketTeachProf = () => {
 
   const paramss = useParams();
 
+  console.log('courses', mainTeachList)
 
   React.useEffect(() => {
     axiosInstance
       .get("teacher/"+paramss.id)
       .then((response) => {
         console.log("response", response);
-        const mainTeacherData = response.data;
+        const mainTeacherData = response.data[0];
         setMainTeachList(mainTeacherData);
 
-        console.log("teacher data", mainTeacherData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -43,7 +43,7 @@ const MarketTeachProf = () => {
     key={course.id}
     course_id = {course.id}
     name={course.name}
-    description={course.description}
+    descriptionription={course.description}
     price={course.price}
     number_of_students={course.number_of_students}
     {...course}/>
