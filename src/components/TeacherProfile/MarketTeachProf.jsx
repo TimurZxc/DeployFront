@@ -21,13 +21,13 @@ const MarketTeachProf = () => {
 
   const paramss = useParams();
 
-  console.log('courses', mainTeachList)
 
   React.useEffect(() => {
     axiosInstance
       .get("teacher/"+paramss.id)
       .then((response) => {
-        const mainTeacherData = response.data[0];
+        console.log("response", response);
+        const mainTeacherData = response.data;
         setMainTeachList(mainTeacherData);
 
         console.log("teacher data", mainTeacherData);
