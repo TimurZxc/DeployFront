@@ -34,9 +34,12 @@ const AddCourseTeach = (props) => {
           description: formData.description,
           price: formData.price,
           number_of_students: formData.number_of_students
-        }).then(()=>{
-            console.log(formData)
+        }).then((response)=>{
+            console.log(response)
+        }).catch((error)=>{
+            console.log(error)
         })
+        routeHandler('/subjectsByHoursEdit/1')
     };
 
   return (
