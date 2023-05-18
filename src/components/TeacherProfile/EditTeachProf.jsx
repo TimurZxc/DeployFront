@@ -75,7 +75,7 @@ const EditTeacherProfile = (props) => {
       }
     })
 
-  }, []);
+  }, [mainTeachList]);
 
 
   return (
