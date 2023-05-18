@@ -43,7 +43,7 @@ const MarketTeachProf = () => {
     key={course.id}
     course_id = {course.id}
     name={course.name}
-    descriptionription={course.description}
+    description={course.description}
     price={course.price}
     number_of_students={course.number_of_students}
     {...course}/>
