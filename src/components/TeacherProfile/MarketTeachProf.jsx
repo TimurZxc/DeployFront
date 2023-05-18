@@ -27,9 +27,9 @@ const MarketTeachProf = () => {
     axiosInstance
       .get("teacher/"+paramss.id)
       .then((response) => {
-        console.log("response", response);
         const mainTeacherData = response.data[0];
         setMainTeachList(mainTeacherData);
+        console.log("response", mainTeachList);
 
       })
       .catch((error) => {
