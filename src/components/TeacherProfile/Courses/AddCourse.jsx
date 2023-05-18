@@ -39,9 +39,6 @@ const AddCourseTeach = (props) => {
         }).catch((error)=>{
             console.log(error)
         })
-        routeHandler('/subjectsByHoursEdit/')
-        const last = props.courses.pop()
-        console.log(last.course_id)
     };
 
   return (
