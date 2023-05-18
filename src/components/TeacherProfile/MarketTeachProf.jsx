@@ -21,7 +21,7 @@ const MarketTeachProf = () => {
 
   const paramss = useParams();
 
-  console.log('courses', mainTeachList.courses)
+  console.log('courses', mainTeachList)
 
   React.useEffect(() => {
     axiosInstance
