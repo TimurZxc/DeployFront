@@ -26,23 +26,23 @@ const AddCourseTeach = (props) => {
           [name]: type === 'checkbox' ? checked : value
         }));
       };
-  
-      const [id, setId] = useState();
+ 
   
       function handleSubmit(event){
-        event.preventDefault()
+        event.preventDefault();
         axiosInstance.post('create/course/',{
           name: formData.name,
           description: formData.description,
           price: formData.price,
           number_of_students: formData.number_of_students
         }).then((response)=>{
-            setId(response.data.id)
+            setId(response.data.id);
+            routeHandler(`/subjectsByHoursEdit/${response.data.id}`);
         }).catch((error)=>{
-            console.log(error)
-        })
-        routeHandler(`/subjectsByHoursEdit/${id}`)
-    };
+            console.log(error);
+        });
+      }
+
 
   return (
     <div className="courses-body_t">
