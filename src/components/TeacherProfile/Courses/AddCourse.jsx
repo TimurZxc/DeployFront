@@ -27,7 +27,7 @@ const AddCourseTeach = (props) => {
         }));
       };
   
-      let id;
+      const [id, setId] = useState();
   
       function handleSubmit(event){
         event.preventDefault()
@@ -37,7 +37,7 @@ const AddCourseTeach = (props) => {
           price: formData.price,
           number_of_students: formData.number_of_students
         }).then((response)=>{
-            id = response.data.id
+            setId(response.data.id)
         }).catch((error)=>{
             console.log(error)
         })
