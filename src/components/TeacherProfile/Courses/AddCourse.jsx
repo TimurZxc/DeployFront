@@ -59,7 +59,6 @@ const AddCourseTeach = (props) => {
             className="second-row_e"
             value={formData.number_of_students}
             onChange={handleChange} />
-        <button onClick={() => routeHandler(`/subjectsByHoursEdit/${props.course_id}`)} className="second-row_t_c">Добавить предмет</button>
       </div>
       <div className="second-col">
         <div className="first-row">Описание</div>
