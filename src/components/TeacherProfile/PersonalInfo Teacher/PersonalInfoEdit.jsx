@@ -47,6 +47,8 @@ const PersonalInfoTeachEdit = (props) => {
       console.log('response', response)
     }).catch((error) => {
       console.error('error', error)
+      localStorage.removeItem('access_token'),
+      localStorage.removeItem('refresh_token')
     });
   }
 

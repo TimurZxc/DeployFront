@@ -48,7 +48,7 @@ const Sidebar = () => {
               <Sprite id="learn" />
               <h1>Начать обучение</h1>
             </div>
-            <div
+            {user ? <div></div> : <div
               onClick={() => routeHandler('/regDefolt')}
               className={
                 window.location.pathname === '/regDefolt'
@@ -58,7 +58,7 @@ const Sidebar = () => {
             >
               <Sprite id="registerdefault" />
               <h1>Регистрация</h1>
-            </div>
+            </div>}
             {user ? (
               <div
                 onClick={() => logout()}

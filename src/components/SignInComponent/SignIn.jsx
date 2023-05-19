@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
+import jwt_decode from "jwt-decode";
+
 const SignIn = () => {
   const [formData, setFormData] = React.useState({
     email: "",
@@ -30,6 +32,9 @@ const SignIn = () => {
 		axiosInstance
 			.post('login/', formData)
 			.then((res) => {
+        const access = res.data.access
+        let decode = jwt_decode(access)
+        console.log('decode', decode)
 				localStorage.setItem('access_token', res.data.access);
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
