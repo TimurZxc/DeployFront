@@ -51,10 +51,10 @@ const TeacherProfile = (props) => {
 
   const CurrUserContacts = mainTeachList.map(data => {
     return <ContactInfoTeach
-    key={data.id}
-    phone={data.phone}
-    email={data?.user?.email}
-    telegram={data?.user?.telegram}
+      key={data.id}
+      phone={data?.teacher?.phone}
+      email={data.email}
+      telegram={data?.user?.telegram}
     />
   })
 
