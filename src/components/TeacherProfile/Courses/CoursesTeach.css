@@ -62,15 +62,13 @@
 
 .second-row_e_area{
     font-weight: 400;
-    max-width: 110%;
-    min-width: 80%;
+    resize: vertical !important;
     max-height: 256px;
     min-height: 56px;
     font-size: 20px;
     letter-spacing: 0.03em;
     color: #11174B;
-    width: 100%;
-    height: 56px;
+    width: 105% !important;
     margin-bottom: 1rem;
     background: rgba(255, 255, 255, 0.56);
     border-radius: 30px;
