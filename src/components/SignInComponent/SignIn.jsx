@@ -34,7 +34,7 @@ const SignIn = () => {
 			.then((res) => {
         const access = res.data.access
         let decode = jwt_decode(access)
-        console.log('decode', decode.is_teacher)
+        localStorage.setItem('is_teacher', decode.is_teacher)
 				localStorage.setItem('access_token', res.data.access);
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =

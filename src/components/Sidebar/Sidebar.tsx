@@ -16,6 +16,7 @@ const Sidebar = () => {
   }
 
   const user = localStorage.getItem('access_token')
+  const is_teacher = localStorage.getItem('is_teacher')
 
   return (
     <div className="sidebar-wrapper">
@@ -87,7 +88,7 @@ const Sidebar = () => {
             )
             }
 
-           { user ? <div
+           { user && is_teacher ? <div
               onClick={() => routeHandler('/profile')}
               className={
                 window.location.pathname === '/profile'
