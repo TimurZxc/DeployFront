@@ -86,7 +86,7 @@ const Sidebar = () => {
             )
             }
 
-            <div
+           { user ? <div
               onClick={() => routeHandler('/profile')}
               className={
                 window.location.pathname === '/profile'
@@ -96,8 +96,8 @@ const Sidebar = () => {
                 >
               <Sprite id="profile" />
               <h1>Профиль</h1>
-            </div>
-            <div
+            </div> : <div></div> }
+           {user ? <div
               onClick={() => routeHandler('/profileTeacher')}
               className={
                 window.location.pathname === '/profileTeacher'
@@ -107,7 +107,7 @@ const Sidebar = () => {
                 >
               <Sprite id="profile" />
               <h1>Профиль Учителя</h1>
-            </div>
+            </div> : <div></div> }
           </div>
         </div>
         {/* <div className="settings">
