@@ -14,7 +14,8 @@ const SignUpTeacher = () => {
     email: '',
     phone: '',
     password: '',
-    password2: ''
+    password2: '',
+    telegram: ''
   });
 
   let navigate = useNavigate()
@@ -87,6 +88,7 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
+      <p>Дата рождения</p>
       <div className="input-row">
       <input
         type="date"
@@ -121,6 +123,17 @@ const SignUpTeacher = () => {
         name="phone"
         className="form--input"
         value={formData.phone}
+        onChange={handleChange}
+      />
+      </div>
+      <p>Telegram ( Дополнительно )</p>
+      <div className="input-row">
+      <input
+        type="text"
+        placeholder="Имя пользователя в Telegram"
+        name="telegram"
+        className="form--input-tg"
+        value={formData.telegram}
         onChange={handleChange}
       />
       </div>
