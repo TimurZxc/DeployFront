@@ -28,6 +28,10 @@ const PersonalInfo = (props) => {
           <div className="first">Email</div>
           <div className="second">{props.email}</div>
         </div>
+        <div className="fourth-row">
+          <div className="first">Telegram</div>
+          <div className="second">{props.telegram}</div>
+        </div>
       </div>
       <div className="second-col">
         <div className="img"></div>

@@ -33,6 +33,7 @@ const StudentEdit = () => {
       last_name={data?.last_name}
       birth_date={data?.birth_date}
       email={data?.email}
+      telegram={data?.telegram}
       phone={data?.student?.phone}
       {...data} />
   })

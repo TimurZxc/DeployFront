@@ -28,6 +28,7 @@ const StudentProfile = () => {
       id={data.id}
       email={data.email}
       phone={data?.student?.phone}
+      telegram={data.telegram}
     />
   })
   React.useEffect(() => {

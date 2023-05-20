@@ -11,7 +11,8 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    phone: props.phone
+    phone: props.phone,
+    telegram: props.telegram
   });
 
 
@@ -31,6 +32,7 @@ const PersonalInfoEdit = (props) => {
       last_name: formData.last_name,
       surname: formData.surname,
       birth_date: formData.birth_date,
+      telegram: formData.telegram,
       student: {
         phone: formData.phone
       }
@@ -109,6 +111,16 @@ const PersonalInfoEdit = (props) => {
             name="email"
             className="form--input"
             value={formData.email}
+            onChange={handleChange}
+          />
+          </div>
+          <div className="fourth-row">
+          <input
+            type="email"
+            placeholder="Telegram"
+            name="telegram"
+            className="form--input"
+            value={formData.telegram}
             onChange={handleChange}
           />
           </div>
