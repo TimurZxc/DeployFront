@@ -62,6 +62,10 @@
 
 .second-row_e_area{
     font-weight: 400;
+    max-width: 130%;
+    min-width: 80%;
+    max-height: 256px;
+    min-height: 56px;
     font-size: 20px;
     letter-spacing: 0.03em;
     color: #11174B;
