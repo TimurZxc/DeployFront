@@ -64,7 +64,7 @@ const MarketTeachProf = () => {
         {isShown && <ContactInfoTeach
                       phone={mainTeachList.phone}
                       email={mainTeachList?.user?.email}
-                      telegram={mainTeachList.telegram}/>}
+                      telegram={mainTeachList?.user?.telegram}/>}
 
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course--list'>{CourseListArr}</section>
