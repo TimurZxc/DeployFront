@@ -63,7 +63,8 @@ const MarketTeachProf = () => {
           <div onClick={toggleShown} className="edit">{isShown ? `Скрыть контакты` : `Показать контакты`}</div>
         {isShown && <ContactInfoTeach
                       phone={mainTeachList.phone}
-                      email={mainTeachList?.user?.email}/>}
+                      email={mainTeachList?.user?.email}
+                      telegram={mainTeachList?.user?.telegram}/>}
 
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course--list'>{CourseListArr}</section>

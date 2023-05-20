@@ -42,6 +42,7 @@ const EditTeacherProfile = (props) => {
       birth_date={data.birth_date}
       email={data.email}
       surname={data.surname}
+      telegram={data?.user?.telegram}
       {...data} />
   })
 

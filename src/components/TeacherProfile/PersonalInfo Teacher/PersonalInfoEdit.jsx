@@ -13,7 +13,8 @@ const PersonalInfoTeachEdit = (props) => {
     email: props.email,
     surname: props.surname,
     phone: props.phone,
-    education: props.education
+    education: props.education,
+    telegram: props.telegram
   });
 
   console.log('formData', formData)
@@ -34,6 +35,7 @@ const PersonalInfoTeachEdit = (props) => {
       birth_date: formData.birth_date,
       email: formData.email,
       surname: formData.surname,
+      telegram: formData.telegram,
       teacher: {
         phone: formData.phone,
         education: formData.education
@@ -115,6 +117,16 @@ const PersonalInfoTeachEdit = (props) => {
             name="email"
             className="form--input"
             value={formData.email}
+            onChange={handleChange}
+          />
+          </div>
+          <div className="fourth-row_t">
+          <input
+            type="email"
+            placeholder="Telegram"
+            name="telegram"
+            className="form--input"
+            value={formData.telegram}
             onChange={handleChange}
           />
           </div>
