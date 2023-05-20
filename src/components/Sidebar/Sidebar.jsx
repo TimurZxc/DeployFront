@@ -17,12 +17,14 @@ const Sidebar = () => {
   }
 
   const user = localStorage.getItem('access_token')
+  let decode 
+
   if (user){
-    const decode = jwt_decode(user) 
-    const is_teacher = decode?.is_teacher
-    const is_student = decode?.is_student
-  
+    decode = jwt_decode(user)
   }
+
+  const is_teacher = decode?.is_teacher
+  const is_student = decode?.is_student
 
   return (
     <div className="sidebar-wrapper">
