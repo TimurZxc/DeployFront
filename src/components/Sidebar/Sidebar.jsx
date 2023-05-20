@@ -91,7 +91,7 @@ const Sidebar = () => {
             )
             }
 
-{user && is_teacher && 
+{user && is_teacher ?
   <div
     onClick={() => routeHandler('/profileTeacher')}
     className={
@@ -102,9 +102,9 @@ const Sidebar = () => {
       >
     <Sprite id="profile" />
     <h1>Профиль Учителя</h1>
-  </div>}
+  </div> : <div></div>}
 
-{user && is_student && 
+{user && is_student ?
   <div
     onClick={() => routeHandler('/profile')}
     className={
@@ -115,7 +115,7 @@ const Sidebar = () => {
       >
     <Sprite id="profile" />
     <h1>Профиль</h1>
-  </div>}
+  </div> : <div></div>}
 
           </div>
         </div>
