@@ -2,6 +2,7 @@ import './Sidebar.scss'
 import Sprite from '../Sprite/Sprite'
 import { useNavigate } from 'react-router-dom'
 
+
 const Sidebar = () => {
   let navigate = useNavigate()
   const routeHandler = (URL: any) => {
