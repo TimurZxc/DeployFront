@@ -54,7 +54,7 @@ const TeacherProfile = (props) => {
       key={data.id}
       phone={data?.teacher?.phone}
       email={data.email}
-      telegram={data?.user?.telegram}
+      telegram={data.telegram}
     />
   })
 
