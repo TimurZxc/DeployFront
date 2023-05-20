@@ -1,6 +1,7 @@
 import './Sidebar.scss'
 import Sprite from '../Sprite/Sprite'
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from "jwt-decode";
 
 
 const Sidebar = () => {
@@ -9,6 +10,10 @@ const Sidebar = () => {
     navigate(URL)
   }
 
+  const decode = jwt_decode(access)
+  const is_teacher = decode.is_teacher
+  const is_student = decode.is_student
+
   function logout() {
     localStorage.removeItem('access_token'),
     localStorage.removeItem('refresh_token')
@@ -16,8 +21,6 @@ const Sidebar = () => {
   }
 
   const user = localStorage.getItem('access_token')
-  const is_teacher = localStorage.getItem('is_teacher')
-  const is_student = localStorage.getItem('is_student')
 
   return (
     <div className="sidebar-wrapper">
