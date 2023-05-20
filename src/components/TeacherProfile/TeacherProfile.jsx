@@ -49,6 +49,15 @@ const TeacherProfile = (props) => {
       {...data} />
   })
 
+  const CurrUserContacts = mainTeachList.map(data => {
+    return <ContactInfoTeach
+    key={data.id}
+    phone={data.phone}
+    email={data?.user?.email}
+    telegram={data?.user?.telegram}
+    />
+  })
+
   React.useEffect(() => {
     axiosInstance
       .get("curr/")
@@ -92,13 +101,7 @@ const TeacherProfile = (props) => {
       <div className='settings-block_t'>
         <section className='course-list'>{CurrentUser}</section>
         <div onClick={toggleShown} className="edit">{isShown ? `Скрыть контакты` : `Показать контакты`}</div>
-        {isShown && <ContactInfoTeach
-                      phone={mainTeachList.phone}
-                      email={mainTeachList?.user?.email}
-                      telegram={mainTeachList?.user?.telegram}
-                      />
-                      }
-
+        {isShown ?  CurrUserContacts : <div></div>}
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course--list'>{CourseListArr}</section>
         {/* <Calendar /> */}
