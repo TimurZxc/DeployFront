@@ -89,7 +89,7 @@ const Sidebar = () => {
             )
             }
 
-           {user && is_teacher == true ? <div
+           {user && is_teacher ? <div
               onClick={() => routeHandler('/profileTeacher')}
               className={
                 window.location.pathname === '/profileTeacher'
@@ -100,7 +100,7 @@ const Sidebar = () => {
               <Sprite id="profile" />
               <h1>Профиль Учителя</h1>
             </div> : <div></div>}
-            {user && is_student == true ? <div
+            {user && is_student ? <div
               onClick={() => routeHandler('/profile')}
               className={
                 window.location.pathname === '/profile'
