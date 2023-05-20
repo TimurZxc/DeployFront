@@ -86,8 +86,8 @@ const EditTeacherProfile = (props) => {
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course-list'>{CourseListArr}</section>
         {/* <Calendar /> */}
-        <div className="edit" onClick={toggleShown}>Добавить курс</div>
         {isShown && <AddCourseTeach />}
+        <div className="edit" onClick={toggleShown}>Добавить курс</div>
         {/* <div className="edit">Сохранить изминения</div> */}
       </div>
     </div>
