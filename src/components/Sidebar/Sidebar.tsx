@@ -98,8 +98,7 @@ const Sidebar = () => {
                 >
               <Sprite id="profile" />
               <h1>Профиль</h1>
-            </div> : <div></div> }
-           {user ? <div
+            </div> : user ? <div
               onClick={() => routeHandler('/profileTeacher')}
               className={
                 window.location.pathname === '/profileTeacher'
