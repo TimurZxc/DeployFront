@@ -44,11 +44,8 @@ const TeacherProfile = (props) => {
       first_name={data.first_name}
       last_name={data.last_name}
       education={data?.teacher?.education}
-      phone={data?.teacher?.phone}
       birth_date={data.birth_date}
-      email={data.email}
       surname={data.surname}
-      telegram={data.telegram}
       {...data} />
   })
 
@@ -94,6 +91,14 @@ const TeacherProfile = (props) => {
       <Sidebar />
       <div className='settings-block_t'>
         <section className='course-list'>{CurrentUser}</section>
+        <div onClick={toggleShown} className="edit">{isShown ? `Скрыть контакты` : `Показать контакты`}</div>
+        {isShown && <ContactInfoTeach
+                      phone={mainTeachList.phone}
+                      email={mainTeachList?.user?.email}
+                      telegram={mainTeachList?.user?.telegram}
+                      />
+                      }
+
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course--list'>{CourseListArr}</section>
         {/* <Calendar /> */}

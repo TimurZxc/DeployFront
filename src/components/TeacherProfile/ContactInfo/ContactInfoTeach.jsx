@@ -5,11 +5,14 @@ const ContactInfoTeach = (props) => {
       <div className="first-col_c">
         <div className="first-row_c">Номер телефона</div>
         <div className="second-row_с">Эл. почта</div>
+        <div className="third-row">Эл. почта</div>
       </div>
       <div className="second-col_c">
         <div className="first-row_c">{props.phone}</div>
         <br />
         <div className="second-row">{props.email}</div>
+        <br />
+        <div className='third-row'>{props.telegram}</div>
       </div>
     </div>
   )

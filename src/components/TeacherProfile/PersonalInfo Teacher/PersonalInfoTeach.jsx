@@ -2,12 +2,6 @@ import './PersonalInfoTeach.css'
 import React from 'react'
 const PersonalInfoTeach = (props) => {
 
-  const [isShown, setIsShown] = React.useState(false)
-
-  function toggleShown() {
-    setIsShown(prevShown => !prevShown)
-  }
-
 
   return (
     <div className="body_t">
@@ -28,21 +22,6 @@ const PersonalInfoTeach = (props) => {
           <div className="first_t">Дата рождения</div>
           <div className="first_t_edu">{props.birth_date}</div>
         </div>
-        <div onClick={toggleShown} className="edit">{isShown ? `Скрыть контакты` : `Показать контакты`}</div>
-        {isShown ?
-        <div className="fourth-row_t">
-          <div className="first_t">Телефон</div>
-          <div className="first_t_edu">{props.phone}</div>
-        </div> : <div></div>}
-        {isShown ?
-        <div className="fourth-row_t">
-          <div className="first_t">Email</div>
-          <div className="first_t_edu">{props.email}</div>
-        </div> : <div></div>}
-        {isShown ? <div className="fourth-row_t">
-          <div className="first_t">Telegram</div>
-          <div className="first_t_edu">{props.telegram}</div>
-        </div> : <div></div>}
         </div>
       <div className="second-col_t">
         <div className="img_t"></div>
