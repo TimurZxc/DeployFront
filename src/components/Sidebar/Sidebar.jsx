@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
   let navigate = useNavigate()
-  const routeHandler = (URL: any) => {
+  const routeHandler = (URL) => {
     navigate(URL)
   }
 
