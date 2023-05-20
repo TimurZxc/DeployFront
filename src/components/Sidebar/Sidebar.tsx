@@ -17,6 +17,7 @@ const Sidebar = () => {
 
   const user = localStorage.getItem('access_token')
   const is_teacher = localStorage.getItem('is_teacher')
+  const is_student = localStorage.getItem('is_student')
 
   return (
     <div className="sidebar-wrapper">
@@ -98,7 +99,8 @@ const Sidebar = () => {
                 >
               <Sprite id="profile" />
               <h1>Профиль Учителя</h1>
-            </div> : user ? <div
+            </div> : <div></div>}
+            {user && is_student ? <div
               onClick={() => routeHandler('/profile')}
               className={
                 window.location.pathname === '/profile'
