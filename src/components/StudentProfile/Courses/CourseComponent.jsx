@@ -3,7 +3,7 @@ import './Courses.scss'
 
 const CourseComponent = (props) => {
   return (
-    <>
+    <div className='courses-body'>
     <div className="first-col">
         <div className="first-row">Активные курсы:</div>
         <div className="second-row">{props.course_name}</div>
@@ -17,7 +17,8 @@ const CourseComponent = (props) => {
         <div className="second-row">c {props.start_time}</div>
         <div className="third-row">до {props.end_time}</div>
       </div>
-    </>
+      <br />
+    </div>
   )
 }
 

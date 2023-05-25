@@ -32,7 +32,6 @@ const [studCourseList, setStudCourseList] = React.useState([])
   return (
     <div className="courses-body">
       <section>{StudCourses}</section>
-      <br />
     </div>
   )
 }
