@@ -43,8 +43,7 @@ const SignIn = () => {
     <div className="main">
       <Sidebar/>
     <div className="background">
-    <div className="shape"></div>
-    <div className="shape"></div>
+
     </div>
     <form className='SignInFrom'  onSubmit={handleSubmit}>
     <h3>Войдите в аккаунт</h3>
