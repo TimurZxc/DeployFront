@@ -70,10 +70,10 @@ const SignIn = () => {
         id="password"/>
 
     <button className='form--sbt' type="submit" >Войти</button>
-    <div className="social">
+    {/* <div className="social">
       <div className="go"><FontAwesomeIcon icon={faGoogle} size="lg"/>  Google</div>
       <div className="fb"><FontAwesomeIcon icon={faFacebook} size="lg"/>  Facebook</div>
-    </div>
+    </div> */}
     <div
         onClick={() => routeHandler('/resetPass')}
         id='signUp'
@@ -83,7 +83,6 @@ const SignIn = () => {
             : `navigation-item`
         }
         >Забыли пароль?</div>
-    <br />
     <div
         onClick={() => routeHandler('/register')}
         id='signUp'
