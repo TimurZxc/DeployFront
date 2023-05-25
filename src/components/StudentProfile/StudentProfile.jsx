@@ -18,6 +18,7 @@ const StudentProfile = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
 
+
   const CurrentUser = mainStudList.map(data => {
     return <PersonalInfo
       key={data?.id}
