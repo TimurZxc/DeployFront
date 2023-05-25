@@ -5,7 +5,7 @@ const CourseComponent = (props) => {
   return (
     <div className='courses-body'>
     <div className="first-col">
-        <div className="first-row">Активные курсы:</div>
+        <div className="first-row">Курс:</div>
         <div className="second-row">{props.course_name}</div>
       </div>
       <div className="second-col">
