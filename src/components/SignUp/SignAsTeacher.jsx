@@ -88,7 +88,6 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <p>Дата рождения</p>
       <div className="input-row">
       <input
         type="date"
@@ -156,7 +155,7 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <button className="form--submit" type="submit" onClick={handleSubmit}>
+      <button className="form--submit-last" type="submit" onClick={handleSubmit}>
         Завершить регистрацию
       </button>
     </form>

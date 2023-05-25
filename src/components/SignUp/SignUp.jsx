@@ -154,7 +154,8 @@ const SignUp = () => {
           onChange={handleChange}
         />
         </div>
-        <button className="form--submit" type="submit" >
+        <br />
+        <button className="form--submit-last" type="submit" onClick={handleSubmit} >
           Завершить регистрацию
         </button>
       </form>

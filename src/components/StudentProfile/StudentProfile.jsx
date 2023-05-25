@@ -18,6 +18,8 @@ const StudentProfile = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
 
+  const [studCourseList, setStudCourseList] = React.useState([])
+
 
   const CurrentUser = mainStudList.map(data => {
     return <PersonalInfo
@@ -32,6 +34,16 @@ const StudentProfile = () => {
       telegram={data.telegram}
     />
   })
+
+  const StudCourses = studCourseList.map(data => {
+    return <Courses
+      key={data?.id}
+      course_name={data.id}
+      date={data.date}
+      start_time={data.start_time}
+      end_time={data.end_time}/>
+  })
+
   React.useEffect(() => {
     axiosInstance
       .get("curr/")
@@ -45,6 +57,20 @@ const StudentProfile = () => {
       });
   }, []);
 
+  React.useEffect(() => {
+    axiosInstance
+      .get("lessons")
+      .then((response) => {
+        const studCoursesData = response.data;
+        setStudCourseList(studCoursesData);
+        console.log("courses data", studCoursesData);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+
   return (
     <div className="main">
       <Sidebar />
@@ -53,7 +79,7 @@ const StudentProfile = () => {
         <h1 className="profile-title">Настройки профиля ученика</h1>
         <div className="settings-block">
         <section className='course-list'>{CurrentUser}</section>
-          <Courses />
+        <section>{StudCourses}</section>
           <div onClick={() => routeHandler('/studEdit')} className="edit">Редактировать профиль</div>
           {/* <Calendar /> */}
         </div>

@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-
+  overflow-y: scroll;
 }
 
 
@@ -66,10 +66,10 @@ body {
 }
 
 .form--input-tg{
-  width: 44% !important;
+  width: calc(100% - 60px);
   height: 45px;
+  margin: 15px 30px;
   margin-bottom: 1rem;
-  margin-left: 30px;
   font-size: 1.2rem;
   color: #11174b;
   background: rgba(255, 255, 255, 0.56);
@@ -77,19 +77,6 @@ body {
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 0 25px;
-}
-
-.form--input-area {
-  width: 85% !important;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  color: #11174b;
-  background: rgba(255, 255, 255, 0.56);
-  border-radius: 30px;
-  border: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 10px 25px;
-  margin-left:15px;
 }
 
 .form--input-last{
@@ -108,7 +95,6 @@ body {
 
 .form--submit {
   width: 45% !important;
-  margin-top: 2rem;
   padding: 0.8rem;
   border: none;
   font-size: 1rem;
@@ -121,8 +107,24 @@ body {
   background-color: rgba(255, 255, 255, 0.76);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
-  margin: 10px;
-  margin-left: 30px;
+  margin: 15px
+}
+
+.form--submit-last{
+  width: 45% !important;
+  padding: 0.8rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  height: 52px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: #11174b;
+  background-color: rgba(255, 255, 255, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  margin: 15px
 }
 
 .form-buttons {
@@ -133,9 +135,9 @@ body {
 }
 
 .input-row {
-  width: 130%;
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -146,7 +148,8 @@ body {
 }
 
 .form--input-last {
-  margin-bottom: 20px;
+  width: calc(50% - 30px);
+  margin: 0px 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -160,11 +163,11 @@ body {
   }
 
   .form--input {
-    width: calc(50% - 1rem);
+    width: calc(50% - 30px);
   }
 
   .form--input:last-of-type {
-    margin-left: 1rem;
+    margin-left: 30px;
   }
 
   .form--submit {
