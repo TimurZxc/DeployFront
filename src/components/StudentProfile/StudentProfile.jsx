@@ -18,8 +18,6 @@ const StudentProfile = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
 
-  const [studCourseList, setStudCourseList] = React.useState([])
-
 
   const CurrentUser = mainStudList.map(data => {
     return <PersonalInfo

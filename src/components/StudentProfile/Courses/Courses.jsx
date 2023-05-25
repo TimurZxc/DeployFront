@@ -5,6 +5,8 @@ import axiosInstance from '../../../axios'
 
 const Courses = (props) => {
 
+const [studCourseList, setStudCourseList] = React.useState([])
+
   const StudCourses = studCourseList.map(data => {
     return <CourseComponent
       key={data?.lessons?.related_course?.id}
