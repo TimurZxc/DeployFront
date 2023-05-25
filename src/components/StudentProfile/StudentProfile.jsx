@@ -37,8 +37,8 @@ const StudentProfile = () => {
 
   const StudCourses = studCourseList.map(data => {
     return <Courses
-      key={data?.related_course.id}
-      course_name={data.related_course.name}
+      key={data?.related_course?.id}
+      course_name={data?.related_course?.name}
       date={data.date}
       start_time={data.start_time}
       end_time={data.end_time}/>
