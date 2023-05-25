@@ -1,11 +1,11 @@
-import Calendar from './Calendar/Calendar'
-import Search from '../Search/Search'
-import ContactInfo from './ContactInfo/ContactInfo'
+// import Calendar from './Calendar/Calendar'
+// import Search from '../Search/Search'
+// import ContactInfo from './ContactInfo/ContactInfo'
 import Courses from './Courses/Courses'
 import PersonalInfo from './PersonalInfo/PersonalInfo'
 import './StudentProfile.scss'
 import Sidebar from '../Sidebar/Sidebar'
-import Dashboard from '../Dashboard/Dashboard'
+// import Dashboard from '../Dashboard/Dashboard'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../axios'
@@ -35,14 +35,6 @@ const StudentProfile = () => {
     />
   })
 
-  const StudCourses = studCourseList.map(data => {
-    return <Courses
-      key={data?.lessons?.related_course?.id}
-      course_name={data?.lessons?.related_course?.name}
-      date={data?.lessons?.date}
-      start_time={data?.lessons?.start_time}
-      end_time={data?.lessons?.end_time}/>
-  })
 
   React.useEffect(() => {
     axiosInstance
@@ -51,19 +43,6 @@ const StudentProfile = () => {
         const mainTeacherData = response.data;
         setMainStudList(mainTeacherData);
         console.log("student data", mainTeacherData);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  React.useEffect(() => {
-    axiosInstance
-      .get("lessons")
-      .then((response) => {
-        const studCoursesData = response.data;
-        setStudCourseList(studCoursesData);
-        console.log("courses data", studCoursesData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -79,7 +58,7 @@ const StudentProfile = () => {
         <h1 className="profile-title">Настройки профиля ученика</h1>
         <div className="settings-block">
         <section className='course-list'>{CurrentUser}</section>
-        <section>{StudCourses}</section>
+        <Courses/>
           <div onClick={() => routeHandler('/studEdit')} className="edit">Редактировать профиль</div>
           {/* <Calendar /> */}
         </div>
