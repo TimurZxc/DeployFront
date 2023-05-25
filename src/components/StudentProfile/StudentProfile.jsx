@@ -37,11 +37,11 @@ const StudentProfile = () => {
 
   const StudCourses = studCourseList.map(data => {
     return <Courses
-      key={data?.related_course?.id}
-      course_name={data?.related_course?.name}
-      date={data.date}
-      start_time={data.start_time}
-      end_time={data.end_time}/>
+      key={data?.lessons?.related_course?.id}
+      course_name={data?.lessons?.related_course?.name}
+      date={data?.lessons?.date}
+      start_time={data?.lessons?.start_time}
+      end_time={data?.lessons?.end_time}/>
   })
 
   React.useEffect(() => {
