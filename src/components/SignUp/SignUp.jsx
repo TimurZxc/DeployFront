@@ -149,7 +149,7 @@ const SignUp = () => {
           type="password"
           placeholder="Подтвердите пароль"
           name="password2"
-          className="form--input-last"
+          className="form--input"
           value={formData.password2}
           onChange={handleChange}
         />

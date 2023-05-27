@@ -14,6 +14,10 @@ body {
   color: rgba(17, 23, 75, 0.9);
   font-weight: 500;
 }
+.contacts{
+  width: 100%;
+  display: flex;
+}
 
 .form {
   display: flex;
@@ -178,4 +182,10 @@ body {
 
 .navigation-item{
   cursor: pointer;
+}
+.contacts p{
+  width: fit-content;
+}
+.c2{
+  padding-left: 32%;
 }

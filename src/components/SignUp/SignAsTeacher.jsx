@@ -90,13 +90,13 @@ const SignUpTeacher = () => {
       </div>
       <div className="input-row">
       <input
-        type="date"
-        placeholder="Дата рождения в формате: 10.08.1990"
-        name="birth_date"
-        className="form--input"
-        value={formData.birth_date}
-        onChange={handleChange}
-      />
+          type="text"
+          placeholder="Отчество"
+          name="surname"
+          className="form--input"
+          value={formData.surname}
+          onChange={handleChange}
+        />
       <input
         type="text"
         placeholder="Образование"
@@ -106,7 +106,6 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <p>Контакты</p>
       <div className="input-row">
       <input
         type="email"
@@ -116,6 +115,20 @@ const SignUpTeacher = () => {
         value={formData.email}
         onChange={handleChange}
       />
+        <input
+        type="date"
+        placeholder="Дата рождения в формате: 10.08.1990"
+        name="birth_date"
+        className="form--input"
+        value={formData.birth_date}
+        onChange={handleChange}
+      />
+      </div>
+        <div className="contacts">
+          <p>Телефон</p>
+          <p className='c2'>Telegram - Необязательно</p>
+        </div>
+      <div className="input-row">
       <input
         type="text"
         placeholder="Номер Телефона"
@@ -124,14 +137,11 @@ const SignUpTeacher = () => {
         value={formData.phone}
         onChange={handleChange}
       />
-      </div>
-      <p>Telegram ( Дополнительно )</p>
-      <div className="input-row">
       <input
         type="text"
         placeholder="Имя пользователя в Telegram"
         name="telegram"
-        className="form--input-tg"
+        className="form--input"
         value={formData.telegram}
         onChange={handleChange}
       />
@@ -150,7 +160,7 @@ const SignUpTeacher = () => {
         type="password"
         placeholder="Подтвердите пароль"
         name="password2"
-        className="form--input-last"
+        className="form--input"
         value={formData.password2}
         onChange={handleChange}
       />
