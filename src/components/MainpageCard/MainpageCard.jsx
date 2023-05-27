@@ -11,7 +11,8 @@ const MainpageCard = (props) => {
   const getUsers = async () => {
     try {
       const response = axiosInstance.get('teacher-list/').then((res) => {
-        setCourseInfo(res.data)
+        console.log("2", res.data[0]?.teacher?.courses[0]?.name)
+        setCourseInfo(res.data[0]?.teacher?.courses[0])
       })
     } catch (error) {
       console.log(error)
@@ -29,9 +30,9 @@ const MainpageCard = (props) => {
 
   const cardElements = courseInfo.map(card => (
     <CourseInfo
-      key={card?.teacher?.courses?.id}
-      subject={card?.teacher?.courses?.name}
-      price={card?.teacher?.courses?.price}
+      key={card?.id}
+      subject={card?.name}
+      price={card?.price}
        />
   ))
 
