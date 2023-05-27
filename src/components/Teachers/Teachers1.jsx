@@ -4,7 +4,7 @@ import MainpageCard from '../MainpageCard/MainpageCard'
 import teacherCard from '../../assets/svg-pictures/teacher.svg'
 import axiosInstance from '../../axios'
 import Sidebar from '../Sidebar/Sidebar'
-import Dashboard from '../Dashboard/Dashboard'
+// import Dashboard from '../Dashboard/Dashboard'
 
 
 const Teachers1 = () => {
@@ -26,6 +26,8 @@ const Teachers1 = () => {
   useEffect(() => {
     getUsers()
   }, [])
+
+  
 
   const cardElements = cards.map(card => (
     <MainpageCard
