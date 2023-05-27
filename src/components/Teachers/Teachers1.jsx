@@ -34,7 +34,7 @@ const Teachers1 = () => {
       key={card?.teacher?.id}
       src={teacherCard}
       text={card.first_name + ' ' + card.last_name}
-      subject={card?.teacher?.courses?.number_of_students}
+      subject={card?.teacher?.courses?.name}
       price={card?.teacher?.courses?.price}
       url ={`/marketTeach/${card?.teacher?.id}`}
       buttonText={"Подробнее"}
