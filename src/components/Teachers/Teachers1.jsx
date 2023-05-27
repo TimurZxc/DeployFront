@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import './teachers.scss'
-import MainpageCard from '../MainpageCard/MainpageCard'
+// import MainpageCard from '../MainpageCard/MainpageCard'
 import teacherCard from '../../assets/svg-pictures/teacher.svg'
 import axiosInstance from '../../axios'
 import Sidebar from '../Sidebar/Sidebar'
+import TeacherCard from './TeacherCard'
 // import Dashboard from '../Dashboard/Dashboard'
 
 
@@ -30,7 +31,7 @@ const Teachers1 = () => {
 
 
   const cardElements = cards.map(card => (
-    <MainpageCard
+    <TeacherCard
       key={card?.teacher?.id}
       src={teacherCard}
       text={card.first_name + ' ' + card.last_name}
