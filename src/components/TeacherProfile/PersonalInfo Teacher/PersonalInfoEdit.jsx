@@ -1,10 +1,15 @@
 import axiosInstance from '../../../axios';
 import './PersonalInfoTeach.css'
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 
 
 const PersonalInfoTeachEdit = (props) => {
 
+  const navigate = useNavigate();
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
 
   const [formData, setFormData] = useState({
     first_name: props.first_name,
@@ -50,7 +55,8 @@ const PersonalInfoTeachEdit = (props) => {
     }).catch((error) => {
       console.error('error', error)
       localStorage.removeItem('access_token'),
-      localStorage.removeItem('refresh_token')
+      localStorage.removeItem('refresh_token');
+      navigate('/');
     });
   }
 

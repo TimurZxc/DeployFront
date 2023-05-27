@@ -1,9 +1,14 @@
-
 import axiosInstance from '../../../axios';
 import './PersonalInfo.scss'
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const PersonalInfoEdit = (props) => {
+
+  const navigate = useNavigate();
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
 
   const [formData, setFormData] = useState({
     email: props.email,
@@ -46,7 +51,8 @@ const PersonalInfoEdit = (props) => {
     }).then((response) => {
       console.log('response', response)
     }).catch((error) => {
-      console.error('error', error)
+      console.error('error', error);
+      navigate('/');
     });
   }
 
