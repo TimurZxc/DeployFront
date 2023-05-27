@@ -1,8 +1,8 @@
-import CourseInfo from './CourseInfo'
 import './MainpageCard.scss'
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect }  from 'react'
 import axiosInstance from '../../axios'
+import CourseInfo from '../MainpageCard/CourseInfo'
 
 const TeacherCard = (props) => {
 
