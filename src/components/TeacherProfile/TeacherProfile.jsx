@@ -77,7 +77,6 @@ const TeacherProfile = (props) => {
       if (mainTeachList && data?.teacher?.id) {
         const id = data?.teacher?.id
 
-        console.log('first',)
         axiosInstance
           .get(`course-list/${id}`)
           .then((response) => {
