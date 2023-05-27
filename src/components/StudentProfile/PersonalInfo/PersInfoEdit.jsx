@@ -50,9 +50,9 @@ const PersonalInfoEdit = (props) => {
     axiosInstance.delete('delete/user/', {
     }).then((response) => {
       console.log('response', response)
+      navigate('/');
     }).catch((error) => {
       console.error('error', error);
-      navigate('/');
     });
   }
 
