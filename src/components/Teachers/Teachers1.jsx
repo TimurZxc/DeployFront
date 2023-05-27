@@ -27,15 +27,15 @@ const Teachers1 = () => {
     getUsers()
   }, [])
 
-  
+
 
   const cardElements = cards.map(card => (
     <MainpageCard
       key={card?.teacher?.id}
       src={teacherCard}
       text={card.first_name + ' ' + card.last_name}
-      subject={card.subject}
-      price={card.price}
+      subject={card?.teacher?.courses?.number_of_students}
+      price={card?.teacher?.courses?.price}
       url ={`/marketTeach/${card?.teacher?.id}`}
       buttonText={"Подробнее"}
        />
