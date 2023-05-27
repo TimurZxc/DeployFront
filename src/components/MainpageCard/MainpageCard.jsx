@@ -12,7 +12,7 @@ const MainpageCard = (props) => {
     try {
       const response = axiosInstance.get('teacher-list/').then((res) => {
         console.log("2", res.data[0]?.teacher?.courses[0]?.name)
-        setCourseInfo(res.data[0]?.teacher?.courses[0])
+        setCourseInfo(res.data[0]?.teacher?.courses)
       })
     } catch (error) {
       console.log(error)
