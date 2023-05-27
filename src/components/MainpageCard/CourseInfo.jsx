@@ -1,7 +1,7 @@
 import React from 'react'
 import './MainpageCard.scss'
 
-const CourseInfo = () => {
+const CourseInfo = (props) => {
   return (
     <div>
         <div className='teach-sub'>{props.subject}</div>
