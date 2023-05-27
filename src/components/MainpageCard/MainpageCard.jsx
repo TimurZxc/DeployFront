@@ -1,7 +1,8 @@
 import CourseInfo from './CourseInfo'
 import './MainpageCard.scss'
 import { useNavigate } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect }  from 'react'
+import axiosInstance from '../../axios'
 
 const MainpageCard = (props) => {
 
