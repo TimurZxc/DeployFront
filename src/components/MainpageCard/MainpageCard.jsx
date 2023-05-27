@@ -1,6 +1,7 @@
 import CourseInfo from './CourseInfo'
 import './MainpageCard.scss'
 import { useNavigate } from 'react-router-dom'
+import React from 'react'
 
 const MainpageCard = (props) => {
 
