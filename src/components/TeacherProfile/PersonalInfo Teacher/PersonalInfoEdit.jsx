@@ -95,7 +95,7 @@ const PersonalInfoTeachEdit = (props) => {
               type='text'
               placeholder="ВУЗ, Специальность, год окончания"
               name="education"
-              className="form--input-area"
+              className="form--input"
               value={formData.education}
               onChange={handleChange}
             />
