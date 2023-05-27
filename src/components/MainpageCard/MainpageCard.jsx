@@ -29,7 +29,7 @@ const MainpageCard = (props) => {
 
   const cardElements = courseInfo.map(card => (
     <CourseInfo
-      key={card?.teacher?.id}
+      key={card?.teacher?.courses?.id}
       subject={card?.teacher?.courses?.name}
       price={card?.teacher?.courses?.price}
        />
