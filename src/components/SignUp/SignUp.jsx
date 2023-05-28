@@ -37,7 +37,7 @@ const SignUp = () => {
     if (formData.password !== formData.password2) {
       console.log('Passwords do not match');
     } else {
-      console.log('Successfully signed up');
+      console.log('Passwords match');
       if (formData.okayToEmail) {
         console.log('Thanks for signing up for our newsletter!');
       }
