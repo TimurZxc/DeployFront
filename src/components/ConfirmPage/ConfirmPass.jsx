@@ -6,13 +6,11 @@ import axiosInstance from '../../axios';
 const ConfirmPass = () => {
   const [formData, setFormData] = React.useState({
     password: '',
-    password1: ''
-  });
-
-  const [urlData, setUrlData] = React.useState({
+    password1: '',
     u_id: '',
     token: ''
-  })
+  });
+
 
   let navigate = useNavigate()
   const routeHandler = (URL) => {
@@ -31,7 +29,7 @@ const ConfirmPass = () => {
   React.useEffect(()=>{
     axiosInstance.get('password-reset/'+paramss.u_id+'/'+paramss.token+'').then((response)=>{
 
-      setUrlData(response.data)
+      setFormData(response.data)
         console.log('url_data:', response.data)
     })
   }, [])
@@ -46,7 +44,7 @@ const ConfirmPass = () => {
     }
     let formattedData = JSON.stringify(formData)
     axiosInstance
-      .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData.password, urlData.u_id, urlData.token)
+      .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData)
       .then(() =>
         console.log(`Data has been send successfully: ${formattedData}`)
       )
