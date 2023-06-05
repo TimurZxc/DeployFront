@@ -41,7 +41,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/password-reset/:u_id/:token"
+            path="/api/password-reset/:u_id/:token"
             element={
               <>
                 <ConfirmPass />
