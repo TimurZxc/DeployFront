@@ -30,7 +30,7 @@ const ConfirmPass = () => {
   const paramss = useParams();
   React.useEffect(()=>{
     axiosInstance.get('password-reset/'+paramss.u_id+'/'+paramss.token+'').then((response)=>{
-
+      
       setUrlData(response.data)
         console.log('url_data:', response.data)
     })
