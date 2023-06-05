@@ -46,7 +46,6 @@ const ConfirmPass = () => {
     axiosInstance
       .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData)
       console.log('Data:', formData.uidb64)
-      .catch((error) => console.log(error.response.data))
   };
 
 
