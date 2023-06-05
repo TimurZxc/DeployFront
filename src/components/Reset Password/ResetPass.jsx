@@ -20,22 +20,22 @@ const ResetPass = () => {
     }));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log('Submitting form with data:', formData);
-    // Send data to server for authentication and redirect on success
-  }
+  const handleSubmit = (e) => {
+		e.preventDefault();
+    console.log('data-email', formData)
+		axiosInstance
+			.post('request-reset-email/', formData)
+			.then(() => {
+        navigate('/confirmPage');
+			});
+	};
 
   return (
     <div>
-    <div className="background">
-    <div className="shape1"></div>
-    <div className="shape1"></div>
-    </div>
     <form className='ResetForm'  onSubmit={handleSubmit}>
-    <h3>Восстановить пароль</h3>
+    <h3>Восстановление пароля</h3>
 
-    <label for="username">Электронная почта</label>
+    <label for="username">Введите вашу электронную почту</label>
 
     <input
         className='form--inpt'
@@ -46,11 +46,11 @@ const ResetPass = () => {
         onChange={handleChange}
         id="username"/>
 
-
+{/* onClick={() => routeHandler('/confirmPage')} */}
     <button
         className='form--sbt'
         type="submit"
-        onClick={() => routeHandler('/confirmPage')}>Отправить</button>
+        >Отправить</button>
 </form> 
 </div>
   );

@@ -4,10 +4,14 @@ import { useNavigate } from 'react-router-dom'
 
 const ConfirmPass = () => {
   const [formData, setFormData] = React.useState({
-    code: '',
     password: '',
     password1: ''
   });
+
+  const [urlData, setUrlData] = React.useState({
+    u_id: '',
+    token: ''
+  })
 
   let navigate = useNavigate()
   const routeHandler = (URL) => {
@@ -22,33 +26,42 @@ const ConfirmPass = () => {
     }));
   }
 
-  function handleSubmit(event) {
+  const paramss = useParams();
+  React.useEffect(()=>{
+    axiosInstance.get('password-reset/'+paramss.u_id+'/'+paramss.token+'').then((response)=>{
+
+      setUrlData(response.data)
+        console.log('url_data:', response.data)
+    })
+  }, [])
+
+
+  const handleSubmit = event => {
     event.preventDefault();
-    console.log('Submitting form with data:', formData);
-    // Send data to server for authentication and redirect on success
-  }
+    if (formData.password !== formData.password1) {
+      console.log('Passwords do not match');
+    } else {
+      console.log('Passwords match');
+    }
+    let formattedData = JSON.stringify(formData)
+    axiosInstance
+      .post('password-reset/uid/token/', formData.password, paramss.u_id, paramss.token)
+      .then(() =>
+        console.log(`Data has been send successfully: ${formattedData}`)
+      )
+      .catch((error) => console.log(error.response.data))
+  };
+
 
   return (
     <div>
     <div className="background">
-    <div className="shape2"></div>
-    <div className="shape2"></div>
     </div>
     <form className='ConfirmForm'  onSubmit={handleSubmit}>
-    <h3>Восстановление пароя</h3>
+    <h3>Восстановление пароля</h3>
 
-    <label for="username">Введите код с письма</label>
 
-    <input
-        className='form--inpt'
-        type="text"
-        name="code"
-        placeholder='Код'
-        value={formData.email}
-        onChange={handleChange}
-        id="username"/>
-
-    <label for="password">Придумайте новый пароль</label>
+    <label for="password">Придумайте новый, надежный пароль</label>
     <input
         className='form--inpt'
         placeholder='Введите пароль'
@@ -71,7 +84,7 @@ const ConfirmPass = () => {
     <button
         className='form--sbt'
         type="submit"
-        onClick={() => routeHandler('/confirmPage')}>Отправить</button>
+        onClick={handleSubmit}>Подтвердить</button>
 </form> 
 </div>
   );
