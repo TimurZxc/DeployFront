@@ -7,7 +7,7 @@ const ConfirmPass = () => {
   const [formData, setFormData] = React.useState({
     password: '',
     password1: '',
-    u_id: '',
+    uidb64: '',
     token: ''
   });
 
