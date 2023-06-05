@@ -26,9 +26,6 @@ const ResetPass = () => {
     console.log('data-email', formData)
 		axiosInstance
 			.post('request-reset-email/', formData)
-			.then(() => {
-        navigate('/confirmPage');
-			});
 	};
 
   return (
