@@ -44,7 +44,6 @@ const ResetPass = () => {
         onChange={handleChange}
         id="username"/>
 
-{/* onClick={() => routeHandler('/confirmPage')} */}
     <button
         className='form--sbt'
         type="submit"

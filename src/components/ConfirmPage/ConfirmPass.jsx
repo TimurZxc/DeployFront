@@ -1,6 +1,6 @@
 import './confirm.css'
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axiosInstance from '../../axios';
 
 const ConfirmPass = () => {
