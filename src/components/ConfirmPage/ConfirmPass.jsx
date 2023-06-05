@@ -6,11 +6,13 @@ import axiosInstance from '../../axios';
 const ConfirmPass = () => {
   const [formData, setFormData] = React.useState({
     password: '',
-    password1: '',
     uidb64: '',
     token: ''
   });
 
+  const [pass, setPass] = React.useState({
+    password: ''
+  })
 
   let navigate = useNavigate()
   const routeHandler = (URL) => {
@@ -20,6 +22,14 @@ const ConfirmPass = () => {
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }));
+  }
+
+  function handleChange1(event) {
+    const { name, value } = event.target;
+    setPass(prevFormData => ({
       ...prevFormData,
       [name]: value
     }));
@@ -37,7 +47,7 @@ const ConfirmPass = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (formData.password !== formData.password1) {
+    if (formData.password !== pass.password) {
       console.log('Passwords do not match');
     } else {
       console.log('Passwords match');
@@ -45,7 +55,7 @@ const ConfirmPass = () => {
 
     axiosInstance
       .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData)
-      console.log('Data:', formData.uidb64)
+      console.log('Data:', formData)
   };
 
 
@@ -72,9 +82,9 @@ const ConfirmPass = () => {
         className='form--inpt'
         placeholder='Введите пароль'
         type="password"
-        name="password1"
-        value={formData.password1}
-        onChange={handleChange}
+        name="password"
+        value={pass.password}
+        onChange={handleChange1}
         id="password"/>
 
     <button
