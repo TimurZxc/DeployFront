@@ -46,7 +46,7 @@ const ConfirmPass = () => {
     }
     let formattedData = JSON.stringify(formData)
     axiosInstance
-      .patch('password-reset/uid/token/', formData.password, paramss.u_id, paramss.token)
+      .patch('password-reset/uid/token/', formData.password, urlData.u_id, urlData.token)
       .then(() =>
         console.log(`Data has been send successfully: ${formattedData}`)
       )
