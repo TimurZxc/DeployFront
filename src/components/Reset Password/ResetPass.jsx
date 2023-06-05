@@ -1,6 +1,7 @@
 import './reset.css'
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../axios';
 
 const ResetPass = () => {
   const [formData, setFormData] = React.useState({
