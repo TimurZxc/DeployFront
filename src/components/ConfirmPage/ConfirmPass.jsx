@@ -28,7 +28,7 @@ const ConfirmPass = () => {
   const paramss = useParams();
   React.useEffect(()=>{
     axiosInstance.get('password-reset/'+paramss.u_id+'/'+paramss.token+'').then((response)=>{
-
+      
       setFormData(response.data)
         console.log('url_data:', response.data)
     })
@@ -42,9 +42,10 @@ const ConfirmPass = () => {
     } else {
       console.log('Passwords match');
     }
-    let formattedData = JSON.stringify(formData)
+
     axiosInstance
       .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData)
+      console.log(`Data: ${formData}`)
       .then(() =>
         console.log(`Data has been send successfully: ${formattedData}`)
       )
