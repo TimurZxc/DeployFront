@@ -56,6 +56,7 @@ const ConfirmPass = () => {
     axiosInstance
     .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'', formData)
     .then((response) => {
+      console.log(response)
       if (response.status === 200) {
         navigate('/login');
       } else {
