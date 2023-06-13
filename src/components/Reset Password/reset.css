@@ -120,10 +120,12 @@ label{
   }
   
   .error-message {
+    width: 50%;
     background-color: #ff7676;
     color: #11174b;
     padding: 10px;
     border-radius: 5px;
+    border-radius: 20px;
   }
   
   .success-message {
@@ -132,12 +134,13 @@ label{
     color: #11174b;
     padding: 10px;
     border-radius: 5px;
+    border-radius: 20px;
   }
   /* Add the following styles to the existing CSS code */
   
   .modal-dialog {
     position: fixed;
-    width: 60%;
+    width: 70%;
     top: 1px;
     left: 50%;
     transform: translateX(-50%);
