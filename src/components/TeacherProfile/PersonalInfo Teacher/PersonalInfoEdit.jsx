@@ -36,7 +36,6 @@ const PersonalInfoTeachEdit = (props) => {
   };
 
   function handleUpdate() {
-    console.log('formData', formData)
     axiosInstance.put(`/update/teacher/`, {
       first_name: formData.first_name,
       last_name: formData.last_name,
