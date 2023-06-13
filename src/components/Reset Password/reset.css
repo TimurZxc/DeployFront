@@ -107,7 +107,7 @@ label{
 .modal-content {
     background-color: rgba(103, 170, 222, 0.805);
     margin-top: 0;
-    border-radius: 40px;
+    border-radius: 20px;
   }
   
   .modal-title {
@@ -127,6 +127,7 @@ label{
   }
   
   .success-message {
+    width: 50%;
     background-color: #52ef8c;
     color: #11174b;
     padding: 10px;
@@ -136,7 +137,7 @@ label{
   
   .modal-dialog {
     position: fixed;
-    width: 50%;
+    width: 60%;
     top: 1px;
     left: 50%;
     transform: translateX(-50%);
