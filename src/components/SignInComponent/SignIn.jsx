@@ -46,6 +46,11 @@ const SignIn = () => {
         setRegistrationStatus(`error: ${error.message}`);
       });
 	};
+
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
+
   return (
     <div className="main">
       <Sidebar/>
