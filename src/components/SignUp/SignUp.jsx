@@ -1,10 +1,13 @@
-import teacherCard from '../../assets/svg-pictures/teacher.svg'
+// import teacherCard from '../../assets/svg-pictures/teacher.svg'
 import React, { useState } from 'react';
-import TeachCard from './TeachCard';
+// import TeachCard from './TeachCard';
 import './sign-up.css'
 import axiosInstance from "../../axios";
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +22,10 @@ const SignUp = () => {
     telegram: ''
   });
 
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
   let navigate = useNavigate()
+
   const routeHandler = (URL) => {
     navigate(URL)
   }
@@ -35,20 +41,21 @@ const SignUp = () => {
   const handleSubmit = event => {
     event.preventDefault();
     if (formData.password !== formData.password2) {
-      console.log('Passwords do not match');
+      setRegistrationStatus('error: Пароли не совпадают');
     } else {
-      console.log('Passwords match');
-      if (formData.okayToEmail) {
-        console.log('Thanks for signing up for our newsletter!');
-      }
+      axiosInstance
+        .post('signup/student/', formData)
+        .then(() =>{
+          setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
+        })
+        .catch((error) => {
+          setRegistrationStatus(`error: ${error.message}`);
+        });
     }
-    let formattedData = JSON.stringify(formData)
-    axiosInstance
-      .post('signup/student/', formData)
-      .then(() =>
-        console.log(`Data has been stored successfully: ${formattedData}`)
-      )
-      .catch((error) => console.log(error.response.data))
+  };
+
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
   };
 
   return (
@@ -159,6 +166,21 @@ const SignUp = () => {
           Завершить регистрацию
         </button>
       </form>
+
+      {/* Registration status modal */}
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+          <Modal.Body>
+            {registrationStatus && registrationStatus.startsWith('error') ? (
+              <p className="error-message">{registrationStatus.substr(7)}</p>
+            ) : registrationStatus && registrationStatus.startsWith('success') ? (
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            ) : null}
+            <br />
+            <Button variant="secondary" onClick={handleModalClose} className="close-button">
+              Закрыть
+            </Button>
+          </Modal.Body>
+        </Modal>
     </div>
   );
 };

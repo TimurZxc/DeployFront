@@ -3,6 +3,8 @@ import { useState } from 'react';
 import axiosInstance from "../../axios";
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +20,10 @@ const SignUpTeacher = () => {
     telegram: ''
   });
 
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
   let navigate = useNavigate()
+  
   const routeHandler = (URL) => {
     navigate(URL)
   }
@@ -35,23 +40,25 @@ const SignUpTeacher = () => {
   const handleSubmit = event => {
     event.preventDefault();
     if (formData.password !== formData.password2) {
-      console.log('Passwords do not match');
+      setRegistrationStatus('error: Пароли не совпадают');
     } else {
-      console.log('Successfully signed up');
-      if (formData.okayToEmail) {
-        console.log('Thanks for signing up for our newsletter!');
-      }
+      axiosInstance
+        .post('signup/teacher/', formData)
+        .then(() => {
+          setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
+          // handle success
+        })
+        .catch((error) => {
+          setRegistrationStatus(`error: ${error.message}`);
+          // handle error
+        });
     }
-    let formattedData = JSON.stringify(formData)
-    axiosInstance
-      .post('signup/teacher/', formData)
-      .then(() =>
-        console.log(`Data has been stored successfully: ${formattedData}`)
-      )
-      .catch((error) => console.log(error))
   };
 
-
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
+ 
   return (
     
     <div className="main">
@@ -165,10 +172,25 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <button className="form--submit-last" type="submit" onClick={handleSubmit}>
+      <button className="form--submit-last" type="submit">
         Завершить регистрацию
       </button>
     </form>
+
+    {/* Registration status modal */}
+    <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal.Body>
+        {registrationStatus && registrationStatus.startsWith('error') ? (
+          <p className="error-message">{registrationStatus.substr(7)}</p>
+        ) : registrationStatus && registrationStatus.startsWith('success') ? (
+          <p className="success-message">{registrationStatus.substr(9)}</p>
+        ) : null}
+        <br />
+        <Button variant="secondary" onClick={handleModalClose} className="close-button">
+          Закрыть
+        </Button>
+      </Modal.Body>
+    </Modal>
     </div>
   );
 };
