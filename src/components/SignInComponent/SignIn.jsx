@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 // import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 const SignIn = () => {
@@ -12,6 +14,9 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
   
   const navigate = useNavigate();
   const routeHandler = (URL) => {
@@ -28,7 +33,6 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
 		e.preventDefault();
-    console.log('formData', formData)
 		axiosInstance
 			.post('login/', formData)
 			.then((res) => {
@@ -37,7 +41,10 @@ const SignIn = () => {
 				axiosInstance.defaults.headers['Authorization'] =
 					'Bearer ' + localStorage.getItem('access_token');
         navigate('/');
-			});
+        setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
+			}).catch((error) => {
+        setRegistrationStatus(`error: ${error.message}`);
+      });
 	};
   return (
     <div className="main">
@@ -93,6 +100,18 @@ const SignIn = () => {
         }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
 </form> 
+  <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+    <Modal.Body>
+      {registrationStatus && registrationStatus.startsWith('error') ? (
+        <p className="error-message">{registrationStatus.substr(7)}</p>
+      ) : registrationStatus && registrationStatus.startsWith('success') ? (
+        <p className="success-message">{registrationStatus.substr(9)}</p>
+      ) : null}
+      <Button variant="secondary" onClick={handleModalClose} className="close-button">
+        Закрыть
+      </Button>
+    </Modal.Body>
+  </Modal>
 </div>
   );
 };
