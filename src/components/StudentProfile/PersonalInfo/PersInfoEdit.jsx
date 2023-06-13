@@ -154,7 +154,6 @@ const PersonalInfoEdit = (props) => {
             ) : registrationStatus && registrationStatus.startsWith('success') ? (
               <p className="success-message">{registrationStatus.substr(9)}</p>
             ) : null}
-            <br />
             <Button variant="secondary" onClick={handleModalClose} className="close-button">
               Закрыть
             </Button>
