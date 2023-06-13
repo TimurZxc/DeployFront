@@ -172,7 +172,7 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <button className="form--submit-last" type="submit">
+      <button className="form--submit-last" type="submit" onClick={handleSubmit}>
         Завершить регистрацию
       </button>
     </form>

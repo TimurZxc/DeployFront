@@ -2,9 +2,19 @@ import React from 'react'
 import '../CoursesTeach.css'
 import { useState} from 'react';
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from '../../../../axios';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 
 const AddSubjComponentEdit = (props) => {
+
+  const navigate = useNavigate();
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
+
 
   const [formData, setFormData] = useState({
     date: props.date,
@@ -21,6 +31,9 @@ const AddSubjComponentEdit = (props) => {
     }));
   };
 
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
+
     const paramss2 = useParams();
     // React.useEffect(()=>{
     //   axiosInstance.get('enroll/course/'+paramss.course_id+'/list').then((response)=>{
@@ -30,7 +43,6 @@ const AddSubjComponentEdit = (props) => {
     //   })
     // }, [])
 
-  console.log(formData)
 
 // idshniki lessona vmesto courses
 
@@ -41,10 +53,16 @@ function handleSubmit(event){
         start_time: formData.start_time,
         end_time: formData.end_time
     }).then(()=>{
-        console.log(formData)
-    })
+      setRegistrationStatus('success: Урок был успешно добавлен!');
+      navigate('/profileTeacher');
+    }).catch((error) => {
+      setRegistrationStatus(`error: ${error.message}`);
+    });
 };
 
+const handleModalClose = () => {
+  setRegistrationStatus(null);
+};
 
   return (
     <div className="courses-body_t">
@@ -75,7 +93,20 @@ function handleSubmit(event){
             onChange={handleChange} />
         <button onClick={handleSubmit} className="second-row_t_c">Добавить</button>
       </div>
-        </div>
+
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+          <Modal.Body>
+            {registrationStatus && registrationStatus.startsWith('error') ? (
+              <p className="error-message">{registrationStatus.substr(7)}</p>
+            ) : registrationStatus && registrationStatus.startsWith('success') ? (
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            ) : null}
+            <Button variant="secondary" onClick={handleModalClose} className="close-button">
+              Закрыть
+            </Button>
+          </Modal.Body>
+        </Modal>
+    </div>
   )
 }
 
