@@ -102,66 +102,63 @@ label{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* model css */
-
 .modal-content {
-    background-color: rgba(103, 170, 222, 0.805);
-    margin-top: 0;
-    border-radius: 10px;
-  }
-  
-  .modal-title {
-    color:#11174b;
-  }
-  
-  .modal-body {
-    padding: 5px;
-    color: #11174b;
-  }
-  
-  .error-message {
-    background-color: #ff7676;
-    color: #11174b;
-    padding: 20px 10px 10px 40px;
-    border-radius: 5px;
-    border-radius: 20px;
-  }
-  
-  .success-message {
-    width: 50%;
-    background-color: #52ef8c;
-    color: #11174b;
-    padding: 10px;
-    border-radius: 5px;
-    border-radius: 20px;
-  }
-  
-  .modal-dialog {
-    position: fixed;
-    width: 50%;
-    top: 1px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .modal-header {
-    border-bottom: none;
-  }
-  
-  .modal-footer {
-    border-top: none;
-  }
-  
-  .close-button {
-    background-color: #fff;
-    color: #11174b;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 10px 8px 40px;
-    cursor: pointer;
-    transition: background-color 0.5s ease-in-out;
-  }
-  
-  .close-button:hover {
-    background-color: #f5f5f5;
-  }
+  background-color: rgba(103, 170, 222, 0.805);
+  margin-top: 0;
+  border-radius: 10px;
+}
+
+.modal-title {
+  color: #11174b;
+}
+
+.modal-body {
+  padding: 5px;
+  color: #11174b;
+}
+
+.error-message {
+  background-color: #ff7676;
+  color: #11174b;
+  padding: 20px;
+  border-radius: 40px;
+}
+
+.success-message {
+  width: 70%;
+  background-color: #52ef8c;
+  color: #11174b;
+  padding: 20px;
+  border-radius: 40px;
+}
+
+.modal-dialog {
+  position: fixed;
+  width: 50%;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.close-button {
+  background-color: #fff;
+  color: #11174b;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px 8px 40px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.close-button:hover {
+  background-color: #f5f5f5;
+}
+
