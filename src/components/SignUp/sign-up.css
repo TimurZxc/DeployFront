@@ -195,11 +195,10 @@ body {
 .modal-content {
   background-color: rgba(103, 170, 222, 0.805);
   margin-top: 0;
-  border-radius: 40px;
 }
 
 .modal-title {
-  color:#11174b;
+  color: #11174b;
 }
 
 .modal-body {
@@ -208,17 +207,21 @@ body {
 }
 
 .error-message {
+  width: 80%;
   background-color: #ff7676;
   color: #11174b;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  margin-left: 25px;
+  border-radius: 40px !important;
 }
 
 .success-message {
+  width: 80%;
   background-color: #52ef8c;
   color: #11174b;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  margin-left: 25px;
+  border-radius: 40px !important;
 }
 
 .modal-dialog {
@@ -241,9 +244,10 @@ body {
   background-color: #fff;
   color: #11174b;
   border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: 40px !important;
+  padding: 4px 10px 8px 40px;
   cursor: pointer;
+  margin-left: 25px;
   transition: background-color 0.5s ease-in-out;
 }
 
