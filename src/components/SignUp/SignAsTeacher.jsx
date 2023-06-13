@@ -66,10 +66,10 @@ const SignUpTeacher = () => {
       <form className="form" onSubmit={handleSubmit}>
       <h1 className='regTitle'>Регистрация репетитора</h1>   
       <div className="form-buttons">
-      <button onClick={() => routeHandler('/regTeach')} className="form--submit">
+      <button onClick={() => routeHandler('/regTeach')} className="form--submit" type="button">
         Регистрация репетитора
       </button>
-      <button onClick={() => routeHandler('/register')} className="form--submit">
+      <button onClick={() => routeHandler('/register')} className="form--submit" type="button">
         Регистрация ученика
       </button>
       </div>
