@@ -1,7 +1,6 @@
 import "./sign-in.css";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
@@ -18,9 +17,9 @@ const SignIn = () => {
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const loggedIn = searchParams.get('loggedIn') === 'True' ? 'True' : searchParams.get('loggedIn') === 'False' ? 'False' : '';
+  const urlParams = new URLSearchParams(window.location.search);
+  const trueParam = urlParams.get('True');
+  const falseParam = urlParams.get('False');
   
   const navigate = useNavigate();
   const routeHandler = (URL) => {
@@ -57,12 +56,14 @@ const SignIn = () => {
 
   React.useEffect(() => {
     // Set registration status based on the value of loggedIn parameter
-    if (loggedIn === 'True') {
-      setRegistrationStatus('success: You have successfully logged in!');
-    } else if (loggedIn === 'False') {
-      setRegistrationStatus('error: Login failed. Please try again.');
+    if (trueParam != null) {
+      setRegistrationStatus('success: Регистрация прошла успешно! Войдите в аккаунт.');
+    } else if (falseParam != null) {
+      setRegistrationStatus('error: Ссылка недействительна');
     }
-  }, [loggedIn]);
+  }, []);
+
+  console.log(trueParam, falseParam)
 
   return (
     <div className="main">
