@@ -20,7 +20,7 @@ const SignIn = () => {
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const loggedIn = searchParams.get('loggedIn');
+  const loggedIn = searchParams.get('loggedIn') === 'True' ? 'True' : 'False';
   
   const navigate = useNavigate();
   const routeHandler = (URL) => {
