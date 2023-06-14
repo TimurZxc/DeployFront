@@ -2,7 +2,7 @@ import './Mainpage.scss'
 import Search from '../Search/Search'
 import MainpageCard from '../MainpageCard/MainpageCard'
 import HorizontalMainpageCard from '../HorizontalMainpageCard/HorizontalMainpageCard'
-import studentPicture from '../../assets/svg-pictures/student.svg'
+import studentPicture from '../../images/puple.png'
 import teacherCard from '../../assets/svg-pictures/teacher.svg'
 import parent from '../../assets/svg-pictures/parents.svg'
 import school from '../../assets/svg-pictures/school.svg'
@@ -28,7 +28,7 @@ const Mainpage = () => {
             />
             <MainpageCard
               src={teacherCard}
-              text="Обучай, находи новых клиентов быстро и легко"
+              text="Стань репетитором, создавай курсы, обучай, находи новых клиентов быстро и легко"
               buttonText="Начать обучать"
               url='/regTeach'
             />

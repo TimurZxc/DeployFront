@@ -1,4 +1,4 @@
-import '../MainpageCard/MainpageCard.scss'
+import './teacherCard.scss'
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect }  from 'react'
 import axiosInstance from '../../axios'
