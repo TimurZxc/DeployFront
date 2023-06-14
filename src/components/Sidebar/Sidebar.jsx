@@ -73,7 +73,7 @@ const Sidebar = () => {
               <div
                 onClick={() => logout()}
                 className={
-                  window.location.pathname === '/login/:loggedIn'
+                  window.location.pathname === '/login'
                     ? `navigation-item active`
                     : `navigation-item`
                 }
@@ -83,9 +83,9 @@ const Sidebar = () => {
               </div>
             ) : (
               <div
-                onClick={() => routeHandler('/login/:loggedIn')}
+                onClick={() => routeHandler('/login')}
                 className={
-                  window.location.pathname === '/login/:loggedIn'
+                  window.location.pathname === '/login'
                     ? `navigation-item active`
                     : `navigation-item`
                 }
