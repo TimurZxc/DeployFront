@@ -1,6 +1,7 @@
 import "./sign-in.css";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
@@ -17,6 +18,7 @@ const SignIn = () => {
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
+  const { loggedIn } = useParams();
   
   const navigate = useNavigate();
   const routeHandler = (URL) => {
@@ -50,6 +52,15 @@ const SignIn = () => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  React.useEffect(() => {
+    // Set login status based on the value of loggedIn parameter
+    if (loggedIn === 'true') {
+      setRegistrationStatus('success: Регистрация завершена успешно!');
+    } else if (loggedIn === 'false') {
+      setRegistrationStatus('error: Ссылка устарела, зарегистрируйтесь снова');
+    }
+  }, [loggedIn]);
 
   return (
     <div className="main">
