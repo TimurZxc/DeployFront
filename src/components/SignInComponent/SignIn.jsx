@@ -57,9 +57,9 @@ const SignIn = () => {
 
   React.useEffect(() => {
     // Set registration status based on the value of loggedIn parameter
-    if (loggedIn === 'true') {
+    if (loggedIn === 'True') {
       setRegistrationStatus('success: You have successfully logged in!');
-    } else if (loggedIn === 'false') {
+    } else if (loggedIn === 'False') {
       setRegistrationStatus('error: Login failed. Please try again.');
     }
   }, [loggedIn]);
