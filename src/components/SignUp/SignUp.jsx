@@ -55,7 +55,8 @@ const SignUp = () => {
 
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          accept: 'application/json',
         }
       }
 
@@ -69,6 +70,8 @@ const SignUp = () => {
       fomatData.append('password', formData.password);
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image.image);
+
+      console.log('fomatData', fomatData)
       
       axiosInstance.post('signup/student/', fomatData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
