@@ -27,6 +27,7 @@ const TeacherCard = (props) => {
     navigate(URL)
   }
 
+  console.log('props.image', props.src)
   const cardElements = courseInfo.map(card => (
     <CourseInfo
       key={card?.id}
