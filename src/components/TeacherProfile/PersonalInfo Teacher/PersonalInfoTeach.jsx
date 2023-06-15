@@ -24,7 +24,7 @@ const PersonalInfoTeach = (props) => {
         </div>
         </div>
       <div className="second-col_t">
-        <div className="img_t"></div>
+        <img src={props.image} alt="Avatar" crossOrigin='anonymous' />
       </div>
     </div>
   )

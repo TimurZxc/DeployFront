@@ -36,7 +36,7 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className="second-col">
-        <img src={props.image} alt="" />
+        <img src={props.image} alt="" crossorigin="anonymous"/>
       </div>
     </div>
   )

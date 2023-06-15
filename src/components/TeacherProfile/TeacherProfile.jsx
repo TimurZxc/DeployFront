@@ -46,6 +46,7 @@ const TeacherProfile = (props) => {
       education={data?.teacher?.education}
       birth_date={data.birth_date}
       surname={data.surname}
+      image={data.image}
       {...data} />
   })
 
