@@ -11,6 +11,7 @@ import { equal } from 'assert';
 
 
 const SignUp = () => {
+  const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -21,7 +22,7 @@ const SignUp = () => {
     password: '',
     password2: '',
     telegram: '',
-    image: null
+    image: image
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -32,7 +33,6 @@ const SignUp = () => {
     navigate(URL)
   }
 
-  const [image, setImage] = useState(null);
 
   const handleChange = event => {
     const { name, value, type, files } = event.target;
@@ -43,7 +43,7 @@ const SignUp = () => {
     }
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'file' ? event.target.files : value
+      [name]: type === 'image' ? image : value
     }));
   };
 
