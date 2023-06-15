@@ -14,10 +14,11 @@ const PersonalInfo = (props) => {
         const file = new Uint8Array(response.data);
         const blob = new Blob([file], { type: 'image/jpeg' });
         const dataUrl = URL.createObjectURL(blob);
+        console.log(dataUrl)
         setDataUrl(dataUrl);
       })
       .catch(error => {
-        // Handle error
+        console.error(error)
       });
   }, []);
   return (
