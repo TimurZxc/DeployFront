@@ -19,7 +19,8 @@ const SignUp = () => {
     phone: '',
     password: '',
     password2: '',
-    telegram: ''
+    telegram: '',
+    image: null
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -62,7 +63,7 @@ const SignUp = () => {
     
     <div className="main">
       <Sidebar/>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} mediatype="multipart/form-data">
         <h1 className='regTitle'>Регистрация ученика</h1>
         <div className="form-buttons">
           <button onClick={() => routeHandler('/regTeach')} className="form--submit" type="button">
@@ -139,6 +140,14 @@ const SignUp = () => {
           name="telegram"
           className="form--input-tg"
           value={formData.telegram}
+          onChange={handleChange}
+        />
+        <input
+          type="file"
+          placeholder="Установи сука фото"
+          name="image"
+          className="form--input-tg"
+          value={formData.image}
           onChange={handleChange}
         />
         </div>
