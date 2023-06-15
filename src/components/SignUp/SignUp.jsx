@@ -143,6 +143,7 @@ const SignUp = () => {
           onChange={handleChange}
         />
         <input
+          accept='image/*'
           type="file"
           placeholder="Установи сука фото"
           name="image"
