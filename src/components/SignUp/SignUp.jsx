@@ -35,7 +35,7 @@ const SignUp = () => {
   const [image, setImage] = useState(null);
 
   const handleChange = event => {
-    const { name, value, type, checked } = event.target;
+    const { name, value, type, files } = event.target;
     if ([event.target.name == 'image']) {
       setImage({ 
         image: event.target.files
@@ -43,7 +43,7 @@ const SignUp = () => {
     }
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'file' ? files : value
     }));
   };
 
@@ -71,9 +71,9 @@ const SignUp = () => {
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image.image);
 
-      console.log('fomatData', fomatData)
+      console.log('fomatData', formData)
       
-      axiosInstance.post('signup/student/', fomatData, config).then(() => {
+      axiosInstance.post('signup/student/', formData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
