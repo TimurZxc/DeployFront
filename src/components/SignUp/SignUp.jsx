@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 // import TeachCard from './TeachCard';
 import './sign-up.css'
+import axios from 'axios';
 import axiosInstance from "../../axios";
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
@@ -63,7 +64,15 @@ const SignUp = () => {
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image.image);
 
-      axiosInstance.post('signup/student/', fomatData).then(() => {
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+
+      const url = 'https://teach2u.jcloud.kz/api/signup/student/';
+
+      axios.post(url, fomatData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
