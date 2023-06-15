@@ -1,5 +1,22 @@
 import './PersonalInfo.scss'
 const PersonalInfo = (props) => {
+  const [dataUrl, setDataUrl] = useState(null);
+
+  useEffect(() => {
+    const url = 'ipfs/file/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS';
+
+    axiosInstance.get(url, { responseType: 'arraybuffer' })
+      .then(response => {
+        // `response.data` is a byte array containing the contents of the file
+        const file = new Uint8Array(response.data);
+        const blob = new Blob([file], { type: 'image/jpeg' });
+        const dataUrl = URL.createObjectURL(blob);
+        setDataUrl(dataUrl);
+      })
+      .catch(error => {
+        // Handle error
+      });
+  }, []);
   console.log('props', props)
   return (
     <div className="body">
@@ -34,7 +51,7 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className="second-col">
-        <div className="img"></div>
+        <img src={dataUrl} alt="" />
       </div>
     </div>
   )
