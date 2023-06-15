@@ -21,6 +21,7 @@ const SignUp = () => {
     password: '',
     password2: '',
     telegram: '',
+    image: null
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -62,15 +63,8 @@ const SignUp = () => {
       fomatData.append('password', formData.password);
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image.image);
-
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      }
-
-
-      axiosInstance.post('signup/student/', fomatData, config).then(() => {
+      
+      axiosInstance.post('signup/student/', fomatData).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
