@@ -6,7 +6,7 @@ const PersonalInfo = (props) => {
   const [dataUrl, setDataUrl] = useState(null);
 
   useEffect(() => {
-    const url = 'ipfs/file/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS';
+    const url = 'ipfs/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS';
 
     axiosInstance.get(url, { responseType: 'arraybuffer' })
       .then(response => {
@@ -54,7 +54,7 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className="second-col">
-        <img src={dataUrl} alt="" />
+        <img src={"https://ipfs.io/ipfs/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS"} alt="" />
       </div>
     </div>
   )
