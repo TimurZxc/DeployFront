@@ -43,7 +43,7 @@ const SignUp = () => {
     }
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'image' ? files : value
+      [name]: type === 'file' ? event.target.files : value
     }));
   };
 
