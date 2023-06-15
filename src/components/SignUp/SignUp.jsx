@@ -63,7 +63,7 @@ const SignUp = () => {
     
     <div className="main">
       <Sidebar/>
-        <form className="form" onSubmit={handleSubmit} mediatype="multipart/form-data">
+        <form className="form" onSubmit={handleSubmit} encType="multipart/form-data">
         <h1 className='regTitle'>Регистрация ученика</h1>
         <div className="form-buttons">
           <button onClick={() => routeHandler('/regTeach')} className="form--submit" type="button">
