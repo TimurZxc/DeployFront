@@ -37,7 +37,7 @@ const TeacherCard = (props) => {
 
   return (
     <div className="card-wrapper">
-      <img className="card-image" src={props.src} alt="" />
+      <img className="card-image" src={props.src} alt="" crossOrigin='anonymous'/>
       <h1 className="card-text">{props.text}</h1>
       <section>{cardElements}</section>
       <button onClick={() => routeHandler(`${props.url}`)}  className="card-button">{props.buttonText}</button>
