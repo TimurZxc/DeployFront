@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './PersonalInfo.scss'
+
 const PersonalInfo = (props) => {
   const [dataUrl, setDataUrl] = useState(null);
 

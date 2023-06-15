@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo/PersonalInfo'
 import './StudentProfile.scss'
 import Sidebar from '../Sidebar/Sidebar'
 // import Dashboard from '../Dashboard/Dashboard'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../axios'
 
@@ -16,7 +16,7 @@ const StudentProfile = () => {
     navigate(URL)
   }
 
-  const [mainStudList, setMainStudList] = React.useState([])
+  const [mainStudList, setMainStudList] = useState([])
 
 
   const CurrentUser = mainStudList.map(data => {
