@@ -59,6 +59,8 @@ const MarketTeachProf = () => {
           last_name={mainTeachList?.user?.last_name}
           education={mainTeachList?.education}
           birth_date={mainTeachList?.user?.birth_date}
+          surname={mainTeachList?.user?.surname}
+          image={mainTeachList?.user?.image}
           />
           <div onClick={toggleShown} className="edit">{isShown ? `Скрыть контакты` : `Показать контакты`}</div>
         {isShown && <ContactInfoTeach
