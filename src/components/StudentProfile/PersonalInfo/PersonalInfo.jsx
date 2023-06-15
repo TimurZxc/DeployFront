@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './PersonalInfo.scss'
+import axiosInstance from '../../../axios';
 
 const PersonalInfo = (props) => {
   const [dataUrl, setDataUrl] = useState(null);
@@ -19,7 +20,6 @@ const PersonalInfo = (props) => {
         // Handle error
       });
   }, []);
-  console.log('props', props)
   return (
     <div className="body">
       <div className="first-col">
