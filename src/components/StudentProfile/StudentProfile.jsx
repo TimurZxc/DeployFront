@@ -30,6 +30,7 @@ const StudentProfile = () => {
       email={data.email}
       phone={data?.student?.phone}
       telegram={data.telegram}
+      image={data?.image}
     />
   })
 

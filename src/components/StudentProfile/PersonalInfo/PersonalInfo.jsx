@@ -3,24 +3,6 @@ import './PersonalInfo.scss'
 import axiosInstance from '../../../axios';
 
 const PersonalInfo = (props) => {
-  const [dataUrl, setDataUrl] = useState(null);
-
-  useEffect(() => {
-    const url = 'ipfs/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS';
-
-    axiosInstance.get(url, { responseType: 'arraybuffer' })
-      .then(response => {
-        // `response.data` is a byte array containing the contents of the file
-        const file = new Uint8Array(response.data);
-        const blob = new Blob([file], { type: 'image/jpeg' });
-        const dataUrl = URL.createObjectURL(blob);
-        console.log(dataUrl)
-        setDataUrl(dataUrl);
-      })
-      .catch(error => {
-        console.error(error)
-      });
-  }, []);
   return (
     <div className="body">
       <div className="first-col">
@@ -54,7 +36,7 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className="second-col">
-        <img src={"https://ipfs.io/ipfs/QmbYqUSRCmCHudnbv7fTyojszxsbQM4hbjmTPqu6uS6LVS"} alt="" />
+        <img src={props.image} alt="" />
       </div>
     </div>
   )
