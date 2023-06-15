@@ -53,6 +53,12 @@ const SignUp = () => {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+
       let fomatData = new FormData();
       fomatData.append('first_name', formData.first_name);
       fomatData.append('last_name', formData.last_name);
@@ -64,7 +70,7 @@ const SignUp = () => {
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image.image);
       
-      axiosInstance.post('signup/student/', fomatData).then(() => {
+      axiosInstance.post('signup/student/', fomatData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
