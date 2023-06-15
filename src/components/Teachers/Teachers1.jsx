@@ -33,7 +33,7 @@ const Teachers1 = () => {
   const cardElements = cards.map(card => (
     <TeacherCard
       key={card?.teacher?.id}
-      src={teacherCard}
+      src={card?.teacher?.image}
       text={card.first_name + ' ' + card.last_name}
       subject={card?.teacher?.courses?.name}
       price={card?.teacher?.courses?.price}
