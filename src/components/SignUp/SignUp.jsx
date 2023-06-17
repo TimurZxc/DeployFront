@@ -37,7 +37,7 @@ const SignUp = () => {
   const handleChange = event => {
     const { name, value, type, files } = event.target;
     if ([event.target.name == 'image']) {
-      setImage(event.target.files[0]);
+      setImage(event.target.files);
     }
     setFormData(prevFormData => ({
       ...prevFormData,
