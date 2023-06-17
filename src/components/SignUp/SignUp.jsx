@@ -41,7 +41,7 @@ const SignUp = () => {
     }
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'file' ? image : value
+      [name]: type != 'file' ? value : event.target.files[0]
     }));
   };
 
@@ -69,9 +69,9 @@ const SignUp = () => {
       fomatData.append('telegram', formData.telegram);
       fomatData.append('image', image);
 
-      console.log('fomatData', formData)
+      console.log('fomatData', fomatData)
       
-      axiosInstance.post('signup/student/', formData, config).then(() => {
+      axiosInstance.post('signup/student/', fomatData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
