@@ -55,9 +55,10 @@ const SignUp = () => {
           accept: 'application/json',
         }
       }
-      formData.append("image", image);
+      formData.image = image 
 
-      console.log('formData', image)
+      console.log('formData', formData)
+      console.log('image', image)
       
       axiosInstance.post('signup/student/', formData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
