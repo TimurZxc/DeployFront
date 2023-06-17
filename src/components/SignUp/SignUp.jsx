@@ -22,7 +22,7 @@ const SignUp = () => {
     password: '',
     password2: '',
     telegram: '',
-    image: image
+    image: null
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
