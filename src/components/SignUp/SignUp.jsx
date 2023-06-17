@@ -41,7 +41,7 @@ const SignUp = () => {
     }
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type != 'file' ? value : event.target.files[0]
+      [name]: type === 'file' ? image : value
     }));
   };
 
@@ -67,7 +67,7 @@ const SignUp = () => {
       fomatData.append('phone', formData.phone);
       fomatData.append('password', formData.password);
       fomatData.append('telegram', formData.telegram);
-      fomatData.append('image', image);
+      fomatData.append('image', image.image);
 
       console.log('fomatData', fomatData)
       
