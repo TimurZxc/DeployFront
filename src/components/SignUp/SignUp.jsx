@@ -11,7 +11,6 @@ import { equal } from 'assert';
 
 
 const SignUp = () => {
-  const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -19,12 +18,8 @@ const SignUp = () => {
     birth_date: '',
     email: '',
     phone: '',
-    password: '',
-    password2: '',
     telegram: '',
-    image: null
-  });
-
+  })
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   let navigate = useNavigate()
@@ -33,18 +28,18 @@ const SignUp = () => {
     navigate(URL)
   }
 
-
+  const [image, setImage] = useState(null);
   const handleChange = event => {
-    const { name, value, type, files } = event.target;
-    if ([event.target.name == 'image']) {
-      setImage(event.target.files);
-    }
+    const { name, value} = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'file' ? image : value
+      [name]: value
     }));
   };
 
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
+  };
   const handleSubmit = event => {
     event.preventDefault();
     if (formData.password !== formData.password2) {
@@ -58,32 +53,23 @@ const SignUp = () => {
         }
       }
 
-      let fomatData = new FormData();
-      fomatData.append('first_name', formData.first_name);
-      fomatData.append('last_name', formData.last_name);
-      fomatData.append('surname', formData.surname);
-      fomatData.append('birth_date', formData.birth_date);
-      fomatData.append('email', formData.email);
-      fomatData.append('phone', formData.phone);
-      fomatData.append('password', formData.password);
-      fomatData.append('telegram', formData.telegram);
-      fomatData.append('image', image.image);
+      const formData = new FormData();
+      formData.append("first_name", formData.first_name);
+      formData.append("last_name", formData.last_name);
+      formData.append("surname", formData.surname);
+      formData.append("birth_date", formData.birth_date);
+      formData.append("email", formData.email);
+      formData.append("phone", formData.phone);
+      formData.append("telegram", formData.telegram);
+      formData.append("image", image);
 
-      console.log('fomatData', fomatData)
+      console.log('formData', formData)
       
-      axiosInstance.post('signup/student/', fomatData, config).then(() => {
+      axiosInstance.post('signup/student/', formData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
-        setRegistrationStatus(`error: ${error.message}`);
+        setRegistrationStatus(error);
       })
-      // axiosInstance
-      //   .post('signup/student/', formData)
-      //   .then(() => {
-      //     setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
-      //   })
-      //   .catch((error) => {
-      //     setRegistrationStatus(`error: ${error.message}`);
-      //   });
     }
   };
 
@@ -177,11 +163,9 @@ const SignUp = () => {
           <input
             accept='image/*'
             type="file"
-            placeholder="Установи сука фото"
             name="image"
             className="form--input-tg"
-            value={formData.image}
-            onChange={handleChange}
+            onChange={handleImageChange}
           />
         </div>
         <p>Установите пароль</p>
