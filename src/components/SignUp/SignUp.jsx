@@ -59,7 +59,9 @@ const SignUp = () => {
       formData.append("surname", formData.surname);
       formData.append("birth_date", formData.birth_date);
       formData.append("email", formData.email);
-      formData.append("phone", formData.phone);
+
+      formData.append("teacher", {});
+      formData.teacher.append("phone", formData.phone);
       formData.append("telegram", formData.telegram);
       formData.append("image", image);
 
@@ -81,7 +83,7 @@ const SignUp = () => {
 
     <div className="main">
       <Sidebar />
-      <form className="form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <form className="form" onSubmit={handleSubmit} encType='multipart/form-data'>
         <h1 className='regTitle'>Регистрация ученика</h1>
         <div className="form-buttons">
           <button onClick={() => routeHandler('/regTeach')} className="form--submit" type="button">
