@@ -63,12 +63,12 @@ const SignUp = () => {
       formData.append("telegram", formData.telegram);
       formData.append("image", image);
 
-      console.log('formData', formData)
+      console.log('formData', image)
       
       axiosInstance.post('signup/student/', formData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
-        setRegistrationStatus(error);
+        setRegistrationStatus(error.message);
       })
     }
   };
