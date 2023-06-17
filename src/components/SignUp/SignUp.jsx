@@ -17,8 +17,10 @@ const SignUp = () => {
     surname: '',
     birth_date: '',
     email: '',
-    phone: '',
     telegram: '',
+    student: {
+      phone: ''
+    }
   })
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
@@ -52,17 +54,6 @@ const SignUp = () => {
           accept: 'application/json',
         }
       }
-
-      const formData = new FormData();
-      formData.append("first_name", formData.first_name);
-      formData.append("last_name", formData.last_name);
-      formData.append("surname", formData.surname);
-      formData.append("birth_date", formData.birth_date);
-      formData.append("email", formData.email);
-
-      formData.append("teacher", {});
-      formData.teacher.append("phone", formData.phone);
-      formData.append("telegram", formData.telegram);
       formData.append("image", image);
 
       console.log('formData', image)
