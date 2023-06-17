@@ -20,7 +20,8 @@ const SignUp = () => {
     telegram: '',
     student: {
       phone: ''
-    }
+    },
+    image: null
   })
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
