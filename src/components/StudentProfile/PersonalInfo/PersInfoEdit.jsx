@@ -141,8 +141,18 @@ const PersonalInfoEdit = (props) => {
           </div>
         </div>
         <div className="second-col">
-          <div className="img">
-            <img src={props.image} alt="" crossorigin="anonymous"/>
+          
+        <div className="upload">
+            <img className='puple-img' src={props.image} alt=""/>
+            <div className="round">
+            <input
+                    accept='image/*'
+                    type="file"
+                    name="image"
+                    onChange={handleImageChange}
+                  />
+             <FontAwesomeIcon icon={faCamera} className='icon'/>
+            </div>
           </div>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
           <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить</button>
