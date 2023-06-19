@@ -7,7 +7,11 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { equal } from 'assert';
+import userpic from '../../images/puple.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import '@fortawesome/fontawesome-svg-core/styles.css';
+// import { equal } from 'assert';
 
 
 const SignUp = () => {
@@ -86,10 +90,24 @@ const SignUp = () => {
             Регистрация ученика
           </button>
         </div>
+
+        <div className="upload">
+            <img className='puple-img' src={userpic} alt=""/>
+            <div className="round">
+            <input
+                    accept='image/*'
+                    type="file"
+                    name="image"
+                    onChange={handleImageChange}
+                  />
+             <FontAwesomeIcon icon={faCamera} className='icon'/>
+            </div>
+          </div>
+
         {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
         Регистрация образ. центра
       </button> */}
-        <p>Информация о ребенке</p>
+        <p>Информация о ребенке *</p>
         <div className="input-row">
           <input
             type="text"
@@ -126,7 +144,7 @@ const SignUp = () => {
             onChange={handleChange}
           />
         </div>
-        <p>Контакты</p>
+        <p>Контакты *</p>
         <div className="input-row">
           <input
             type="email"
@@ -145,7 +163,7 @@ const SignUp = () => {
             onChange={handleChange}
           />
         </div>
-        <p>Telegram ( Дополнительно )</p>
+        <p>Telegram</p>
         <div className="input-row">
           <input
             type="text"
@@ -155,15 +173,8 @@ const SignUp = () => {
             value={formData.telegram}
             onChange={handleChange}
           />
-          <input
-            accept='image/*'
-            type="file"
-            name="image"
-            className="form--input-tg"
-            onChange={handleImageChange}
-          />
         </div>
-        <p>Установите пароль</p>
+        <p>Установите пароль *</p>
         <div className="input-row">
           <input
             type="password"

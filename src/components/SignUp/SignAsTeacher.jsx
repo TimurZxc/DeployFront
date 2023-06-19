@@ -5,6 +5,10 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import userpic from '../../images/user.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -29,12 +33,17 @@ const SignUpTeacher = () => {
   }
 
 
+  const [image, setImage] = useState(null);
   const handleChange = event => {
-    const { name, value, type, checked } = event.target;
+    const { name, value} = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
+  };
+
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
   };
 
   const handleSubmit = event => {
@@ -73,10 +82,24 @@ const SignUpTeacher = () => {
         Регистрация ученика
       </button>
       </div>
+
+      <div className="upload">
+            <img src={userpic} alt="" className='teacher-img'/>
+            <div className="round">
+            <input
+                    accept='image/*'
+                    type="file"
+                    name="image"
+                    onChange={handleImageChange}
+                  />
+             <FontAwesomeIcon icon={faCamera} className='icon'/>
+            </div>
+          </div>
+
       {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
         Регистрация образ. центра
       </button> */}
-      <p>Введите ваши данные</p>
+      <p>Введите ваши данные *</p>
       <div className="input-row">
       <input
         type="text"
@@ -132,8 +155,8 @@ const SignUpTeacher = () => {
       />
       </div>
         <div className="contacts">
-          <p>Телефон</p>
-          <p className='c2'>Telegram - Необязательно</p>
+          <p>Телефон *</p>
+          <p className='c2'>Telegram</p>
         </div>
       <div className="input-row">
       <input
@@ -153,7 +176,7 @@ const SignUpTeacher = () => {
         onChange={handleChange}
       />
       </div>
-      <p>Установите пароль</p>
+      <p>Установите пароль *</p>
       <div className="input-row">
       <input
         type="password"
