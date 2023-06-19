@@ -37,27 +37,35 @@ const SignUp = () => {
   }
 
   const [image, setImage] = useState(null);
+  // const handleChange = event => {
+  //   const { name, value } = event.target;
+    
+  //   // Split the name into nested keys
+  //   const nameParts = name.split('.');
+    
+  //   // Update the nested state correctly
+  //   if (nameParts.length === 1) {
+  //     setFormData(prevFormData => ({
+  //       ...prevFormData,
+  //       [name]: value
+  //     }));
+  //   } else if (nameParts.length === 2) {
+  //     setFormData(prevFormData => ({
+  //       ...prevFormData,
+  //       [nameParts[0]]: {
+  //         ...prevFormData[nameParts[0]],
+  //         [nameParts[1]]: value
+  //       }
+  //     }));
+  //   }
+  // };
+
   const handleChange = event => {
-    const { name, value } = event.target;
-    
-    // Split the name into nested keys
-    const nameParts = name.split('.');
-    
-    // Update the nested state correctly
-    if (nameParts.length === 1) {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [name]: value
-      }));
-    } else if (nameParts.length === 2) {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [nameParts[0]]: {
-          ...prevFormData[nameParts[0]],
-          [nameParts[1]]: value
-        }
-      }));
-    }
+    const { name, value} = event.target;
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
 
@@ -175,9 +183,9 @@ const SignUp = () => {
           <input
             type="text"
             placeholder="Номер Телефона"
-            name="student.phone"
+            name="phone"
             className="form--input"
-            value={formData.student.phone}
+            value={formData.phone}
             onChange={handleChange}
           />
         </div>
