@@ -24,7 +24,8 @@ const SignUp = () => {
     telegram: '',
     student: {
       phone: ''
-    }
+    },
+    image: null
   })
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
@@ -159,7 +160,7 @@ const SignUp = () => {
             placeholder="Номер Телефона"
             name="phone"
             className="form--input"
-            value={formData.phone}
+            value={formData.student.phone}
             onChange={handleChange}
           />
         </div>
