@@ -24,8 +24,7 @@ const SignUp = () => {
     telegram: '',
     student: {
       phone: ''
-    },
-    image: null
+    }
   })
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
@@ -37,7 +36,7 @@ const SignUp = () => {
 
   const [image, setImage] = useState(null);
   const handleChange = event => {
-    const { name, value} = event.target;
+    const { name, value } = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
@@ -59,11 +58,12 @@ const SignUp = () => {
           accept: 'application/json',
         }
       }
-      formData.image = image 
+      if (image !== null) {
+        formData.image = image
+      }
 
       console.log('formData', formData)
-      console.log('image', image)
-      
+
       axiosInstance.post('signup/student/', formData, config).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
@@ -92,17 +92,17 @@ const SignUp = () => {
         </div>
 
         <div className="upload">
-            <img className='puple-img' src={userpic} alt=""/>
-            <div className="round">
+          <img className='puple-img' src={userpic} alt="" />
+          <div className="round">
             <input
-                    accept='image/*'
-                    type="file"
-                    name="image"
-                    onChange={handleImageChange}
-                  />
-             <FontAwesomeIcon icon={faCamera} className='icon'/>
-            </div>
+              accept='image/*'
+              type="file"
+              name="image"
+              onChange={handleImageChange}
+            />
+            <FontAwesomeIcon icon={faCamera} className='icon' />
           </div>
+        </div>
 
         {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
         Регистрация образ. центра
