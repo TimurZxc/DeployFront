@@ -115,7 +115,7 @@ const SignUp = () => {
         </div>
 
         <div className="upload">
-          <img className='puple-img' src={userpic} alt="" />
+          <img className='puple-img' src={formData.image ? formData.image : userpic} alt="" />
           <div className="round">
             <input
               accept='image/*'
