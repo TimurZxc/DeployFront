@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import userpic from '../../../images/puple.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -72,6 +73,8 @@ const PersonalInfoEdit = (props) => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  const img = props.image
 
   return (
     <>
@@ -151,7 +154,7 @@ const PersonalInfoEdit = (props) => {
         <div className="second-col">
 
         <div className="upload">
-            <img className='puple-img' src={props.image} alt=""/>
+            <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found"/>
             <div className="round">
             <input
                     accept='image/*'
