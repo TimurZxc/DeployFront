@@ -81,9 +81,6 @@ const SignUp = () => {
           accept: 'application/json',
         }
       }
-      if (image !== null) {
-        formData.image = image
-      }
 
       console.log('formData', formData)
 
