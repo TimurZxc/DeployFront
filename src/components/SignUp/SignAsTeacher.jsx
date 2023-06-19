@@ -6,9 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../images/user.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
-import '@fortawesome/fontawesome-svg-core/styles.css';
+
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -92,7 +90,7 @@ const SignUpTeacher = () => {
                     name="image"
                     onChange={handleImageChange}
                   />
-             <FontAwesomeIcon icon={faCamera} className='icon'/>
+            {/* <FontAwesomeIcon icon={icon({name: 'coffee', style: 'regular'})} /> */}
             </div>
           </div>
 

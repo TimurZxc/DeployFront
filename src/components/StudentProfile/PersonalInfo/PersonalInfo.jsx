@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import userpic from '../../../images/puple.png'
 import './PersonalInfo.scss'
 
 const PersonalInfo = (props) => {
@@ -35,7 +36,7 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className="second-col">
-        <img className='img' src={props.image} alt="" crossorigin="anonymous"/>
+        <img className='img' src={props.image ? props.image : userpic} alt="" crossorigin="anonymous"/>
       </div>
     </div>
   )

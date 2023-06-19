@@ -260,7 +260,7 @@ body {
 }
 
 .upload{
-  width: 160px;
+  width: 160px !important;
   position: relative;
   margin: auto;
 }
@@ -268,14 +268,14 @@ body {
 .upload .puple-img{
   border-radius: 50%;
   border: 6px solid #eaeaea;
-  width: 160px;
-  height: 160px;
+  width: 160px !important;
+  height: 160px !important;
 }
 
 .upload .teacher-img{
   border-radius: 50%;
-  width: 160px;
-  height: 170px;
+  width: 160px !important;
+  height: 170px !important;
 }
 
 .upload .round{
@@ -283,8 +283,8 @@ body {
   bottom: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.939);
-  width: 55px;
-  height: 55px;
+  width: 55px !important;
+  height: 55px !important;
   text-align: right;
   border-radius: 50%;
   overflow: hidden;

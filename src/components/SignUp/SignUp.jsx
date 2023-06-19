@@ -8,9 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../images/puple.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
-import '@fortawesome/fontawesome-svg-core/styles.css';
 // import { equal } from 'assert';
 
 
@@ -126,7 +123,7 @@ const SignUp = () => {
               name="image"
               onChange={handleImageChange}
             />
-            <FontAwesomeIcon icon={faCamera} className='icon' />
+            {/* <FontAwesomeIcon icon="fa-regular fa-camera" size="2xs" /> */}
           </div>
         </div>
 
