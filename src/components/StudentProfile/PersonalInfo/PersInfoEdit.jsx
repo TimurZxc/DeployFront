@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const PersonalInfoEdit = (props) => {
 
@@ -36,7 +39,7 @@ const PersonalInfoEdit = (props) => {
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
-  
+
   function handleUpdate() {
     axiosInstance.put('/update/student/', {
       email: formData.email,
