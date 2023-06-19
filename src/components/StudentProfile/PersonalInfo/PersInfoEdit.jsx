@@ -154,7 +154,7 @@ const PersonalInfoEdit = (props) => {
         <div className="second-col">
 
         <div className="upload">
-            <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found"/>
+            <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
             <div className="round">
             <input
                     accept='image/*'
