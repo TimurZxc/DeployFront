@@ -24,14 +24,19 @@ const PersonalInfoEdit = (props) => {
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
+  const [image, setImage] = useState(null);
   const handleChange = event => {
-    const { name, value, type, checked } = event.target;
+    const { name, value} = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
   };
 
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+  
   function handleUpdate() {
     axiosInstance.put('/update/student/', {
       email: formData.email,
@@ -141,7 +146,7 @@ const PersonalInfoEdit = (props) => {
           </div>
         </div>
         <div className="second-col">
-          
+
         <div className="upload">
             <img className='puple-img' src={props.image} alt=""/>
             <div className="round">
