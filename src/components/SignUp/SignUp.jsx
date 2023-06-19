@@ -158,7 +158,7 @@ const SignUp = () => {
           <input
             type="text"
             placeholder="Номер Телефона"
-            name="phone"
+            name="student.phone"
             className="form--input"
             value={formData.student.phone}
             onChange={handleChange}
