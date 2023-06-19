@@ -35,6 +35,7 @@ const StudentEdit = () => {
       email={data?.email}
       telegram={data?.telegram}
       phone={data?.student?.phone}
+      image={data?.image}
       {...data} />
   })
   return (

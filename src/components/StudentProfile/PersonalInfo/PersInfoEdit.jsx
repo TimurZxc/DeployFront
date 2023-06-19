@@ -141,7 +141,9 @@ const PersonalInfoEdit = (props) => {
           </div>
         </div>
         <div className="second-col">
-          <div className="img"></div>
+          <div className="img">
+            <img src={props.image} alt="" crossorigin="anonymous"/>
+          </div>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
           <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить</button>
         </div>

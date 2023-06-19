@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './PersonalInfo.scss'
-import axiosInstance from '../../../axios';
 
 const PersonalInfo = (props) => {
   return (
