@@ -23,7 +23,8 @@ const PersonalInfoEdit = (props) => {
     surname: props.surname,
     birth_date: props.birth_date,
     phone: props.phone,
-    telegram: props.telegram
+    telegram: props.telegram,
+    image: props.image
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -74,7 +75,6 @@ const PersonalInfoEdit = (props) => {
     setRegistrationStatus(null);
   };
 
-  const img = props.image
 
   return (
     <>
@@ -153,7 +153,7 @@ const PersonalInfoEdit = (props) => {
         </div>
         <div className="second-col">
 
-        <div className="upload1">
+          <div className="upload1">
             <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
             <div className="round">
             <input

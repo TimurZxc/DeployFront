@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import userpic from '../../../images/user.png'
 
 
 const PersonalInfoTeachEdit = (props) => {
@@ -27,12 +31,17 @@ const PersonalInfoTeachEdit = (props) => {
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
 
+  const [image, setImage] = useState(null);
   const handleChange = event => {
-    const { name, value, type, checked } = event.target;
+    const { name, value} = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
+  };
+
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
   };
 
   function handleUpdate() {
@@ -149,7 +158,18 @@ const PersonalInfoTeachEdit = (props) => {
           </div>
         </div>
         <div className="second-col_t">
-          <div className="img_t"></div>
+          <div className="upload1">
+              <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
+              <div className="round">
+              <input
+                      accept='image/*'
+                      type="file"
+                      name="image"
+                      onChange={handleImageChange}
+                    />
+              <FontAwesomeIcon icon={faCamera} className='icon'/>
+              </div>
+            </div>
           <br />
           <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
           <br />

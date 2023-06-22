@@ -1,5 +1,6 @@
 import './PersonalInfoTeach.css'
 import React from 'react'
+import userpic from '../../../images/user.png'
 const PersonalInfoTeach = (props) => {
 
 
@@ -23,9 +24,11 @@ const PersonalInfoTeach = (props) => {
           <div className="first_t_edu">{props.birth_date}</div>
         </div>
         </div>
+
       <div className="second-col_t">
-        <img src={props.image} alt="Avatar" crossOrigin='anonymous' />
+        <img className='pers-img' src={props.image ? props.image : userpic} alt="Avatar" crossorigin="anonymous"/>
       </div>
+
     </div>
   )
 }

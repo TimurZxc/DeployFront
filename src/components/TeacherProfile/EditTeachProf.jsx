@@ -43,6 +43,7 @@ const EditTeacherProfile = (props) => {
       email={data.email}
       surname={data.surname}
       telegram={data?.user?.telegram}
+      image={data?.image}
       {...data} />
   })
 
