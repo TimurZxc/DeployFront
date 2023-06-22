@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import React, { useEffect }  from 'react'
 import axiosInstance from '../../axios'
 import CourseInfo from '../MainpageCard/CourseInfo'
+import userpic from '../../images/user-286.png'
 
 const TeacherCard = (props) => {
 
@@ -38,7 +39,7 @@ const TeacherCard = (props) => {
 
   return (
     <div className="card-wrapper">
-      <img className="card-image" src={props.src} alt="" crossOrigin='anonymous'/>
+      <img className="card-image" src={props.src ? props.src : userpic} alt="" crossOrigin='anonymous'/>
       <h1 className="card-text">{props.text}</h1>
       <section>{cardElements}</section>
       <button onClick={() => routeHandler(`${props.url}`)}  className="card-button">{props.buttonText}</button>

@@ -24,7 +24,7 @@ const PersonalInfoTeachEdit = (props) => {
     phone: props.phone,
     education: props.education,
     telegram: props.telegram,
-    experience: '', 
+    experience: props.experience 
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -53,6 +53,7 @@ const PersonalInfoTeachEdit = (props) => {
       telegram: formData.telegram,
       teacher: {
         phone: formData.phone,
+        experience: formData.experience,
         education: formData.education
       }
     }) .then(() =>{

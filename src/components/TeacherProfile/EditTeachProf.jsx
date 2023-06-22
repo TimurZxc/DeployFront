@@ -38,6 +38,7 @@ const EditTeacherProfile = (props) => {
       first_name={data.first_name}
       last_name={data.last_name}
       education={data?.teacher?.education}
+      experience={data?.teacher?.experience}
       phone={data?.teacher?.phone}
       birth_date={data.birth_date}
       email={data.email}
