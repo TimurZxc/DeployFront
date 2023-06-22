@@ -45,7 +45,7 @@ const PersonalInfoTeachEdit = (props) => {
   };
 
   function handleUpdate() {
-    axiosInstance.put(`/update/teacher/`, {
+    axiosInstance.patch(`/update/teacher/`, {
       first_name: formData.first_name,
       last_name: formData.last_name,
       birth_date: formData.birth_date,
