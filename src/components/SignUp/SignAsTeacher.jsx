@@ -19,7 +19,8 @@ const SignUpTeacher = () => {
     phone: '',
     password: '',
     password2: '',
-    telegram: ''
+    telegram: '',
+    image: null
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -51,9 +52,20 @@ const SignUpTeacher = () => {
     if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
+      
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          accept: 'application/json',
+        }
+      }
+      if (image != null) {
+        formData.image = image
+      }
+
       console.log('data', formData)
       axiosInstance
-        .post('signup/teacher/', formData)
+        .post('signup/teacher/', formData, config)
         .then(() => {
           setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
           // handle success

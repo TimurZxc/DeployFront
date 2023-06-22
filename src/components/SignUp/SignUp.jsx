@@ -36,10 +36,10 @@ const SignUp = () => {
   const [image, setImage] = useState(null);
   // const handleChange = event => {
   //   const { name, value } = event.target;
-    
+
   //   // Split the name into nested keys
   //   const nameParts = name.split('.');
-    
+
   //   // Update the nested state correctly
   //   if (nameParts.length === 1) {
   //     setFormData(prevFormData => ({
@@ -58,7 +58,7 @@ const SignUp = () => {
   // };
 
   const handleChange = event => {
-    const { name, value} = event.target;
+    const { name, value } = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
@@ -80,6 +80,9 @@ const SignUp = () => {
           'Content-Type': 'multipart/form-data',
           accept: 'application/json',
         }
+      }
+      if (image != null) {
+        formData.image = image
       }
 
       console.log('formData', formData)
