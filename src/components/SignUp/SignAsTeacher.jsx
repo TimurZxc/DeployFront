@@ -44,11 +44,14 @@ const SignUpTeacher = () => {
     setImage(event.target.files[0]);
   };
 
+  console.log('data', data)
+
   const handleSubmit = event => {
     event.preventDefault();
     if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
+      console.log('data', data)
       axiosInstance
         .post('signup/teacher/', formData)
         .then(() => {
