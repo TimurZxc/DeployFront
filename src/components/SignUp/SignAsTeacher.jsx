@@ -16,7 +16,9 @@ const SignUpTeacher = () => {
     birth_date:'',
     surname: '',
     email: '',
-    phone: '',
+    teacher:{
+      phone: ''
+    },
     password: '',
     password2: '',
     telegram: '',
@@ -52,7 +54,7 @@ const SignUpTeacher = () => {
     if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
-      
+
       const config = {
         headers: {
           'Content-Type': 'multipart/form-data',
