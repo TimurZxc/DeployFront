@@ -1,6 +1,6 @@
 import './PersonalInfoTeach.css'
 import React from 'react'
-import userpic from '../../../images/user.png'
+import userpic from '../../../images/user-286.png'
 const PersonalInfoTeach = (props) => {
 
 

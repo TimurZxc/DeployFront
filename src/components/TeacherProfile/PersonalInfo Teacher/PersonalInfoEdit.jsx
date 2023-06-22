@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import userpic from '../../../images/user.png'
+import userpic from '../../../images/user-286.png'
+import Sprite from '../../Sprite/Sprite';
 
 
 const PersonalInfoTeachEdit = (props) => {
@@ -26,7 +24,7 @@ const PersonalInfoTeachEdit = (props) => {
     phone: props.phone,
     education: props.education,
     telegram: props.telegram,
-    experience: 'fhosiefjlsejfls', 
+    experience: '', 
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -128,6 +126,16 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t">
+            <input
+              type="text"
+              placeholder="Опыт и достижения"
+              name="experience"
+              className="form--input"
+              value={formData.experience}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="fourth-row_t">
           <input
             type="text"
             placeholder="Номер Телефона"
@@ -160,7 +168,7 @@ const PersonalInfoTeachEdit = (props) => {
         </div>
         <div className="second-col_t">
           <div className="upload1">
-              <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
+              <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
               <div className="round">
               <input
                       accept='image/*'
@@ -168,7 +176,7 @@ const PersonalInfoTeachEdit = (props) => {
                       name="image"
                       onChange={handleImageChange}
                     />
-              <FontAwesomeIcon icon={faCamera} className='icon'/>
+              <Sprite id='camera' />
               </div>
             </div>
           <br />

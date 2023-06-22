@@ -7,7 +7,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../images/puple.png'
+import userpic from '../../images/user-286.png'
+import Sprite from '../Sprite/Sprite';
 // import { equal } from 'assert';
 
 
@@ -117,7 +118,7 @@ const SignUp = () => {
         </div>
 
         <div className="upload">
-          <img className='puple-img' src={formData.image ? formData.image : userpic} alt="" />
+          <img className='teach-puple-img' src={formData.image ? formData.image : userpic} alt="" />
           <div className="round">
             <input
               accept='image/*'
@@ -125,7 +126,7 @@ const SignUp = () => {
               name="image"
               onChange={handleImageChange}
             />
-            {/* <FontAwesomeIcon icon="fa-regular fa-camera" size="2xs" /> */}
+            <Sprite id='camera' />
           </div>
         </div>
 

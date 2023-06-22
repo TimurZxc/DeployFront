@@ -5,8 +5,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../images/user.png'
-
+import userpic from '../../images/user-286.png'
+import Sprite from '../Sprite/Sprite';
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const SignUpTeacher = () => {
     password: '',
     password2: '',
     telegram: '',
-    experience: 'fhosiefjlsejfls',
+    experience: '',
     image: null
   });
 
@@ -100,7 +100,7 @@ const SignUpTeacher = () => {
         </div>
 
         <div className="upload">
-          <img src={userpic} alt="" className='teacher-img' />
+          <img src={userpic} alt="" className='teach-puple-img' />
           <div className="round">
             <input
               accept='image/*'
@@ -108,7 +108,7 @@ const SignUpTeacher = () => {
               name="image"
               onChange={handleImageChange}
             />
-            {/* <FontAwesomeIcon icon={icon({name: 'coffee', style: 'regular'})} /> */}
+            <Sprite id='camera' />
           </div>
         </div>
 
@@ -152,6 +152,18 @@ const SignUpTeacher = () => {
             onChange={handleChange}
           />
         </div>
+        <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников)*</p>
+        <div className="input-row">
+          <input
+            type="text"
+            placeholder="Опыт и достижения"
+            name="experience"
+            className="form--input-exp"
+            value={formData.experience}
+            onChange={handleChange}
+          />
+        </div>
+        <p className='margin-ex'></p>
         <div className="input-row">
           <input
             type="email"

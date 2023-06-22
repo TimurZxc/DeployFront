@@ -83,6 +83,20 @@ body {
   padding: 0 25px;
 }
 
+.form--input-exp{
+  width: calc(100% - 60px);
+  height: 45px;
+  margin: 15px 30px;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #11174b;
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0 25px;
+}
+
 .form--input-last{
   display: block;
   width: 80% !important;
@@ -260,27 +274,20 @@ body {
 }
 
 .upload{
-  width: 160px !important;
+  width: 180px !important;
   position: relative;
   margin: auto;
 }
 
-.upload .puple-img{
+.upload .teach-puple-img{
   border-radius: 50%;
-  border: 6px solid #eaeaea;
-  width: 160px !important;
-  height: 160px !important;
-}
-
-.upload .teacher-img{
-  border-radius: 50%;
-  width: 160px !important;
-  height: 170px !important;
+  width: 190px !important;
+  height: 190px !important;
 }
 
 .upload .round{
   position: absolute;
-  bottom: 0;
+  top: 120px;
   right: 0;
   background: rgba(255, 255, 255, 0.939);
   width: 55px !important;
@@ -309,3 +316,12 @@ body {
 input[type=file]::-webkit-file-upload-button{
     cursor: pointer;
 }
+
+.exp-label{
+  margin-top: 10px;
+}
+
+.margin-ex{
+  margin: 10px 0px;
+}
+

@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../../images/puple.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import Sprite from '../../Sprite/Sprite';
 
 const PersonalInfoEdit = (props) => {
 
@@ -154,7 +152,7 @@ const PersonalInfoEdit = (props) => {
         <div className="second-col">
 
           <div className="upload1">
-            <img className='puple-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
+            <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
             <div className="round">
             <input
                     accept='image/*'
@@ -162,7 +160,7 @@ const PersonalInfoEdit = (props) => {
                     name="image"
                     onChange={handleImageChange}
                   />
-             <FontAwesomeIcon icon={faCamera} className='icon'/>
+             <Sprite id='camera'/>
             </div>
           </div>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>

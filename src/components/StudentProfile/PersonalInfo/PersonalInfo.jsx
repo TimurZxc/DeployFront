@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import userpic from '../../../images/puple.png'
+import userpic from '../../../images/user-286.png'
 import './PersonalInfo.scss'
 
 const PersonalInfo = (props) => {
