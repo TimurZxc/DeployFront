@@ -50,7 +50,8 @@ const PersonalInfoEdit = (props) => {
       telegram: formData.telegram,
       student: {
         phone: formData.phone
-      }
+      },
+      image: formData.image
     }) .then(() =>{
       setRegistrationStatus('success: Данные были успешно обновлены!');
     })
