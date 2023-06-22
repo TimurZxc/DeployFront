@@ -22,7 +22,7 @@ const SignUpTeacher = () => {
     password: '',
     password2: '',
     telegram: '',
-    experience: '',
+    experience: 'fhosiefjlsejfls',
     image: null
   });
 
