@@ -25,7 +25,8 @@ const PersonalInfoTeachEdit = (props) => {
     surname: props.surname,
     phone: props.phone,
     education: props.education,
-    telegram: props.telegram
+    telegram: props.telegram,
+    experience: 'fhosiefjlsejfls', 
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
@@ -45,7 +46,7 @@ const PersonalInfoTeachEdit = (props) => {
   };
 
   function handleUpdate() {
-    axiosInstance.patch(`/update/teacher/`, {
+    axiosInstance.put(`/update/teacher/`, {
       first_name: formData.first_name,
       last_name: formData.last_name,
       birth_date: formData.birth_date,
