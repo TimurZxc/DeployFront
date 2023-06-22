@@ -161,7 +161,7 @@ const PersonalInfoEdit = (props) => {
                     name="image"
                     onChange={handleImageChange}
                   />
-             <Sprite id='camera'/>
+             <Sprite id='camera' className='icon'/>
             </div>
           </div>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
