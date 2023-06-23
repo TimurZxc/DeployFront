@@ -20,7 +20,7 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    student: {
+    student:{
       phone: props.phone
     },
     telegram: props.telegram,
@@ -30,41 +30,62 @@ const PersonalInfoEdit = (props) => {
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null);
-  const handleChange = event => {
+  // const handleChange = event => {
+  //   const { name, value } = event.target;
+  //   setFormData(prevFormData => ({
+  //     ...prevFormData,
+  //     [name]: value
+  //   }));
+  // };
+
+    const handleChange = event => {
     const { name, value } = event.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: value
-    }));
+
+    // Split the name into nested keys
+    const nameParts = name.split('.');
+
+    // Update the nested state correctly
+    if (nameParts.length === 1) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+      }));
+    } else if (nameParts.length === 2) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [nameParts[0]]: {
+          ...prevFormData[nameParts[0]],
+          [nameParts[1]]: value
+        }
+      }));
+    }
   };
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
 
-  function handleUpdate() {
+    function handleUpdate() {
 
-    console.log('formData', formData);
+      console.log('formData', formData);
 
-    axiosInstance.put('/update/student/', {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      email: formData.email,
-      image: image ? image : formData.image,
-      student: {
-        phone: formData.phone
-      },
-      surname: formData.surname,
-      birth_date: formData.birth_date,
-      telegram: formData.telegram
-    }).then(() => {
-      setRegistrationStatus('success: Данные были успешно обновлены!');
-    })
-      .catch((error) => {
-        console.log('error', error)
-        setRegistrationStatus(`error: ${error.message}`);
-      });
-  };
+      axiosInstance.put('/update/student/', {
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        image: image ? image : formData.image,
+        phone: formData.phone,
+        surname: formData.surname,
+        birth_date: formData.birth_date,
+        telegram: formData.telegram
+      }).then(() => {
+        setRegistrationStatus('success: Данные были успешно обновлены!');
+      })
+        .catch((error) => {
+          console.log('error', error)
+          setRegistrationStatus(`error: ${error.message}`);
+        });
+    };
 
   function handleDelete() {
     axiosInstance.delete('delete/user/', {
@@ -129,7 +150,7 @@ const PersonalInfoEdit = (props) => {
             <input
               type="text"
               placeholder="Номер Телефона"
-              name="phone"
+              name="student.phone"
               className="form--input"
               value={formData.phone}
               onChange={handleChange}
