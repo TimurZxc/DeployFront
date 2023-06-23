@@ -70,36 +70,36 @@ const PersonalInfoEdit = (props) => {
     setImage(event.target.files[0]);
   };
 
-    function handleUpdate() {
-      console.log('formData', formData);
-
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type header
-          // Add any other headers if needed
-        }
-      };
-
-      const requestData = {
-        first_name: formData.first_name,
-        last_name: formData.last_name,
-        email: formData.email,
-        image: image ? image : formData.image_pr,
-        student: { phone: formData.student.phone },
-        surname: formData.surname,
-        birth_date: formData.birth_date,
-        telegram: formData.telegram
-      };
-
-      axiosInstance.patch('/update/student/', requestData, config)
-        .then(() => {
-          setRegistrationStatus('success: Данные были успешно обновлены!');
-        })
-        .catch((error) => {
-          console.log('error', error);
-          setRegistrationStatus(`error: ${error.message}`);
-        });
+  function handleUpdate() {
+    console.log('formData', formData);
+  
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data' // Set the content type header
       }
+    };
+  
+    const requestData = new FormData();
+  
+    requestData.append('first_name', formData.first_name);
+    requestData.append('last_name', formData.last_name);
+    requestData.append('email', formData.email);
+    requestData.append('image', image ? image : formData.image_pr);
+    requestData.append('student', JSON.stringify(formData.student)); // Convert nested JSON to string
+    requestData.append('surname', formData.surname);
+    requestData.append('birth_date', formData.birth_date);
+    requestData.append('telegram', formData.telegram);
+  
+    axiosInstance.patch('/update/student/', requestData, config)
+      .then(() => {
+        setRegistrationStatus('success: Данные были успешно обновлены!');
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
+  }
+  
 
 
   function handleDelete() {
