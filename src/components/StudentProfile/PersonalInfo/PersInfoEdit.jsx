@@ -74,10 +74,10 @@ const PersonalInfoEdit = (props) => {
         last_name: formData.last_name,
         email: formData.email,
         image: image ? image : formData.image_pr,
-        // student:{phone: formData.phone},
-        "student":{
-          "phone": formData.phone
-        },
+        student:{phone: formData.phone},
+        // "student":{
+        //   "phone": formData.phone
+        // },
         surname: formData.surname,
         birth_date: formData.birth_date,
         telegram: formData.telegram
@@ -153,9 +153,9 @@ const PersonalInfoEdit = (props) => {
             <input
               type="text"
               placeholder="Номер Телефона"
-              name="phone"
+              name="student.phone"
               className="form--input"
-              value={formData.phone}
+              value={formData.student.phone}
               onChange={handleChange}
             />
           </div>
