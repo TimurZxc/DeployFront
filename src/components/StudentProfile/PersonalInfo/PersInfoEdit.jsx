@@ -20,9 +20,7 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    student:{
-      phone: props.phone
-    },
+    phone: props.phone,
     telegram: props.telegram,
     image_pr: props.image
   });
@@ -30,35 +28,12 @@ const PersonalInfoEdit = (props) => {
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null)
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-  //   setFormData(prevFormData => ({
-  //     ...prevFormData,
-  //     [name]: value
-  //   }));
-  // };
-
-    const handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.target;
-
-    // Split the name into nested keys
-    const nameParts = name.split('.');
-
-    // Update the nested state correctly
-    if (nameParts.length === 1) {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [name]: value
-      }));
-    } else if (nameParts.length === 2) {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [nameParts[0]]: {
-          ...prevFormData[nameParts[0]],
-          [nameParts[1]]: value
-        }
-      }));
-    }
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
   const handleImageChange = (event) => {
@@ -150,7 +125,7 @@ const PersonalInfoEdit = (props) => {
             <input
               type="text"
               placeholder="Номер Телефона"
-              name="student.phone"
+              name="phone"
               className="form--input"
               value={formData.phone}
               onChange={handleChange}
@@ -168,7 +143,7 @@ const PersonalInfoEdit = (props) => {
           </div>
           <div className="fourth-row">
             <input
-              type="email"
+              type="text"
               placeholder="Telegram"
               name="telegram"
               className="form--input"
