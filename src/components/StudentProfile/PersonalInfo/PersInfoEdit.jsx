@@ -60,6 +60,7 @@ const PersonalInfoEdit = (props) => {
       }));
     }
   };
+  
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
@@ -68,12 +69,12 @@ const PersonalInfoEdit = (props) => {
     function handleUpdate() {
 
       console.log('formData', formData);
-      axiosInstance.patch('/update/student/', {
+      axiosInstance.put('/update/student/', {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
         image: image ? image : formData.image_pr,
-        student:{phone: formData.student.phone}[0],
+        student:{phone: formData.student.phone},
         surname: formData.surname,
         birth_date: formData.birth_date,
         telegram: formData.telegram
