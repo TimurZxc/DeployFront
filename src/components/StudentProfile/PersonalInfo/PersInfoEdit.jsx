@@ -71,25 +71,36 @@ const PersonalInfoEdit = (props) => {
   };
 
     function handleUpdate() {
-
       console.log('formData', formData);
-      axiosInstance.patch('/update/student/',config, {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json', // Set the content type header
+          // Add any other headers if needed
+        }
+      };
+
+      const requestData = {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
         image: image ? image : formData.image_pr,
-        student:{phone: formData.student.phone},
+        student: { phone: formData.student.phone },
         surname: formData.surname,
         birth_date: formData.birth_date,
         telegram: formData.telegram
-      }).then(() => {
-        setRegistrationStatus('success: Данные были успешно обновлены!');
-      })
+      };
+
+      axiosInstance.patch('/update/student/', requestData, config)
+        .then(() => {
+          setRegistrationStatus('success: Данные были успешно обновлены!');
+        })
         .catch((error) => {
-          console.log('error', error)
+          console.log('error', error);
           setRegistrationStatus(`error: ${error.message}`);
         });
-    };
+      }
+
 
   function handleDelete() {
     axiosInstance.delete('delete/user/', {
