@@ -38,12 +38,12 @@ const PersonalInfoEdit = (props) => {
   //   }));
   // };
 
-    const handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.target;
-
+  
     // Split the name into nested keys
     const nameParts = name.split('.');
-
+  
     // Update the nested state correctly
     if (nameParts.length === 1) {
       setFormData(prevFormData => ({
@@ -74,9 +74,6 @@ const PersonalInfoEdit = (props) => {
         email: formData.email,
         image: image ? image : formData.image_pr,
         student:{phone: formData.student.phone}[0],
-        // "student":{
-        //   "phone": formData.phone
-        // },
         surname: formData.surname,
         birth_date: formData.birth_date,
         telegram: formData.telegram
