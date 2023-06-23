@@ -51,7 +51,7 @@ const PersonalInfoEdit = (props) => {
     formDatas.append('surname', formData.surname);
     formDatas.append('birth_date', formData.birth_date);
     formDatas.append('telegram', formData.telegram);
-    formDatas.append('student', 'phone', formData.phone);
+    formDatas.append('student', {"phone": formData.phone})
 
     console.log('formData', formDatas)
     // {
