@@ -69,11 +69,11 @@ const PersonalInfoEdit = (props) => {
 
       console.log('formData', formData);
 
-      axiosInstance.put('/update/student/', {
+      axiosInstance.patch('/update/student/', {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
-        image: image ? image : formData.image_pr,
+        // image: image ? image : formData.image_pr,
         phone: formData.phone,
         surname: formData.surname,
         birth_date: formData.birth_date,
