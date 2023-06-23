@@ -49,7 +49,9 @@ const PersonalInfoEdit = (props) => {
       last_name: formData.last_name,
       email: formData.email,
       image: image ? image : formData.image, 
-      phone: formData.phone,
+      student: {
+        phone: formData.phone
+      },
       surname: formData.surname,
       birth_date: formData.birth_date,
       telegram: formData.telegram
