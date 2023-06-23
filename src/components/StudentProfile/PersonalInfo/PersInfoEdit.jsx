@@ -20,7 +20,9 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    phone: props.phone,
+    student: {
+      phone: props.phone
+    },
     telegram: props.telegram,
     image: props.image
   });
@@ -28,12 +30,35 @@ const PersonalInfoEdit = (props) => {
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null);
+  // const handleChange = event => {
+  //   const { name, value } = event.target;
+  //   setFormData(prevFormData => ({
+  //     ...prevFormData,
+  //     [name]: value
+  //   }));
+  // };
+
   const handleChange = event => {
-    const { name, value} = event.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: value
-    }));
+    const { name, value } = event.target;
+
+    // Split the name into nested keys
+    const nameParts = name.split('.');
+
+    // Update the nested state correctly
+    if (nameParts.length === 1) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+      }));
+    } else if (nameParts.length === 2) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [nameParts[0]]: {
+          ...prevFormData[nameParts[0]],
+          [nameParts[1]]: value
+        }
+      }));
+    }
   };
 
   const handleImageChange = (event) => {
@@ -43,25 +68,25 @@ const PersonalInfoEdit = (props) => {
   function handleUpdate() {
 
     console.log('formData', formData);
-    
+
     axiosInstance.put('/update/student/', {
       first_name: formData.first_name,
       last_name: formData.last_name,
       email: formData.email,
-      image: image ? image : formData.image, 
+      image: image ? image : formData.image,
       student: {
         phone: formData.phone
       },
       surname: formData.surname,
       birth_date: formData.birth_date,
       telegram: formData.telegram
-    }) .then(() =>{
+    }).then(() => {
       setRegistrationStatus('success: Данные были успешно обновлены!');
     })
-    .catch((error) => {
-      console.log('error', error)
-      setRegistrationStatus(`error: ${error.message}`);
-    });
+      .catch((error) => {
+        console.log('error', error)
+        setRegistrationStatus(`error: ${error.message}`);
+      });
   };
 
   function handleDelete() {
@@ -124,48 +149,48 @@ const PersonalInfoEdit = (props) => {
             />
           </div>
           <div className="fourth-row">
-          <input
-            type="text"
-            placeholder="Номер Телефона"
-            name="phone"
-            className="form--input"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+            <input
+              type="text"
+              placeholder="Номер Телефона"
+              name="student.phone"
+              className="form--input"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
           <div className="fourth-row">
-          <input
-            type="email"
-            placeholder="Email адрес"
-            name="email"
-            className="form--input"
-            value={formData.email}
-            onChange={handleChange}
-          />
+            <input
+              type="email"
+              placeholder="Email адрес"
+              name="email"
+              className="form--input"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
           <div className="fourth-row">
-          <input
-            type="email"
-            placeholder="Telegram"
-            name="telegram"
-            className="form--input"
-            value={formData.telegram}
-            onChange={handleChange}
-          />
+            <input
+              type="email"
+              placeholder="Telegram"
+              name="telegram"
+              className="form--input"
+              value={formData.telegram}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="second-col">
 
           <div className="upload1">
-            <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
+            <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous" />
             <div className="round">
-            <input
-                    accept='image/*'
-                    type="file"
-                    name="image"
-                    onChange={handleImageChange}
-                  />
-             <Sprite id='camera' className='icon'/>
+              <input
+                accept='image/*'
+                type="file"
+                name="image"
+                onChange={handleImageChange}
+              />
+              <Sprite id='camera' className='icon' />
             </div>
           </div>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
@@ -174,17 +199,17 @@ const PersonalInfoEdit = (props) => {
       </div>
 
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
-          <Modal.Body>
-            {registrationStatus && registrationStatus.startsWith('error') ? (
-              <p className="error-message">{registrationStatus.substr(7)}</p>
-            ) : registrationStatus && registrationStatus.startsWith('success') ? (
-              <p className="success-message">{registrationStatus.substr(9)}</p>
-            ) : null}
-            <Button variant="secondary" onClick={handleModalClose} className="close-button">
-              Закрыть
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
 
     </>
   )
