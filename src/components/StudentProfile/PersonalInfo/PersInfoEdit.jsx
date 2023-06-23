@@ -90,7 +90,7 @@ const PersonalInfoEdit = (props) => {
         birth_date: formData.birth_date,
         telegram: formData.telegram
       };
-
+      console.log('requestData', requestData);
       axiosInstance.patch('/update/student/', requestData, config)
         .then(() => {
           setRegistrationStatus('success: Данные были успешно обновлены!');
