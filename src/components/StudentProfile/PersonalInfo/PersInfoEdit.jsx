@@ -42,34 +42,22 @@ const PersonalInfoEdit = (props) => {
 
   function handleUpdate() {
 
-    const formDatas = new FormData();
-
-    formDatas.append('first_name', formData.first_name);
-    formDatas.append('last_name', formData.last_name);
-    formDatas.append('email', formData.email);
-    formDatas.append('image', image);
-    formDatas.append('surname', formData.surname);
-    formDatas.append('birth_date', formData.birth_date);
-    formDatas.append('telegram', formData.telegram);
-    formDatas.append('student', {"phone": formData.phone})
-
-    console.log('formData', formDatas.values());
-    // {
-    //   first_name: formData.first_name,
-    //   last_name: formData.last_name,
-    //   email: formData.email,
-    //   image: image ? image : formData.image, 
-    //   student: {
-    //     phone: formData.phone
-    //   },
-    //   surname: formData.surname,
-    //   birth_date: formData.birth_date,
-    //   telegram: formData.telegram
-    // }
-    axiosInstance.put('/update/student/', formDatas) .then(() =>{
+    console.log('formData', formData);
+    
+    axiosInstance.put('/update/student/', {
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      image: image ? image : formData.image, 
+      phone: formData.phone,
+      surname: formData.surname,
+      birth_date: formData.birth_date,
+      telegram: formData.telegram
+    }) .then(() =>{
       setRegistrationStatus('success: Данные были успешно обновлены!');
     })
     .catch((error) => {
+      console.log('error', error)
       setRegistrationStatus(`error: ${error.message}`);
     });
   };
