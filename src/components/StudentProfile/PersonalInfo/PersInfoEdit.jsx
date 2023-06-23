@@ -53,7 +53,7 @@ const PersonalInfoEdit = (props) => {
     formDatas.append('telegram', formData.telegram);
     formDatas.append('student', {"phone": formData.phone})
 
-    console.log('formData', formDatas)
+    console.log('formData', formDatas.values());
     // {
     //   first_name: formData.first_name,
     //   last_name: formData.last_name,
