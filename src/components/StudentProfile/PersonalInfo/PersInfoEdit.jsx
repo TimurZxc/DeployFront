@@ -20,7 +20,9 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    phone: props.phone,
+    student:{
+      phone: props.phone,
+    },
     telegram: props.telegram,
     image_pr: props.image
   });
@@ -72,7 +74,10 @@ const PersonalInfoEdit = (props) => {
         last_name: formData.last_name,
         email: formData.email,
         image: image ? image : formData.image_pr,
-        student:{phone: formData.phone},
+        // student:{phone: formData.phone},
+        "student":{
+          "phone": formData.phone
+        },
         surname: formData.surname,
         birth_date: formData.birth_date,
         telegram: formData.telegram
