@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../../images/puple.png'
 import Sprite from '../../Sprite/Sprite';
+import { createLogicalAnd } from 'typescript';
 
 const PersonalInfoEdit = (props) => {
 
@@ -90,7 +91,7 @@ const PersonalInfoEdit = (props) => {
     requestData.append('surname', formData.surname);
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
-  
+    console.log('requestData', requestData)
     axiosInstance.patch('/update/student/', requestData, config)
       .then(() => {
         setRegistrationStatus('success: Данные были успешно обновлены!');
