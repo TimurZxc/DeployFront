@@ -75,7 +75,8 @@ const PersonalInfoEdit = (props) => {
   
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data' // Set the content type header
+        'Content-Type': 'multipart/form-data', // Set the content type header
+        // Add any other headers if needed
       }
     };
   
@@ -85,7 +86,7 @@ const PersonalInfoEdit = (props) => {
     requestData.append('last_name', formData.last_name);
     requestData.append('email', formData.email);
     requestData.append('image', image ? image : formData.image_pr);
-    requestData.append('student', JSON.stringify(formData.student)); // Convert nested JSON to string
+    requestData.append('student', JSON.stringify({ phone: formData.student.phone }));
     requestData.append('surname', formData.surname);
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
@@ -100,7 +101,6 @@ const PersonalInfoEdit = (props) => {
       });
   }
   
-
 
   function handleDelete() {
     axiosInstance.delete('delete/user/', {
