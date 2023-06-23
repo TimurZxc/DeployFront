@@ -24,12 +24,12 @@ const PersonalInfoEdit = (props) => {
       phone: props.phone
     },
     telegram: props.telegram,
-    image: props.image
+    image_pr: props.image
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null)
   // const handleChange = event => {
   //   const { name, value } = event.target;
   //   setFormData(prevFormData => ({
@@ -73,7 +73,7 @@ const PersonalInfoEdit = (props) => {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
-        image: image ? image : formData.image,
+        image: image ? image : formData.image_pr,
         phone: formData.phone,
         surname: formData.surname,
         birth_date: formData.birth_date,
