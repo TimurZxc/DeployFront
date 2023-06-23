@@ -68,7 +68,6 @@ const PersonalInfoEdit = (props) => {
     function handleUpdate() {
 
       console.log('formData', formData);
-      console.log('phone', student.phone);
       axiosInstance.patch('/update/student/', {
         first_name: formData.first_name,
         last_name: formData.last_name,
