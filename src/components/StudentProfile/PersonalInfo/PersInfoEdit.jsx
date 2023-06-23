@@ -154,7 +154,7 @@ const PersonalInfoEdit = (props) => {
               placeholder="Номер Телефона"
               name="student.phone"
               className="form--input"
-              value={formData.phone}
+              value={formData.student.phone}
               onChange={handleChange}
             />
           </div>
