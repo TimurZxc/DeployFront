@@ -41,17 +41,18 @@ const PersonalInfoEdit = (props) => {
   };
 
   function handleUpdate() {
+    console.log('formData', formData)
     axiosInstance.put('/update/student/', {
-      email: formData.email,
       first_name: formData.first_name,
       last_name: formData.last_name,
-      surname: formData.surname,
-      birth_date: formData.birth_date,
-      telegram: formData.telegram,
+      email: formData.email,
+      image: image ? image : formData.image, 
       student: {
         phone: formData.phone
       },
-      image: formData.image
+      surname: formData.surname,
+      birth_date: formData.birth_date,
+      telegram: formData.telegram
     }) .then(() =>{
       setRegistrationStatus('success: Данные были успешно обновлены!');
     })
