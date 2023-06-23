@@ -75,7 +75,7 @@ const PersonalInfoEdit = (props) => {
 
       const config = {
         headers: {
-          'Content-Type': 'application/json', // Set the content type header
+          'Content-Type': 'multipart/form-data', // Set the content type header
           // Add any other headers if needed
         }
       };
