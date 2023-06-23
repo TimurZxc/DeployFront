@@ -26,7 +26,11 @@ const PersonalInfoEdit = (props) => {
     telegram: props.telegram,
     image_pr: props.image
   });
-
+  const config = {
+    headers:{
+      'Content-Type': 'application/json',
+    }
+  };
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null)
@@ -69,7 +73,7 @@ const PersonalInfoEdit = (props) => {
     function handleUpdate() {
 
       console.log('formData', formData);
-      axiosInstance.put('/update/student/', {
+      axiosInstance.patch('/update/student/', {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
