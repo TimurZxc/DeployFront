@@ -16,7 +16,6 @@ const Teachers1 = () => {
   const getUsers = async () => {
     try {
       const response = axiosInstance.get('teacher-list/').then((res) => {
-        console.log("1", res.data)
         setCards(res.data)
       })
     } catch (error) {

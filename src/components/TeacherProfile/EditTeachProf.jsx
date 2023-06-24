@@ -16,6 +16,18 @@ const EditTeacherProfile = (props) => {
     setIsShown(prevShown => !prevShown)
   }
 
+  function handleDelete() {
+    axiosInstance.delete('delete/user/', {
+    }).then(() => {
+      setRegistrationStatus('success: Данные были успешно удалены!');
+      navigate('/');
+    }).catch((error) => {
+      setRegistrationStatus(`error: ${error.message}`);
+      localStorage.removeItem('access_token'),
+      localStorage.removeItem('refresh_token');
+    });
+  }
+
   const [mainCourseList, setMainCourseList] = React.useState([])
 
   const [mainTeachList, setMainTeachList] = React.useState([])
@@ -58,14 +70,13 @@ const EditTeacherProfile = (props) => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [mainTeachList]);
+  }, []);
 
   React.useEffect(() => {
     mainTeachList.map(data => {
       if (mainTeachList && data?.teacher?.id) {
         const id = data?.teacher?.id
 
-        console.log('first',)
         axiosInstance
           .get(`course-list/${id}`)
           .then((response) => {
@@ -88,10 +99,9 @@ const EditTeacherProfile = (props) => {
         <section className='course-list'>{CurrentUser}</section>
         <h1 className="profile-title_t">Актуальные курсы</h1>
         <section className='course-list'>{CourseListArr}</section>
-        {/* <Calendar /> */}
         {isShown && <AddCourseTeach />}
         <div className="edit" onClick={toggleShown}>Добавить курс</div>
-        {/* <div className="edit">Сохранить изминения</div> */}
+        <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
       </div>
     </div>
   )

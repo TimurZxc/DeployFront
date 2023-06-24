@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../../images/user-286.png'
+import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
 
 
@@ -21,22 +21,41 @@ const PersonalInfoTeachEdit = (props) => {
     birth_date: props.birth_date,
     email: props.email,
     surname: props.surname,
-    phone: props.phone,
-    education: props.education,
-    telegram: props.telegram,
-    experience: props.experience 
+    teacher:{
+      phone: props.phone,
+      education: props.education,
+      experience: props.experience
+    },
+    telegram: props.telegram
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
 
   const [image, setImage] = useState(null);
+
   const handleChange = event => {
-    const { name, value} = event.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: value
-    }));
+    const { name, value } = event.target;
+
+    // Split the name into nested keys
+    const nameParts = name.split('.');
+
+    // Update the nested state correctly
+    if (nameParts.length === 1) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+      }));
+    } else if (nameParts.length === 2) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [nameParts[0]]: {
+          ...prevFormData[nameParts[0]],
+          [nameParts[1]]: value
+        }
+      }));
+    }
   };
 
   const handleImageChange = (event) => {
@@ -44,36 +63,41 @@ const PersonalInfoTeachEdit = (props) => {
   };
 
   function handleUpdate() {
-    axiosInstance.put(`/update/teacher/`, {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      birth_date: formData.birth_date,
-      email: formData.email,
-      surname: formData.surname,
-      telegram: formData.telegram,
-      teacher: {
-        phone: formData.phone,
-        experience: formData.experience,
-        education: formData.education
-      }
-    }) .then(() =>{
-      setRegistrationStatus('success: Данные были успешно обновлены!');
-    })
-    .catch((error) => {
-      setRegistrationStatus(`error: ${error.message}`);
-    });
+    const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+    requestData.append('first_name', formData.first_name);
+    requestData.append('last_name', formData.last_name);
+    requestData.append('email', formData.email);
+    requestData.append('teacher.phone', formData.teacher.phone);
+    requestData.append('teacher.education', formData.teacher.education);
+    requestData.append('teacher.experience', formData.teacher.experience);
+    requestData.append('surname', formData.surname);
+    requestData.append('birth_date', formData.birth_date);
+    requestData.append('telegram', formData.telegram);
+    console.log('isDeleteClicked', isDeleteClicked)
+    if (isDeleteClicked) {
+      requestData.append('image', '');
+    } else if (image) {
+      requestData.append('image', image);
+    }
+    axiosInstance.patch('/update/teacher/', requestData, config)
+      .then(() => {
+        setRegistrationStatus('success: Данные были успешно обновлены!');
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
   };
 
+  const requestData = new FormData();
+
   function handleDelete() {
-    axiosInstance.delete('delete/user/', {
-    }).then(() => {
-      setRegistrationStatus('success: Данные были успешно удалены!');
-      navigate('/');
-    }).catch((error) => {
-      setRegistrationStatus(`error: ${error.message}`);
-      localStorage.removeItem('access_token'),
-      localStorage.removeItem('refresh_token');
-    });
+    setIsDeleteClicked(true);
+    setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
   }
 
   const handleModalClose = () => {
@@ -120,9 +144,9 @@ const PersonalInfoTeachEdit = (props) => {
             <input
               type='text'
               placeholder="ВУЗ, Специальность, год окончания"
-              name="education"
+              name="teacher.education"
               className="form--input"
-              value={formData.education}
+              value={formData.teacher.education}
               onChange={handleChange}
             />
           </div>
@@ -130,9 +154,9 @@ const PersonalInfoTeachEdit = (props) => {
             <input
               type="text"
               placeholder="Опыт и достижения"
-              name="experience"
+              name="teacher.experience"
               className="form--input"
-              value={formData.experience}
+              value={formData.teacher.experience}
               onChange={handleChange}
             />
           </div>
@@ -140,9 +164,9 @@ const PersonalInfoTeachEdit = (props) => {
           <input
             type="text"
             placeholder="Номер Телефона"
-            name="phone"
+            name="teacher.phone"
             className="form--input"
-            value={formData.phone}
+            value={formData.teacher.phone}
             onChange={handleChange}
           />
           </div>
@@ -169,7 +193,7 @@ const PersonalInfoTeachEdit = (props) => {
         </div>
         <div className="second-col_t">
           <div className="upload1">
-              <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous"/>
+              <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossOrigin="anonymous"/>
               <div className="round">
               <input
                       accept='image/*'
@@ -181,9 +205,9 @@ const PersonalInfoTeachEdit = (props) => {
               </div>
             </div>
           <br />
-          <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
+          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить Фото</button>
           <br />
-          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить</button>
+          <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import './MainpageCard.scss'
+import './MainpageCard.css'
 import { useNavigate } from 'react-router-dom'
 
 const MainpageCard = (props) => {

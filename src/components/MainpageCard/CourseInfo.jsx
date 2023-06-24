@@ -1,5 +1,5 @@
 import React from 'react'
-import './MainpageCard.scss'
+import './MainpageCard.css'
 
 const CourseInfo = (props) => {
   return (

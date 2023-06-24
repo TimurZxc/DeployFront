@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../../images/puple.png'
+import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
 
 const PersonalInfoEdit = (props) => {
@@ -20,20 +20,18 @@ const PersonalInfoEdit = (props) => {
     last_name: props.last_name,
     surname: props.surname,
     birth_date: props.birth_date,
-    student:{
+    student: {
       phone: props.phone,
     },
     telegram: props.telegram,
     image_pr: props.image
   });
-  const config = {
-    headers:{
-      'Content-Type': 'application/json',
-    }
-  };
+
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null)
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+
   // const handleChange = event => {
   //   const { name, value } = event.target;
   //   setFormData(prevFormData => ({
@@ -44,10 +42,10 @@ const PersonalInfoEdit = (props) => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-  
+
     // Split the name into nested keys
     const nameParts = name.split('.');
-  
+
     // Update the nested state correctly
     if (nameParts.length === 1) {
       setFormData(prevFormData => ({
@@ -64,53 +62,48 @@ const PersonalInfoEdit = (props) => {
       }));
     }
   };
-  
+
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
   };
 
-    function handleUpdate() {
-      console.log('formData', formData);
-
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type header
-          // Add any other headers if needed
-        }
-      };
-
-      const requestData = {
-        first_name: formData.first_name,
-        last_name: formData.last_name,
-        email: formData.email,
-        image: image ? image : formData.image_pr,
-        student: JSON.stringify({ phone: formData.student.phone }),
-        surname: formData.surname,
-        birth_date: formData.birth_date,
-        telegram: formData.telegram
-      };
-
-      axiosInstance.patch('/update/student/', requestData, config)
-        .then(() => {
-          setRegistrationStatus('success: Данные были успешно обновлены!');
-        })
-        .catch((error) => {
-          console.log('error', error);
-          setRegistrationStatus(`error: ${error.message}`);
-        });
-      }
-
+  const requestData = new FormData();
 
   function handleDelete() {
-    axiosInstance.delete('delete/user/', {
-    }).then(() => {
-      setRegistrationStatus('success: Данные были успешно удалены!');
-      navigate('/');
-    }).catch((error) => {
-      setRegistrationStatus(`error: ${error.message}`);
-    });
+    setIsDeleteClicked(true);
+    setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
   }
+
+  function handleUpdate() {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    requestData.append('first_name', formData.first_name);
+    requestData.append('last_name', formData.last_name);
+    requestData.append('email', formData.email);
+    requestData.append('student.phone', formData.student.phone);
+    requestData.append('surname', formData.surname);
+    requestData.append('birth_date', formData.birth_date);
+    requestData.append('telegram', formData.telegram);
+    console.log('isDeleteClicked', isDeleteClicked)
+    if (isDeleteClicked) {
+      requestData.append('image', '');
+    } else if (image) {
+      requestData.append('image', image);
+    }
+    axiosInstance.patch('/update/student/', requestData, config)
+      .then(() => {
+        setRegistrationStatus('success: Данные были успешно обновлены!');
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
+  }
+  
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -195,7 +188,7 @@ const PersonalInfoEdit = (props) => {
         <div className="second-col">
 
           <div className="upload1">
-            <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossorigin="anonymous" />
+            <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossOrigin="anonymous" />
             <div className="round">
               <input
                 accept='image/*'
@@ -206,8 +199,8 @@ const PersonalInfoEdit = (props) => {
               <Sprite id='camera' className='icon' />
             </div>
           </div>
+          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить фото</button>
           <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
-          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить</button>
         </div>
       </div>
 

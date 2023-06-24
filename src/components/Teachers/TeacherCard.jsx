@@ -1,9 +1,9 @@
-import './teacherCard.scss'
+import './teacherCard.css'
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect }  from 'react'
 import axiosInstance from '../../axios'
 import CourseInfo from '../MainpageCard/CourseInfo'
-import userpic from '../../images/user-286.png'
+import userpic from '../../images/blue_user.png'
 
 const TeacherCard = (props) => {
 
@@ -28,7 +28,6 @@ const TeacherCard = (props) => {
     navigate(URL)
   }
 
-  console.log('props.image', props.src)
   const cardElements = courseInfo.map(card => (
     <CourseInfo
       key={card?.id}

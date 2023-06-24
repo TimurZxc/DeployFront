@@ -262,30 +262,34 @@
 }
 
 .upload1{
-  width: 245px !important;
+  width: 230px !important;
   position: relative;
   margin: auto;
 }
 
 .upload1 .puple-teach-img{
-  width: 260px;
-  height: 260px;
+  width: 200px;
+  height: 220px;
+  border: solid #11174B;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 50%;
+  border-radius: 25%;
 }
 
 .upload1 .round{
+  margin-top: 10px;
   position: absolute;
+  padding-top: 4px;
+  padding-right: 4px;
   bottom: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.939);
   width: 65px;
   height: 65px;
   text-align: right;
-  border-radius: 50%;
+  border-radius: 30%;
   overflow: hidden;
 }
 
@@ -308,8 +312,9 @@ input[type=file]::-webkit-file-upload-button{
 }
 
 .img{
-  width: 260px !important;
-  height: 260px !important;
+  width: 200px !important;
+  height: 220px !important;
+  border: solid #11174B;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
