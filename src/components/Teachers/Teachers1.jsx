@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './teachers.scss'
 // import MainpageCard from '../MainpageCard/MainpageCard'
 import teacherCard from '../../assets/svg-pictures/teacher.svg'
@@ -11,7 +11,7 @@ import TeacherCard from './TeacherCard'
 const Teachers1 = () => {
   const [cards, setCards] = React.useState([])
 
-
+  const [language, setLanguage] = useState('')
 
   const getUsers = async () => {
     try {
@@ -40,6 +40,8 @@ const Teachers1 = () => {
       buttonText={"Подробнее"}
        />
   ))
+
+
 
   return (
     <div className="main">

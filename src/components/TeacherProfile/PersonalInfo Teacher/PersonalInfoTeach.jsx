@@ -30,7 +30,7 @@ const PersonalInfoTeach = (props) => {
         </div>
 
       <div className="second-col_t">
-        <img className='pers-img' src={props.image ? props.image : userpic} alt="Avatar" crossorigin="anonymous"/>
+        <img className='pers-img' src={props.image ? props.image : userpic} alt="Avatar" crossOrigin="anonymous"/>
       </div>
 
     </div>

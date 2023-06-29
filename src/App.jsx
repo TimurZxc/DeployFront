@@ -16,90 +16,98 @@ import EditTeacherProfile from './components/TeacherProfile/EditTeachProf'
 import MarketTeachProf from './components/TeacherProfile/MarketTeachProf'
 import SubjectPage from './components/TeacherProfile/Courses/Subjects/SubjPage'
 import SubjectPageEdit from './components/TeacherProfile/Courses/Subjects/SubjectPageEdit'
-
+import Courses from './components/Teachers/Courses'
 
 const App = () => {
   return (
-      <div className="wrapper">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Mainpage />
-              </>
-            }
-          ></Route>
+    <div className="wrapper">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Mainpage />
+            </>
+          }
+        ></Route>
 
-          <Route
-            path="/resetPass"
-            element={
-              <>
-                <ResetPass />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/api/password-reset/:u_id/:token"
-            element={
-              <>
-                <ConfirmPass />
-              </>
-            }
-          ></Route>
-           <Route
-            path="/regDefolt"
-            element={
-              <SignUp />
-            }
-          ></Route>
-          <Route
-            path="/regTeach"
-            element={
-              <SignUpTeacher />
-            }
-          ></Route>
-          <Route
-            path="/studEdit"
-            element={
-              <StudentEdit />
-            }
-          ></Route>
-          <Route
-            path="/editTeach"
-            element={
-              <EditTeacherProfile />
-            }
-          ></Route>
-          <Route
-            path="/marketTeach/:id"
-            element={
-              <MarketTeachProf/>
-            }
-          ></Route>
-          <Route
-            path="/regEduCent"
-            element={
-              <EduRegister />
-            }
-          ></Route>
-          <Route
-            path="/teach"
-            element={
-              <Teachers1 />
-            }
-          ></Route>
-          <Route
-            path="/register"
-            element={
-              <SignUp />
-            }
-          ></Route>
-          <Route
-            path='/login'
-            element={<SignIn />}
-          ></Route>
-          <Route
+        <Route
+          path="/resetPass"
+          element={
+            <>
+              <ResetPass />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/api/password-reset/:u_id/:token"
+          element={
+            <>
+              <ConfirmPass />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/regDefolt"
+          element={
+            <SignUp />
+          }
+        ></Route>
+        <Route
+          path="/regTeach"
+          element={
+            <SignUpTeacher />
+          }
+        ></Route>
+        <Route
+          path="/studEdit"
+          element={
+            <StudentEdit />
+          }
+        ></Route>
+        <Route
+          path="/editTeach"
+          element={
+            <EditTeacherProfile />
+          }
+        ></Route>
+        <Route
+          path="/marketTeach/:id"
+          element={
+            <MarketTeachProf />
+          }
+        ></Route>
+        <Route
+          path="/regEduCent"
+          element={
+            <EduRegister />
+          }
+        ></Route>
+        <Route
+          path="/teach"
+          element={
+            <Teachers1 />
+          }
+        >
+        </Route>
+
+        <Route
+          path="/courses"
+          element={
+            <Courses />
+          }
+        ></Route>
+        <Route
+          path="/register"
+          element={
+            <SignUp />
+          }
+        ></Route>
+        <Route
+          path='/login'
+          element={<SignIn />}
+        ></Route>
+        <Route
           path="/profile"
           element={
             <>
@@ -107,7 +115,7 @@ const App = () => {
             </>
           }
         ></Route>
-         <Route
+        <Route
           path="/profileTeacher"
           element={
             <>
@@ -115,7 +123,7 @@ const App = () => {
             </>
           }
         ></Route>
-         <Route
+        <Route
           path="/subjectsByHours/:course_id"
           element={
             <>
@@ -123,7 +131,7 @@ const App = () => {
             </>
           }
         ></Route>
-         <Route
+        <Route
           path="/subjectsByHoursEdit/:course_id"
           element={
             <>
@@ -131,9 +139,9 @@ const App = () => {
             </>
           }
         ></Route>
-          <Route path="api/activate/:uidb64/:token" element={<ConfirmEmail />} />
-        </Routes>
-      </div>
+        <Route path="api/activate/:uidb64/:token" element={<ConfirmEmail />} />
+      </Routes>
+    </div>
   )
 }
 

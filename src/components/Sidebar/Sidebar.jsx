@@ -58,6 +58,17 @@ const Sidebar = () => {
               <Sprite id="learn" />
               <h1>Начать обучение</h1>
             </div>
+            <div
+              onClick={() => routeHandler('/courses')}
+              className={
+                window.location.pathname === '/courses'
+                  ? `navigation-item active`
+                  : `navigation-item`
+              }
+            >
+              <Sprite id="learn" />
+              <h1>Курсы</h1>
+            </div>
             {user ? <div></div> : <div
               onClick={() => routeHandler('/regDefolt')}
               className={
