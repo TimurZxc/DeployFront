@@ -80,32 +80,6 @@ const Sidebar = () => {
               <Sprite id="registerdefault" />
               <h1>Регистрация</h1>
             </div>}
-            {user ? (
-              <div
-                onClick={() => logout()}
-                className={
-                  window.location.pathname === '/login'
-                    ? `navigation-item active`
-                    : `navigation-item`
-                }
-              >
-                <Sprite id="register" />
-                <h1>Выход</h1>
-              </div>
-            ) : (
-              <div
-                onClick={() => routeHandler('/login')}
-                className={
-                  window.location.pathname === '/login'
-                    ? `navigation-item active`
-                    : `navigation-item`
-                }
-              >
-                <Sprite id="register" />
-                <h1>Войти</h1>
-              </div>
-            )
-            }
 
 {user && is_teacher ?
   <div
@@ -132,6 +106,33 @@ const Sidebar = () => {
     <Sprite id="profile" />
     <h1>Профиль</h1>
   </div> : <div></div>}
+
+    {user ? (
+              <div
+                onClick={() => logout()}
+                className={
+                  window.location.pathname === '/login'
+                    ? `navigation-item active`
+                    : `navigation-item`
+                }
+              >
+                <Sprite id="register" />
+                <h1>Выход</h1>
+              </div>
+            ) : (
+              <div
+                onClick={() => routeHandler('/login')}
+                className={
+                  window.location.pathname === '/login'
+                    ? `navigation-item active`
+                    : `navigation-item`
+                }
+              >
+                <Sprite id="register" />
+                <h1>Войти</h1>
+              </div>
+            )
+            }
 
           </div>
         </div>

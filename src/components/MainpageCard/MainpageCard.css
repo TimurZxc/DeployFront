@@ -18,7 +18,7 @@
   .card-wrapper .card-image {
     width: 210px !important;
     height: 210px !important;
-    border: none !important;
+    border: none;
     margin-bottom: 20px;
   }
 

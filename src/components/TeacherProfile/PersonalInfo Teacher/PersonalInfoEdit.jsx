@@ -35,6 +35,7 @@ const PersonalInfoTeachEdit = (props) => {
 
   function onClose() {
     setPreview(null);
+    handleDelete()
   }
 
   function onCrop(preview) {
@@ -42,7 +43,7 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   function onBeforeFileLoad(elem) {
-    if (elem.target.files[0].size > 71680) {
+    if (elem.target.files[0].size > 1171680) {
       alert('File is too big!');
       elem.target.value = '';
     }
@@ -107,14 +108,6 @@ const PersonalInfoTeachEdit = (props) => {
       });
   }
 
-  function handleBeforeFileLoad(e) {
-    if (e.target.files && e.target.files[0]) {
-      const imageFile = e.target.files[0];
-      // Perform any necessary actions with the image file before loading
-      console.log('Image file:', imageFile);
-      setPreview(URL.createObjectURL(imageFile));
-    }
-  }
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -139,9 +132,9 @@ const PersonalInfoTeachEdit = (props) => {
     }
   };
 
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+  // const handleImageChange = (event) => {
+  //   setImage(event.target.files[0]);
+  // };
 
   const requestData = new FormData();
 
@@ -273,17 +266,16 @@ const PersonalInfoTeachEdit = (props) => {
           </div>
         </div>
         <div className="second-col_t">
-          <Avatar
-            width={390}
-            height={295}
+        <Avatar
+            width={260}
+            height={260}
             onCrop={onCrop}
             onClose={onClose}
             onBeforeFileLoad={onBeforeFileLoad}
             src={src}
           />
-          <button onClick={onSave}>Save Avatar</button>
           <br />
-          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить Фото</button>
+          <button onClick={onSave} className="second-row_t_c">Изменить фото</button>
           <br />
           <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>

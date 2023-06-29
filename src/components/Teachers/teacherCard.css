@@ -1,6 +1,6 @@
 .card-wrapper {
     width: 380px;
-    height: fit-content;
+    height: fit-content !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,8 +17,8 @@
     .card-image {
       width: 200px !important;
       height: 220px !important;
-      border: solid #11174b !important;
-      border-radius: 25%;
+      border: 5px solid   #268cc0b1 !important;
+      border-radius: 50%;
       margin-bottom: 20px;
     }
   
@@ -48,19 +48,24 @@
       font-size: 18px;
       color: rgba(17, 23, 75, 0.995);
       letter-spacing: 0.035em;
+      margin-bottom: 5px;
     }
-  
-    .price_teach{
+
+    .teach-sub-price{
       font-size: 18px;
       color: rgba(17, 23, 75, 0.995);
       letter-spacing: 0.035em;
     }
-  .teach-sub .price_teach {
-    display: inline-block; 
+  
+  .courses-in-card {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     background-color: #33a2da70; 
-    padding: 16px;
-    margin: 5px;
-    border-radius: 30px;
+    padding: 11px;
+    margin: 7px;
+    border-radius: 23px;
   }
   
   

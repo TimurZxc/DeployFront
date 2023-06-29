@@ -32,7 +32,6 @@ const Courses = () => {
 
   useEffect(() => {
     getCourses()
-    console.log('language', language)
   }, [language])
 
 
