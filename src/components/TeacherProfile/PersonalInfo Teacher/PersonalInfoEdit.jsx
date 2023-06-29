@@ -16,6 +16,7 @@ const PersonalInfoTeachEdit = (props) => {
   const routeHandler = (URL) => {
     navigate(URL)
   }
+  const [preview, setPreview] = useState(props.image ? props.image : null);
 
   const [src, setSrc] = useState(props.image);
 
@@ -43,7 +44,7 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   function onBeforeFileLoad(elem) {
-    if (elem.target.files[0].size > 1171680) {
+    if (elem.target.files[0].size > 5171680) {
       alert('File is too big!');
       elem.target.value = '';
     }
@@ -71,7 +72,8 @@ const PersonalInfoTeachEdit = (props) => {
 
   const [croppedImage, setCroppedImage] = useState(null);
 
-  const [preview, setPreview] = useState(props.image ? props.image : null);
+
+  const [isModalOpen, setModalOpen] = useState(null);
 
   function dataURLtoFile(dataURL, filename) {
     const arr = dataURL.split(',');
@@ -106,6 +108,7 @@ const PersonalInfoTeachEdit = (props) => {
         console.log('error', error);
         setRegistrationStatus(`error: ${error.message}`);
       });
+    window.location.reload(true)
   }
 
 
@@ -177,6 +180,15 @@ const PersonalInfoTeachEdit = (props) => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  const handleModalClosePhoto = () => {
+    setModalOpen(null);
+  };
+
+  function handleOpenModal() {
+    setModalOpen(1);
+  }
+
 
   return (
     <>
@@ -265,17 +277,20 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
         </div>
+
         <div className="second-col_t">
-        <Avatar
-            width={260}
-            height={260}
-            onCrop={onCrop}
-            onClose={onClose}
-            onBeforeFileLoad={onBeforeFileLoad}
-            src={src}
-          />
+
+          <div className="upload">
+            <img src={props.image ? props.image : userpic} alt="" className='teach-puple-img' />
+            <div className="round">
+              <div onClick={handleOpenModal} type='button' className='photoButt'>
+                <Sprite id='camera' />
+              </div>
+            </div>
+          </div>
+
           <br />
-          <button onClick={onSave} className="second-row_t_c">Изменить фото</button>
+          {/* <button onClick={onSave} className="second-row_t_c">Изменить фото</button> */}
           <br />
           <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>
@@ -293,6 +308,26 @@ const PersonalInfoTeachEdit = (props) => {
           </Button>
         </Modal.Body>
       </Modal>
+
+      <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
+        <Avatar
+          width={'fit-content'}
+          height={350}
+          minWidth={350}
+          onCrop={onCrop}
+          onClose={onClose}
+          onBeforeFileLoad={onBeforeFileLoad}
+          src={src}
+          cropRadius={130}
+          labelStyle={{ 'width': 350 }}
+          label={"Загрузите фотографию"}
+        />
+        <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
+        <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
+          Закрыть
+        </Button>
+      </Modal>
+
     </>
   )
 }

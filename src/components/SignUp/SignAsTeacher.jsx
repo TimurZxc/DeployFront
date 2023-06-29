@@ -99,22 +99,6 @@ const SignUpTeacher = () => {
           </button>
         </div>
 
-        <div className="upload">
-          <img src={userpic} alt="" className='teach-puple-img' />
-          <div className="round">
-            <input
-              accept='image/*'
-              type="file"
-              name="image"
-              onChange={handleImageChange}
-            />
-            <Sprite id='camera' />
-          </div>
-        </div>
-
-        {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
-        Регистрация образ. центра
-      </button> */}
         <p>Введите ваши данные *</p>
         <div className="input-row">
           <input
@@ -228,7 +212,6 @@ const SignUpTeacher = () => {
         </button>
       </form>
 
-      {/* Registration status modal */}
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
