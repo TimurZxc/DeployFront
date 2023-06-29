@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
+import Avatar from 'react-avatar-edit';
+import axios from 'axios';
 
 
 const PersonalInfoTeachEdit = (props) => {
@@ -15,13 +17,44 @@ const PersonalInfoTeachEdit = (props) => {
     navigate(URL)
   }
 
+  const [src, setSrc] = useState(props.image);
+
+  useEffect(() => {
+    async function getImage() {
+      try {
+        const response = await axios.get(preview, { responseType: 'blob', crossOrigin: 'anonymus' });
+        const file = new File([response.data], 'image.jpg', { type: 'image/jpeg' });
+        setSrc(URL.createObjectURL(file));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getImage();
+  }, []);
+
+  function onClose() {
+    setPreview(null);
+  }
+
+  function onCrop(preview) {
+    setPreview(preview);
+  }
+
+  function onBeforeFileLoad(elem) {
+    if (elem.target.files[0].size > 71680) {
+      alert('File is too big!');
+      elem.target.value = '';
+    }
+  }
+
   const [formData, setFormData] = useState({
     first_name: props.first_name,
     last_name: props.last_name,
     birth_date: props.birth_date,
     email: props.email,
     surname: props.surname,
-    teacher:{
+    teacher: {
       phone: props.phone,
       education: props.education,
       experience: props.experience
@@ -34,6 +67,54 @@ const PersonalInfoTeachEdit = (props) => {
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
 
   const [image, setImage] = useState(null);
+
+  const [croppedImage, setCroppedImage] = useState(null);
+
+  const [preview, setPreview] = useState(props.image ? props.image : null);
+
+  function dataURLtoFile(dataURL, filename) {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
+
+  function onSave() {
+    const config = {
+      headers: {
+        'Content-Type': 'image/jpeg',
+      },
+    };
+
+    const requestData = new FormData();
+    const file = dataURLtoFile(preview, 'image.png');
+    requestData.append('image', file);
+    console.log('Cropped image URL:', file);
+
+    axiosInstance.patch('/update/teacher/', requestData, config)
+      .then(() => {
+        setRegistrationStatus('success: Фото было успешно обновлено!');
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
+  }
+
+  function handleBeforeFileLoad(e) {
+    if (e.target.files && e.target.files[0]) {
+      const imageFile = e.target.files[0];
+      // Perform any necessary actions with the image file before loading
+      console.log('Image file:', imageFile);
+      setPreview(URL.createObjectURL(imageFile));
+    }
+  }
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -62,12 +143,14 @@ const PersonalInfoTeachEdit = (props) => {
     setImage(event.target.files[0]);
   };
 
+  const requestData = new FormData();
+
   function handleUpdate() {
     const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
     requestData.append('first_name', formData.first_name);
     requestData.append('last_name', formData.last_name);
     requestData.append('email', formData.email);
@@ -92,8 +175,6 @@ const PersonalInfoTeachEdit = (props) => {
         setRegistrationStatus(`error: ${error.message}`);
       });
   };
-
-  const requestData = new FormData();
 
   function handleDelete() {
     setIsDeleteClicked(true);
@@ -161,49 +242,46 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t">
-          <input
-            type="text"
-            placeholder="Номер Телефона"
-            name="teacher.phone"
-            className="form--input"
-            value={formData.teacher.phone}
-            onChange={handleChange}
-          />
+            <input
+              type="text"
+              placeholder="Номер Телефона"
+              name="teacher.phone"
+              className="form--input"
+              value={formData.teacher.phone}
+              onChange={handleChange}
+            />
           </div>
           <div className="fourth-row_t">
-          <input
-            type="email"
-            placeholder="Email адрес"
-            name="email"
-            className="form--input"
-            value={formData.email}
-            onChange={handleChange}
-          />
+            <input
+              type="email"
+              placeholder="Email адрес"
+              name="email"
+              className="form--input"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
           <div className="fourth-row_t">
-          <input
-            type="email"
-            placeholder="Telegram"
-            name="telegram"
-            className="form--input"
-            value={formData.telegram}
-            onChange={handleChange}
-          />
+            <input
+              type="email"
+              placeholder="Telegram"
+              name="telegram"
+              className="form--input"
+              value={formData.telegram}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="second-col_t">
-          <div className="upload1">
-              <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossOrigin="anonymous"/>
-              <div className="round">
-              <input
-                      accept='image/*'
-                      type="file"
-                      name="image"
-                      onChange={handleImageChange}
-                    />
-              <Sprite id='camera' />
-              </div>
-            </div>
+          <Avatar
+            width={390}
+            height={295}
+            onCrop={onCrop}
+            onClose={onClose}
+            onBeforeFileLoad={onBeforeFileLoad}
+            src={src}
+          />
+          <button onClick={onSave}>Save Avatar</button>
           <br />
           <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить Фото</button>
           <br />
@@ -212,17 +290,17 @@ const PersonalInfoTeachEdit = (props) => {
       </div>
 
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
-          <Modal.Body>
-            {registrationStatus && registrationStatus.startsWith('error') ? (
-              <p className="error-message">{registrationStatus.substr(7)}</p>
-            ) : registrationStatus && registrationStatus.startsWith('success') ? (
-              <p className="success-message">{registrationStatus.substr(9)}</p>
-            ) : null}
-            <Button variant="secondary" onClick={handleModalClose} className="close-button">
-              Закрыть
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
     </>
   )
 }

@@ -12,29 +12,32 @@ const AddCourseTeach = (props) => {
     navigate(URL)
   }
 
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        price: '',
-        number_of_students: ''
-    });
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    price: '',
+    number_of_students: '',
+    language: '',
+    student_level: '',
+  });
 
-    const handleChange = event => {
-        const { name, value, type, checked } = event.target;
-        setFormData(prevFormData => ({
-          ...prevFormData,
-          [name]: type === 'checkbox' ? checked : value
-        }));
-      };
+  const handleChange = event => {
+    const { name, value, type, checked } = event.target;
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };  
  
-  
       function handleSubmit(event){
         event.preventDefault();
         axiosInstance.post('create/course/',{
           name: formData.name,
           description: formData.description,
           price: formData.price,
-          number_of_students: formData.number_of_students
+          number_of_students: formData.number_of_students,
+          student_level: formData.student_level,
+          language: formData.language
         }).then((response)=>{
             console.log('New id:', response.data.id);
             routeHandler(`/subjectsByHoursEdit/${response.data.id}`);
@@ -64,6 +67,22 @@ const AddCourseTeach = (props) => {
             className="second-row_e"
             value={formData.number_of_students}
             onChange={handleChange} />
+
+          <select className='course_selector' name="language" value={formData.language} onChange={handleChange}>
+            <option value="">Язык преподавания</option>
+            <option value="казахский">Казахский</option>
+            <option value="русский">Русский</option>
+            <option value="английский">Английский</option>
+          </select>
+
+          <select className='course_selector' name="student_level" value={formData.student_level} onChange={handleChange}>
+            <option value="">Уровень курса</option>
+            <option value="1-4">1-4 класс</option>
+            <option value="5-9">5-9 класс</option>
+            <option value="10-11">10-11 класс</option>
+            <option value="1 курс">1 курс</option>
+          </select>
+
       </div>
       <div className="second-col">
         <div className="first-row">Описание</div>
