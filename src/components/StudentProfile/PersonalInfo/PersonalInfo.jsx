@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import userpic from '../../../images/blue_user.png'
 import './PersonalInfo.scss'
 

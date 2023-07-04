@@ -5,8 +5,6 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../images/user-286.png'
-import Sprite from '../Sprite/Sprite';
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +17,8 @@ const SignUpTeacher = () => {
     teacher: {
       phone: ''
     },
-    password: '',
-    password2: '',
+    password: '', // ??
+    password2: '', // ??
     telegram: '',
     experience: '',
     image: null
@@ -35,7 +33,8 @@ const SignUpTeacher = () => {
   }
 
 
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
+
   const handleChange = event => {
     const { name, value } = event.target;
     setFormData(prevFormData => ({
@@ -44,9 +43,9 @@ const SignUpTeacher = () => {
     }));
   };
 
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+  // const handleImageChange = (event) => {
+  //   setImage(event.target.files[0]);
+  // };
 
   console.log('data', formData)
 
@@ -56,19 +55,19 @@ const SignUpTeacher = () => {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          accept: 'application/json',
-        }
-      }
-      if (image != null) {
-        formData.image = image
-      }
+      // const config = {               ?????????
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //     accept: 'application/json',
+      //   }
+      // }
+      // if (image != null) {
+      //   formData.image = image
+      // }                              ???????
 
-      console.log('data', formData)
+      console.log('data', formData)   // config ???????
       axiosInstance
-        .post('signup/teacher/', formData, config)
+        .post('signup/teacher/', formData)
         .then(() => {
           setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
           // handle success

@@ -281,7 +281,7 @@ const PersonalInfoTeachEdit = (props) => {
         <div className="second-col_t">
 
           <div className="upload">
-            <img src={props.image ? props.image : userpic} alt="" className='teach-puple-img' />
+            <img src={props.image ? props.image : userpic} alt="image was not found" className='teach-puple-img' crossOrigin="anonymous" />
             <div className="round">
               <div onClick={handleOpenModal} type='button' className='photoButt'>
                 <Sprite id='camera' />

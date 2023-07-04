@@ -323,3 +323,40 @@ input[type=file]::-webkit-file-upload-button{
   margin-bottom: 65px;
   margin-right: 50px;
 }
+
+.close-button-photo{
+  width: 100px;
+  height: 45px;
+  padding: 0.8rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  color: #11174b;
+  background-color: rgba(255, 255, 255, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  margin: 15px
+}
+
+.second-row_t_c_photo{
+  width: 150px;
+  height: 45px;
+  padding: 0.8rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  color: #11174b;
+  background-color: rgba(255, 255, 255, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  margin: 15px
+}
+
+.photoButt{
+  height: 120px;
+  cursor: pointer;
+}

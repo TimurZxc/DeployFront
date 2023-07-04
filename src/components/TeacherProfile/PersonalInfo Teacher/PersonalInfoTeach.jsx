@@ -1,8 +1,8 @@
 import './PersonalInfoTeach.css'
-import React from 'react'
 import userpic from '../../../images/blue_user.png'
-const PersonalInfoTeach = (props) => {
 
+
+const PersonalInfoTeach = (props) => {
 
   return (
     <div className="body_t">

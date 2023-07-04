@@ -1,11 +1,13 @@
 import axiosInstance from '../../../axios';
 import './PersonalInfo.scss'
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
+import Avatar from 'react-avatar-edit';
+import axios from 'axios';
 
 const PersonalInfoEdit = (props) => {
 
@@ -24,21 +26,8 @@ const PersonalInfoEdit = (props) => {
       phone: props.phone,
     },
     telegram: props.telegram,
-    image_pr: props.image
+    image_pr: props.image // ???
   });
-
-  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
-
-  const [image, setImage] = useState(null)
-  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
-
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-  //   setFormData(prevFormData => ({
-  //     ...prevFormData,
-  //     [name]: value
-  //   }));
-  // };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -63,10 +52,96 @@ const PersonalInfoEdit = (props) => {
     }
   };
 
+  useEffect(() => {
+    async function getImage() {
+      try {
+        const response = await axios.get(preview, { responseType: 'blob', crossOrigin: 'anonymus' });
+        const file = new File([response.data], 'image.jpg', { type: 'image/jpeg' });
+        setSrc(URL.createObjectURL(file));
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+    getImage();
+  }, []);
+
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
+  const [image, setImage] = useState(null)
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+
+  const [preview, setPreview] = useState(props.image ? props.image : null);
+
+  const [src, setSrc] = useState(props.image);
+
+  const [croppedImage, setCroppedImage] = useState(null);
+
+  const [isModalOpen, setModalOpen] = useState(null);
+
+  function dataURLtoFile(dataURL, filename) {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
+  function onSave() {
+    const config = {
+      headers: {
+        'Content-Type': 'image/jpeg',
+      },
+    };
+
+  const onClose =()=> {
+    setPreview(null);
+    handleDelete()
+  }
+
+  const onCrop =(preview)=> {
+    setPreview(preview);
+  }
+
+  function onBeforeFileLoad(elem) {
+    if (elem.target.files[0].size > 5171680) {
+      alert('File is too big!');
+      elem.target.value = '';
+    }
+  }
+
+  const requestData = new FormData();
+  const file = dataURLtoFile(preview, 'image.png');
+  requestData.append('image', file);
+  console.log('Cropped image URL:', file);
+
+  axiosInstance.patch('/update/teacher/', requestData, config)
+    .then(() => {
+      setRegistrationStatus('success: Фото было успешно обновлено!');
+    })
+    .catch((error) => {
+      console.log('error', error);
+      setRegistrationStatus(`error: ${error.message}`);
+    });
+  window.location.reload(true)
+}
+
+  // const handleChange = event => {
+  //   const { name, value } = event.target;
+  //   setFormData(prevFormData => ({
+  //     ...prevFormData,
+  //     [name]: value
+  //   }));
+  // };
+
+
+  // const handleImageChange = (event) => {
+  //   setImage(event.target.files[0]);
+  // };
 
   const requestData = new FormData();
 
@@ -108,6 +183,19 @@ const PersonalInfoEdit = (props) => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  function handleDelete() {
+    setIsDeleteClicked(true);
+    setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
+  }
+
+  const handleModalClosePhoto = () => {
+    setModalOpen(null);
+  };
+
+  function handleOpenModal() {
+    setModalOpen(1);
+  }
 
 
   return (
@@ -190,17 +278,14 @@ const PersonalInfoEdit = (props) => {
           <div className="upload1">
             <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossOrigin="anonymous" />
             <div className="round">
-              <input
-                accept='image/*'
-                type="file"
-                name="image"
-                onChange={handleImageChange}
-              />
+            <div onClick={handleOpenModal} type='button' className='photoButt'>
               <Sprite id='camera' className='icon' />
+              </div>
             </div>
           </div>
-          <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить фото</button>
-          <button onClick={() => { handleUpdate() }} className="second-row_t_c">Сохранить</button>
+          <br />
+          {/* <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить фото</button> */}
+          <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>
       </div>
 
@@ -215,6 +300,25 @@ const PersonalInfoEdit = (props) => {
             Закрыть
           </Button>
         </Modal.Body>
+      </Modal>
+
+      <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
+        <Avatar
+          width={'fit-content'}
+          height={350}
+          minWidth={350}
+          onCrop={onCrop}
+          onClose={onClose}
+          onBeforeFileLoad={onBeforeFileLoad}
+          src={src}
+          cropRadius={130}
+          labelStyle={{ 'width': 350 }}
+          label={"Загрузите фотографию"}
+        />
+        <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
+        <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
+          Закрыть
+        </Button>
       </Modal>
 
     </>

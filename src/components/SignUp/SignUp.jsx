@@ -7,8 +7,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import userpic from '../../images/user-286.png'
-import Sprite from '../Sprite/Sprite';
+// import userpic from '../../images/user-286.png'
+// import Sprite from '../Sprite/Sprite';
 // import { equal } from 'assert';
 
 
@@ -34,7 +34,7 @@ const SignUp = () => {
     navigate(URL)
   }
 
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   // const handleChange = event => {
   //   const { name, value } = event.target;
 
@@ -67,28 +67,29 @@ const SignUp = () => {
   };
 
 
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+  // const handleImageChange = (event) => {
+  //   setImage(event.target.files[0]);
+  // };
+
   const handleSubmit = event => {
     event.preventDefault();
     if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          accept: 'application/json',
-        }
-      }
-      if (image != null) {
-        formData.image = image
-      }
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //     accept: 'application/json',
+      //   }
+      // }
+      // if (image != null) {
+      //   formData.image = image
+      // }
 
-      console.log('formData', formData)
+      console.log('formData', formData) // config ???????
 
-      axiosInstance.post('signup/student/', formData, config).then(() => {
+      axiosInstance.post('signup/student/', formData).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {
         setRegistrationStatus(error.message);
@@ -96,7 +97,7 @@ const SignUp = () => {
     }
   };
 
-  console.log('img', formData.image)
+  // console.log('img', formData.image)
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -117,7 +118,7 @@ const SignUp = () => {
           </button>
         </div>
 
-        <div className="upload">
+        {/* <div className="upload">
           <img className='teach-puple-img' src={formData.image ? formData.image : userpic} alt="" />
           <div className="round">
             <input
@@ -128,7 +129,7 @@ const SignUp = () => {
             />
             <Sprite id='camera' />
           </div>
-        </div>
+        </div> */}
 
         {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
         Регистрация образ. центра
