@@ -42,11 +42,13 @@ const Courses = () => {
         <h1 className="main-title">
           Курсы
         </h1>
-        <select name="language" id="language" onChange={(e) => setLanguage(e.target.value)}>
-          <option value="Русский">Русский</option>
-          <option value="Казахский">Казахский</option>
-          <option value="Английский">Английский</option>
-        </select>
+          <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
+          <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
+            <option value="" className='option' disabled selected>Выбор языка</option>
+            <option value="Русский">Русский</option>
+            <option value="Казахский">Казахский</option>
+            <option value="Английский">Английский</option>
+          </select>
         <div className="cards-block">
           <div className="card-row">
             {cardElements}
