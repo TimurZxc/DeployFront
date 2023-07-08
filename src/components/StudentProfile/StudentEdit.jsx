@@ -3,6 +3,8 @@ import './StudentProfile.scss'
 import Sidebar from '../Sidebar/Sidebar'
 import { useNavigate} from "react-router-dom";
 import Dashboard from '../Dashboard/Dashboard'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import React from 'react'
 import PersonalInfoEdit from './PersonalInfo/PersInfoEdit'
 import axiosInstance from '../../axios'
