@@ -30,7 +30,7 @@ const Teachers1 = () => {
 
 
   const cardElements = cards.map(card => (
-    card?.language === language &&
+    card?.teacher?.courses?.language === language &&
     <TeacherCard
       key={card?.teacher?.id}
       src={card?.image}
