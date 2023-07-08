@@ -10,6 +10,7 @@ import axiosInstance from '../../axios'
 const StudentEdit = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const navigate = useNavigate();
   const routeHandler = (URL) => {
@@ -40,6 +41,10 @@ const StudentEdit = () => {
     });
   }
 
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
+
   const CurrentUser = mainStudList.map(data => {
     return <PersonalInfoEdit
       key={data?.id}
@@ -64,6 +69,19 @@ const StudentEdit = () => {
           <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
         </div>
       </div>
+          {/* Registration status modal */}
+          <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
     </div>
   )
 }
