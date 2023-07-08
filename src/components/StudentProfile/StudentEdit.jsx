@@ -1,7 +1,7 @@
 import Search from '../Search/Search'
 import './StudentProfile.scss'
 import Sidebar from '../Sidebar/Sidebar'
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Dashboard from '../Dashboard/Dashboard'
 import React from 'react'
 import PersonalInfoEdit from './PersonalInfo/PersInfoEdit'
@@ -10,7 +10,7 @@ import axiosInstance from '../../axios'
 const StudentEdit = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
-  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+  const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
 
   const navigate = useNavigate();
   const routeHandler = (URL) => {
