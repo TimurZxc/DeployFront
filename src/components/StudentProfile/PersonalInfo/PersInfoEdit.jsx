@@ -66,6 +66,22 @@ const PersonalInfoEdit = (props) => {
     getImage();
   }, []);
 
+  function onClose() {
+    setPreview(null);
+    handleDelete()
+  }
+
+  const onCrop =(preview)=> {
+    setPreview(preview);
+  }
+
+  function onBeforeFileLoad(elem) {
+    if (elem.target.files[0].size > 5171680) {
+      alert('File is too big!');
+      elem.target.value = '';
+    }
+  }
+
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [image, setImage] = useState(null)
@@ -97,22 +113,6 @@ const PersonalInfoEdit = (props) => {
         'Content-Type': 'image/jpeg',
       },
     };
-
-  const onClose =()=> {
-    setPreview(null);
-    handleDelete()
-  }
-
-  const onCrop =(preview)=> {
-    setPreview(preview);
-  }
-
-  function onBeforeFileLoad(elem) {
-    if (elem.target.files[0].size > 5171680) {
-      alert('File is too big!');
-      elem.target.value = '';
-    }
-  }
 
   const requestData = new FormData();
   const file = dataURLtoFile(preview, 'image.png');
