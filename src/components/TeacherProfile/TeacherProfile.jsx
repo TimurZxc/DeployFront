@@ -34,6 +34,8 @@ const TeacherProfile = (props) => {
       descriptionription={course.description}
       price={course.price}
       number_of_students={course.number_of_students}
+      student_level={course.student_level}
+      language={course.language}
       {...course} />
   })
 
