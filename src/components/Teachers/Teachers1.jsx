@@ -27,7 +27,8 @@ const Teachers1 = () => {
     getUsers()
   }, [language])
 
-
+console.log('language t', cards?.teacher?.courses?.language)
+console.log('language', language)
 
   const cardElements = cards.map(card => (
     card?.teacher?.courses?.language === language &&
