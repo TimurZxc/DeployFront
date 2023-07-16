@@ -24,16 +24,18 @@ const Teachers1 = () => {
   }
 
   const cardElements = cards.map(card => (
-    card?.teacher?.courses[0]?.language === language &&
-    <TeacherCard
-      key={card?.teacher?.id}
-      src={card?.image}
-      text={card.first_name + ' ' + card.last_name}
-      subject={card?.teacher?.courses[0]?.name}
-      price={card?.teacher?.courses[0]?.price}
-      url={`/marketTeach/${card?.teacher?.id}`}
-      buttonText={"Подробнее"}
+    card?.teacher?.courses.map(course => (
+      course.language === language &&
+      <TeacherCard
+        key={card?.teacher?.id}
+        src={card?.image}
+        text={card.first_name + ' ' + card.last_name}
+        subject={course?.name}
+        price={course?.price}
+        url={`/marketTeach/${card?.teacher?.id}`}
+        buttonText={"Подробнее"}
     />
+    ))
   ))
 
 
