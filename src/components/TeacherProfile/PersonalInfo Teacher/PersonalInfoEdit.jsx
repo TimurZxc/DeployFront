@@ -92,6 +92,7 @@ const PersonalInfoTeachEdit = (props) => {
     const config = {
       headers: {
         'Content-Type': 'image/jpeg',
+        'Cross-Origin-Resource-Policy': '*'
       },
     };
 
