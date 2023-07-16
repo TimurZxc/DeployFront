@@ -11,7 +11,7 @@ import TeacherCard from './TeacherCard'
 const Teachers1 = () => {
   const [cards, setCards] = React.useState([])
 
-  const [language, setLanguage] = useState('Русский')
+  // const [language, setLanguage] = useState('Русский')
 
   const getUsers = async () => {
     try {
@@ -25,7 +25,7 @@ const Teachers1 = () => {
   
   useEffect(() => {
     getUsers()
-  }, [language])
+  }) // , [language]
 
 
 
