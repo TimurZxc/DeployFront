@@ -27,7 +27,7 @@ const Teachers1 = () => {
     getUsers()
   }, [language])
 
-console.log('language t', cards)
+console.log('language t', cards?.teacher)
 console.log('language', language)
 
   const cardElements = cards.map(card => (
