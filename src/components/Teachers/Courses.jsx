@@ -7,7 +7,7 @@ import CourseInfo from '../MainpageCard/CourseInfo'
 const Courses = () => {
   const [cards, setCards] = useState([])
 
-  const [language, setLanguage] = useState('Русский')
+  const [language, setLanguage] = useState('русский')
 
   const getCourses = async () => {
     try {
@@ -45,9 +45,9 @@ const Courses = () => {
           <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
           <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
             <option value="" className='option' disabled selected>Выбор языка</option>
-            <option value="Русский">Русский</option>
-            <option value="Казахский">Казахский</option>
-            <option value="Английский">Английский</option>
+            <option value="Русский">русский</option>
+            <option value="Казахский">казахский</option>
+            <option value="Английский">английский</option>
           </select>
         <div className="cards-block">
           <div className="card-row">
