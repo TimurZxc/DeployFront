@@ -66,7 +66,7 @@ const Sidebar = () => {
                   : `navigation-item`
               }
             >
-              <Sprite id="learn" />
+              <Sprite id="book" />
               <h1>Курсы</h1>
             </div>
             {user ? <div></div> : <div

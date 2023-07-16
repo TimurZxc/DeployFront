@@ -22,13 +22,6 @@ const Teachers1 = () => {
       console.log(error)
     }
   }
-  
-  useEffect(() => {
-    getUsers()
-  }, [language])
-
-console.log('language t', cards?.teacher)
-console.log('language', language)
 
   const cardElements = cards.map(card => (
     card?.teacher?.courses?.language === language &&
@@ -43,6 +36,15 @@ console.log('language', language)
        />
   ))
 
+
+console.log('language t', cards)
+console.log('language t', cards?.teacher)
+console.log('language', language)
+
+  
+  useEffect(() => {
+    getUsers()
+  }, [language])
 
 
   return (
