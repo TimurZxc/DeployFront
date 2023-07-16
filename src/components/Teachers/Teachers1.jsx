@@ -24,24 +24,24 @@ const Teachers1 = () => {
   }
 
   const cardElements = cards.map(card => (
-    card?.teacher?.courses?.language === language &&
+    card?.teacher?.courses[0]?.language === language &&
     <TeacherCard
       key={card?.teacher?.id}
       src={card?.image}
       text={card.first_name + ' ' + card.last_name}
-      subject={card?.teacher?.courses?.name}
-      price={card?.teacher?.courses?.price}
-      url ={`/marketTeach/${card?.teacher?.id}`}
+      subject={card?.teacher?.courses[0]?.name}
+      price={card?.teacher?.courses[0]?.price}
+      url={`/marketTeach/${card?.teacher?.id}`}
       buttonText={"Подробнее"}
-       />
+    />
   ))
 
 
-console.log('language t', cards)
-console.log('language t', cards?.teacher)
-console.log('language', language)
+  console.log('language t', cards)
+  console.log('language t', cards?.teacher)
+  console.log('language', language)
 
-  
+
   useEffect(() => {
     getUsers()
   }, [language])
@@ -49,23 +49,23 @@ console.log('language', language)
 
   return (
     <div className="main">
-      <Sidebar/>
+      <Sidebar />
       <div className="main-wrapper">
-      <h1 className="main-title">
-        Учителя
-      </h1>
-      <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
-          <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
-            <option value="" className='option' disabled selected>Выбор языка</option>
-            <option value="русский">Русский</option>
-            <option value="казахский">Казахский</option>
-            <option value="английский">Английский</option>
-          </select>
-      <div className="cards-block">
-        <div className="card-row">
-          {cardElements}
+        <h1 className="main-title">
+          Учителя
+        </h1>
+        <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
+        <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
+          <option value="" className='option' disabled selected>Выбор языка</option>
+          <option value="русский">Русский</option>
+          <option value="казахский">Казахский</option>
+          <option value="английский">Английский</option>
+        </select>
+        <div className="cards-block">
+          <div className="card-row">
+            {cardElements}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   )
