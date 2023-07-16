@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 			? 'Bearer ' + localStorage.getItem('access_token')
 			: null,
 		'Content-Type': 'multipart/form-data',
-		'Access-Control-Allow-Origin': '*',
 		accept: 'application/json',
 	},
 });
