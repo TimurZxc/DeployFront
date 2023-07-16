@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 
 const SubjComponent = (props) => {
 
-  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+  const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
 
   const paramss = useParams();
 
