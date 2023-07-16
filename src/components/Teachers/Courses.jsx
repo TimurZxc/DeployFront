@@ -47,9 +47,9 @@ const Courses = () => {
           <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
           <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
             <option value="" className='option' disabled selected>Выбор языка</option>
-            <option value="Русский">русский</option>
-            <option value="Казахский">казахский</option>
-            <option value="Английский">английский</option>
+            <option value="русский">Русский</option>
+            <option value="казахский">Казахский</option>
+            <option value="английский">Английский</option>
           </select>
         <div className="cards-block">
           <div className="card-row">
