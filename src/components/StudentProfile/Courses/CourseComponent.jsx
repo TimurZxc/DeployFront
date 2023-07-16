@@ -9,7 +9,7 @@ const CourseComponent = (props) => {
         <div className="second-row">{props.course_name}</div>
       </div>
       <div className="second-col">
-        <div className="first-row">Дата регистрации на курс</div>
+        <div className="first-row">Дата проведения урока</div>
         <div className="second-row">{props.date}</div>
       </div>
       <div className="third-col">

@@ -3,7 +3,6 @@ import '../../teacherProfile.css'
 
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
-
 import SubjComponent from './SubjectsComponent'
 import axiosInstance from '../../../../axios'
 import Sidebar from '../../../Sidebar/Sidebar'
@@ -52,7 +51,6 @@ const SubjectPage = (props) => {
       <Sidebar/>
       <div className='settings-block_t'>
         <h1 className="profile-title_t">Выберите удобное время урока</h1>
-        {isShown && <ContactInfoTeach/>}
         <section className='course--list'>{LessonsListArr}</section>
         {/* <div onClick={() => routeHandler('/editTeach')} className="edit">Редактировать профиль</div> */}
     </div>
