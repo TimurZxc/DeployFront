@@ -15,7 +15,9 @@ const EditCoursesTeach = (props) => {
       name: props.name,
       description: props.description,
       price: props.price,
-      number_of_students: props.number_of_students
+      number_of_students: props.number_of_students,
+      language: props.language,
+      student_level: props.student_level,
     });
   
 
@@ -61,6 +63,15 @@ const EditCoursesTeach = (props) => {
             className="second-row_e"
             value={formData.price}
             onChange={handleChange} />
+
+            <div className="first-row">Язык преподавания</div>
+          
+            <select className='course_selector' name="language" value={formData.language} onChange={handleChange}>
+            <option value="">Язык</option>
+            <option value="казахский">Казахский</option>
+            <option value="русский">Русский</option>
+            <option value="английский">Английский</option>
+          </select>
       </div>
       <div className="second-col">
         <div className="first-row">Описание</div>
@@ -79,6 +90,17 @@ const EditCoursesTeach = (props) => {
             className="second-row_e"
             value={formData.number_of_students}
             onChange={handleChange} />
+
+            <div className="first-row">Уровень обучения</div>
+
+            <select className='course_selector' name="student_level" value={formData.student_level} onChange={handleChange}>
+            <option value="">Уровень</option>
+            <option value="1-4">1-4 класс</option>
+            <option value="5-9">5-9 класс</option>
+            <option value="10-11">10-11 класс</option>
+            <option value="1 курс">1 курс</option>
+          </select>
+
       </div>
       <div className="third-col">
         <div className="first-row"></div>
