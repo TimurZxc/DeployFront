@@ -58,7 +58,7 @@
     }
   
   .courses-in-card {
-    width: 260px;
+    width: 240px;
     height: fit-content;
     display: flex;
     flex-direction: column;
