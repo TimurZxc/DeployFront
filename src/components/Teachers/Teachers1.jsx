@@ -11,7 +11,7 @@ import TeacherCard from './TeacherCard'
 const Teachers1 = () => {
   const [cards, setCards] = React.useState([])
 
-  // const [language, setLanguage] = useState('Русский')
+  const [language, setLanguage] = useState('русский')
 
   const getUsers = async () => {
     try {
@@ -25,12 +25,12 @@ const Teachers1 = () => {
   
   useEffect(() => {
     getUsers()
-  }) // , [language]
+  }, [language])
 
 
 
   const cardElements = cards.map(card => (
-    // card?.teacher?.courses?.language === language &&
+    card?.teacher?.courses?.language === language &&
     <TeacherCard
       key={card?.teacher?.id}
       src={card?.image}
@@ -51,13 +51,13 @@ const Teachers1 = () => {
       <h1 className="main-title">
         Учителя
       </h1>
-      {/* <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
+      <label className='select' htmlFor="slct">Выберите язык на котором хотите обучаться</label>
           <select name="language" id="slct" className='selector' onChange={(e) => setLanguage(e.target.value)}>
             <option value="" className='option' disabled selected>Выбор языка</option>
-            <option value="Русский">Русский</option>
-            <option value="Казахский">Казахский</option>
-            <option value="Английский">Английский</option>
-          </select> */}
+            <option value="русский">Русский</option>
+            <option value="казахский">Казахский</option>
+            <option value="английский">Английский</option>
+          </select>
       <div className="cards-block">
         <div className="card-row">
           {cardElements}
