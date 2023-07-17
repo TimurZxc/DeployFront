@@ -43,7 +43,7 @@ const SubjectPage = (props) => {
           setMainCourseList(response.data)
           console.log('lessons', response.data)
       })
-    }, [mainCourseList])
+    })
 
   
   return (
