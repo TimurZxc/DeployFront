@@ -3,6 +3,8 @@ import './CoursesTeach.css'
 import { useState } from 'react';
 import axiosInstance from '../../../axios';
 import { useNavigate } from 'react-router-dom'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const EditCoursesTeach = (props) => {
 
@@ -20,6 +22,8 @@ const EditCoursesTeach = (props) => {
       student_level: props.student_level,
     });
   
+    const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
 
     const handleChange = event => {
         const { name, value, type, checked } = event.target;
@@ -29,8 +33,6 @@ const EditCoursesTeach = (props) => {
         }));
       };
 
-      console.log(formData)
-
       function handleUpdate(id){
         axiosInstance.put(`/update/course/${id}`,{
           name: formData.name,
@@ -38,11 +40,23 @@ const EditCoursesTeach = (props) => {
           price: formData.price,
           number_of_students: formData.number_of_students
         })
+        setRegistrationStatus('success: Курс был успешно удален!')
+        .catch((error) => {
+          setRegistrationStatus(`error: ${error.message}`);
+        });
     };
 
     function handleDelete(id){
         axiosInstance.delete(`/delete/course/${id}`)
+        setRegistrationStatus('success: Курс был успешно удален!')
+        .catch((error) => {
+          setRegistrationStatus(`error: ${error.message}`);
+        });
       }
+
+      const handleModalClose = () => {
+        setRegistrationStatus(null);
+      };
 
   return (
     <div className="courses-body_t">
@@ -96,8 +110,8 @@ const EditCoursesTeach = (props) => {
             <select className='course_selector' name="student_level" value={formData.student_level} onChange={handleChange}>
             <option value="">Уровень</option>
             <option value="1-4">1-4 класс</option>
-            <option value="5-9">5-9 класс</option>
-            <option value="10-11">10-11 класс</option>
+            <option value="5-9">5-8 класс</option>
+            <option value="10-11">9-11 класс</option>
             <option value="1 курс">1 курс</option>
           </select>
 
@@ -109,6 +123,18 @@ const EditCoursesTeach = (props) => {
         <button  onClick={()=>{handleDelete(props.id)}} className="second-row_t_c">Удалить</button>
         <button  onClick={() => routeHandler(`/subjectsByHoursEdit/${props.course_id}`)} className="second-row_t_c">Список занятий</button>
       </div>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+          <Modal.Body>
+            {registrationStatus && registrationStatus.startsWith('error') ? (
+              <p className="error-message">{registrationStatus.substr(7)}</p>
+            ) : registrationStatus && registrationStatus.startsWith('success') ? (
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            ) : null}
+            <Button variant="secondary" onClick={handleModalClose} className="close-button">
+              Закрыть
+            </Button>
+          </Modal.Body>
+        </Modal>
     </div>
   )
 }
