@@ -70,7 +70,7 @@ const handleModalClose = () => {
         <div className="first-row">Дата Урока</div>
         <input
             type="date"
-            placeholder="Напишите в часах: 15:00"
+            placeholder="Год-Месяц-Число"
             name="date"
             className="second-row_e"
             onChange={handleChange} />
