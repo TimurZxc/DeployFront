@@ -46,7 +46,6 @@ const SubjectPageEdit = (props) => {
       axiosInstance.get('course/'+paramss.course_id+'/list-lessons').then((response)=>{
 
           setMainCourseList(response.data)
-          console.log('lessons', response.data)
       })
     }, [mainCourseList])
 
