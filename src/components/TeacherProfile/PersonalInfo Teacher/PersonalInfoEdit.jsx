@@ -91,8 +91,11 @@ const PersonalInfoTeachEdit = (props) => {
   function onSave() {
     const config = {
       headers: {
+        Authorization: localStorage.getItem('access_token')
+          ? 'Bearer ' + localStorage.getItem('access_token')
+          : null,
         'Content-Type': 'image/jpeg',
-        'Cross-Origin-Resource-Policy': '*'
+        accept: 'application/json'
       },
     };
 

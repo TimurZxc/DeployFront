@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// const baseURL = 'http://192.168.0.11:8000/api/';
+// const baseURL = 'http://192.168.1.90:8000/api/';
 const baseURL = 'https://teach2u.jcloud.kz/api/';
 
 const axiosInstance = axios.create({
