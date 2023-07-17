@@ -52,6 +52,7 @@ const EditCoursesTeach = (props) => {
         .catch((error) => {
           setRegistrationStatus(`error: ${error.message}`);
         });
+        window.location.reload(true)
       }
 
       const handleModalClose = () => {
