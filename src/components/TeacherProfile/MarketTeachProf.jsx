@@ -1,12 +1,11 @@
 import React from 'react'
-import Calendar from './Calendar/CalendarTeach'
 import ContactInfoTeach from './ContactInfo/ContactInfoTeach'
 import CoursesTeach from './Courses/CoursesTeach'
-import PersonalInfoTeach from './PersonalInfo Teacher/PersonalInfoTeach'
 import './teacherProfile.css'
 import Sidebar from '../Sidebar/Sidebar'
 import axiosInstance from '../../axios'
 import { useParams } from 'react-router-dom'
+import MarketPersInfo from './PersonalInfo Teacher/MarketPersInfo'
 
 
 const MarketTeachProf = () => {
@@ -54,7 +53,7 @@ const MarketTeachProf = () => {
     <div className="main">
       <Sidebar/>
       <div className='settings-block_t'>
-        <PersonalInfoTeach
+        <MarketPersInfo
           first_name={mainTeachList?.user?.first_name}
           last_name={mainTeachList?.user?.last_name}
           education={mainTeachList?.education}

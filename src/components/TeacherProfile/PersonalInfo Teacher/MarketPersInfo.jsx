@@ -2,7 +2,7 @@ import './PersonalInfoTeach.css'
 import userpic from '../../../images/blue_user.png'
 
 
-const PersonalInfoTeach = (props) => {
+const MarketPersInfo = (props) => {
 
   return (
     <div className="body_t">
@@ -30,11 +30,11 @@ const PersonalInfoTeach = (props) => {
         </div>
 
       <div className="second-col_t">
-        <img className='pers-img' src={props.image ? props.image : userpic} alt="Avatar" crossOrigin="anonymous"/>
+        <img className='pers-img' src={props.image ? `https://teach2u.jcloud.kz/${props.image}` : userpic} alt="Avatar" crossOrigin="anonymous"/>
       </div>
 
     </div>
   )
 }
 
-export default PersonalInfoTeach
+export default MarketPersInfo
