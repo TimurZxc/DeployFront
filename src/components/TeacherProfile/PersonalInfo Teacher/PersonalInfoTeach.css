@@ -172,7 +172,8 @@
     width: 93% !important;
     margin: 0;
     height: 80px;
-    padding-left: 25px;
+    padding: 10px;
+    margin-left: 25px;
 }
 
 .ShowContact {
