@@ -169,9 +169,9 @@
 }
 
 .form--input-area{
-    width: 100% !important;
+    width: 90% !important;
     margin: 0;
-    height: auto;
+    height: 70px;
 }
 
 .ShowContact {
