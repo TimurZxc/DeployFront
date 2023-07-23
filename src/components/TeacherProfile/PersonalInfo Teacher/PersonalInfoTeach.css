@@ -170,6 +170,8 @@
 
 .form--input-area{
     width: 100% !important;
+    margin: 0;
+    height: auto;
 }
 
 .ShowContact {
@@ -329,4 +331,8 @@ input[type=file]::-webkit-file-upload-button{
 .photoButt{
   height: 120px;
   cursor: pointer;
+}
+
+.area-text{
+  padding: 0 25px;
 }

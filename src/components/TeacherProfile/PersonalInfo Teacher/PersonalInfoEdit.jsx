@@ -252,13 +252,13 @@ const PersonalInfoTeachEdit = (props) => {
               value={text}
               onChange={handleChange}
               name="teacher.experience"
-              className="form--input"
+              className="form--input-area"
               // rows={4} // You can adjust the number of rows as per your requirement
               // cols={50} // You can adjust the number of columns as per your requirement
               maxLength={500} // Set the maximum character limit
             />
           </div>
-          <p>Осталось символов: {500 - text.length}</p>
+          <p className='area-text'>Осталось символов: {500 - text.length}</p>
           <div className="fourth-row_t_edit">
             <input
               type="text"
