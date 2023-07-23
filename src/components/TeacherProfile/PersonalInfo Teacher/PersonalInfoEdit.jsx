@@ -197,7 +197,7 @@ const PersonalInfoTeachEdit = (props) => {
   return (
     <>
       <div className="body_t">
-        <div className="first-col_t">
+        <div className="first-col_t_edit">
           <div className="first-row_t_edit">
             <input
               type="text"

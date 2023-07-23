@@ -19,6 +19,14 @@
         justify-content: space-between;
     }
 
+    .first-col_t_edit {
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+      width: 65%;
+      justify-content: space-between;
+  }
+
 .first-row_t {
     display: flex;
     width: 100%;
