@@ -19,7 +19,7 @@ const PersonalInfoTeach = (props) => {
           <div className="first_t">Образование</div>
           <div className="first_t_edu">{props.education}</div>
         </div>
-        <div className="fourth-row_t">
+        <div className="third-row_t">
           <div className="first_t">Опыт и достижения</div>
           <div className="first_t_edu">{props.experience}</div>
         </div>
