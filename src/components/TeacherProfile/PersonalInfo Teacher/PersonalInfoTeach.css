@@ -29,6 +29,14 @@
     border-radius: 23px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.first-row_t_edit {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
     .first_t {
         font-weight: 500;
         font-size: 25px;
@@ -62,6 +70,12 @@
     background-color: #33a2da70;
     border-radius: 23px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.second-row_t_edit{
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 0;
 }
 
 .second-row_t_c_photo{
@@ -107,7 +121,11 @@
     padding: 3%;
 }
 
-
+.third-row_t_edit {
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 0;
+}
 
 .fourth-row_t {
     justify-content: space-between;
@@ -119,6 +137,11 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.fourth-row_t_edit {
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 0;
+}
 
 .img_t {
     width: 220px !important;

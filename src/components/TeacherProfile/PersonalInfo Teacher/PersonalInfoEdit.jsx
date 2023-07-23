@@ -198,7 +198,7 @@ const PersonalInfoTeachEdit = (props) => {
     <>
       <div className="body_t">
         <div className="first-col_t">
-          <div className="first-row_t">
+          <div className="first-row_t_edit">
             <input
               type="text"
               placeholder="Имя"
@@ -208,7 +208,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="second-row_t">
+          <div className="second-row_t_edit">
             <input
               type="text"
               placeholder="Фамилия"
@@ -218,9 +218,9 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="third-row_t">
+          <div className="third-row_t_edit">
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type="date"
               placeholder="Возраст"
@@ -230,7 +230,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type='text'
               placeholder="ВУЗ, Специальность, год окончания"
@@ -240,7 +240,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type="text"
               placeholder="Опыт и достижения"
@@ -250,7 +250,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type="text"
               placeholder="Номер Телефона"
@@ -260,7 +260,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type="email"
               placeholder="Email адрес"
@@ -270,7 +270,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row_t">
+          <div className="fourth-row_t_edit">
             <input
               type="email"
               placeholder="Telegram"
