@@ -24,6 +24,7 @@
     width: 100%;
     justify-content: space-between;
     margin-bottom: 5px;
+    padding-right: 25px;
 }
     .first_t {
         font-weight: 500;
@@ -37,7 +38,7 @@
         font-weight: 400;
         font-size: 23px;
         letter-spacing: 0.03em;
-        text-align: center !important;
+        text-align: center;
         color: #11174B;
     }
 
@@ -54,6 +55,7 @@
     justify-content: space-between;
     display: flex;
     margin-bottom: 5px;
+    padding-right: 25px;
 }
 
 .second-row_t_c_photo{
@@ -101,6 +103,7 @@
     justify-content: space-between;
     display: flex;
     margin-bottom: 0;
+    padding-right: 25px;
 }
 
 
