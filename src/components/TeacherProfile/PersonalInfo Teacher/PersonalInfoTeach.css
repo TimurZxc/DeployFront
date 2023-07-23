@@ -100,7 +100,7 @@
 .fourth-row_t {
     justify-content: space-between;
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
 
