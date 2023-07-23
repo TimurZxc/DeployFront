@@ -119,6 +119,11 @@ const PersonalInfoTeachEdit = (props) => {
   const handleChange = event => {
     const { name, value } = event.target;
 
+    const inputText = event.target.value;
+    if (inputText.length <= 500) {
+      setText(inputText);
+    }
+
     // Split the name into nested keys
     const nameParts = name.split('.');
 
@@ -193,6 +198,8 @@ const PersonalInfoTeachEdit = (props) => {
     setModalOpen(1);
   }
 
+  const [text, setText] = useState(formData.teacher.experience);
+
 
   return (
     <>
@@ -241,14 +248,24 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t_edit">
-            <input
+            {/* <input
               type="text"
               placeholder="Опыт и достижения"
               name="teacher.experience"
               className="form--input"
               value={formData.teacher.experience}
               onChange={handleChange}
+            /> */}
+
+            <textarea
+              value={text}
+              onChange={handleChange}
+              name="teacher.experience"
+              rows={4} // You can adjust the number of rows as per your requirement
+              cols={50} // You can adjust the number of columns as per your requirement
+              maxLength={500} // Set the maximum character limit
             />
+            <p>Characters left: {500 - text.length}</p>
           </div>
           <div className="fourth-row_t_edit">
             <input
