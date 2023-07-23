@@ -119,9 +119,14 @@ const PersonalInfoTeachEdit = (props) => {
   const handleChange = event => {
     const { name, value } = event.target;
 
-    const inputText = event.target.value;
-    if (inputText.length <= 500) {
-      setText(inputText);
+    const inputTextEdu = event.target.value;
+    if (inputTextEdu.length <= 500) {
+      setTextEdu(inputTextEdu);
+    }
+
+    const inputTextExp = event.target.value;
+    if (inputTextExp.length <= 500) {
+      setTextExp(inputTextExp);
     }
 
     // Split the name into nested keys
@@ -198,7 +203,9 @@ const PersonalInfoTeachEdit = (props) => {
     setModalOpen(1);
   }
 
-  const [text, setText] = useState(formData.teacher.experience);
+  const [textEdu, setTextEdu] = useState(formData.teacher.education);
+
+  const [textExp, setTextExp] = useState(formData.teacher.experience);
 
 
   return (
@@ -246,10 +253,21 @@ const PersonalInfoTeachEdit = (props) => {
               value={formData.teacher.education}
               onChange={handleChange}
             />
+
+            <textarea
+              value={textEdu}
+              onChange={handleChange}
+              name="teacher.education"
+              className="form--input-area"
+              // rows={4} // You can adjust the number of rows as per your requirement
+              // cols={50} // You can adjust the number of columns as per your requirement
+              maxLength={500} // Set the maximum character limit
+            />
           </div>
+          <p className='area-text'>Осталось символов: {500 - textEdu.length}</p>
           <div className="fourth-row_t_edit">
             <textarea
-              value={text}
+              value={textExp}
               onChange={handleChange}
               name="teacher.experience"
               className="form--input-area"
@@ -258,7 +276,7 @@ const PersonalInfoTeachEdit = (props) => {
               maxLength={500} // Set the maximum character limit
             />
           </div>
-          <p className='area-text'>Осталось символов: {500 - text.length}</p>
+          <p className='area-text'>Осталось символов: {500 - textExp.length}</p>
           <div className="fourth-row_t_edit">
             <input
               type="text"

@@ -172,7 +172,7 @@
     width: 93% !important;
     margin: 0;
     height: 80px;
-    padding: 10px;
+    padding: 10px 10px 10px 10px !important;
     margin-left: 25px;
 }
 
@@ -336,5 +336,5 @@ input[type=file]::-webkit-file-upload-button{
 }
 
 .area-text{
-  padding: 0 25px;
+  padding: 0 30px;
 }
