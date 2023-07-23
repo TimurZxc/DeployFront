@@ -24,7 +24,7 @@
     width: 100%;
     justify-content: space-between;
     margin-bottom: 5px;
-    padding-right: 50%;
+    padding-right: 35%;
 }
     .first_t {
         font-weight: 500;
@@ -40,6 +40,9 @@
         letter-spacing: 0.03em;
         text-align: center;
         color: #11174B;
+        background-color: #33a2da70;
+        border-radius: 23px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     .second_t {
@@ -55,7 +58,7 @@
     justify-content: space-between;
     display: flex;
     margin-bottom: 5px;
-    padding-right: 25px;
+    padding-right: 35%;
 }
 
 .second-row_t_c_photo{
@@ -103,7 +106,7 @@
     justify-content: space-between;
     display: flex;
     margin-bottom: 0;
-    padding-right: 25px;
+    padding-right: 35%;
 }
 
 
