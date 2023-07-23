@@ -6,6 +6,8 @@ import PersonalInfoTeachEdit from './PersonalInfo Teacher/PersonalInfoEdit'
 import EditCoursesTeach from './Courses/EditCourses'
 import AddCourseTeach from './Courses/AddCourse'
 import axiosInstance from '../../axios'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 const EditTeacherProfile = (props) => {
@@ -31,6 +33,8 @@ const EditTeacherProfile = (props) => {
   const [mainCourseList, setMainCourseList] = React.useState([])
 
   const [mainTeachList, setMainTeachList] = React.useState([])
+
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const CourseListArr = mainCourseList.map(course => {
     return <EditCoursesTeach
@@ -93,6 +97,10 @@ const EditTeacherProfile = (props) => {
 
   }, [mainTeachList]);
 
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
+
 
   return (
     <div className="main">
@@ -105,6 +113,20 @@ const EditTeacherProfile = (props) => {
         <div className="edit" onClick={toggleShown}>Добавить курс</div>
         <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
       </div>
+
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+
     </div>
   )
 }
