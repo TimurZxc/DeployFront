@@ -248,25 +248,17 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t_edit">
-            {/* <input
-              type="text"
-              placeholder="Опыт и достижения"
-              name="teacher.experience"
-              className="form--input"
-              value={formData.teacher.experience}
-              onChange={handleChange}
-            /> */}
-
             <textarea
               value={text}
               onChange={handleChange}
               name="teacher.experience"
-              rows={4} // You can adjust the number of rows as per your requirement
-              cols={50} // You can adjust the number of columns as per your requirement
+              className="form--input"
+              // rows={4} // You can adjust the number of rows as per your requirement
+              // cols={50} // You can adjust the number of columns as per your requirement
               maxLength={500} // Set the maximum character limit
             />
-            <p>Characters left: {500 - text.length}</p>
           </div>
+          <p>Осталось символов: {500 - text.length}</p>
           <div className="fourth-row_t_edit">
             <input
               type="text"
