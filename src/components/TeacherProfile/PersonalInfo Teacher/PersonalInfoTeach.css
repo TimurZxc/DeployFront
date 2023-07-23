@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         gap: 18px;
-        width: 65%;
+        width: 70%;
         justify-content: space-between;
     }
 
@@ -30,7 +30,7 @@
         font-size: 25px;
         letter-spacing: 0.03em;
         color: rgba(17, 23, 75, 0.5);
-        margin-right: 50px;
+        margin-right: 65px;
     }
 
     .first_t_edu{
@@ -272,11 +272,11 @@ input[type=file]::-webkit-file-upload-button{
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   margin-bottom: 15px;
-  margin-right: 25px;
+  margin-right: 15px;
 }
 
 .second-col_t{
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .photoButt{
