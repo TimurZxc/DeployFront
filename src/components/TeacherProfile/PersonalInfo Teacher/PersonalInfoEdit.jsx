@@ -245,14 +245,14 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t_edit">
-            <input
+            {/* <input
               type='text'
               placeholder="ВУЗ, Специальность, год окончания"
               name="teacher.education"
               className="form--input"
               value={formData.teacher.education}
               onChange={handleChange}
-            />
+            /> */}
 
             <textarea
               value={textEdu}
