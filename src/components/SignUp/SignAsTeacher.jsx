@@ -130,8 +130,8 @@ const SignUpTeacher = () => {
             onChange={handleChange}
           />
         </div>
-        
-        <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников) *</p>
+
+        <p className='exp-label'>Расскажите о вашем образование *</p>
         <div className="input-row">
           <textarea
             value={textEdu}
