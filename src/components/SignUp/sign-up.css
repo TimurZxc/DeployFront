@@ -337,10 +337,3 @@ input[type=file]::-webkit-file-upload-button{
   margin: 10px 0px;
 }
 
-.form--label{
-  padding-left: 60px;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  margin-left: 60px;
-}
-

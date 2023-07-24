@@ -130,9 +130,8 @@ const SignUpTeacher = () => {
             onChange={handleChange}
           />
         </div>
-        <label htmlFor="education" className="form--label">
-            Расскажите о вашем образование *
-        </label>
+        
+        <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников) *</p>
         <div className="input-row">
           <textarea
             value={textEdu}
