@@ -129,7 +129,7 @@ const EditTeacherProfile = (props) => {
       {/* Confirmation Modal */}
       <Modal show={showConfirmationModal} onHide={cancelDelete}>
         <Modal.Header closeButton>
-          <Modal.Title>Удалить профиль?</Modal.Title>
+          <Modal.Title className='delete-text'>Удалить профиль?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p className="error-message">Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
