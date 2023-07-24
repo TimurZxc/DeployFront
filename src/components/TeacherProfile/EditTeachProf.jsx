@@ -25,10 +25,10 @@ const EditTeacherProfile = (props) => {
   function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
-      localStorage.removeItem('access_token'),
-        localStorage.removeItem('refresh_token'),
         navigate('/');
     }).catch((error) => {
+      localStorage.removeItem('access_token'),
+      localStorage.removeItem('refresh_token'),
       setRegistrationStatus(`error: ${error.message}`);
     });
 
