@@ -131,15 +131,6 @@ const SignUpTeacher = () => {
           />
         </div>
         <div className="input-row">
-          <input
-            type="text"
-            placeholder="Отчество"
-            name="surname"
-            className="form--input"
-            value={formData.surname}
-            onChange={handleChange}
-          />
-
           <label htmlFor="education" className="form--label">
             Образование
           </label>
