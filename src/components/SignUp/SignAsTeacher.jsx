@@ -132,7 +132,7 @@ const SignUpTeacher = () => {
         </div>
         <div className="input-row">
           <label htmlFor="education" className="form--label">
-            Образование
+            Расскажите о вашем образование
           </label>
           <textarea
             value={textEdu}
@@ -141,8 +141,10 @@ const SignUpTeacher = () => {
             className="form--input-area"
             maxLength={1000}
           />
-          <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
         </div>
+        <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
+        
+        <br />
 
         <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников)*</p>
         <div className="input-row">

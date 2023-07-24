@@ -88,6 +88,7 @@ const EditCoursesTeach = (props) => {
           <option value="английский">Английский</option>
           <option value="русско-казахский">Русский, Казахский</option>
           <option value="казахско-английский">Казахский, Английский</option>
+          <option value="русско-английский">Русский, Английский</option>
           <option value="русско-английско-казахский">Русский, Английский, Казахский </option>
         </select>
       </div>
