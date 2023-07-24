@@ -102,7 +102,6 @@ const PersonalInfoTeachEdit = (props) => {
     const requestData = new FormData();
     const file = dataURLtoFile(preview, 'image.png');
     requestData.append('image', file);
-    console.log('Cropped image URL:', file);
 
     axiosInstance.patch('/update/teacher/', requestData, config)
       .then(() => {
@@ -170,7 +169,6 @@ const PersonalInfoTeachEdit = (props) => {
     requestData.append('surname', formData.surname);
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
-    console.log('isDeleteClicked', isDeleteClicked)
     if (isDeleteClicked) {
       requestData.append('image', '');
     } else if (image) {

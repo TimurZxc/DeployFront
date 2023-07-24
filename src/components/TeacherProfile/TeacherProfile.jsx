@@ -69,7 +69,6 @@ const TeacherProfile = (props) => {
         const mainTeacherData = response.data;
         setMainTeachList(mainTeacherData);
 
-        console.log("teacher data", mainTeacherData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
