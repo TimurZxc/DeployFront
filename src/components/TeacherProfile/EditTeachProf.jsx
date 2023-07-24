@@ -132,13 +132,13 @@ const EditTeacherProfile = (props) => {
           <Modal.Title>Удалить профиль?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
+          <p className="error-message">Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={cancelDelete}>
+          <Button variant="secondary" onClick={cancelDelete} className="close-button">
             Отмена
           </Button>
-          <Button variant="danger" onClick={() => { confirmDelete() }}>
+          <Button variant="danger" onClick={() => { confirmDelete() }} className="close-button">
             Удалить
           </Button>
         </Modal.Footer>
