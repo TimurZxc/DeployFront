@@ -37,6 +37,17 @@ const SignUpTeacher = () => {
 
   const handleChange = event => {
     const { name, value } = event.target;
+
+    const inputTextEdu = event.target.value;
+    if (inputTextEdu.length <= 1000) {
+      setTextEdu(inputTextEdu);
+    }
+
+    const inputTextExp = event.target.value;
+    if (inputTextExp.length <= 1000) {
+      setTextExp(inputTextExp);
+    }
+
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
@@ -46,8 +57,6 @@ const SignUpTeacher = () => {
   // const handleImageChange = (event) => {
   //   setImage(event.target.files[0]);
   // };
-
-  console.log('data', formData)
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -82,6 +91,10 @@ const SignUpTeacher = () => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  const [textEdu, setTextEdu] = useState(formData.education);
+
+  const [textExp, setTextExp] = useState(formData.experience);
 
   return (
 
@@ -126,26 +139,32 @@ const SignUpTeacher = () => {
             value={formData.surname}
             onChange={handleChange}
           />
-          <input
-            type="text"
-            placeholder="Образование"
-            name="education"
-            className="form--input"
-            value={formData.education}
+
+          <label htmlFor="education" className="form--label">
+            Образование
+          </label>
+          <textarea
+            value={textEdu}
             onChange={handleChange}
+            name="education"
+            className="form--input-area"
+            maxLength={1000}
           />
+          <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
         </div>
+
         <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников)*</p>
         <div className="input-row">
-          <input
-            type="text"
-            placeholder="Опыт и достижения"
-            name="experience"
-            className="form--input-exp"
-            value={formData.experience}
+          <textarea
+            value={textExp}
             onChange={handleChange}
+            name="experience"
+            className="form--input-area"
+            maxLength={1000}
           />
         </div>
+        <p className='area-text'>Осталось символов: {1000 - textExp.length}</p>
+
         <p className='margin-ex'></p>
         <div className="input-row">
           <input

@@ -120,12 +120,12 @@ const PersonalInfoTeachEdit = (props) => {
     const { name, value } = event.target;
 
     const inputTextEdu = event.target.value;
-    if (inputTextEdu.length <= 500) {
+    if (inputTextEdu.length <= 1000) {
       setTextEdu(inputTextEdu);
     }
 
     const inputTextExp = event.target.value;
-    if (inputTextExp.length <= 500) {
+    if (inputTextExp.length <= 1000) {
       setTextExp(inputTextExp);
     }
 
@@ -245,23 +245,12 @@ const PersonalInfoTeachEdit = (props) => {
             />
           </div>
           <div className="fourth-row_t_edit">
-            {/* <input
-              type='text'
-              placeholder="ВУЗ, Специальность, год окончания"
-              name="teacher.education"
-              className="form--input"
-              value={formData.teacher.education}
-              onChange={handleChange}
-            /> */}
-
             <textarea
               value={textEdu}
               onChange={handleChange}
               name="teacher.education"
               className="form--input-area"
-              // rows={4} // You can adjust the number of rows as per your requirement
-              // cols={50} // You can adjust the number of columns as per your requirement
-              maxLength={1000} // Set the maximum character limit
+              maxLength={1000}
             />
           </div>
           <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
@@ -271,9 +260,7 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
               name="teacher.experience"
               className="form--input-area"
-              // rows={4} // You can adjust the number of rows as per your requirement
-              // cols={50} // You can adjust the number of columns as per your requirement
-              maxLength={1000} // Set the maximum character limit
+              maxLength={1000}
             />
           </div>
           <p className='area-text'>Осталось символов: {1000 - textExp.length}</p>
