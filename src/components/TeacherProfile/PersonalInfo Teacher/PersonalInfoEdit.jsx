@@ -261,10 +261,10 @@ const PersonalInfoTeachEdit = (props) => {
               className="form--input-area"
               // rows={4} // You can adjust the number of rows as per your requirement
               // cols={50} // You can adjust the number of columns as per your requirement
-              maxLength={500} // Set the maximum character limit
+              maxLength={1000} // Set the maximum character limit
             />
           </div>
-          <p className='area-text'>Осталось символов: {500 - textEdu.length}</p>
+          <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
           <div className="fourth-row_t_edit">
             <textarea
               value={textExp}
@@ -273,10 +273,10 @@ const PersonalInfoTeachEdit = (props) => {
               className="form--input-area"
               // rows={4} // You can adjust the number of rows as per your requirement
               // cols={50} // You can adjust the number of columns as per your requirement
-              maxLength={500} // Set the maximum character limit
+              maxLength={1000} // Set the maximum character limit
             />
           </div>
-          <p className='area-text'>Осталось символов: {500 - textExp.length}</p>
+          <p className='area-text'>Осталось символов: {1000 - textExp.length}</p>
           <div className="fourth-row_t_edit">
             <input
               type="text"

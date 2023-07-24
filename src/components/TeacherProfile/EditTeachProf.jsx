@@ -19,15 +19,25 @@ const EditTeacherProfile = (props) => {
   }
 
   function handleDelete() {
+    setShowConfirmationModal(true); // Show the confirmation modal
+  }
+
+  function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
-      setRegistrationStatus('success: Данные были успешно удалены!');
-      navigate('/');
+      localStorage.removeItem('access_token'),
+        localStorage.removeItem('refresh_token'),
+        navigate('/');
     }).catch((error) => {
       setRegistrationStatus(`error: ${error.message}`);
-      localStorage.removeItem('access_token'),
-      localStorage.removeItem('refresh_token');
     });
+
+    setShowConfirmationModal(false); // Hide the confirmation modal after deletion
+
+  }
+
+  function cancelDelete() {
+    setShowConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
   }
 
   const [mainCourseList, setMainCourseList] = React.useState([])
@@ -35,6 +45,8 @@ const EditTeacherProfile = (props) => {
   const [mainTeachList, setMainTeachList] = React.useState([])
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const CourseListArr = mainCourseList.map(course => {
     return <EditCoursesTeach
@@ -114,6 +126,24 @@ const EditTeacherProfile = (props) => {
         <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
       </div>
 
+      {/* Confirmation Modal */}
+      <Modal show={showConfirmationModal} onHide={cancelDelete}>
+        <Modal.Header closeButton>
+          <Modal.Title>Удалить профиль?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDelete}>
+            Отмена
+          </Button>
+          <Button variant="danger" onClick={() => { confirmDelete() }}>
+            Удалить
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
@@ -127,7 +157,7 @@ const EditTeacherProfile = (props) => {
         </Modal.Body>
       </Modal>
 
-    </div>
+    </div >
   )
 }
 
