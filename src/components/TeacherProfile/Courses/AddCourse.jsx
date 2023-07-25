@@ -73,10 +73,10 @@ const AddCourseTeach = (props) => {
           <option value="казахский">Казахский</option>
           <option value="русский">Русский</option>
           <option value="английский">Английский</option>
-          <option value="русско-казахский">Русский, Казахский</option>
-          <option value="казахско-английский">Казахский, Английский</option>
-          <option value="русско-английский">Русский, Английский</option>
-          <option value="русско-английско-казахский">Русский, Английский, Казахский</option>
+          <option value="русский казахский">Русский, Казахский</option>
+          <option value="казахский английский">Казахский, Английский</option>
+          <option value="русский английский">Русский, Английский</option>
+          <option value="русский английский казахский">Русский, Английский, Казахский</option>
         </select>
 
         <select className='course_selector' name="student_level" value={formData.student_level} onChange={handleChange}>

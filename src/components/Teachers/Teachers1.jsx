@@ -24,25 +24,55 @@ const Teachers1 = () => {
   }
 
   const cardElements = cards.map(card => (
-    card?.teacher?.courses.map(course => (
-      course.language === language &&
-      <TeacherCard
-        key={card?.teacher?.id}
-        src={card?.image}
-        text={card.first_name + ' ' + card.last_name}
-        subject={course?.name}
-        price={course?.price}
-        url={`/marketTeach/${card?.teacher?.id}`}
-        buttonText={"Подробнее"}
-    />
-    ))
-  ))
-
-
-  console.log('language t', cards)
-  console.log('language t', cards?.teacher)
-  console.log('language', language)
-
+    card?.teacher?.courses.map(course => {
+      const selectedLanguage = language.split(' '); // Split the selected language into an array of individual languages
+  
+      if (selectedLanguage.length === 3) { // Course with 3 languages
+        if (course.language === language) {
+          return (
+            <TeacherCard
+              key={card?.teacher?.id}
+              src={card?.image}
+              text={card.first_name + ' ' + card.last_name}
+              subject={course?.name}
+              price={course?.price}
+              url={`/marketTeach/${card?.teacher?.id}`}
+              buttonText={"Подробнее"}
+            />
+          );
+        }
+      } else if (selectedLanguage.length === 2) { // Course with 2 languages
+        if (selectedLanguage.includes(course.language.split(' ')[0]) || selectedLanguage.includes(course.language.split(' ')[1])) {
+          return (
+            <TeacherCard
+              key={card?.teacher?.id}
+              src={card?.image}
+              text={card.first_name + ' ' + card.last_name}
+              subject={course?.name}
+              price={course?.price}
+              url={`/marketTeach/${card?.teacher?.id}`}
+              buttonText={"Подробнее"}
+            />
+          );
+        }
+      } else { // Course with 1 language
+        if (course.language === language) {
+          return (
+            <TeacherCard
+              key={card?.teacher?.id}
+              src={card?.image}
+              text={card.first_name + ' ' + card.last_name}
+              subject={course?.name}
+              price={course?.price}
+              url={`/marketTeach/${card?.teacher?.id}`}
+              buttonText={"Подробнее"}
+            />
+          );
+        }
+      }
+    })
+  ));
+  
 
   useEffect(() => {
     getUsers()
@@ -62,10 +92,10 @@ const Teachers1 = () => {
           <option value="русский">Русский</option>
           <option value="казахский">Казахский</option>
           <option value="английский">Английский</option>
-          <option value="русско-казахский">Русский, Казахский</option>
-          <option value="казахско-английский">Казахский, Английский</option>
-          <option value="русско-английский">Русский, Английский</option>
-          <option value="русско-английско-казахский">Русский, Английский, Казахский</option>
+          <option value="русский казахский">Русский, Казахский</option>
+          <option value="казахский английский">Казахский, Английский</option>
+          <option value="русский английский">Русский, Английский</option>
+          <option value="русский английский казахский">Русский, Английский, Казахский</option>
         </select>
         <div className="cards-block">
           <div className="card-row">
