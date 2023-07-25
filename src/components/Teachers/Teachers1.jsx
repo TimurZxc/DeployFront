@@ -92,10 +92,10 @@ const Teachers1 = () => {
           <option value="русский">Русский</option>
           <option value="казахский">Казахский</option>
           <option value="английский">Английский</option>
-          <option value="русский казахский">Русский, Казахский</option>
+          {/* <option value="русский казахский">Русский, Казахский</option>
           <option value="казахский английский">Казахский, Английский</option>
           <option value="русский английский">Русский, Английский</option>
-          <option value="русский английский казахский">Русский, Английский, Казахский</option>
+          <option value="русский английский казахский">Русский, Английский, Казахский</option> */}
         </select>
         <div className="cards-block">
           <div className="card-row">
