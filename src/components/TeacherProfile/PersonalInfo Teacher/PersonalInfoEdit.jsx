@@ -114,19 +114,22 @@ const PersonalInfoTeachEdit = (props) => {
     window.location.reload(true)
   }
 
-
-  const handleChange = event => {
-    const { name, value } = event.target;
-
+  const handleChangeEdu = event => {
     const inputTextEdu = event.target.value;
     if (inputTextEdu.length <= 1000) {
       setTextEdu(inputTextEdu);
     }
+  }
 
+  const handleChangeExp = event => {
     const inputTextExp = event.target.value;
     if (inputTextExp.length <= 1000) {
       setTextExp(inputTextExp);
     }
+  }
+
+  const handleChange = event => {
+    const { name, value } = event.target;
 
     // Split the name into nested keys
     const nameParts = name.split('.');
@@ -245,7 +248,7 @@ const PersonalInfoTeachEdit = (props) => {
           <div className="fourth-row_t_edit">
             <textarea
               value={textEdu}
-              onChange={handleChange}
+              onChange={handleChangeEdu}
               name="teacher.education"
               className="form--input-area"
               maxLength={1000}
@@ -255,7 +258,7 @@ const PersonalInfoTeachEdit = (props) => {
           <div className="fourth-row_t_edit">
             <textarea
               value={textExp}
-              onChange={handleChange}
+              onChange={handleChangeExp}
               name="teacher.experience"
               className="form--input-area"
               maxLength={1000}
