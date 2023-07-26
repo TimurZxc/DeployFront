@@ -25,10 +25,11 @@ const Teachers1 = () => {
 
   const cardElements = cards.map(card => (
     card?.teacher?.courses.map(course => {
-      const selectedLanguage = language.split(' '); // Split the selected language into an array of individual languages
-  
+      const selectedLanguage = course.language.split(' '); // Split the selected language into an array of individual languages
+      console.log('lang split', selectedLanguage)
+      console.log('course ', course.language)
       if (selectedLanguage.length === 3) { // Course with 3 languages
-        if (course.language === language) {
+        if (selectedLanguage.includes(language)){
           return (
             <TeacherCard
               key={card?.teacher?.id}
@@ -42,7 +43,7 @@ const Teachers1 = () => {
           );
         }
       } else if (selectedLanguage.length === 2) { // Course with 2 languages
-        if (selectedLanguage.includes(course.language.split(' ')[0]) || selectedLanguage.includes(course.language.split(' ')[1])) {
+        if (selectedLanguage.includes(language)) {
           return (
             <TeacherCard
               key={card?.teacher?.id}
