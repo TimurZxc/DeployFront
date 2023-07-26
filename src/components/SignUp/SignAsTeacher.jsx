@@ -32,22 +32,24 @@ const SignUpTeacher = () => {
     navigate(URL)
   }
 
+  const handleChangeEdu = event => {
+    const inputTextEdu = event.target.value;
+    if (inputTextEdu.length <= 1000) {
+      setTextEdu(inputTextEdu);
+    }
+  }
+
+  const handleChangeExp = event => {
+    const inputTextExp = event.target.value;
+    if (inputTextExp.length <= 1000) {
+      setTextExp(inputTextExp);
+    }
+  }
 
   // const [image, setImage] = useState(null);
 
   const handleChange = event => {
     const { name, value } = event.target;
-
-    const inputTextEdu = event.target.value;
-    if (inputTextEdu.length <= 1000) {
-      setTextEdu(inputTextEdu);
-    }
-
-    const inputTextExp = event.target.value;
-    if (inputTextExp.length <= 1000) {
-      setTextExp(inputTextExp);
-    }
-
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
@@ -135,7 +137,7 @@ const SignUpTeacher = () => {
         <div className="input-row">
           <textarea
             value={textEdu}
-            onChange={handleChange}
+            onChange={handleChangeEdu}
             name="education"
             className="form--input-area"
             maxLength={1000}
@@ -149,7 +151,7 @@ const SignUpTeacher = () => {
         <div className="input-row">
           <textarea
             value={textExp}
-            onChange={handleChange}
+            onChange={handleChangeExp}
             name="experience"
             className="form--input-area"
             maxLength={1000}
