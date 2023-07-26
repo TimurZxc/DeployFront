@@ -26,8 +26,6 @@ const Teachers1 = () => {
   const cardElements = cards.map(card => (
     card?.teacher?.courses.map(course => {
       const selectedLanguage = course.language.split(' '); // Split the selected language into an array of individual languages
-      console.log('lang split', selectedLanguage)
-      console.log('course ', course.language)
       if (selectedLanguage.length === 3) { // Course with 3 languages
         if (selectedLanguage.includes(language)){
           return (

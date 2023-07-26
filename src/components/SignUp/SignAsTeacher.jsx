@@ -36,6 +36,12 @@ const SignUpTeacher = () => {
     const inputTextEdu = event.target.value;
     if (inputTextEdu.length <= 1000) {
       setTextEdu(inputTextEdu);
+
+      const { name, value } = event.target;
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+      }));
     }
   }
 
@@ -43,6 +49,12 @@ const SignUpTeacher = () => {
     const inputTextExp = event.target.value;
     if (inputTextExp.length <= 1000) {
       setTextExp(inputTextExp);
+
+      const { name, value } = event.target;
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+      }));
     }
   }
 
