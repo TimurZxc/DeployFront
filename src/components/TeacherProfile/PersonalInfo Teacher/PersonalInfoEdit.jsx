@@ -295,6 +295,8 @@ const PersonalInfoTeachEdit = (props) => {
               onChange={handleChange}
             />
           </div>
+          <br />
+          <button onClick={() => { handleUpdate(props.id) }} className="edit-save-but">Сохранить</button>
         </div>
 
         <div className="second-col_t">
@@ -307,11 +309,7 @@ const PersonalInfoTeachEdit = (props) => {
               </div>
             </div>
           </div>
-
           <br />
-          {/* <button onClick={onSave} className="second-row_t_c">Изменить фото</button> */}
-          <br />
-          <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>
       </div>
 

@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
+    flex-direction: column-reverse;
     margin-top: 47px;
     margin-left: 50px;
 }
@@ -15,7 +16,7 @@
         display: flex;
         flex-direction: column;
         gap: 19px;
-        width: 71%;
+        width: 90%;
         justify-content: space-between;
     }
 
@@ -23,7 +24,7 @@
       display: flex;
       flex-direction: column;
       gap: 19px;
-      width: 66%;
+      width: 90%;
       justify-content: space-between;
   }
 
@@ -50,7 +51,7 @@
         font-size: 25px;
         letter-spacing: 0.03em;
         color: rgba(17, 23, 75, 0.5);
-        margin-right: 70px;
+        margin-right: 30%;
     }
 
     .first_t_edu{
@@ -169,7 +170,7 @@
 }
 
 .form--input-area{
-    width: 95% !important;
+    width: 100% !important;
     margin: 0;
     height: 88px;
     padding-left: 20px;
@@ -339,4 +340,19 @@ input[type=file]::-webkit-file-upload-button{
 
 .area-text{
   padding: 0 30px;
+}
+
+.edit-save-but{
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.035em;
+  color: #11174B;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  border: none;
+  height: 61px;
+  width: 50%;
+  margin: 0 auto;
+  cursor: pointer;
 }
