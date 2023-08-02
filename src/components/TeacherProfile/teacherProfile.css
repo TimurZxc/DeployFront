@@ -92,3 +92,18 @@ margin-bottom: 8px;
 margin-left: 4px;
 background-color: #11174b32;
 }
+
+.close-button-delete{
+    background-color: rgba(240, 67, 67, 0.76) !important;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    background-color: #11174b32;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.close-button-delete:hover {
+    background-color: rgba(231, 137, 137, 0.76) !important;
+}

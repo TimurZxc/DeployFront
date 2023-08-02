@@ -13,6 +13,8 @@ const StudentEdit = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])
   const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
+  const [showConfirmationModal, setShowConfirmationModal] = React.useState(false);
+
 
   const navigate = useNavigate();
   const routeHandler = (URL) => {
@@ -34,13 +36,26 @@ const StudentEdit = () => {
   }, []);
 
   function handleDelete() {
+    setShowConfirmationModal(true); // Show the confirmation modal
+  }
+
+  function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
-      setRegistrationStatus('success: Данные были успешно удалены!');
-      navigate('/');
+        setRegistrationStatus('success: Данные были успешно удалены!');
+        navigate('/');
     }).catch((error) => {
+      localStorage.removeItem('access_token'),
+      localStorage.removeItem('refresh_token'),
       setRegistrationStatus(`error: ${error.message}`);
     });
+
+    setShowConfirmationModal(false); // Hide the confirmation modal after deletion
+
+  }
+
+  function cancelDelete() {
+    setShowConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
   }
 
   const handleModalClose = () => {
@@ -71,6 +86,22 @@ const StudentEdit = () => {
           <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
         </div>
       </div>
+      
+      {/* Confirmation Modal */}
+      <Modal show={showConfirmationModal} onHide={cancelDelete}>
+        <Modal.Body>
+          <p className="error-message">Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDelete} className="close-button">
+            Отмена
+          </Button>
+          <Button variant="danger" onClick={() => { confirmDelete() }} className="close-button-delete">
+            Удалить
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
           {/* Registration status modal */}
           <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>

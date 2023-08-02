@@ -25,6 +25,7 @@ const EditTeacherProfile = (props) => {
   function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
+        setRegistrationStatus('success: Данные были успешно удалены!');
         navigate('/');
     }).catch((error) => {
       localStorage.removeItem('access_token'),
@@ -127,9 +128,6 @@ const EditTeacherProfile = (props) => {
 
       {/* Confirmation Modal */}
       <Modal show={showConfirmationModal} onHide={cancelDelete}>
-        <Modal.Header closeButton>
-          <Modal.Title className='delete-text'>Удалить профиль?</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <p className="error-message">Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
         </Modal.Body>
@@ -137,7 +135,7 @@ const EditTeacherProfile = (props) => {
           <Button variant="secondary" onClick={cancelDelete} className="close-button">
             Отмена
           </Button>
-          <Button variant="danger" onClick={() => { confirmDelete() }} className="close-button">
+          <Button variant="danger" onClick={() => { confirmDelete() }} className="close-button-delete">
             Удалить
           </Button>
         </Modal.Footer>

@@ -212,7 +212,7 @@ const PersonalInfoEdit = (props) => {
     <>
       <div className="body">
         <div className="first-col">
-          <div className="first-row">
+          <div className="first-row_t_edit">
             <input
               type="text"
               placeholder="Имя"
@@ -221,8 +221,7 @@ const PersonalInfoEdit = (props) => {
               value={formData.first_name}
               onChange={handleChange} />
           </div>
-          <br />
-          <div className="second-row">
+          <div className="second-row_t_edit">
             <input
               type="text"
               placeholder="Фамилия"
@@ -232,7 +231,7 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="third-row">
+          <div className="third-row_t_edit">
             <input
               type="text"
               placeholder="Отчество"
@@ -242,7 +241,7 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row">
+          <div className="fourth-row_t_edit">
             <input
               type="date"
               placeholder="Возраст"
@@ -252,7 +251,7 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row">
+          <div className="fourth-row_t_edit">
             <input
               type="text"
               placeholder="Номер Телефона"
@@ -262,7 +261,7 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row">
+          <div className="fourth-row_t_edit">
             <input
               type="email"
               placeholder="Email адрес"
@@ -272,7 +271,7 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="fourth-row">
+          <div className="fourth-row_t_edit">
             <input
               type="text"
               placeholder="Telegram"
@@ -282,6 +281,8 @@ const PersonalInfoEdit = (props) => {
               onChange={handleChange}
             />
           </div>
+          <br />
+          <button onClick={() => { handleUpdate(props.id) }} className="edit-save-but">Сохранить</button>
         </div>
         <div className="second-col">
 
@@ -295,7 +296,6 @@ const PersonalInfoEdit = (props) => {
           </div>
           <br />
           {/* <button onClick={() => { handleDelete() }} className="second-row_t_c">Удалить фото</button> */}
-          <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
         </div>
       </div>
 

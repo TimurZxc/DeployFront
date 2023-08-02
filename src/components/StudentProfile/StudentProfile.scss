@@ -43,6 +43,7 @@
         .second-row_t_c_delete{
             font-weight: 400;
             font-size: 20px;
+            background: rgba(238, 104, 104, 0.76) !important;
             letter-spacing: 0.035em;
             color: #11174B;
             background: rgba(255, 255, 255, 0.76);
@@ -55,11 +56,9 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            margin-left: 20px;
             margin-top: 20px;
         }
     }
-
 
     ::-webkit-scrollbar {
         width: 10px;
@@ -81,4 +80,5 @@
         background: rgba(255, 255, 255, 0.802);
         border-radius: 50px;
     }
+
 }
