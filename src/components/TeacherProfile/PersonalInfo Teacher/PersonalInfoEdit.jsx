@@ -72,6 +72,7 @@ const PersonalInfoTeachEdit = (props) => {
 
   const [croppedImage, setCroppedImage] = useState(null);
 
+  const [isImageUpdated, setIsImageUpdated] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(null);
 
@@ -99,34 +100,27 @@ const PersonalInfoTeachEdit = (props) => {
       },
     };
 
-    const requestData = new FormData();
+    const requestDataImg = new FormData();
     const file = dataURLtoFile(preview, 'image.png');
-    requestData.append('image', file);
-
-    axiosInstance.patch('/update/teacher/', requestData, config)
-      .then(() => {
-        setRegistrationStatus('success: Фото было успешно обновлено!');
-      })
-      .catch((error) => {
-        console.log('error', error);
-        setRegistrationStatus(`error: ${error.message}`);
-      });
-    window.location.reload(true)
+    requestDataImg.append('image', file);
+    axiosInstance.patch('/update/teacher/', requestDataImg, config)
+    .then(() => {
+      setRegistrationStatus('success: Фото было успешно обновлено!');
+      setIsImageUpdated(true); // Set the state variable to true on successful image update
+    })
+    .catch((error) => {
+      console.log('error', error);
+      setRegistrationStatus(`error: ${error.message}`);
+    });
   }
 
-  const handleChangeEdu = event => {
-    const inputTextEdu = event.target.value;
-    if (inputTextEdu.length <= 1000) {
-      setTextEdu(inputTextEdu);
+  useEffect(() => {
+    if (isImageUpdated) {
+      // Reload the page
+      window.location.reload();
     }
-  }
+  }, [isImageUpdated]);
 
-  const handleChangeExp = event => {
-    const inputTextExp = event.target.value;
-    if (inputTextExp.length <= 1000) {
-      setTextExp(inputTextExp);
-    }
-  }
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -149,6 +143,22 @@ const PersonalInfoTeachEdit = (props) => {
         }
       }));
     }
+
+    // Handle each textarea separately
+    if (name === 'teacher.education') {
+      const inputTextEdu = value;
+      if (inputTextEdu.length <= 1000) {
+        setTextEdu(inputTextEdu);
+      }
+    }
+  
+    if (name === 'teacher.experience') {
+      const inputTextExp = value;
+      if (inputTextExp.length <= 1000) {
+        setTextExp(inputTextExp);
+      }
+    }
+
   };
 
   // const handleImageChange = (event) => {
@@ -172,6 +182,7 @@ const PersonalInfoTeachEdit = (props) => {
     requestData.append('surname', formData.surname);
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
+    console.log('requestData', requestData)
     if (isDeleteClicked) {
       requestData.append('image', '');
     } else if (image) {
@@ -248,7 +259,7 @@ const PersonalInfoTeachEdit = (props) => {
           <div className="fourth-row_t_edit">
             <textarea
               value={textEdu}
-              onChange={handleChangeEdu}
+              onChange={handleChange}
               name="teacher.education"
               className="form--input-area"
               maxLength={1000}
@@ -258,7 +269,7 @@ const PersonalInfoTeachEdit = (props) => {
           <div className="fourth-row_t_edit">
             <textarea
               value={textExp}
-              onChange={handleChangeExp}
+              onChange={handleChange}
               name="teacher.experience"
               className="form--input-area"
               maxLength={1000}

@@ -47,7 +47,7 @@ const SubjectPageEdit = (props) => {
 
           setMainCourseList(response.data)
       })
-    }, [mainCourseList])
+    }, [])
 
 
   

@@ -97,7 +97,6 @@ const SignUp = () => {
     }
   };
 
-  // console.log('img', formData.image)
 
   const handleModalClose = () => {
     setRegistrationStatus(null);

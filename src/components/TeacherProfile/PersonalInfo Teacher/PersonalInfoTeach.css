@@ -51,15 +51,16 @@
         font-size: 25px;
         letter-spacing: 0.03em;
         color: rgba(17, 23, 75, 0.5);
-        margin-right: 30%;
     }
 
     .first_t_edu{
         font-weight: 400;
         font-size: 23px;
         letter-spacing: 0.03em;
-        text-align: center;
+        text-align: right;
+        flex: 1;
         color: #11174B;
+        overflow: hidden;
     }
 
     .second_t {
@@ -123,6 +124,7 @@
 .third-row_t {
     justify-content: space-between;
     display: flex;
+    gap: 50px;
     margin-bottom: 5px;
     background-color: #33a2da70;
     border-radius: 23px;

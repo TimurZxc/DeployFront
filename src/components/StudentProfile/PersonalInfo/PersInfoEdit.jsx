@@ -95,6 +95,8 @@ const PersonalInfoEdit = (props) => {
 
   const [isModalOpen, setModalOpen] = useState(null);
 
+  const [isImageUpdated, setIsImageUpdated] = useState(false);
+
   function dataURLtoFile(dataURL, filename) {
     const arr = dataURL.split(',');
     const mime = arr[0].match(/:(.*?);/)[1];
@@ -119,16 +121,24 @@ const PersonalInfoEdit = (props) => {
   requestData.append('image', file);
   console.log('Cropped image URL:', file);
 
-  axiosInstance.patch('/update/teacher/', requestData, config)
+  axiosInstance.patch('/update/student/', requestData, config)
     .then(() => {
       setRegistrationStatus('success: Фото было успешно обновлено!');
+      setIsImageUpdated(true); // Set the state variable to true on successful image update
     })
     .catch((error) => {
       console.log('error', error);
       setRegistrationStatus(`error: ${error.message}`);
     });
-  window.location.reload(true)
 }
+
+    useEffect(() => {
+      if (isImageUpdated) {
+        // Reload the page
+        window.location.reload();
+      }
+    }, [isImageUpdated]);
+
 
   // const handleChange = event => {
   //   const { name, value } = event.target;

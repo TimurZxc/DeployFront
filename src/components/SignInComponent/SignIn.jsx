@@ -63,7 +63,6 @@ const SignIn = () => {
     }
   }, []);
 
-  console.log(trueParam, falseParam)
 
   return (
     <div className="main">

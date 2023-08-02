@@ -5,7 +5,7 @@ const PersonalInfo = (props) => {
   return (
     <div className="body">
       <div className="first-col">
-        <div className="first-row">
+        <div className="second-row">
           <div className="first">Имя</div>
           <div className="second">{props.first_name}</div>
         </div>
