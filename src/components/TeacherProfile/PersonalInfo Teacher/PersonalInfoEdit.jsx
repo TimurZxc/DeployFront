@@ -8,6 +8,8 @@ import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
 import Avatar from 'react-avatar-edit';
 import axios from 'axios';
+import Lottie from 'lottie-react'
+import animationData from '../../../assets/animation_lktzbjcg.json'
 
 
 const PersonalInfoTeachEdit = (props) => {
@@ -104,14 +106,14 @@ const PersonalInfoTeachEdit = (props) => {
     const file = dataURLtoFile(preview, 'image.png');
     requestDataImg.append('image', file);
     axiosInstance.patch('/update/teacher/', requestDataImg, config)
-    .then(() => {
-      setRegistrationStatus('success: Фото было успешно обновлено!');
-      setIsImageUpdated(true); // Set the state variable to true on successful image update
-    })
-    .catch((error) => {
-      console.log('error', error);
-      setRegistrationStatus(`error: ${error.message}`);
-    });
+      .then(() => {
+        setRegistrationStatus('success: Фото было успешно обновлено!');
+        setIsImageUpdated(true); // Set the state variable to true on successful image update
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
   }
 
   useEffect(() => {
@@ -151,7 +153,7 @@ const PersonalInfoTeachEdit = (props) => {
         setTextEdu(inputTextEdu);
       }
     }
-  
+
     if (name === 'teacher.experience') {
       const inputTextExp = value;
       if (inputTextExp.length <= 1000) {
@@ -329,7 +331,10 @@ const PersonalInfoTeachEdit = (props) => {
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
-            <p className="success-message">{registrationStatus.substr(9)}</p>
+            <>
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
             Закрыть

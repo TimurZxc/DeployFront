@@ -8,7 +8,8 @@ import AddCourseTeach from './Courses/AddCourse'
 import axiosInstance from '../../axios'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-
+import Lottie from 'lottie-react'
+import animationData from '../../assets/animation_lktzbjcg.json'
 
 const EditTeacherProfile = (props) => {
 
@@ -25,10 +26,10 @@ const EditTeacherProfile = (props) => {
   function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
-        setRegistrationStatus('success: Данные были успешно удалены!');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        navigate('/');
+      setRegistrationStatus('success: Данные были успешно удалены!');
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      navigate('/');
     }).catch((error) => {
       setRegistrationStatus(`error: ${error.message}`);
     });
@@ -50,7 +51,7 @@ const EditTeacherProfile = (props) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const CourseListArr = mainCourseList.map(course => {
-    return <EditCoursescxsxTeach
+    return <EditCoursesTeach
       key={course.id}
       course_id={course.id}
       name={course.name}
@@ -146,7 +147,10 @@ const EditTeacherProfile = (props) => {
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
-            <p className="success-message">{registrationStatus.substr(9)}</p>
+            <>
+              <Lottie animationData={animationData} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
             Закрыть
