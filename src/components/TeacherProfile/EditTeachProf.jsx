@@ -26,10 +26,10 @@ const EditTeacherProfile = (props) => {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
         setRegistrationStatus('success: Данные были успешно удалены!');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
         navigate('/');
     }).catch((error) => {
-      localStorage.removeItem('access_token'),
-      localStorage.removeItem('refresh_token'),
       setRegistrationStatus(`error: ${error.message}`);
     });
 
@@ -50,7 +50,7 @@ const EditTeacherProfile = (props) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const CourseListArr = mainCourseList.map(course => {
-    return <EditCoursesTeach
+    return <EditCoursescxsxTeach
       key={course.id}
       course_id={course.id}
       name={course.name}

@@ -7,8 +7,27 @@ const Courses = (props) => {
 
 const [studCourseList, setStudCourseList] = React.useState([])
 
+// React.useEffect(() => {
+//   mainTeachList.map(data => {
+//     if (mainTeachList && data?.teacher?.id) {
+//       const id = data?.teacher?.id
+
+//       axiosInstance
+//         .get(`course-list/${id}`)
+//         .then((response) => {
+//           setMainCourseList(response.data[0].courses);
+//         })
+//         .catch((error) => {
+//           console.error("Error fetching course data:", error);
+//         });
+//     }
+//   })
+
+// }, [mainTeachList]);
+
   const StudCourses = studCourseList.map(data => {
     return <CourseComponent
+      id = {data?.lessons?.id}
       key={data?.lessons?.related_course?.id}
       course_name={data?.lessons?.related_course?.name}
       date={data?.lessons?.date}

@@ -1,7 +1,7 @@
 import Search from '../Search/Search'
 import './StudentProfile.scss'
 import Sidebar from '../Sidebar/Sidebar'
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -42,11 +42,11 @@ const StudentEdit = () => {
   function confirmDelete() {
     axiosInstance.delete('delete/user/', {
     }).then(() => {
-        setRegistrationStatus('success: Данные были успешно удалены!');
-        navigate('/');
+      setRegistrationStatus('success: Данные были успешно удалены!');
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      navigate('/');
     }).catch((error) => {
-      localStorage.removeItem('access_token'),
-      localStorage.removeItem('refresh_token'),
       setRegistrationStatus(`error: ${error.message}`);
     });
 
@@ -86,7 +86,7 @@ const StudentEdit = () => {
           <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
         </div>
       </div>
-      
+
       {/* Confirmation Modal */}
       <Modal show={showConfirmationModal} onHide={cancelDelete}>
         <Modal.Body>
@@ -102,8 +102,8 @@ const StudentEdit = () => {
         </Modal.Footer>
       </Modal>
 
-          {/* Registration status modal */}
-          <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      {/* Registration status modal */}
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>

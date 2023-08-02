@@ -1,5 +1,5 @@
 .courses-body {
-    width: 100%;
+    width: 95%;
     height: fit-content;
     background: rgba(255, 255, 255, 0.56);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -8,6 +8,7 @@
     justify-content: space-between;
     display: flex;
     margin-top: 47px;
+    margin-left: 50px;
     gap: 5px;
 
     .first-col,
@@ -80,5 +81,28 @@
         .fifth-row {
             text-align: right;
         }
+    }
+
+    .cancle-delete{
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 0.035em;
+        color: #11174B;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        border: none;
+        width: 132px;
+        height: 37px;
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .cancle-delete:hover{
+        background: rgba(238, 104, 104, 0.76);
+        transition: 0.3s;
     }
 }
