@@ -96,7 +96,7 @@ const SignUpTeacher = () => {
           // handle success
         })
         .catch((error) => {
-          setRegistrationStatus(`error: ${error.message}`);
+          setRegistrationStatus(error);
           // handle error
         });
     }
@@ -156,7 +156,7 @@ const SignUpTeacher = () => {
           />
         </div>
         <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
-        
+
         <br />
 
         <p className='exp-label'>Опишите ваш опыт (Впишите свои достижения и своих учеников) *</p>
