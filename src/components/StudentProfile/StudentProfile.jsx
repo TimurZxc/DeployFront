@@ -54,12 +54,13 @@ const StudentProfile = () => {
       <Sidebar />
       <div className="profile-wrapper">
         {/* <Search /> */}
-        <h1 className="profile-title">Настройки профиля ученика</h1>
+        <h1 className="profile-title">Профиль</h1>
         <div className="settings-block">
-        <section className='course-list'>{CurrentUser}</section>
-        <Courses/>
-          <div onClick={() => routeHandler('/studEdit')} className="edit">Редактировать профиль</div>
-          {/* <Calendar /> */}
+          <section className='course-list'>{CurrentUser}</section>
+          <Courses />
+          <div onClick={() => routeHandler('/studEdit')} className="edit">
+            Редактировать профиль
+          </div>
         </div>
       </div>
       {/* <Dashboard/> */}

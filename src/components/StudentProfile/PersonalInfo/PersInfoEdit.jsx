@@ -1,6 +1,6 @@
 import axiosInstance from '../../../axios';
 import './PersonalInfo.scss'
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -71,12 +71,12 @@ const PersonalInfoEdit = (props) => {
     handleDelete()
   }
 
-  const onCrop =(preview)=> {
+  const onCrop = (preview) => {
     setPreview(preview);
   }
 
   function onBeforeFileLoad(elem) {
-    if (elem.target.files[0].size > 5171680) {
+    if (elem.target.files[0].size > 517168000) {
       alert('File is too big!');
       elem.target.value = '';
     }
@@ -116,28 +116,28 @@ const PersonalInfoEdit = (props) => {
       },
     };
 
-  const requestData = new FormData();
-  const file = dataURLtoFile(preview, 'image.png');
-  requestData.append('image', file);
-  console.log('Cropped image URL:', file);
+    const requestData = new FormData();
+    const file = dataURLtoFile(preview, 'image.png');
+    requestData.append('image', file);
+    console.log('Cropped image URL:', file);
 
-  axiosInstance.patch('/update/student/', requestData, config)
-    .then(() => {
-      setRegistrationStatus('success: Фото было успешно обновлено!');
-      setIsImageUpdated(true); // Set the state variable to true on successful image update
-    })
-    .catch((error) => {
-      console.log('error', error);
-      setRegistrationStatus(`error: ${error.message}`);
-    });
-}
+    axiosInstance.patch('/update/student/', requestData, config)
+      .then(() => {
+        setRegistrationStatus('success: Фото было успешно обновлено!');
+        setIsImageUpdated(true); // Set the state variable to true on successful image update
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
+  }
 
-    useEffect(() => {
-      if (isImageUpdated) {
-        // Reload the page
-        window.location.reload();
-      }
-    }, [isImageUpdated]);
+  useEffect(() => {
+    if (isImageUpdated) {
+      // Reload the page
+      window.location.reload();
+    }
+  }, [isImageUpdated]);
 
 
   // const handleChange = event => {
@@ -188,7 +188,7 @@ const PersonalInfoEdit = (props) => {
         setRegistrationStatus(`error: ${error.message}`);
       });
   }
-  
+
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -289,8 +289,8 @@ const PersonalInfoEdit = (props) => {
           <div className="upload1">
             <img className='puple-teach-img' src={props.image ? props.image : userpic} alt="image was not found" crossOrigin="anonymous" />
             <div className="round">
-            <div onClick={handleOpenModal} type='button' className='photoButt'>
-              <Sprite id='camera' className='icon' />
+              <div onClick={handleOpenModal} type='button' className='photoButt'>
+                <Sprite id='camera' className='icon' />
               </div>
             </div>
           </div>
@@ -321,14 +321,16 @@ const PersonalInfoEdit = (props) => {
           onClose={onClose}
           onBeforeFileLoad={onBeforeFileLoad}
           src={src}
-          cropRadius={130}
+          cropRadius={110}
           labelStyle={{ 'width': 350 }}
           label={"Загрузите фотографию"}
         />
-        <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
-        <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
-          Закрыть
-        </Button>
+        <div className='imgControls'>
+          <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
+          <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
+            Закрыть
+          </Button>
+        </div>
       </Modal>
 
     </>

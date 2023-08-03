@@ -46,7 +46,7 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   function onBeforeFileLoad(elem) {
-    if (elem.target.files[0].size > 5171680) {
+    if (elem.target.files[0].size > 517168000) {
       alert('File is too big!');
       elem.target.value = '';
     }
@@ -351,14 +351,16 @@ const PersonalInfoTeachEdit = (props) => {
           onClose={onClose}
           onBeforeFileLoad={onBeforeFileLoad}
           src={src}
-          cropRadius={130}
+          cropRadius={110}
           labelStyle={{ 'width': 350 }}
           label={"Загрузите фотографию"}
         />
-        <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
-        <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
-          Закрыть
-        </Button>
+        <div className='imgControls'>
+          <button onClick={onSave} className="second-row_t_c_photo">Изменить фото</button>
+          <Button variant="secondary" onClick={handleModalClosePhoto} className="close-button-photo">
+            Закрыть
+          </Button>
+        </div>
       </Modal>
 
     </>

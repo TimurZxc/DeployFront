@@ -124,8 +124,8 @@ const EditCoursesTeach = (props) => {
       <div className="third-col">
         <div className="first-row"></div>
 
-        <button onClick={() => { handleUpdate(props.id) }} className="second-row_t_c">Сохранить</button>
-        <button onClick={() => { handleDelete(props.id) }} className="second-row_t_c">Удалить</button>
+        <button onClick={() => { handleUpdate(props.course_id) }} className="second-row_t_c">Сохранить</button>
+        <button onClick={() => { handleDelete(props.course_id) }} className="second-row_t_c">Удалить</button>
         <button onClick={() => routeHandler(`/subjectsByHoursEdit/${props.course_id}`)} className="second-row_t_c">Список занятий</button>
       </div>
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
