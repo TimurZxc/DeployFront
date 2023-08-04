@@ -80,11 +80,13 @@ const SubjectPageEdit = (props) => {
     }
   }, [mainCourseList]);
   
-
   const paramss = useParams();
   useEffect(() => {
     getData();
   }, [updateCount, deleteCount])
+
+  console.log('mainCourseList', mainCourseList)
+  console.log('formDataList', formDataList)
 
   return (
     <div className="main">
@@ -103,7 +105,7 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время начала урока"
                     name="start_time"
                     className="second-row_e"
-                    value={formDataList[index].start_time}
+                    value={formDataList[index]?.start_time}
                     onChange={(e) => handleChange(e, index)}
                   />
 
@@ -113,7 +115,7 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время окончания урока"
                     name="end_time"
                     className="second-row_e"
-                    value={formDataList[index].end_time}
+                    value={formDataList[index]?.end_time}
                     onChange={(e) => handleChange(e, index)}
                   />
                 </div>
@@ -123,7 +125,7 @@ const SubjectPageEdit = (props) => {
                     type="date"
                     name="date"
                     className="second-row_e"
-                    value={formDataList[index].date}
+                    value={formDataList[index]?.date}
                     onChange={(e) => handleChange(e, index)}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id, formDataList[index]); }} className="second-row_t_c">Сохранить</button>
