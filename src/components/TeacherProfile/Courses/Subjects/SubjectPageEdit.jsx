@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import './subjects.css'
-
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import axiosInstance from '../../../../axios'
 import Sidebar from '../../../Sidebar/Sidebar'
 import AddSubjComponentEdit from './AddSubjComp';
 import SubjComponentEdit from './SubjectCompEdit';
+import Lottie from 'lottie-react'
 
 
 const SubjectPageEdit = (props) => {
@@ -16,7 +17,14 @@ const SubjectPageEdit = (props) => {
     setIsShown(prevShown => !prevShown)
   }
 
+  let navigate = useNavigate()
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
+
   const [formDataList, setFormDataList] = useState([]);
+
+  const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const handleChange = (event, index) => {
     const { name, value } = event.target;
@@ -39,6 +47,7 @@ const SubjectPageEdit = (props) => {
       })
       .then(() => {
         setUpdateCount((prevCount) => prevCount + 1);
+        setRegistrationStatus('success: Данные были успешно обновлены!');
       })
       .catch((error) => {
         console.error('Error updating lesson:', error);
@@ -51,10 +60,10 @@ const SubjectPageEdit = (props) => {
     })
   }
 
-  let navigate = useNavigate()
-  const routeHandler = (URL) => {
-    navigate(URL)
-  }
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
+
 
   const [isShown, setIsShown] = useState(false)
 
@@ -84,9 +93,6 @@ const SubjectPageEdit = (props) => {
   useEffect(() => {
     getData();
   }, [updateCount, deleteCount])
-
-  console.log('mainCourseList', mainCourseList)
-  console.log('formDataList', formDataList)
 
   return (
     <div className="main">
@@ -139,6 +145,23 @@ const SubjectPageEdit = (props) => {
         <h1 className="profile-title_t">Добавить занятие</h1>
         <AddSubjComponentEdit />
       </div>
+
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <>
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+
     </div>
   )
 }
