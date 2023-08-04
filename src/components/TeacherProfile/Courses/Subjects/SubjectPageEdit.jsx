@@ -17,7 +17,11 @@ const SubjectPageEdit = (props) => {
   }
 
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    start_time: '',
+    end_time: '',
+    date: ''
+  });
 
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
