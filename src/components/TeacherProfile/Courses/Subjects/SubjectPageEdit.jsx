@@ -30,15 +30,20 @@ const SubjectPageEdit = (props) => {
     });
   };
   
-  const handleUpdate = (course_id, lesson_id) => {
-    axiosInstance.put(`/update/course/${course_id}/lesson/${lesson_id}`, {
-      date: formData.date,
-      start_time: formData.start_time,
-      end_time: formData.end_time,
-    }).then(() => {
-      setUpdateCount((prevCount) => prevCount + 1);
-    })
-  };
+  const handleUpdate = (course_id, lesson_id, formData) => {
+    axiosInstance
+      .put(`/update/course/${course_id}/lesson/${lesson_id}`, {
+        date: formData.date,
+        start_time: formData.start_time,
+        end_time: formData.end_time,
+      })
+      .then(() => {
+        setUpdateCount((prevCount) => prevCount + 1);
+      })
+      .catch((error) => {
+        console.error('Error updating lesson:', error);
+      });
+  };  
 
   const handleDelete = (course_id, lesson_id) => {
     axiosInstance.delete(`/delete/course/${course_id}/lesson/${lesson_id}`).then(() => {
@@ -121,7 +126,7 @@ const SubjectPageEdit = (props) => {
                     value={formDataList[index].date}
                     onChange={(e) => handleChange(e, index)}
                   />
-                  <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Сохранить</button>
+                  <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id, formDataList[index]); }} className="second-row_t_c">Сохранить</button>
                   <button onClick={() => { handleDelete(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Удалить</button>
                 </div>
               </div>
