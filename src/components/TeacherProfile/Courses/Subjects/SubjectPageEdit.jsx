@@ -9,7 +9,7 @@ import Sidebar from '../../../Sidebar/Sidebar'
 import AddSubjComponentEdit from './AddSubjComp';
 import SubjComponentEdit from './SubjectCompEdit';
 import Lottie from 'lottie-react'
-
+import animationData from '../../../../assets/animation_lktzbjcg.json'
 
 const SubjectPageEdit = (props) => {
 
