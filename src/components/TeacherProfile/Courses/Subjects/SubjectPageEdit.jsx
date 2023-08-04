@@ -16,15 +16,20 @@ const SubjectPageEdit = (props) => {
     setIsShown(prevShown => !prevShown)
   }
 
-  const handleChange = event => {
-    const { name, value, type, checked } = event.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+  const [formDataList, setFormDataList] = useState([]);
+
+  const handleChange = (event, index) => {
+    const { name, value } = event.target;
+    setFormDataList((prevFormDataList) => {
+      const updatedFormDataList = [...prevFormDataList];
+      updatedFormDataList[index] = {
+        ...updatedFormDataList[index],
+        [name]: value,
+      };
+      return updatedFormDataList;
+    });
   };
-
-
+  
   const handleUpdate = (course_id, lesson_id) => {
     axiosInstance.put(`/update/course/${course_id}/lesson/${lesson_id}`, {
       date: formData.date,
@@ -59,18 +64,22 @@ const SubjectPageEdit = (props) => {
     })
   }
 
-  const [formData, setFormData] = useState({
-    start_time: mainCourseList.start_time,
-    end_time: mainCourseList.end_time,
-    date: mainCourseList.date
-  });
+  useEffect(() => {
+    if (mainCourseList.length > 0) {
+      const initialFormDataList = mainCourseList.map((lesson) => ({
+        start_time: lesson.start_time,
+        end_time: lesson.end_time,
+        date: lesson.date,
+      }));
+      setFormDataList(initialFormDataList);
+    }
+  }, [mainCourseList]);
+  
 
   const paramss = useParams();
   useEffect(() => {
     getData();
   }, [updateCount, deleteCount])
-
-
 
   return (
     <div className="main">
@@ -80,7 +89,7 @@ const SubjectPageEdit = (props) => {
         {/* {isShown && <ContactInfoTeach/>} */}
         <section className='course--list'>
           {
-            mainCourseList.map((lesson) => (
+            mainCourseList.map((lesson, index) => (
               <div className="courses-body_t" key={lesson.id}>
                 <div className="first-col">
                   <div className="first-row">Дата начала урока</div>
@@ -89,7 +98,8 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время начала урока"
                     name="start_time"
                     className="second-row_e"
-                    onChange={handleChange}
+                    value={formDataList[index].start_time}
+                    onChange={(e) => handleChange(e, index)}
                   />
 
                   <div className="second-row">Дата окончания урока</div>
@@ -98,7 +108,8 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время окончания урока"
                     name="end_time"
                     className="second-row_e"
-                    onChange={handleChange}
+                    value={formDataList[index].end_time}
+                    onChange={(e) => handleChange(e, index)}
                   />
                 </div>
                 <div className="second-col">
@@ -107,7 +118,8 @@ const SubjectPageEdit = (props) => {
                     type="date"
                     name="date"
                     className="second-row_e"
-                    onChange={handleChange}
+                    value={formDataList[index].date}
+                    onChange={(e) => handleChange(e, index)}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Сохранить</button>
                   <button onClick={() => { handleDelete(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Удалить</button>
