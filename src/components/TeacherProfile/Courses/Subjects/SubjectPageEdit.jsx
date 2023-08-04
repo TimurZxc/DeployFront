@@ -16,13 +16,6 @@ const SubjectPageEdit = (props) => {
     setIsShown(prevShown => !prevShown)
   }
 
-
-  const [formData, setFormData] = useState({
-    start_time: '',
-    end_time: '',
-    date: ''
-  });
-
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
     setFormData(prevFormData => ({
@@ -66,6 +59,12 @@ const SubjectPageEdit = (props) => {
     })
   }
 
+  const [formData, setFormData] = useState({
+    start_time: mainCourseList.start_time,
+    end_time: mainCourseList.end_time,
+    date: mainCourseList.date
+  });
+
   const paramss = useParams();
   useEffect(() => {
     getData();
@@ -90,7 +89,6 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время начала урока"
                     name="start_time"
                     className="second-row_e"
-                    value={lesson.start_time}
                     onChange={handleChange}
                   />
 
@@ -100,7 +98,6 @@ const SubjectPageEdit = (props) => {
                     placeholder="Время окончания урока"
                     name="end_time"
                     className="second-row_e"
-                    value={lesson.end_time}
                     onChange={handleChange}
                   />
                 </div>
@@ -110,7 +107,6 @@ const SubjectPageEdit = (props) => {
                     type="date"
                     name="date"
                     className="second-row_e"
-                    value={lesson.date}
                     onChange={handleChange}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Сохранить</button>
