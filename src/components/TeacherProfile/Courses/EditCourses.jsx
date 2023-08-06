@@ -2,7 +2,7 @@ import React from 'react'
 import './CoursesTeach.css'
 import { useState, useEffect} from 'react';
 import axiosInstance from '../../../axios';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
@@ -14,6 +14,8 @@ const EditCoursesTeach = (props) => {
   const routeHandler = (URL) => {
     navigate(URL)
   }
+
+  const paramss = useParams();
 
   const [formData, setFormData] = useState({
     name: props.name,
@@ -29,6 +31,14 @@ const EditCoursesTeach = (props) => {
   const [updateCount, setUpdateCount] = useState(0);
   const [deleteCount, setDeleteCount] = useState(0);
 
+  const getData = () => {
+    axiosInstance.get('course-list' + paramss.id).then((response) => {
+      setMainCourseList(response.data[0].courses)
+    })
+    .catch((error) => {
+      console.error("Error fetching course data:", error);
+    });
+  }
 
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
