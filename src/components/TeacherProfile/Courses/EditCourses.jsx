@@ -40,7 +40,6 @@ const EditCoursesTeach = (props) => {
   }, []);
 
   const getData = () => {
-    React.useEffect(() => {
       mainTeachList.map(data => {
         if (mainTeachList && data?.teacher?.id) {
           const id = data?.teacher?.id
@@ -55,8 +54,6 @@ const EditCoursesTeach = (props) => {
             });
         }
       })
-
-    }, [mainTeachList]);
   }
 
   let navigate = useNavigate()
