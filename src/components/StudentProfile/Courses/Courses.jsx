@@ -1,40 +1,29 @@
 import React from 'react'
 import './Courses.scss'
-import CourseComponent from './CourseComponent'
 import axiosInstance from '../../../axios'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Lottie from 'lottie-react'
+import animationData from '../../../assets/animation_lktzbjcg.json'
 
 const Courses = (props) => {
 
   const [studCourseList, setStudCourseList] = React.useState([])
+  const [deleteCount, setDeleteCount] = React.useState(0);
+  const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
 
-  // React.useEffect(() => {
-  //   mainTeachList.map(data => {
-  //     if (mainTeachList && data?.teacher?.id) {
-  //       const id = data?.teacher?.id
+  const handleModalClose = () => {
+    setRegistrationStatus(null);
+  };
 
-  //       axiosInstance
-  //         .get(`course-list/${id}`)
-  //         .then((response) => {
-  //           setMainCourseList(response.data[0].courses);
-  //         })
-  //         .catch((error) => {
-  //           console.error("Error fetching course data:", error);
-  //         });
-  //     }
-  //   })
-
-  // }, [mainTeachList]);
-
-  const StudCourses = studCourseList.map(data => {
-    console.log(data)
-    return <CourseComponent
-      id={data?.id}
-      key={data?.lessons?.related_course?.id}
-      course_name={data?.lessons?.related_course?.name}
-      date={data?.lessons?.date}
-      start_time={data?.lessons?.start_time}
-      end_time={data?.lessons?.end_time} />
-  })
+  function cancleLesson(id) {
+    axiosInstance.delete(`cancel/${id}`).then(() => {
+      setDeleteCount((prevCount) => prevCount + 1),
+        setRegistrationStatus('success: Урок был успешно отменен!');
+    }).catch((error) => {
+      setRegistrationStatus(`Error cancelling lesson: ${error.message}`);
+    })
+  }
 
   React.useEffect(() => {
     axiosInstance
@@ -42,15 +31,68 @@ const Courses = (props) => {
       .then((response) => {
         const studCoursesData = response.data;
         setStudCourseList(studCoursesData);
-        console.log("courses data", studCoursesData);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        setRegistrationStatus(`Error fetching data:: ${error.message}`);
       });
-  }, []);
+  }, [studCourseList]);
+
+  const getData = () => {
+    axiosInstance
+      .get("lessons")
+      .then((response) => {
+        const studCoursesData = response.data;
+        setStudCourseList(studCoursesData);
+      })
+      .catch((error) => {
+        setRegistrationStatus(`Error fetching data:: ${error.message}`);
+      });
+  }
+
+  React.useEffect(() => {
+    getData();
+  }, [deleteCount])
 
   return (
-    <section>{StudCourses}</section>
+    <section>
+      {
+        studCourseList.map((data) => (
+          <div className='courses-body' key={data?.lessons?.related_course?.id}>
+            <div className="first-col">
+              <div className="first-row">Курс:</div>
+              <div className="second-row">{data?.lessons?.related_course?.name}</div>
+              <button onClick={() => { cancleLesson(data.id) }} className='cancle-delete'>Отменить</button>
+            </div>
+            <div className="second-col">
+              <div className="first-row">Дата проведения урока</div>
+              <div className="second-row">{data?.lessons?.date}</div>
+            </div>
+            <div className="third-col">
+              <div className="first-row">Время проведения урока</div>
+              <div className="second-row">c {data?.lessons?.start_time}</div>
+              <div className="third-row">до {data?.lessons?.end_time}</div>
+            </div>
+          </div>
+        ))
+      }
+
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <>
+              <Lottie animationData={animationData} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+
+    </section>
   )
 }
 
