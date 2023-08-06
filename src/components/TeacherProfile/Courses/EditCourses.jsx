@@ -40,9 +40,8 @@ const EditCoursesTeach = (props) => {
   }, []);
 
   const getData = () => {
-      mainTeachList.map(data => {
-        if (mainTeachList && data?.teacher?.id) {
-          const id = data?.teacher?.id
+        if (mainTeachList?.teacher?.id) {
+          const id = mainTeachList?.teacher?.id
           console.log('id', id)
           axiosInstance
             .get(`course-list/${id}`)
@@ -53,7 +52,6 @@ const EditCoursesTeach = (props) => {
               console.error("Error fetching course data:", error);
             });
         }
-      })
   }
 
   let navigate = useNavigate()
@@ -63,7 +61,7 @@ const EditCoursesTeach = (props) => {
 
   const paramss = useParams();
 
-  
+
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
     setFormData(prevFormData => ({
@@ -80,6 +78,7 @@ const EditCoursesTeach = (props) => {
       number_of_students: formData.number_of_students
     })
     setUpdateCount((prevCount) => prevCount + 1);
+    console.log('updateCount', updateCount)
     setRegistrationStatus('success: Курс был успешно обнавлен!')
       .catch((error) => {
         setRegistrationStatus(`Error updating course: ${error.message}`);
@@ -105,74 +104,8 @@ const EditCoursesTeach = (props) => {
   }, [updateCount, deleteCount])
 
   return (
-    <div className="courses-body_t">
-      <div className="first-col">
-        <div className="first-row">Предмет</div>
-        <input
-          type="text"
-          placeholder="Название предмета"
-          name="name"
-          className="second-row_e"
-          value={formData.name}
-          onChange={handleChange} />
-        <div className="first-row">Cтоимость</div>
-        <input
-          type="text"
-          placeholder="Цена"
-          name="price"
-          className="second-row_e"
-          value={formData.price}
-          onChange={handleChange} />
-
-        <div className="first-row">Язык преподавания</div>
-
-        <select className='course_selector' name="language" value={formData.language} onChange={handleChange}>
-          <option value="">Язык</option>
-          <option value="казахский">Казахский</option>
-          <option value="русский">Русский</option>
-          <option value="английский">Английский</option>
-          <option value="русский казахский">Русский, Казахский</option>
-          <option value="казахский английский">Казахский, Английский</option>
-          <option value="русский английский">Русский, Английский</option>
-          <option value="русский английский казахский">Русский, Английский, Казахский</option>
-        </select>
-      </div>
-      <div className="second-col">
-        <div className="first-row">Описание</div>
-        <input
-          type="text"
-          placeholder="Описание курса"
-          name="description"
-          className="second-row_e"
-          value={formData.description}
-          onChange={handleChange} />
-        <div className="first-row">Количестово мест</div>
-        <input
-          type="text"
-          placeholder="Количество студентов"
-          name="number_of_students"
-          className="second-row_e"
-          value={formData.number_of_students}
-          onChange={handleChange} />
-
-        <div className="first-row">Уровень обучения</div>
-
-        <select className='course_selector' name="student_level" value={formData.student_level} onChange={handleChange}>
-          <option value="">Уровень</option>
-          <option value="1-4 класс">1-4 класс</option>
-          <option value="5-8 класс">5-8 класс</option>
-          <option value="9-11 класс">9-11 класс</option>
-          <option value="1 курс">1 курс</option>
-        </select>
-
-      </div>
-      <div className="third-col">
-        <div className="first-row"></div>
-
-        <button onClick={() => { handleUpdate(props.course_id) }} className="second-row_t_c">Сохранить</button>
-        <button onClick={() => { handleDelete(props.course_id) }} className="second-row_t_c">Удалить</button>
-        <button onClick={() => routeHandler(`/subjectsByHoursEdit/${props.course_id}`)} className="second-row_t_c">Список занятий</button>
-      </div>
+ 
+    <div>
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (

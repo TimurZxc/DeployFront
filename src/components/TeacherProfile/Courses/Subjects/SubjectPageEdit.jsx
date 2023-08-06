@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button';
 import axiosInstance from '../../../../axios'
 import Sidebar from '../../../Sidebar/Sidebar'
 import AddSubjComponentEdit from './AddSubjComp';
-import SubjComponentEdit from './SubjectCompEdit';
 import Lottie from 'lottie-react'
 import animationData from '../../../../assets/animation_lktzbjcg.json'
 
@@ -93,7 +92,7 @@ const SubjectPageEdit = (props) => {
   }, [mainCourseList]);
   
   const paramss = useParams();
-  
+
   useEffect(() => {
     getData();
   }, [updateCount, deleteCount])
