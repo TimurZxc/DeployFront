@@ -1,6 +1,6 @@
 import React from 'react'
 import './CoursesTeach.css'
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axiosInstance from '../../../axios';
 import { useNavigate, useParams } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
@@ -9,13 +9,6 @@ import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
 
 const EditCoursesTeach = (props) => {
-
-  let navigate = useNavigate()
-  const routeHandler = (URL) => {
-    navigate(URL)
-  }
-
-  const paramss = useParams();
 
   const [formData, setFormData] = useState({
     name: props.name,
@@ -26,19 +19,53 @@ const EditCoursesTeach = (props) => {
     student_level: props.student_level,
   });
 
+  const [mainCourseList, setMainCourseList] = React.useState([])
+  const [mainTeachList, setMainTeachList] = React.useState([])
+
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
   const [updateCount, setUpdateCount] = useState(0);
   const [deleteCount, setDeleteCount] = useState(0);
 
+  React.useEffect(() => {
+    axiosInstance
+      .get("curr/")
+      .then((response) => {
+        const mainTeacherData = response.data;
+        setMainTeachList(mainTeacherData);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   const getData = () => {
-    axiosInstance.get('course-list' + paramss.id).then((response) => {
-      setMainCourseList(response.data[0].courses)
-    })
-    .catch((error) => {
-      console.error("Error fetching course data:", error);
-    });
+    React.useEffect(() => {
+      mainTeachList.map(data => {
+        if (mainTeachList && data?.teacher?.id) {
+          const id = data?.teacher?.id
+
+          axiosInstance
+            .get(`course-list/${id}`)
+            .then((response) => {
+              setMainCourseList(response.data[0].courses);
+            })
+            .catch((error) => {
+              console.error("Error fetching course data:", error);
+            });
+        }
+      })
+
+    }, [mainTeachList]);
   }
+
+  let navigate = useNavigate()
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
+
+  const paramss = useParams();
+
 
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
