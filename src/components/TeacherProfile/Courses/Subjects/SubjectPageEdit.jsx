@@ -57,8 +57,11 @@ const SubjectPageEdit = (props) => {
   const handleDelete = (course_id, lesson_id) => {
     axiosInstance.delete(`/delete/course/${course_id}/lesson/${lesson_id}`).then(() => {
       setDeleteCount((prevCount) => prevCount + 1);
-    })
-  }
+      setRegistrationStatus('success: Урок был успешно удален!');
+    }).catch((error) => {
+      console.error('Error deleting lesson:', error);
+    });
+  };
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -90,6 +93,7 @@ const SubjectPageEdit = (props) => {
   }, [mainCourseList]);
   
   const paramss = useParams();
+  
   useEffect(() => {
     getData();
   }, [updateCount, deleteCount])

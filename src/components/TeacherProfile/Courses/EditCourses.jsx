@@ -5,6 +5,8 @@ import axiosInstance from '../../../axios';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Lottie from 'lottie-react'
+import animationData from '../../../assets/animation_lktzbjcg.json'
 
 const EditCoursesTeach = (props) => {
 
@@ -24,6 +26,9 @@ const EditCoursesTeach = (props) => {
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
+  const [updateCount, setUpdateCount] = useState(0);
+  const [deleteCount, setDeleteCount] = useState(0);
+
 
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
@@ -40,24 +45,30 @@ const EditCoursesTeach = (props) => {
       price: formData.price,
       number_of_students: formData.number_of_students
     })
-    setRegistrationStatus('success: Курс был успешно удален!')
+    setUpdateCount((prevCount) => prevCount + 1);
+    setRegistrationStatus('success: Курс был успешно обнавлен!')
       .catch((error) => {
-        setRegistrationStatus(`error: ${error.message}`);
+        setRegistrationStatus(`Error updating course: ${error.message}`);
       });
   };
 
   function handleDelete(id) {
-    axiosInstance.delete(`/delete/course/${id}`)
-    setRegistrationStatus('success: Курс был успешно удален!')
-      .catch((error) => {
-        setRegistrationStatus(`error: ${error.message}`);
-      });
+    axiosInstance.delete(`/delete/course/${id}`),
+      setDeleteCount((prevCount) => prevCount + 1),
+      setRegistrationStatus('success: Курс был успешно удален!')
+        .catch((error) => {
+          setRegistrationStatus(`Error deleting course: ${error.message}`);
+        });
     window.location.reload(true)
   }
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  useEffect(() => {
+    getData();
+  }, [updateCount, deleteCount])
 
   return (
     <div className="courses-body_t">
@@ -133,7 +144,10 @@ const EditCoursesTeach = (props) => {
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
-            <p className="success-message">{registrationStatus.substr(9)}</p>
+            <>
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
             Закрыть
