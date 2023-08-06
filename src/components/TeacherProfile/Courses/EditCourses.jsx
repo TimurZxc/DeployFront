@@ -1,6 +1,6 @@
 import React from 'react'
 import './CoursesTeach.css'
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import axiosInstance from '../../../axios';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
