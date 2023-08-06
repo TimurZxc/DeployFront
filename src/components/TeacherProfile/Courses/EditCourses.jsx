@@ -43,7 +43,7 @@ const EditCoursesTeach = (props) => {
       mainTeachList.map(data => {
         if (mainTeachList && data?.teacher?.id) {
           const id = data?.teacher?.id
-
+          console.log('id', id)
           axiosInstance
             .get(`course-list/${id}`)
             .then((response) => {
@@ -63,7 +63,7 @@ const EditCoursesTeach = (props) => {
 
   const paramss = useParams();
 
-
+  
   const handleChange = event => {
     const { name, value, type, checked } = event.target;
     setFormData(prevFormData => ({
