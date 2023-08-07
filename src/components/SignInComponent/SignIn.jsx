@@ -1,8 +1,6 @@
 import "./sign-in.css";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
 import Modal from 'react-bootstrap/Modal';
@@ -16,11 +14,14 @@ const SignIn = () => {
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+  const [passError, setPassError] = useState(null)
+  const [emailError, setEmailError] = useState(null)
+  const [signError, setSignError] = useState(null)
 
   const urlParams = new URLSearchParams(window.location.search);
   const trueParam = urlParams.get('True');
   const falseParam = urlParams.get('False');
-  
+
   const navigate = useNavigate();
   const routeHandler = (URL) => {
     navigate(URL)
@@ -35,20 +36,39 @@ const SignIn = () => {
   }
 
   const handleSubmit = (e) => {
-		e.preventDefault();
-		axiosInstance
-			.post('login/', formData)
-			.then((res) => {
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
-				axiosInstance.defaults.headers['Authorization'] =
-					'Bearer ' + localStorage.getItem('access_token');
-        navigate('/');
-        setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
-			}).catch((error) => {
-        setRegistrationStatus(`error: ${error.message}`);
-      });
-	};
+    e.preventDefault();
+
+    if(!formData.email & !formData.password){
+      setSignError('Пожалуйста заполните все поля')
+    }
+    
+    else if (!formData.password) {
+      setPassError('Пожалуйста введите ваш пароль')
+    }
+
+    else if (!formData.email){
+      setEmailError('Пожалуйста введите вашу почту')
+    }
+    else {
+      axiosInstance
+        .post('login/', formData)
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access);
+          localStorage.setItem('refresh_token', res.data.refresh);
+          axiosInstance.defaults.headers['Authorization'] =
+            'Bearer ' + localStorage.getItem('access_token');
+          navigate('/');
+          setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
+        }).catch((error) => {
+          if (error.response && error.response.status === 401){
+            setRegistrationStatus('error: Неверный логин или пароль')
+          }
+          else{
+            setRegistrationStatus(`error: ${error.message}`);
+          }
+        });
+    }
+  };
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -66,71 +86,75 @@ const SignIn = () => {
 
   return (
     <div className="main">
-      <Sidebar/>
-    <div className="background">
+      <Sidebar />
+      <form className='SignInFrom' onSubmit={handleSubmit}>
 
-    </div>
-    <form className='SignInFrom'  onSubmit={handleSubmit}>
-    <h3>Войдите в аккаунт</h3>
+        {signError && (
+          <p className="error-text">{signError}</p>
+        )}
+        {passError && (
+          <p className="error-text">{passError}</p>
+        )}
+        {emailError && (
+          <p className="error-text">{emailError}</p>
+        )}
 
-    <label for="username">Электронная почта</label>
+        <h3>Войдите в аккаунт</h3>
 
-    <input
-        className='form--inpt'
-        type="email"
-        name="email"
-        placeholder='Email'
-        value={formData.email}
-        onChange={handleChange}
-        id="username"/>
+        <label htmlFor="username">Электронная почта</label>
 
-    <label className='signLabel' for="password">Пароль</label>
-    <input
-        className='form--inpt'
-        placeholder='Введите пароль'
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        id="password"/>
+        <input
+          className='form--inpt'
+          type="email"
+          name="email"
+          placeholder='Email'
+          value={formData.email}
+          onChange={handleChange}
+          id="username" />
 
-    <button className='form--sbt' type="submit" >Войти</button>
-    {/* <div className="social">
-      <div className="go"><FontAwesomeIcon icon={faGoogle} size="lg"/>  Google</div>
-      <div className="fb"><FontAwesomeIcon icon={faFacebook} size="lg"/>  Facebook</div>
-    </div> */}
-    <div
-        onClick={() => routeHandler('/resetPass')}
-        id='signUp'
-        className={
+        <label className='signLabel' htmlFor="password">Пароль</label>
+        <input
+          className='form--inpt'
+          placeholder='Введите пароль'
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          id="password" />
+
+        <button className='form--sbt' type="submit" >Войти</button>
+        <div
+          onClick={() => routeHandler('/resetPass')}
+          id='signUp'
+          className={
             window.location.pathname === '/resetPass'
-            ? `navigation-item active`
-            : `navigation-item`
-        }
+              ? `navigation-item active`
+              : `navigation-item`
+          }
         >Забыли пароль?</div>
-    <div
-        onClick={() => routeHandler('/register')}
-        id='signUp'
-        className={
+        <div
+          onClick={() => routeHandler('/register')}
+          id='signUp'
+          className={
             window.location.pathname === '/register'
-            ? `navigation-item active`
-            : `navigation-item`
-        }
+              ? `navigation-item active`
+              : `navigation-item`
+          }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
-</form> 
-  <Modal show={registrationStatus !== null} onHide={handleModalClose}>
-    <Modal.Body>
-      {registrationStatus && registrationStatus.startsWith('error') ? (
-        <p className="error-message">{registrationStatus.substr(7)}</p>
-      ) : registrationStatus && registrationStatus.startsWith('success') ? (
-        <p className="success-message">{registrationStatus.substr(9)}</p>
-      ) : null}
-      <Button variant="secondary" onClick={handleModalClose} className="close-button">
-        Закрыть
-      </Button>
-    </Modal.Body>
-  </Modal>
-</div>
+      </form>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+    </div>
   );
 };
 

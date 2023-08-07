@@ -1,12 +1,12 @@
-// import teacherCard from '../../assets/svg-pictures/teacher.svg'
 import React, { useState } from 'react';
-// import TeachCard from './TeachCard';
 import './sign-up.css'
 import axiosInstance from "../../axios";
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Lottie from 'lottie-react'
+import animationData from '../../assets/animation_lktzbjcg.json'
 // import userpic from '../../images/user-286.png'
 // import Sprite from '../Sprite/Sprite';
 // import { equal } from 'assert';
@@ -34,30 +34,6 @@ const SignUp = () => {
     navigate(URL)
   }
 
-  // const [image, setImage] = useState(null);
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-
-  //   // Split the name into nested keys
-  //   const nameParts = name.split('.');
-
-  //   // Update the nested state correctly
-  //   if (nameParts.length === 1) {
-  //     setFormData(prevFormData => ({
-  //       ...prevFormData,
-  //       [name]: value
-  //     }));
-  //   } else if (nameParts.length === 2) {
-  //     setFormData(prevFormData => ({
-  //       ...prevFormData,
-  //       [nameParts[0]]: {
-  //         ...prevFormData[nameParts[0]],
-  //         [nameParts[1]]: value
-  //       }
-  //     }));
-  //   }
-  // };
-
   const handleChange = event => {
     const { name, value } = event.target;
     setFormData(prevFormData => ({
@@ -66,14 +42,14 @@ const SignUp = () => {
     }));
   };
 
-
-  // const handleImageChange = (event) => {
-  //   setImage(event.target.files[0]);
-  // };
-
   const handleSubmit = event => {
     event.preventDefault();
-    if (formData.password !== formData.password2) {
+    if(!formData.first_name || !formData.last_name || !formData.birth_date ||
+      !formData.email || !formData.password || !formData.password2 || !formData.phone){
+        setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
+      }
+
+    else if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
@@ -117,22 +93,6 @@ const SignUp = () => {
           </button>
         </div>
 
-        {/* <div className="upload">
-          <img className='teach-puple-img' src={formData.image ? formData.image : userpic} alt="" />
-          <div className="round">
-            <input
-              accept='image/*'
-              type="file"
-              name="image"
-              onChange={handleImageChange}
-            />
-            <Sprite id='camera' />
-          </div>
-        </div> */}
-
-        {/* <button onClick={() => routeHandler('/regEduCent')} className="form--submit" type="submit">
-        Регистрация образ. центра
-      </button> */}
         <p>Информация о ребенке *</p>
         <div className="input-row">
           <input
@@ -231,7 +191,10 @@ const SignUp = () => {
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
-            <p className="success-message">{registrationStatus.substr(9)}</p>
+            <>
+              <Lottie animationData={animationData} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
             Закрыть

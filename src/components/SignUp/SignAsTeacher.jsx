@@ -5,6 +5,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Lottie from 'lottie-react'
+import animationData from '../../assets/animation_lktzbjcg.json'
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -68,13 +70,17 @@ const SignUpTeacher = () => {
     }));
   };
 
-  // const handleImageChange = (event) => {
-  //   setImage(event.target.files[0]);
-  // };
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (formData.password !== formData.password2) {
+
+    if(!formData.first_name || !formData.last_name || !formData.birth_date ||
+      !formData.email || !formData.password || !formData.password2 || !formData.phone
+      || !formData.education ||!formData.experience){
+        setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
+      }
+
+    else if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
@@ -241,7 +247,10 @@ const SignUpTeacher = () => {
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <>
+            <Lottie animationData={animationData} />
             <p className="success-message">{registrationStatus.substr(9)}</p>
+            </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
             Закрыть
