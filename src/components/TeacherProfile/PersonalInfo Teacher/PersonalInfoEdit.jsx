@@ -344,14 +344,14 @@ const PersonalInfoTeachEdit = (props) => {
 
       <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
         <Avatar
-          width={'fit-content'}
+          width={'auto'}
           height={350}
           minWidth={350}
           onCrop={onCrop}
           onClose={onClose}
           onBeforeFileLoad={onBeforeFileLoad}
           src={src}
-          cropRadius={110}
+          cropRadius={70}
           labelStyle={{ 'width': 350 }}
           label={"Загрузите фотографию"}
         />
