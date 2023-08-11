@@ -312,7 +312,7 @@ const PersonalInfoEdit = (props) => {
         </Modal.Body>
       </Modal>
 
-      <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
+      <Modal id='avatar' show={isModalOpen === 1} onHide={handleModalClosePhoto}>
         <Avatar
           width={'fit-content'}
           height={350}

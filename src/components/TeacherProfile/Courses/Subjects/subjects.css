@@ -336,6 +336,9 @@
   .modal-dialog{
     width: 100% !important;
   }
+  #avatar{
+    width: fit-content !important;
+  }
 }
 .modal-header {
   border-bottom: none;
