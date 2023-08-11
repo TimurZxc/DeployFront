@@ -1,8 +1,6 @@
 import "./sign-in.css";
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
 import Modal from 'react-bootstrap/Modal';
@@ -16,6 +14,9 @@ const SignIn = () => {
   });
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
+  const [passError, setPassError] = useState(null)
+  const [emailError, setEmailError] = useState(null)
+  const [signError, setSignError] = useState(null)
 
   const urlParams = new URLSearchParams(window.location.search);
   const trueParam = urlParams.get('True');
@@ -36,18 +37,37 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosInstance
-      .post('login/', formData)
-      .then((res) => {
-        localStorage.setItem('access_token', res.data.access);
-        localStorage.setItem('refresh_token', res.data.refresh);
-        axiosInstance.defaults.headers['Authorization'] =
-          'Bearer ' + localStorage.getItem('access_token');
-        navigate('/');
-        setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
-      }).catch((error) => {
-        setRegistrationStatus(`error: ${error.message}`);
-      });
+
+    if(!formData.email & !formData.password){
+      setSignError('Пожалуйста заполните все поля')
+    }
+    
+    else if (!formData.password) {
+      setPassError('Пожалуйста введите ваш пароль')
+    }
+
+    else if (!formData.email){
+      setEmailError('Пожалуйста введите вашу почту')
+    }
+    else {
+      axiosInstance
+        .post('login/', formData)
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access);
+          localStorage.setItem('refresh_token', res.data.refresh);
+          axiosInstance.defaults.headers['Authorization'] =
+            'Bearer ' + localStorage.getItem('access_token');
+          navigate('/');
+          setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
+        }).catch((error) => {
+          if (error.response && error.response.status === 401){
+            setRegistrationStatus('error: Неверный логин или пароль')
+          }
+          else{
+            setRegistrationStatus(`error: ${error.message}`);
+          }
+        });
+    }
   };
 
   const handleModalClose = () => {
@@ -68,9 +88,20 @@ const SignIn = () => {
     <div className="main">
       <Sidebar />
       <form className='SignInFrom' onSubmit={handleSubmit}>
+
+        {signError && (
+          <p className="error-text">{signError}</p>
+        )}
+        {passError && (
+          <p className="error-text">{passError}</p>
+        )}
+        {emailError && (
+          <p className="error-text">{emailError}</p>
+        )}
+
         <h3>Войдите в аккаунт</h3>
 
-        <label for="username">Электронная почта</label>
+        <label htmlFor="username">Электронная почта</label>
 
         <input
           className='form--inpt'
@@ -81,7 +112,7 @@ const SignIn = () => {
           onChange={handleChange}
           id="username" />
 
-        <label className='signLabel' for="password">Пароль</label>
+        <label className='signLabel' htmlFor="password">Пароль</label>
         <input
           className='form--inpt'
           placeholder='Введите пароль'
@@ -92,10 +123,6 @@ const SignIn = () => {
           id="password" />
 
         <button className='form--sbt' type="submit" >Войти</button>
-        {/* <div className="social">
-      <div className="go"><FontAwesomeIcon icon={faGoogle} size="lg"/>  Google</div>
-      <div className="fb"><FontAwesomeIcon icon={faFacebook} size="lg"/>  Facebook</div>
-    </div> */}
         <div
           onClick={() => routeHandler('/resetPass')}
           id='signUp'

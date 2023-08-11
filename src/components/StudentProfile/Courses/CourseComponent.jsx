@@ -8,13 +8,6 @@ const CourseComponent = (props) => {
 
   const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
 
-  function cancleLesson(id) {
-    axiosInstance.delete(`cancel/${id}`).then(()=>{
-      setRegistrationStatus('success: Урок был успешно удален!');
-    }).catch((error)=>{
-      setRegistrationStatus(`error: ${error.message}`);
-    })
-  }
 
   const handleModalClose = () => {
     setRegistrationStatus(null);

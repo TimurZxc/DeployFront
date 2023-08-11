@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const baseURL = 'http://localhost:8000/api/';
+// const baseURL = 'http://192.168.0.11:8000/api/';
 // const baseURL = 'https://teach2u.jcloud.kz/api/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
-	timeout: 20000,
+	timeout: 30000,
 	headers: {
 		Authorization: localStorage.getItem('access_token')
 			? 'Bearer ' + localStorage.getItem('access_token')

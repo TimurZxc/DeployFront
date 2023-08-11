@@ -9,8 +9,6 @@ const CoursesTeach = (props) => {
     navigate(URL)
   }
 
-  console.log(props.course_id)
-
   return (
     <div className="courses-body_t">
       <div className="first-col">

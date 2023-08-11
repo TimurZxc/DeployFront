@@ -71,6 +71,7 @@ body {
 }
 
 .form--input-area {
+  resize: none;
   width: 80% !important;
   margin-bottom: 1rem;
   font-size: 1.2rem;
