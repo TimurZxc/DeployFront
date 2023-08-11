@@ -20,7 +20,7 @@ const SignIn = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const trueParam = urlParams.get('True');
   const falseParam = urlParams.get('False');
-  
+
   const navigate = useNavigate();
   const routeHandler = (URL) => {
     navigate(URL)
@@ -35,20 +35,20 @@ const SignIn = () => {
   }
 
   const handleSubmit = (e) => {
-		e.preventDefault();
-		axiosInstance
-			.post('login/', formData)
-			.then((res) => {
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
-				axiosInstance.defaults.headers['Authorization'] =
-					'Bearer ' + localStorage.getItem('access_token');
+    e.preventDefault();
+    axiosInstance
+      .post('login/', formData)
+      .then((res) => {
+        localStorage.setItem('access_token', res.data.access);
+        localStorage.setItem('refresh_token', res.data.refresh);
+        axiosInstance.defaults.headers['Authorization'] =
+          'Bearer ' + localStorage.getItem('access_token');
         navigate('/');
         setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
-			}).catch((error) => {
+      }).catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
       });
-	};
+  };
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
@@ -66,71 +66,68 @@ const SignIn = () => {
 
   return (
     <div className="main">
-      <Sidebar/>
-    <div className="background">
+      <Sidebar />
+      <form className='SignInFrom' onSubmit={handleSubmit}>
+        <h3>Войдите в аккаунт</h3>
 
-    </div>
-    <form className='SignInFrom'  onSubmit={handleSubmit}>
-    <h3>Войдите в аккаунт</h3>
+        <label for="username">Электронная почта</label>
 
-    <label for="username">Электронная почта</label>
+        <input
+          className='form--inpt'
+          type="email"
+          name="email"
+          placeholder='Email'
+          value={formData.email}
+          onChange={handleChange}
+          id="username" />
 
-    <input
-        className='form--inpt'
-        type="email"
-        name="email"
-        placeholder='Email'
-        value={formData.email}
-        onChange={handleChange}
-        id="username"/>
+        <label className='signLabel' for="password">Пароль</label>
+        <input
+          className='form--inpt'
+          placeholder='Введите пароль'
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          id="password" />
 
-    <label className='signLabel' for="password">Пароль</label>
-    <input
-        className='form--inpt'
-        placeholder='Введите пароль'
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        id="password"/>
-
-    <button className='form--sbt' type="submit" >Войти</button>
-    {/* <div className="social">
+        <button className='form--sbt' type="submit" >Войти</button>
+        {/* <div className="social">
       <div className="go"><FontAwesomeIcon icon={faGoogle} size="lg"/>  Google</div>
       <div className="fb"><FontAwesomeIcon icon={faFacebook} size="lg"/>  Facebook</div>
     </div> */}
-    <div
-        onClick={() => routeHandler('/resetPass')}
-        id='signUp'
-        className={
+        <div
+          onClick={() => routeHandler('/resetPass')}
+          id='signUp'
+          className={
             window.location.pathname === '/resetPass'
-            ? `navigation-item active`
-            : `navigation-item`
-        }
+              ? `navigation-item active`
+              : `navigation-item`
+          }
         >Забыли пароль?</div>
-    <div
-        onClick={() => routeHandler('/register')}
-        id='signUp'
-        className={
+        <div
+          onClick={() => routeHandler('/register')}
+          id='signUp'
+          className={
             window.location.pathname === '/register'
-            ? `navigation-item active`
-            : `navigation-item`
-        }
+              ? `navigation-item active`
+              : `navigation-item`
+          }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
-</form> 
-  <Modal show={registrationStatus !== null} onHide={handleModalClose}>
-    <Modal.Body>
-      {registrationStatus && registrationStatus.startsWith('error') ? (
-        <p className="error-message">{registrationStatus.substr(7)}</p>
-      ) : registrationStatus && registrationStatus.startsWith('success') ? (
-        <p className="success-message">{registrationStatus.substr(9)}</p>
-      ) : null}
-      <Button variant="secondary" onClick={handleModalClose} className="close-button">
-        Закрыть
-      </Button>
-    </Modal.Body>
-  </Modal>
-</div>
+      </form>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+    </div>
   );
 };
 

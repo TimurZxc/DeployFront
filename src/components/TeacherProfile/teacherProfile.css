@@ -6,7 +6,12 @@
     margin: 0;
     padding: 0;
 }
-
+@media (orientation: portrait) {
+    .main{
+      display: flex;
+      flex-direction: column;
+    }
+  }
 .settings-block_t{
     overflow-y: scroll;
     height: 100%;
@@ -80,7 +85,13 @@
     margin-left: 70px;
     margin-top: 35px;
 }
-
+@media (orientation: Portrait) {
+    .second-row_t_c_delete{
+        max-width: 322px;
+        width: 70% !important;
+        margin: 0 auto;
+    }
+}
 .delete-text{
 padding-top: 8px;
 margin-left: 8px;

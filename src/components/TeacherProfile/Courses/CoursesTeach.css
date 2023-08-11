@@ -16,7 +16,6 @@
     letter-spacing: 0.03em;
     color: rgba(17, 23, 75, 0.5);
     margin-bottom: 7px;
-    height: 30px;
 }
 
 .first-col{
@@ -42,7 +41,12 @@
     letter-spacing: 0.03em;
     color: #11174B;
 }
-
+@media (orientation: portrait) {
+  .second-row{
+    width: 100%;
+    overflow-x: auto;
+  }
+}
 .second-row_e {
     font-weight: 400;
     font-size: 20px;
@@ -143,7 +147,13 @@
     padding-top: 17px;
     cursor: pointer;
 }
-
+@media (orientation: portrait) {
+  .second-row_t_c{
+    max-width: 240px;
+    width: 70%;
+    margin: 0 auto;
+  }
+}
 /* model css */
 
 .modal-content {

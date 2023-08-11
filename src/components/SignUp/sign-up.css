@@ -24,6 +24,7 @@ body {
   margin: 40px auto;
   align-items: flex-start;
   max-width: 850px;
+  padding: 0 20px;
 }
 
 .form h1{
@@ -156,7 +157,13 @@ body {
   border-radius: 50px;
   margin: 15px
 }
-
+@media (orientation: portrait) {
+  .form--submit-last{
+    max-width: 280px;
+    width: 80% !important;
+    margin: 0 auto;
+  }
+}
 .form-buttons {
   display: flex;
   justify-content: center;
@@ -182,7 +189,7 @@ body {
   margin: 0px 15px;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .form {
     flex-wrap: wrap;
   }
@@ -204,7 +211,7 @@ body {
     width: auto;
     margin-top: 0;
   }
-}
+} */
 
 .navigation-item{
   cursor: pointer;
@@ -215,7 +222,11 @@ body {
 .c2{
   padding-left: 32%;
 }
-
+.tel{
+}
+.hidden{
+  display: none;
+}
 /* model css */
 
 .modal-content {
@@ -336,4 +347,50 @@ input[type=file]::-webkit-file-upload-button{
 .margin-ex{
   margin: 10px 0px;
 }
-
+@media (orientation: portrait) {
+  .form{
+    flex-direction: column;
+    padding: 0 5px;
+    margin: 10px auto;
+    width: 80%;
+    gap: 10px;
+  }
+  .form br{
+    display: none;
+  }
+  .input-row{
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 5px;
+    margin: 0;
+  }
+  .form--input{
+    padding: 10px 25px;
+  }
+  .form--input-tg{
+    margin: 0;
+    width: 100%;
+  }
+  .form-buttons{
+    flex-direction: column;
+    align-items: center;
+  }
+  .form--input-area{
+    width: auto;
+  }
+  .form--submit{
+    width: auto !important;
+  }
+  .tel{
+    display: none;
+  }
+  .c2{
+    display: none;
+  }
+  .hidden{
+    display: block;
+  }
+  .form p{
+    margin: 0 5px;
+  }
+}

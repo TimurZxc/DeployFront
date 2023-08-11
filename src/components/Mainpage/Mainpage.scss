@@ -6,7 +6,7 @@
 
   .main-wrapper {
     padding: 40px 0 0 50px;
-
+    
     .upper-content {
       display: flex;
       justify-content: space-between;
@@ -21,11 +21,11 @@
     }
 
     .cards-block {
-      height: 100%;
 
       .all-cards {
         overflow-y: scroll;
         display: flex;
+        justify-content: center;
         gap: 26px;
         flex-wrap: wrap;
         height: 70vh !important;
@@ -55,4 +55,17 @@
     border-radius: 50px;
   }
 
+}
+
+@media (orientation: portrait) {
+  .main{
+    display: flex;
+    flex-direction: column;
+  }
+  .main .main-wrapper{
+    padding: 40px 20px 40px 20px;
+  }
+  .main-title{
+    text-align: center;
+  }
 }
