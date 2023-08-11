@@ -1,4 +1,3 @@
-import './Mainpage.scss'
 import Search from '../Search/Search'
 import MainpageCard from '../MainpageCard/MainpageCard'
 import HorizontalMainpageCard from '../HorizontalMainpageCard/HorizontalMainpageCard'
@@ -8,6 +7,7 @@ import parent from '../../assets/svg-pictures/parents.svg'
 import school from '../../assets/svg-pictures/school.svg'
 import Sidebar from '../Sidebar/Sidebar'
 import Dashboard from '../Dashboard/Dashboard'
+import './Mainpage.scss'
 
 const Mainpage = () => {
   return (
