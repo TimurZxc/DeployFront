@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 5fr;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .main {
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
   overflow-x: hidden;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .settings-block_t {
     padding: 20px 10px;
   }
@@ -33,7 +33,7 @@
   margin-left: 70px;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .profile-title_t {
     margin: 10px auto;
     text-align: center;
@@ -58,7 +58,7 @@
   margin-left: 70px;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .edit {
     max-width: 322px;
     width: 100%;
@@ -100,7 +100,7 @@
   margin-left: 50px;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .courses-body_t {
     margin: 10px auto;
     width: 100%;
@@ -129,7 +129,7 @@
   gap: 15px;
 }
 
-@media (orientation:portrait) {
+@media (orientation:portrait) and (max-width: 768px) {
   .first-col {
     gap: 0;
   }
@@ -142,7 +142,7 @@
   margin: 2px 30px;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .second-col {
     margin: 2px 0;
     gap: 0;
@@ -156,7 +156,7 @@
   justify-content: center;
 }
 
-@media (orientation:portrait) {
+@media (orientation:portrait) and (max-width: 768px) {
   .third-col {
     gap: 0;
   }
@@ -270,7 +270,7 @@
   cursor: pointer;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .second-row_t_c {
     max-width: 240px;
     width: 80%;
@@ -286,7 +286,7 @@
   border-radius: 28px;
   min-width: 300px;
 }
-@media (orientation:portrait) {
+@media (orientation:portrait) and (max-width: 768px) {
   .modal-content{
     margin: 0 auto;
     width: 100%;
@@ -309,7 +309,7 @@
   margin: 5px !important;
   border-radius: 40px !important;
 }
-@media (orientation:portrait) {
+@media (orientation:portrait) and (max-width: 768px) {
   .error-message{
     width: auto !important;
   }
@@ -322,7 +322,7 @@
   margin: 5px !important;
   border-radius: 40px !important;
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .success-message{
     width: auto;
   }
@@ -335,7 +335,7 @@
   transform: translateX(-50%);
   
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .modal-dialog{
     width: 100% !important;
   }

@@ -106,7 +106,7 @@
         transition: 0.3s;
     }
 }
-@media (orientation:portrait) {
+@media (orientation:portrait) and (max-width: 768px) {
     .courses-body{
         margin: 30px auto 0 auto;
         flex-direction: column;
@@ -131,7 +131,7 @@
     }
     
 }
-@media (orientation:portrait) and (max-width: 430px){
+@media (orientation:portrait) and (max-width: 768px) and (max-width: 430px){
     .courses-body .cancle-delete{
         margin: 0 auto;
     }

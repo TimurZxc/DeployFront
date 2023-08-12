@@ -164,7 +164,7 @@ body {
   border-radius: 50px;
   margin: 15px
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .form--submit-last{
     max-width: 280px;
     width: 80% !important;
@@ -355,7 +355,7 @@ input[type=file]::-webkit-file-upload-button{
 .margin-ex{
   margin: 10px 0px;
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .form{
     flex-direction: column;
     padding: 10px 5px 30px 5px;

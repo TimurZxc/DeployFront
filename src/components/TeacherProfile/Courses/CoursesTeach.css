@@ -41,7 +41,7 @@
     letter-spacing: 0.03em;
     color: #11174B;
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .second-row{
     width: 100%;
     overflow-x: auto;
@@ -147,7 +147,7 @@
     padding-top: 17px;
     cursor: pointer;
 }
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
   .second-row_t_c{
     max-width: 240px;
     width: 70%;
