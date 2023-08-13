@@ -41,7 +41,6 @@ const StudentProfile = () => {
       .then((response) => {
         const mainTeacherData = response.data;
         setMainStudList(mainTeacherData);
-        console.log("student data", mainTeacherData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

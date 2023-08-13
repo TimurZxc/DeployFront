@@ -19,6 +19,7 @@ const EditTeacherProfile = (props) => {
 
   function handleDelete() {
     setShowConfirmationModal(true); // Show the confirmation modal
+    console.log('showConfirmationModal', showConfirmationModal)
   }
 
   function confirmDelete() {
