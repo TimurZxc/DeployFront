@@ -312,16 +312,16 @@ const PersonalInfoEdit = (props) => {
         </Modal.Body>
       </Modal>
 
-      <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
+      <Modal id='avatar' show={isModalOpen === 1} onHide={handleModalClosePhoto}>
         <Avatar
-          width={'fit-content'}
+          width={'auto'}
           height={350}
           minWidth={350}
           onCrop={onCrop}
           onClose={onClose}
           onBeforeFileLoad={onBeforeFileLoad}
           src={src}
-          cropRadius={110}
+          cropRadius={70}
           labelStyle={{ 'width': 350 }}
           label={"Загрузите фотографию"}
         />

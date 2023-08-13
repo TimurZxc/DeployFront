@@ -267,7 +267,7 @@ const PersonalInfoTeachEdit = (props) => {
               maxLength={1000}
             />
           </div>
-          <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
+          <p className='area-text'>{1000 - textEdu.length}</p>
           <div className="fourth-row_t_edit">
             <textarea
               value={textExp}
@@ -277,7 +277,7 @@ const PersonalInfoTeachEdit = (props) => {
               maxLength={1000}
             />
           </div>
-          <p className='area-text'>Осталось символов: {1000 - textExp.length}</p>
+          <p className='area-text'>{1000 - textExp.length}</p>
           <div className="fourth-row_t_edit">
             <input
               type="text"
@@ -344,14 +344,14 @@ const PersonalInfoTeachEdit = (props) => {
 
       <Modal show={isModalOpen === 1} onHide={handleModalClosePhoto}>
         <Avatar
-          width={'fit-content'}
+          width={'auto'}
           height={350}
           minWidth={350}
           onCrop={onCrop}
           onClose={onClose}
           onBeforeFileLoad={onBeforeFileLoad}
           src={src}
-          cropRadius={110}
+          cropRadius={70}
           labelStyle={{ 'width': 350 }}
           label={"Загрузите фотографию"}
         />

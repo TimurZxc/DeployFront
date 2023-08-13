@@ -108,7 +108,7 @@ const SubjectPageEdit = (props) => {
             mainCourseList.map((lesson, index) => (
               <div className="courses-body_t" key={lesson.id}>
                 <div className="first-col">
-                  <div className="first-row">Дата начала урока</div>
+                  <div className="first-row">Время начала урока:</div>
                   <input
                     type="time"
                     placeholder="Время начала урока"
@@ -118,7 +118,7 @@ const SubjectPageEdit = (props) => {
                     onChange={(e) => handleChange(e, index)}
                   />
 
-                  <div className="second-row">Дата окончания урока</div>
+                  <div className="first-row">Время окончания урока:</div>
                   <input
                     type="time"
                     placeholder="Время окончания урока"

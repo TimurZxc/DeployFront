@@ -161,7 +161,7 @@ const SignUpTeacher = () => {
             maxLength={1000}
           />
         </div>
-        <p className='area-text'>Осталось символов: {1000 - textEdu.length}</p>
+        <p className='area-text'>{1000 - textEdu.length}</p>
 
         <br />
 
@@ -175,7 +175,7 @@ const SignUpTeacher = () => {
             maxLength={1000}
           />
         </div>
-        <p className='area-text'>Осталось символов: {1000 - textExp.length}</p>
+        <p className='area-text'>{1000 - textExp.length}</p>
 
         <p className='margin-ex'></p>
         <div className="input-row">
@@ -197,8 +197,9 @@ const SignUpTeacher = () => {
           />
         </div>
         <div className="contacts">
-          <p>Телефон *</p>
+          <p className='tel'>Телефон *</p>
           <p className='c2'>Telegram</p>
+          <p className='hidden'>Контакты</p>
         </div>
         <div className="input-row">
           <input

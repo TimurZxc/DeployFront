@@ -1,3 +1,6 @@
+.scroll{
+    overflow-x: auto;
+}
 .contact-body_t {
     width: 95%;
     height: 320px;
@@ -8,18 +11,19 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
+    flex-direction: column;
     margin-top: 47px;
     margin-left: 50px;
 
     .first-col_c {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        gap: 50px;
         font-weight: 400;
         font-size: 20px;
         letter-spacing: 0.03em;
         color: rgba(17, 23, 75, 0.5);
-
+        justify-content: space-between;
+        
         .first-row_c{
             font-size: 25px;
             margin-bottom: 0px;
@@ -27,10 +31,7 @@
             font-weight: 400;
         }
 
-        .second-row_с{
-            font-size: 25px;
-            color: rgba(17, 23, 75, 0.5);
-        }
+        
 
         .third-row{
             font-size: 25px;
@@ -39,16 +40,62 @@
     }
 
     .second-col_c {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        gap: 20px;
         font-weight: 400;
         font-size: 20px;
         letter-spacing: 0.03em;
-        color: #11174B;
+        color: rgba(17, 23, 75, 0.5);
+        justify-content: space-between;
+        .second-row_с{
+            font-size: 25px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            font-weight: 400;
+        }
+    }
+    .third-col_c {
+        width: 100%;
+        display: flex;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 0.03em;
+        color: rgba(17, 23, 75, 0.5);
+        justify-content: space-between;
+        .third-row_с{
+            font-size: 25px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            font-weight: 400;
+        }
     }
     .form--input{
         width: 100%;
         margin-left: 20px;
+    }
+}
+@media (orientation: portrait) and (max-width: 768px) {
+    .contact-body_t{
+        margin: 5px auto;
+        gap: 10px;
+        padding: 25px;
+    }
+    .first-col_c{
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .second-col_c{
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .third-col_c{
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }

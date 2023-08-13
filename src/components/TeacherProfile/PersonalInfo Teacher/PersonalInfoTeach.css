@@ -178,9 +178,13 @@
     padding-left: 20px;
     padding-top: 15px;
     padding-bottom: 15px;
-    margin-left: 25px;
+    overflow: auto; /* Enable scrolling */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
 }
-
+.form--input-area::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers */
+}
 .ShowContact {
     font-weight: 400;
     font-size: 20px;
@@ -341,7 +345,10 @@ input[type=file]::-webkit-file-upload-button{
 }
 
 .area-text{
-  padding: 0 30px;
+  padding: 0 15px;
+  width: 100%;
+  text-align: end !important;
+  color: #9d9d9dbc !important;
 }
 
 .edit-save-but{
@@ -357,4 +364,51 @@ input[type=file]::-webkit-file-upload-button{
   width: 50%;
   margin: 0 auto;
   cursor: pointer;
+}
+@media (orientation: portrait) and (max-width: 768px) {
+  .form--input-area{
+    margin: 0;
+  }
+  .body_t{
+    margin: 20px 0 0 0;
+    width: 100%;
+    padding: 20px 10px;
+  }
+  .first-row_t{
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+    padding: 8px;
+  }
+  .second-row_t{
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+    padding: 8px;
+  }
+  .third-row_t{
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+
+  }
+  .fourth-row_t{
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+
+  }
+  .edit-save-but{
+    max-width: 322px;
+    width: 70% !important;  
+  }
+  .first_t_edu{
+    width: 100%;
+    overflow-x: auto;
+    text-align: center;
+  }
 }
