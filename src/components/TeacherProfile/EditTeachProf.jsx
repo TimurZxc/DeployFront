@@ -13,13 +13,15 @@ const EditTeacherProfile = (props) => {
 
   const [isShown, setIsShown] = React.useState(false)
 
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+
   function toggleShown() {
     setIsShown(prevShown => !prevShown)
   }
 
-  function handleDelete() {
+  function handleDeleteP() {
     setShowConfirmationModal(true); // Show the confirmation modal
-    console.log('showConfirmationModal', showConfirmationModal)
   }
 
   function confirmDelete() {
@@ -46,8 +48,6 @@ const EditTeacherProfile = (props) => {
   const [mainTeachList, setMainTeachList] = React.useState([])
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
-
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const [updateCount, setUpdateCount] = useState(0);
   const [deleteCount, setDeleteCount] = useState(0);
@@ -266,7 +266,7 @@ const EditTeacherProfile = (props) => {
 
         {isShown && <AddCourseTeach />}
         <div className="edit" onClick={toggleShown}>Добавить курс</div>
-        <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
+        <button onClick={() => { handleDeleteP() }} className="second-row_t_c_delete">Удалить Профиль</button>
       </div>
 
       {/* Confirmation Modal */}
