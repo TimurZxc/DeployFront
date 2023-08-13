@@ -57,7 +57,7 @@
 
 }
 
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: portrait) or (max-width: 768px) {
   .main{
     display: flex;
     flex-direction: column;

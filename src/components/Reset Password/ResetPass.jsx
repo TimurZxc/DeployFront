@@ -26,56 +26,56 @@ const ResetPass = () => {
   }
 
   const handleSubmit = (e) => {
-		e.preventDefault();
-		axiosInstance
-			.post('request-reset-email/', formData)
-      .then(() =>{
+    e.preventDefault();
+    axiosInstance
+      .post('request-reset-email/', formData)
+      .then(() => {
         setRegistrationStatus('success: Для восстановления пароля перейдите по ссылке в письме');
       })
       .catch((error) => {
         setRegistrationStatus(`error: ${error.message}`);
       });
-	};
+  };
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
 
   return (
-    <div>
-    <form className='ResetForm'  onSubmit={handleSubmit}>
-    <h3>Восстановление пароля</h3>
+    <div className='reset-cont'>
+      <form className='ResetForm' onSubmit={handleSubmit}>
+        <h3>Восстановление пароля</h3>
 
-    <label htmlFor="username">Введите вашу электронную почту</label>
+        <label htmlFor="username">Введите вашу электронную почту</label>
 
-    <input
-        className='form--inpt'
-        type="email"
-        name="email"
-        placeholder='Email'
-        value={formData.email}
-        onChange={handleChange}
-        id="username"/>
+        <input
+          className='form--inpt'
+          type="email"
+          name="email"
+          placeholder='Email'
+          value={formData.email}
+          onChange={handleChange}
+          id="username" />
 
-    <button
-        className='form--sbt'
-        type="submit"
+        <button
+          className='form--sbt'
+          type="submit"
         >Отправить</button>
-</form> 
+      </form>
 
-        <Modal show={registrationStatus !== null} onHide={handleModalClose}>
-          <Modal.Body>
-            {registrationStatus && registrationStatus.startsWith('error') ? (
-              <p className="error-message">{registrationStatus.substr(7)}</p>
-            ) : registrationStatus && registrationStatus.startsWith('success') ? (
-              <p className="success-message">{registrationStatus.substr(9)}</p>
-            ) : null}
-            <Button variant="secondary" onClick={handleModalClose} className="close-button">
-              Закрыть
-            </Button>
-          </Modal.Body>
-        </Modal>
-</div>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+        <Modal.Body>
+          {registrationStatus && registrationStatus.startsWith('error') ? (
+            <p className="error-message">{registrationStatus.substr(7)}</p>
+          ) : registrationStatus && registrationStatus.startsWith('success') ? (
+            <p className="success-message">{registrationStatus.substr(9)}</p>
+          ) : null}
+          <Button variant="secondary" onClick={handleModalClose} className="close-button">
+            Закрыть
+          </Button>
+        </Modal.Body>
+      </Modal>
+    </div>
   );
 };
 

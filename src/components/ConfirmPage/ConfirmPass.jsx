@@ -36,11 +36,11 @@ const ConfirmPass = () => {
   }
 
   const paramss = useParams();
-  React.useEffect(()=>{
-    axiosInstance.get('password-reset/'+paramss.u_id+'/'+paramss.token+'/').then((response)=>{
-      
+  React.useEffect(() => {
+    axiosInstance.get('password-reset/' + paramss.u_id + '/' + paramss.token + '/').then((response) => {
+
       setFormData(response.data)
-        console.log('url_data:', response.data)
+      console.log('url_data:', response.data)
     })
   }, [])
 
@@ -54,46 +54,44 @@ const ConfirmPass = () => {
     }
 
     axiosInstance
-      .patch('password-reset/'+paramss.u_id+'/'+paramss.token+'/', formData)
-      console.log('Data:', formData)
-      navigate('/login')
+      .patch('password-reset/' + paramss.u_id + '/' + paramss.token + '/', formData)
+    console.log('Data:', formData)
+    navigate('/login')
   };
 
 
   return (
-    <div>
     <div className="background">
+      <form className='ConfirmForm' onSubmit={handleSubmit}>
+        <h3>Восстановление пароля</h3>
+
+
+        <label for="password">Придумайте новый, надежный пароль</label>
+        <input
+          className='form--inpt'
+          placeholder='Введите пароль'
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          id="password" />
+
+        <label for="password1">Повторите пароль</label>
+        <input
+          className='form--inpt'
+          placeholder='Введите пароль'
+          type="password"
+          name="password"
+          value={pass.password}
+          onChange={handleChange1}
+          id="password" />
+
+        <button
+          className='form--sbt'
+          type="submit"
+          onClick={handleSubmit}>Подтвердить</button>
+      </form>
     </div>
-    <form className='ConfirmForm'  onSubmit={handleSubmit}>
-    <h3>Восстановление пароля</h3>
-
-
-    <label for="password">Придумайте новый, надежный пароль</label>
-    <input
-        className='form--inpt'
-        placeholder='Введите пароль'
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        id="password"/>
-
-    <label for="password1">Повторите пароль</label>
-    <input
-        className='form--inpt'
-        placeholder='Введите пароль'
-        type="password"
-        name="password"
-        value={pass.password}
-        onChange={handleChange1}
-        id="password"/>
-
-    <button
-        className='form--sbt'
-        type="submit"
-        onClick={handleSubmit}>Подтвердить</button>
-</form> 
-</div>
   );
 };
 

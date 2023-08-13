@@ -9,15 +9,18 @@
 .ConfirmForm{
     height: fit-content;
     width: 37%;
+    max-width: 750px;
     background-color: rgba(103, 170, 222, 0.805);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
     border-radius: 40px;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 1px rgba(8,7,16,0.6);
     padding: 50px 35px;
+    margin: auto;
+}
+@media (orientation: portrait) or (max-width: 768px) {
+    .ConfirmForm{
+        width: 100%;
+    }
 }
 .ConfirmForm *{
     font-family: 'Poppins',sans-serif;

@@ -365,7 +365,7 @@ input[type=file]::-webkit-file-upload-button{
   margin: 0 auto;
   cursor: pointer;
 }
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: portrait) or (max-width: 768px) {
   .form--input-area{
     margin: 0;
   }

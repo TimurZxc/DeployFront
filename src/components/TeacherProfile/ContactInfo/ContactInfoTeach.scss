@@ -74,7 +74,7 @@
         margin-left: 20px;
     }
 }
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: portrait) or (max-width: 768px) {
     .contact-body_t{
         margin: 5px auto;
         gap: 10px;

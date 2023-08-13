@@ -6,12 +6,9 @@
     box-sizing: border-box;
 }
 .background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 .background .shape1{
     height: 200px;
@@ -36,18 +33,25 @@
     right: -145px;
     bottom: -10px;
 }
+.reset-cont{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 .ResetForm{
-    height: 350px;
     width: 37%;
+    max-width: 750px;
     background-color: rgba(103, 170, 222, 0.805);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
     border-radius: 40px;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 1px rgba(8,7,16,0.6);
     padding: 50px 35px;
+    margin: auto auto;
+}
+@media (orientation: portrait) or (max-width: 768px) {
+  .ResetForm{
+    width: 100%;
+  }
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -56,6 +60,7 @@ form *{
     outline: none;
     border: none;
 }
+
 form h3{
     font-size: 32px;
     font-weight: 600;
@@ -100,6 +105,7 @@ label{
     color: #11174b;
     background-color: rgba(255, 255, 255, 0.76);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
 }
 
 .modal-content {
