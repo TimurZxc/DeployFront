@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './teacherProfile.css'
 import Sidebar from '../Sidebar/Sidebar'
 import PersonalInfoTeachEdit from './PersonalInfo Teacher/PersonalInfoEdit'
@@ -15,6 +16,10 @@ const EditTeacherProfile = (props) => {
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
+  let navigate = useNavigate()
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
 
   function toggleShown() {
     setIsShown(prevShown => !prevShown)
