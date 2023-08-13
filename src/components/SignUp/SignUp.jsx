@@ -112,6 +112,10 @@ const SignUp = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="contacts-m">
+          <p className='sur'>Отчетсво</p>
+          <p className='date'>Дата рождения *</p>
+        </div>
         <div className="input-row">
           <input
             type="text"
@@ -121,6 +125,7 @@ const SignUp = () => {
             value={formData.surname}
             onChange={handleChange}
           />
+          <p className='date-m'>Дата рождения *</p>
           <input
             type="date"
             placeholder="Дата рождения"

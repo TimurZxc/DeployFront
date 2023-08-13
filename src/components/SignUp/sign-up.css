@@ -19,6 +19,11 @@ body {
   display: flex;
 }
 
+.contacts-m{
+  width: 100%;
+  display: flex;
+}
+
 .form {
   display: flex;
   margin: 40px auto;
@@ -355,6 +360,15 @@ input[type=file]::-webkit-file-upload-button{
 .margin-ex{
   margin: 10px 0px;
 }
+
+.sur{
+  opacity: 0;
+}
+
+.date-m{
+  display: none;
+}
+
 @media (orientation: portrait) and (max-width: 768px) {
   .form{
     flex-direction: column;
@@ -402,7 +416,18 @@ input[type=file]::-webkit-file-upload-button{
   .hidden{
     display: block;
   }
+  .sur{
+    display: none;
+  }
+  .contacts-m{
+    display: none;
+  }
   .form p{
     margin: 0 5px;
   }
+
+  .date-m{
+    display: block;
+  }
 }
+
