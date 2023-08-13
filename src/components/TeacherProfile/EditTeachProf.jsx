@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './teacherProfile.css'
 import Sidebar from '../Sidebar/Sidebar'
 import PersonalInfoTeachEdit from './PersonalInfo Teacher/PersonalInfoEdit'
@@ -13,11 +14,18 @@ const EditTeacherProfile = (props) => {
 
   const [isShown, setIsShown] = React.useState(false)
 
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+  let navigate = useNavigate()
+  const routeHandler = (URL) => {
+    navigate(URL)
+  }
+
   function toggleShown() {
     setIsShown(prevShown => !prevShown)
   }
 
-  function handleDelete() {
+  function handleDeleteP() {
     setShowConfirmationModal(true); // Show the confirmation modal
   }
 
@@ -45,8 +53,6 @@ const EditTeacherProfile = (props) => {
   const [mainTeachList, setMainTeachList] = React.useState([])
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
-
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const [updateCount, setUpdateCount] = useState(0);
   const [deleteCount, setDeleteCount] = useState(0);
@@ -265,7 +271,7 @@ const EditTeacherProfile = (props) => {
 
         {isShown && <AddCourseTeach />}
         <div className="edit" onClick={toggleShown}>Добавить курс</div>
-        <button onClick={() => { handleDelete() }} className="second-row_t_c_delete">Удалить Профиль</button>
+        <button onClick={() => { handleDeleteP() }} className="second-row_t_c_delete">Удалить Профиль</button>
       </div>
 
       {/* Confirmation Modal */}

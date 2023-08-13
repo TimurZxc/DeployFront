@@ -178,6 +178,10 @@ const SignUpTeacher = () => {
         <p className='area-text'>{1000 - textExp.length}</p>
 
         <p className='margin-ex'></p>
+        <div className="contacts-m">
+          <p className='sur'>Отчетсво</p>
+          <p className='date'>Дата рождения *</p>
+        </div>
         <div className="input-row">
           <input
             type="email"
@@ -187,9 +191,9 @@ const SignUpTeacher = () => {
             value={formData.email}
             onChange={handleChange}
           />
+          <p className='date-m'>Дата рождения *</p>
           <input
             type="date"
-            placeholder="Дата рождения в формате: 10.08.1990"
             name="birth_date"
             className="form--input"
             value={formData.birth_date}
