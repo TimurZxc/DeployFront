@@ -52,6 +52,19 @@ const PersonalInfoEdit = (props) => {
     }
   };
 
+  const handleEmailChange = event => {
+    const { value } = event.target;
+    
+    if (value !== props.email) {
+      setIsEmailChanged(true);
+    }
+  
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      email: value
+    }));
+  };
+
   useEffect(() => {
     async function getImage() {
       try {
@@ -96,6 +109,8 @@ const PersonalInfoEdit = (props) => {
   const [isModalOpen, setModalOpen] = useState(null);
 
   const [isImageUpdated, setIsImageUpdated] = useState(false);
+
+  const [isEmailChanged, setIsEmailChanged] = useState(false);
 
   function dataURLtoFile(dataURL, filename) {
     const arr = dataURL.split(',');
@@ -182,6 +197,11 @@ const PersonalInfoEdit = (props) => {
     axiosInstance.patch('/update/student/', requestData, config)
       .then(() => {
         setRegistrationStatus('success: Данные были успешно обновлены!');
+        if (isEmailChanged) {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          navigate('/')
+        }
       })
       .catch((error) => {
         console.log('error', error);
@@ -268,7 +288,7 @@ const PersonalInfoEdit = (props) => {
               name="email"
               className="form--input"
               value={formData.email}
-              onChange={handleChange}
+              onChange={handleEmailChange}
             />
           </div>
           <div className="fourth-row_t_edit">
