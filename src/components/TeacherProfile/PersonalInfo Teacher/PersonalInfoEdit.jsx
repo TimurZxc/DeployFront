@@ -211,6 +211,8 @@ const PersonalInfoTeachEdit = (props) => {
       .then(() => {
         setRegistrationStatus('success: Данные были успешно обновлены!');
         if (isEmailChanged) {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
           navigate('/')
         }
       })
