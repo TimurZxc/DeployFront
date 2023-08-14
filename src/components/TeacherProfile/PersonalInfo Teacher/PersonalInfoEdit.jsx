@@ -133,10 +133,7 @@ const PersonalInfoTeachEdit = (props) => {
     const nameParts = name.split('.');
 
     // Update the nested state correctly
-    if (name === 'email' && value !== props.email) {
-      setIsEmailChanged(true);
-    }
-    else if (nameParts.length === 1) {
+    if (nameParts.length === 1) {
       setFormData(prevFormData => ({
         ...prevFormData,
         [name]: value
@@ -167,6 +164,20 @@ const PersonalInfoTeachEdit = (props) => {
     }
 
   };
+
+  const handleEmailChange = event => {
+    const { value } = event.target;
+    
+    if (value !== props.email) {
+      setIsEmailChanged(true);
+    }
+  
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      email: value
+    }));
+  };
+  
 
   // const handleImageChange = (event) => {
   //   setImage(event.target.files[0]);
@@ -304,7 +315,7 @@ const PersonalInfoTeachEdit = (props) => {
               name="email"
               className="form--input"
               value={formData.email}
-              onChange={handleChange}
+              onChange={handleEmailChange}
             />
           </div>
           <div className="fourth-row_t_edit">
