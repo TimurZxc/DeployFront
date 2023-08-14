@@ -78,6 +78,8 @@ const PersonalInfoTeachEdit = (props) => {
 
   const [isModalOpen, setModalOpen] = useState(null);
 
+  const [isEmailChanged, setIsEmailChanged] = useState(false);
+
   function dataURLtoFile(dataURL, filename) {
     const arr = dataURL.split(',');
     const mime = arr[0].match(/:(.*?);/)[1];
@@ -131,7 +133,10 @@ const PersonalInfoTeachEdit = (props) => {
     const nameParts = name.split('.');
 
     // Update the nested state correctly
-    if (nameParts.length === 1) {
+    if (name === 'email' && value !== props.email) {
+      setIsEmailChanged(true);
+    }
+    else if (nameParts.length === 1) {
       setFormData(prevFormData => ({
         ...prevFormData,
         [name]: value
@@ -185,6 +190,7 @@ const PersonalInfoTeachEdit = (props) => {
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
     console.log('requestData', requestData)
+
     if (isDeleteClicked) {
       requestData.append('image', '');
     } else if (image) {
@@ -193,6 +199,9 @@ const PersonalInfoTeachEdit = (props) => {
     axiosInstance.patch('/update/teacher/', requestData, config)
       .then(() => {
         setRegistrationStatus('success: Данные были успешно обновлены!');
+        if (isEmailChanged) {
+          navigate('/')
+        }
       })
       .catch((error) => {
         console.log('error', error);
