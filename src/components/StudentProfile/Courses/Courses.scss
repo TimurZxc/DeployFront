@@ -1,4 +1,4 @@
-.courses-body {
+.courses-body- {
     width: 95%;
     height: fit-content;
     background: rgba(255, 255, 255, 0.56);
@@ -117,32 +117,32 @@
     }
 }
 @media (orientation: portrait) or (max-width: 768px) {
-    .courses-body{
+    .courses-body-{
         margin: 30px auto 0 auto;
         flex-direction: column;
         gap: 20px;
     }
-    .courses-body .first-col, .courses-body .second-col, .courses-body .third-col{
+    .courses-body- .first-col, .courses-body .second-col, .courses-body .third-col{
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: start;
         gap:20px;
     }
-    .courses-body .first-col .second-row, .courses-body .second-col .second-row, .courses-body .third-col .second-row {
+    .courses-body- .first-col .second-row, .courses-body .second-col .second-row, .courses-body .third-col .second-row {
         width: fit-content;
     }
-    .courses-body .first-col .first-row, .courses-body .second-col .first-row, .courses-body .third-col .first-row{
+    .courses-body- .first-col .first-row, .courses-body .second-col .first-row, .courses-body .third-col .first-row{
         margin: 0;
         height: auto;
     }
-    .courses-body .cancle-delete{
+    .courses-body- .cancle-delete{
         margin: 0;
         margin-left: auto;
     }
     
 }
 @media ((orientation: portrait) or (max-width: 768px)) and (max-width: 430px){
-    .courses-body .cancle-delete{
+    .courses-body- .cancle-delete{
         margin: 0 auto;
     }
 }
