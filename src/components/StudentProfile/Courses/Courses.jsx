@@ -49,6 +49,9 @@ const Courses = (props) => {
       });
   }
 
+  const currentDate = new Date();
+  const IsDateOver = currentDate > studCourseList.lessons.date
+
   React.useEffect(() => {
     getData();
   }, [deleteCount])
@@ -71,6 +74,7 @@ const Courses = (props) => {
               <div className="first-row">Время проведения урока</div>
               <div className="second-row">c {data?.lessons?.start_time}</div>
               <div className="third-row">до {data?.lessons?.end_time}</div>
+              {IsDateOver && <p>Урок просрочен</p>}
             </div>
           </div>
         ))
