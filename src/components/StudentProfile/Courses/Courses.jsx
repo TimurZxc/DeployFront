@@ -54,6 +54,8 @@ const Courses = (props) => {
   React.useEffect(() => {
     getData();
   }, [deleteCount])
+  
+  console.log('date', currentDate)
 
   return (
     <section>
