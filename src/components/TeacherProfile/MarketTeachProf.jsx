@@ -20,7 +20,6 @@ const MarketTeachProf = () => {
 
   const paramss = useParams();
 
-  console.log('courses', mainTeachList)
 
   React.useEffect(() => {
     axiosInstance
@@ -28,7 +27,6 @@ const MarketTeachProf = () => {
       .then((response) => {
         const mainTeacherData = response.data[0];
         setMainTeachList(mainTeacherData);
-        console.log("response", mainTeachList);
 
       })
       .catch((error) => {

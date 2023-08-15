@@ -84,7 +84,6 @@ const TeacherProfile = (props) => {
           .get(`course-list/${id}`)
           .then((response) => {
             setMainCourseList(response.data[0].courses);
-            console.log("course data", response.data);
           })
           .catch((error) => {
             console.error("Error fetching course data:", error);
