@@ -73,6 +73,8 @@ const SubjectPageEdit = (props) => {
   const [updateCount, setUpdateCount] = useState(0);
   const [deleteCount, setDeleteCount] = useState(0);
 
+  const currentDate = new Date();
+
 
   const getData = () => {
     axiosInstance.get('course/' + paramss.course_id + '/list-lessons').then((response) => {
@@ -102,11 +104,11 @@ const SubjectPageEdit = (props) => {
       <Sidebar />
       <div className='settings-block_t'>
         <h1 className="profile-title_t">Редактирование занятий</h1>
-        {/* {isShown && <ContactInfoTeach/>} */}
         <section className='course--list'>
           {
             mainCourseList.map((lesson, index) => (
-              <div className="courses-body_t" key={lesson.id}>
+              <div className={`courses-body_t-${currentDate > new Date(formDataList[index]?.date) ? 'time-is-over': ''}`}
+              key={lesson.id}>
                 <div className="first-col">
                   <div className="first-row">Время начала урока:</div>
                   <input
@@ -127,6 +129,8 @@ const SubjectPageEdit = (props) => {
                     value={formDataList[index]?.end_time}
                     onChange={(e) => handleChange(e, index)}
                   />
+                  {currentDate > new Date(formDataList[index]?.date) &&
+                  <div className='time-over'>Урок просрочен</div>}
                 </div>
                 <div className="second-col">
                   <div className="first-row">Дата Урока:</div>
