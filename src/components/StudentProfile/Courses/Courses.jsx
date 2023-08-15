@@ -54,8 +54,6 @@ const Courses = (props) => {
   React.useEffect(() => {
     getData();
   }, [deleteCount])
-  
-  console.log('date', currentDate)
 
   return (
     <section>
@@ -75,7 +73,7 @@ const Courses = (props) => {
               <div className="first-row">Время проведения урока</div>
               <div className="second-row">c {data?.lessons?.start_time}</div>
               <div className="third-row">до {data?.lessons?.end_time}</div>
-              {currentDate > data?.lessons?.date && <p>Урок просрочен</p>}
+              {currentDate > new Date(data?.lessons?.date) && <p>Урок просрочен</p>}
             </div>
           </div>
         ))
