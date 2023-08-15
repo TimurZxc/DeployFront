@@ -50,7 +50,8 @@ const Courses = (props) => {
   }
 
   const currentDate = new Date();
-  const IsDateOver = currentDate > studCourseList.lessons.date
+  const IsDateOver = currentDate > studCourseList?.lessons?.date
+  console.log('date', studCourseList?.lessons?.date)
 
   React.useEffect(() => {
     getData();
