@@ -48,7 +48,7 @@ const SubjectPage = (props) => {
     <div className="main">
       <Sidebar/>
       <div className='settings-block_t'>
-        <h1 className="profile-title_t">Выберите удобное время урока</h1>
+        <h1 className="profile-title_t">Список занятий курса</h1>
         <section className='course--list'>{LessonsListArr}</section>
     </div>
     </div>
