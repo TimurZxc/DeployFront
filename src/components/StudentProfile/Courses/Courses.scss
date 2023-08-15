@@ -107,9 +107,12 @@
     }
 
     .time-over{
+        text-align: center;
+        background-color: rgba(238, 104, 104, 0.76);
+        padding: 8px;
+        border-radius: 40px;
         margin-right: 50px;
         color: #11174B;
-        background-color: rgba(238, 104, 104, 0.76);
         font-size: 18px;
     }
 }
