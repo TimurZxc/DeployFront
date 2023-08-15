@@ -39,7 +39,6 @@ const SubjectPage = (props) => {
     const paramss = useParams();
     React.useEffect(()=>{
       axiosInstance.get('course/'+paramss.course_id+'/list-lessons').then((response)=>{
-
           setMainCourseList(response.data)
       })
     }, [])
@@ -51,7 +50,6 @@ const SubjectPage = (props) => {
       <div className='settings-block_t'>
         <h1 className="profile-title_t">Выберите удобное время урока</h1>
         <section className='course--list'>{LessonsListArr}</section>
-        {/* <div onClick={() => routeHandler('/editTeach')} className="edit">Редактировать профиль</div> */}
     </div>
     </div>
   )

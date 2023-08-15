@@ -1,4 +1,4 @@
-.courses-body_t {
+.courses-body_t- {
     width: 95%;
     height: fit-content;
     background: rgba(255, 255, 255, 0.56);
@@ -10,6 +10,26 @@
     margin-top: 47px;
     margin-left: 50px;
 }
+
+.courses-body_t-time-is-over {
+  width: 95%;
+  height: fit-content;
+  background: rgba(191, 191, 191, 0.56);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  padding: 68px 55px;
+  justify-content: space-between;
+  display: flex;
+  margin-top: 47px;
+  margin-left: 50px;
+}
+
+.time-over{
+  color: rgba(238, 104, 104, 0.76);;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+}
+
 .first-row {
     font-weight: 500;
     font-size: 25px;

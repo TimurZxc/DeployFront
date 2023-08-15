@@ -7,7 +7,9 @@ import Button from 'react-bootstrap/Button';
 
 const SubjComponent = (props) => {
 
-  const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
+  const [registrationStatus, setRegistrationStatus] = React.useState(null); 
+
+  const currentDate = new Date();
 
   const paramss = useParams();
 
@@ -29,7 +31,7 @@ const SubjComponent = (props) => {
 };
 
   return (
-    <div className="courses-body_t">
+    <div className={`courses-body_t-${currentDate > props.date ? 'time-is-over' : ''}`}>
       <div className="first-col">
         <div className="first-row">Время начала урока</div>
         <p className="second-row">{props.start_time}</p>
@@ -40,6 +42,7 @@ const SubjComponent = (props) => {
         <div className="second-col">
           <div className="first-row">Дата урока</div>
           <div className="second-row">{props.date}</div>
+          {currentDate > props.date && <div className='time-over'>Урок просрочен</div>}
         <br />
         <button onClick={handleSubmit} className="second-row_t_c">Записаться</button>
       </div>
