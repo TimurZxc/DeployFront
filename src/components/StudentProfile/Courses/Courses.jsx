@@ -59,7 +59,7 @@ const Courses = (props) => {
     <section>
       {
         studCourseList.map((data) => (
-          <div className='courses-body' key={data?.lessons?.related_course?.id}>
+          <div className={`courses-body ${currentDate > new Date(data?.lessons?.date) ? 'time-is-over': ''}`} key={data?.lessons?.related_course?.id}>
             <div className="first-col">
               <div className="first-row">Курс:</div>
               <div className="second-row">{data?.lessons?.related_course?.name}</div>
