@@ -10,7 +10,7 @@ const CoursesTeach = (props) => {
   }
 
   return (
-    <div className="courses-body_t">
+    <div className="courses-body_t-">
       <div className="first-col">
         <div className="first-row">Предмет</div>
         <div className="second-row">{props.name}</div>
