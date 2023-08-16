@@ -304,7 +304,7 @@
   width: 65px;
   height: 65px;
   text-align: right;
-  border-radius: 30%;
+  border-radius: 30% !important;
   overflow: hidden;
 }
 
@@ -372,7 +372,6 @@ input[type=file]::-webkit-file-upload-button {
   height: 120px;
   cursor: pointer;
   width: 1px;
-  opacity: 0;
 }
 
 .edit-save-but {
