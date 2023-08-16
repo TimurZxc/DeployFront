@@ -143,7 +143,7 @@ const SignIn = () => {
           }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
       </form>
-      <Modal onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
