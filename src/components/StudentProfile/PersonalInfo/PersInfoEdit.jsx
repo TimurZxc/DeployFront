@@ -8,6 +8,7 @@ import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
 import Avatar from 'react-avatar-edit';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const PersonalInfoEdit = (props) => {
 
@@ -319,7 +320,7 @@ const PersonalInfoEdit = (props) => {
         </div>
       </div>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>

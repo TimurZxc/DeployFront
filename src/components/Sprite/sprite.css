@@ -1,4 +1,9 @@
 .camera-svg{
     fill: rgba(17, 23, 75, 1);
     background: rgba(255, 255, 255, 0.56) !important;
+    padding: 7px;
+    margin-right: 1px;
+    margin-top: 2px;
+
+
 }

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from '../../../../axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 
 const AddSubjComponentEdit = (props) => {
@@ -94,7 +95,7 @@ const handleModalClose = () => {
         <button onClick={handleSubmit} className="second-row_t_c">Добавить</button>
       </div>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
           <Modal.Body>
             {registrationStatus && registrationStatus.startsWith('error') ? (
               <p className="error-message">{registrationStatus.substr(7)}</p>

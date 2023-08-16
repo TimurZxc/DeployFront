@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const EditTeacherProfile = (props) => {
 
@@ -289,7 +290,7 @@ const EditTeacherProfile = (props) => {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>

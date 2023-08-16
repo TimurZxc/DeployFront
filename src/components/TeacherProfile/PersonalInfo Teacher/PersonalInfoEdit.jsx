@@ -10,6 +10,7 @@ import Avatar from 'react-avatar-edit';
 import axios from 'axios';
 import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 
 const PersonalInfoTeachEdit = (props) => {
@@ -348,7 +349,7 @@ const PersonalInfoTeachEdit = (props) => {
         </div>
       </div>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>

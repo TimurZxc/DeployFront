@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import React from 'react'
 import PersonalInfoEdit from './PersonalInfo/PersInfoEdit'
 import axiosInstance from '../../axios'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const StudentEdit = () => {
 
@@ -103,7 +104,7 @@ const StudentEdit = () => {
       </Modal>
 
       {/* Registration status modal */}
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
