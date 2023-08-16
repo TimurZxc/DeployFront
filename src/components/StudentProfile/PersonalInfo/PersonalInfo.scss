@@ -297,7 +297,7 @@
   margin-top: 10px;
   position: absolute;
   padding-top: 4px;
-  padding-right: 4px;
+  padding-right: 6px;
   bottom: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.939);
@@ -314,7 +314,7 @@
   transform: scale(2);
   margin-top: 20px;
   height: 100px;
-  opacity: 0;
+
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -371,6 +371,8 @@ input[type=file]::-webkit-file-upload-button {
 .photoButt {
   height: 120px;
   cursor: pointer;
+  width: 1px;
+  opacity: 0;
 }
 
 .edit-save-but {
