@@ -5,6 +5,7 @@ import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 
 const SignIn = () => {
@@ -142,7 +143,7 @@ const SignIn = () => {
           }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
       </form>
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal onHide={handleModalClose}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
