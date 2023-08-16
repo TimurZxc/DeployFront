@@ -343,6 +343,7 @@ input[type=file]::-webkit-file-upload-button{
 .photoButt{
   height: 120px;
   cursor: pointer;
+  width: 1px;
 }
 
 .area-text{
