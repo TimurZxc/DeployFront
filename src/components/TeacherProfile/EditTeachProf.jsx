@@ -196,7 +196,7 @@ const EditTeacherProfile = (props) => {
         <section className='course-list'>
           {
             mainCourseList.map((lesson, index) => (
-              <div className="courses-body_t" key={lesson.id}>
+              <div className="courses-body_t-" key={lesson.id}>
                 <div className="first-col">
                   <div className="first-row">Предмет</div>
                   <input
