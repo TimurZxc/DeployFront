@@ -1,4 +1,5 @@
 import './Sidebar.scss'
+import React from 'react';
 import Sprite from '../Sprite/Sprite'
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from "jwt-decode";
@@ -12,19 +13,27 @@ const Sidebar = () => {
 
   function logout() {
     localStorage.removeItem('access_token'),
-    localStorage.removeItem('refresh_token')
+      localStorage.removeItem('refresh_token')
     navigate('/')
   }
 
   const user = localStorage.getItem('access_token')
-  let decode 
+  let decode
 
-  if (user){
+  if (user) {
     decode = jwt_decode(user)
   }
 
   const is_teacher = decode?.is_teacher
   const is_student = decode?.is_student
+
+  const [isShown, setIsShown] = React.useState(true)
+
+  const toggleShown = (prevShown) => {
+    setIsShown(!prevShown)
+  }
+
+  console.log('isShown', isShown)
 
   return (
     <div className="sidebar-wrapper">
@@ -36,6 +45,8 @@ const Sidebar = () => {
         <div className="menu">
           <h1 className="menu-title">Главное Меню</h1>
           <div className="navigation">
+          {isShown &&
+          <>
             <div
               onClick={() => routeHandler('/')}
               className={
@@ -81,33 +92,33 @@ const Sidebar = () => {
               <h1>Регистрация</h1>
             </div>}
 
-{user && is_teacher ?
-  <div
-    onClick={() => routeHandler('/profileTeacher')}
-    className={
-      window.location.pathname === '/profileTeacher'
-        ? `navigation-item active`
-        : `navigation-item`
-      }
-      >
-    <Sprite id="profile" />
-    <h1>Профиль Учителя</h1>
-  </div> : <div></div>}
+            {user && is_teacher ?
+              <div
+                onClick={() => routeHandler('/profileTeacher')}
+                className={
+                  window.location.pathname === '/profileTeacher'
+                    ? `navigation-item active`
+                    : `navigation-item`
+                }
+              >
+                <Sprite id="profile" />
+                <h1>Профиль Учителя</h1>
+              </div> : <div></div>}
 
-{user && is_student ?
-  <div
-    onClick={() => routeHandler('/profile')}
-    className={
-      window.location.pathname === '/profile'
-        ? `navigation-item active`
-        : `navigation-item`
-      }
-      >
-    <Sprite id="profile" />
-    <h1>Профиль</h1>
-  </div> : <div></div>}
+            {user && is_student ?
+              <div
+                onClick={() => routeHandler('/profile')}
+                className={
+                  window.location.pathname === '/profile'
+                    ? `navigation-item active`
+                    : `navigation-item`
+                }
+              >
+                <Sprite id="profile" />
+                <h1>Профиль</h1>
+              </div> : <div></div>}
 
-    {user ? (
+            {user ? (
               <div
                 onClick={() => logout()}
                 className={
@@ -133,26 +144,17 @@ const Sidebar = () => {
               </div>
             )
             }
+            </>
+          }
+            <div
+              onClick={() => { toggleShown(isShown) }}
+              className='toggle'
+            >
+              <Sprite id="toggle" />
+            </div>
 
           </div>
         </div>
-        {/* <div className="settings">
-          <h1 className="settings-title">Настройки</h1>
-          <div className="navigation">
-            <div className="navigation-item">
-              <Sprite id="wallet" />
-              <h1>Кошелек</h1>
-            </div>
-            <div className="navigation-item">
-              <Sprite id="tech-support" />
-              <h1>Тех. поддержка</h1>
-            </div>
-            <div className="navigation-item">
-              <Sprite id="faq" />
-              <h1>FAQ</h1>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   )
