@@ -120,11 +120,11 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   useEffect(() => {
-    if (isImageUpdated) {
+    if (isImageUpdated || isDeleteClicked) {
       // Reload the page
       window.location.reload();
     }
-  }, [isImageUpdated]);
+  }, [isImageUpdated, isDeleteClicked]);
 
 
   const handleChange = event => {
@@ -224,8 +224,8 @@ const PersonalInfoTeachEdit = (props) => {
   };
 
   function handleDelete() {
-    setIsDeleteClicked(true);
     setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
+    setIsDeleteClicked(true);
   }
 
   const handleModalClose = () => {
