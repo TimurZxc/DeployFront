@@ -39,7 +39,7 @@ const PersonalInfoTeachEdit = (props) => {
 
   function onClose() {
     setPreview(null);
-    handleDelete()
+    handleImgDelete()
   }
 
   function onCrop(preview) {
@@ -201,7 +201,6 @@ const PersonalInfoTeachEdit = (props) => {
     requestData.append('surname', formData.surname);
     requestData.append('birth_date', formData.birth_date);
     requestData.append('telegram', formData.telegram);
-    console.log('requestData', requestData)
 
     if (isDeleteClicked) {
       requestData.append('image', '');
@@ -223,9 +222,24 @@ const PersonalInfoTeachEdit = (props) => {
       });
   };
 
-  function handleDelete() {
-    setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
-    setIsDeleteClicked(true);
+  const handleImgDelete = ()=> {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+
+    requestData.append('image', '');
+
+    axiosInstance.patch('/update/teacher/', requestData, config)
+    .then(() => {
+      setRegistrationStatus('success: Фото было успешно удалено!');
+      setIsDeleteClicked(true)
+    })
+    .catch((error) => {
+      console.log('error', error);
+      setRegistrationStatus(`error: ${error.message}`);
+    });
   }
 
   const handleModalClose = () => {
