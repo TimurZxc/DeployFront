@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const Courses = (props) => {
 
@@ -14,7 +15,7 @@ const Courses = (props) => {
   const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
   const [lessonId, setLessonId] = React.useState(0)
 
-  const [confirmationModal, setConfirmationModal] = useState(false);
+  const [confirmationModal, setConfirmationModal] = React.useState(false);
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
