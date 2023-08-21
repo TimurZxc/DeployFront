@@ -131,7 +131,8 @@ const EditTeacherProfile = (props) => {
     axiosInstance.delete(`/delete/course/${id}`)
       .then(() => {
         setDeleteCount((prevCount) => prevCount + 1),
-          setRegistrationStatus('success: Курс был успешно удален!')
+        setConfirmationModal(false)
+        setRegistrationStatus('success: Курс был успешно удален!')
       })
       .catch((error) => {
         setRegistrationStatus(`Error deleting course: ${error.message}`);
