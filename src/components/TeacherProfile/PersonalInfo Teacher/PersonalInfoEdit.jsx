@@ -121,10 +121,6 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   useEffect(() => {
-    if (isImageUpdated || isDeleteClicked) {
-      // Reload the page
-      window.location.reload();
-    }
   }, [isImageUpdated, isDeleteClicked]);
 
 
