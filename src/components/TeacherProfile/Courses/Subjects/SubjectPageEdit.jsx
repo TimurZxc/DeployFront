@@ -25,6 +25,12 @@ const SubjectPageEdit = (props) => {
 
   const [registrationStatus, setRegistrationStatus] = useState(null); // Registration status state
 
+  const [confirmationModal, setConfirmationModal] = useState(false);
+
+  const [relatedCourseId, setRelatedCourseId] = useState(0)
+  const [lessonId, setLessonId] = useState(0)
+
+
   const handleChange = (event, index) => {
     const { name, value } = event.target;
     setFormDataList((prevFormDataList) => {
@@ -36,7 +42,11 @@ const SubjectPageEdit = (props) => {
       return updatedFormDataList;
     });
   };
-  
+
+  function cancelDeleteСourse() {
+    setConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
+  }
+
   const handleUpdate = (course_id, lesson_id, formData) => {
     axiosInstance
       .put(`/update/course/${course_id}/lesson/${lesson_id}`, {
@@ -51,11 +61,12 @@ const SubjectPageEdit = (props) => {
       .catch((error) => {
         console.error('Error updating lesson:', error);
       });
-  };  
+  };
 
   const handleDelete = (course_id, lesson_id) => {
     axiosInstance.delete(`/delete/course/${course_id}/lesson/${lesson_id}`).then(() => {
       setDeleteCount((prevCount) => prevCount + 1);
+      setConfirmationModal(false)
       setRegistrationStatus('success: Урок был успешно удален!');
     }).catch((error) => {
       console.error('Error deleting lesson:', error);
@@ -92,7 +103,7 @@ const SubjectPageEdit = (props) => {
       setFormDataList(initialFormDataList);
     }
   }, [mainCourseList]);
-  
+
   const paramss = useParams();
 
   useEffect(() => {
@@ -107,8 +118,8 @@ const SubjectPageEdit = (props) => {
         <section className='course--list'>
           {
             mainCourseList.map((lesson, index) => (
-              <div className={`courses-body_t-${currentDate > new Date(formDataList[index]?.date) ? 'time-is-over': ''}`}
-              key={lesson.id}>
+              <div className={`courses-body_t-${currentDate > new Date(formDataList[index]?.date) ? 'time-is-over' : ''}`}
+                key={lesson.id}>
                 <div className="first-col">
                   <div className="first-row">Время начала урока:</div>
                   <input
@@ -130,7 +141,7 @@ const SubjectPageEdit = (props) => {
                     onChange={(e) => handleChange(e, index)}
                   />
                   {currentDate > new Date(formDataList[index]?.date) &&
-                  <div className='time-over'>Урок просрочен</div>}
+                    <div className='time-over'>Урок просрочен</div>}
                 </div>
                 <div className="second-col">
                   <div className="first-row">Дата Урока:</div>
@@ -142,7 +153,7 @@ const SubjectPageEdit = (props) => {
                     onChange={(e) => handleChange(e, index)}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id, formDataList[index]); }} className="second-row_t_c">Сохранить</button>
-                  <button onClick={() => { handleDelete(lesson.related_course.id, lesson.id); }} className="second-row_t_c">Удалить</button>
+                  <button onClick={() => { setRelatedCourseId(lesson.related_course.id); setLessonId(lesson.id)}} className="second-row_t_c">Удалить</button>
                 </div>
               </div>
             ))
@@ -152,6 +163,21 @@ const SubjectPageEdit = (props) => {
         <h1 className="profile-title_t">Добавить занятие</h1>
         <AddSubjComponentEdit />
       </div>
+
+      {/* Confirmation Modal Lesson */}
+      <Modal show={confirmationModal} onHide={cancelDeleteСourse} backdrop="dynamic" keyboard={true}>
+        <Modal.Body>
+          <p className="error-message">Вы уверены, что хотите удалить курс? Это действие нельзя отменить.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDeleteСourse} className="close-button">
+            Отмена
+          </Button>
+          <Button variant="danger" onClick={() => { handleDelete(relatedCourseId, lessonId) }} className="close-button-delete">
+            Удалить
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
         <Modal.Body>
