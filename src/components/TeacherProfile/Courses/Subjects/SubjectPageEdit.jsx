@@ -9,12 +9,10 @@ import Sidebar from '../../../Sidebar/Sidebar'
 import AddSubjComponentEdit from './AddSubjComp';
 import Lottie from 'lottie-react'
 import animationData from '../../../../assets/animation_lktzbjcg.json'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const SubjectPageEdit = (props) => {
 
-  function toggleShown() {
-    setIsShown(prevShown => !prevShown)
-  }
 
   let navigate = useNavigate()
   const routeHandler = (URL) => {
@@ -153,7 +151,7 @@ const SubjectPageEdit = (props) => {
                     onChange={(e) => handleChange(e, index)}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id, formDataList[index]); }} className="second-row_t_c">Сохранить</button>
-                  <button onClick={() => { setRelatedCourseId(lesson.related_course.id); setLessonId(lesson.id)}} className="second-row_t_c">Удалить</button>
+                  <button onClick={() => { setRelatedCourseId(lesson.related_course.id); setLessonId(lesson.id); setConfirmationModal(true)}} className="second-row_t_c">Удалить</button>
                 </div>
               </div>
             ))
