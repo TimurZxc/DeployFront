@@ -39,7 +39,6 @@ const AddCourseTeach = (props) => {
       student_level: formData.student_level,
       language: formData.language
     }).then((response) => {
-      console.log('New id:', response.data.id);
       routeHandler(`/subjectsByHoursEdit/${response.data.id}`);
     }).catch((error) => {
       console.log(error);

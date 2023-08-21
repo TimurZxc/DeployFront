@@ -66,7 +66,7 @@ const handleModalClose = () => {
 };
 
   return (
-    <div className="courses-body_t">
+    <div className="courses-body_t-">
       <div className="first-col">
         <div className="first-row">Дата Урока</div>
         <input
