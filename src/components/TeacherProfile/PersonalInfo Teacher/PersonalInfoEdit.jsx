@@ -121,7 +121,21 @@ const PersonalInfoTeachEdit = (props) => {
   }
 
   useEffect(() => {
+    if (isImageUpdated || isDeleteClicked) {
+      // Delay for 2 seconds
+      const delay = 2000; // 2 seconds in milliseconds
+  
+      // Set up the timeout
+      const timeoutId = setTimeout(() => {
+        // Reload the page
+        window.location.reload();
+      }, delay);
+  
+      // Clear the timeout if the component unmounts or the dependencies change
+      return () => clearTimeout(timeoutId);
+    }
   }, [isImageUpdated, isDeleteClicked]);
+  
 
 
   const handleChange = event => {
