@@ -17,6 +17,8 @@ const EditTeacherProfile = (props) => {
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
+  const [confirmationModal, setConfirmationModal] = useState(false);
+
   let navigate = useNavigate()
   const routeHandler = (URL) => {
     navigate(URL)
@@ -49,7 +51,13 @@ const EditTeacherProfile = (props) => {
     setShowConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
   }
 
+  function cancelDeleteСourse() {
+    setConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
+  }
+
   const [mainCourseList, setMainCourseList] = React.useState([])
+
+  const [courseId, setCourseId] = React.useState(0)
 
   const [mainTeachList, setMainTeachList] = React.useState([])
 
@@ -262,7 +270,7 @@ const EditTeacherProfile = (props) => {
                   <div className="first-row"></div>
 
                   <button onClick={() => { handleUpdate(lesson.id, formDataList[index]) }} className="second-row_t_c">Сохранить</button>
-                  <button onClick={() => { handleDelete(lesson.id) }} className="second-row_t_c">Удалить</button>
+                  <button onClick={() => {setConfirmationModal(true); setCourseId(lesson.id)}} className="second-row_t_c">Удалить</button>
                   <button onClick={() => routeHandler(`/subjectsByHoursEdit/${lesson.id}`)} className="second-row_t_c">Список занятий</button>
                 </div>
               </div>
@@ -276,7 +284,7 @@ const EditTeacherProfile = (props) => {
       </div>
 
       {/* Confirmation Modal */}
-      <Modal show={showConfirmationModal} onHide={cancelDelete}>
+      <Modal show={showConfirmationModal} onHide={cancelDelete} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           <p className="error-message">Вы уверены, что хотите удалить свой профиль? Это действие нельзя отменить.</p>
         </Modal.Body>
@@ -285,6 +293,21 @@ const EditTeacherProfile = (props) => {
             Отмена
           </Button>
           <Button variant="danger" onClick={() => { confirmDelete() }} className="close-button-delete">
+            Удалить
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+       {/* Confirmation Modal Course */}
+       <Modal show={confirmationModal} onHide={cancelDeleteСourse} backdrop="dynamic" keyboard={true}>
+        <Modal.Body>
+          <p className="error-message">Вы уверены, что хотите удалить курс? Это действие нельзя отменить.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDeleteСourse} className="close-button">
+            Отмена
+          </Button>
+          <Button variant="danger" onClick={() => { handleDelete(courseId) }} className="close-button-delete">
             Удалить
           </Button>
         </Modal.Footer>
