@@ -106,6 +106,7 @@ const PersonalInfoTeachEdit = (props) => {
     };
 
     const requestDataImg = new FormData();
+
     const file = dataURLtoFile(preview, 'image.png');
     requestDataImg.append('image', file);
     axiosInstance.patch('/update/teacher/', requestDataImg, config)
@@ -229,9 +230,10 @@ const PersonalInfoTeachEdit = (props) => {
       },
     };
 
-    requestData.append('image', '');
+    const requestDataImg = new FormData();
+    requestDataImg.append('image', '');
 
-    axiosInstance.patch('/update/teacher/', requestData, config)
+    axiosInstance.patch('/update/teacher/', requestDataImg, config)
     .then(() => {
       setRegistrationStatus('success: Фото было успешно удалено!');
       setIsDeleteClicked(true)
