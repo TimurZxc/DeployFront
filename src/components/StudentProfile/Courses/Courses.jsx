@@ -12,15 +12,23 @@ const Courses = (props) => {
   const [studCourseList, setStudCourseList] = React.useState([])
   const [deleteCount, setDeleteCount] = React.useState(0);
   const [registrationStatus, setRegistrationStatus] = React.useState(null); // Registration status state
+  const [lessonId, setLessonId] = React.useState(0)
+
+  const [confirmationModal, setConfirmationModal] = useState(false);
 
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
 
+  function cancelDeleteLesson() {
+    setConfirmationModal(false); // Hide the confirmation modal if the user cancels the deletion
+  }
+
   function cancleLesson(id) {
     axiosInstance.delete(`cancel/${id}`).then(() => {
       setDeleteCount((prevCount) => prevCount + 1),
-        setRegistrationStatus('success: Урок был успешно отменен!');
+      setConfirmationModal(false)
+      setRegistrationStatus('success: Урок был успешно отменен!');
     }).catch((error) => {
       setRegistrationStatus(`Error cancelling lesson: ${error.message}`);
     })
@@ -64,7 +72,7 @@ const Courses = (props) => {
             <div className="first-col">
               <div className="first-row">Курс:</div>
               <div className="second-row">{data?.lessons?.related_course?.name}</div>
-              <button onClick={() => { cancleLesson(data.id) }} className='cancle-delete'>Отменить</button>
+              <button onClick={() => { setLessonId(data.id); setConfirmationModal(true)}} className='cancle-delete'>Отменить</button>
             </div>
             <div className="second-col">
               <div className="first-row">Дата проведения урока</div>
@@ -79,6 +87,21 @@ const Courses = (props) => {
           </div>
         ))
       }
+
+      {/* Confirmation Modal Lesson */}
+      <Modal show={confirmationModal} onHide={cancelDeleteLesson} backdrop="dynamic" keyboard={true}>
+        <Modal.Body>
+          <p className="error-message">Вы уверены, что хотите отменить занятие? Это действие нельзя отменить.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDeleteLesson} className="close-button">
+            Отмена
+          </Button>
+          <Button variant="danger" onClick={() => { cancleLesson(lessonId) }} className="close-button-delete">
+            Удалить
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Modal show={registrationStatus !== null} onHide={handleModalClose}  backdrop="dynamic" keyboard={true}>
         <Modal.Body>

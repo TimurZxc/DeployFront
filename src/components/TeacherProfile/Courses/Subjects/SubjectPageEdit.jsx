@@ -165,7 +165,7 @@ const SubjectPageEdit = (props) => {
       {/* Confirmation Modal Lesson */}
       <Modal show={confirmationModal} onHide={cancelDeleteСourse} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
-          <p className="error-message">Вы уверены, что хотите удалить курс? Это действие нельзя отменить.</p>
+          <p className="error-message">Вы уверены, что хотите удалить занятие? Это действие нельзя отменить.</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={cancelDeleteСourse} className="close-button">
