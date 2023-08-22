@@ -20,8 +20,6 @@ const SignIn = () => {
   const [signError, setSignError] = useState(null)
   const [isPopupActive, setIsPopupActive] = useState(localStorage.getItem('popup_active'))
 
-  console.log('isPopupActive', isPopupActive)
-
   const urlParams = new URLSearchParams(window.location.search);
   const trueParam = urlParams.get('True');
   const falseParam = urlParams.get('False');

@@ -227,7 +227,7 @@ const PersonalInfoTeachEdit = (props) => {
         if (isEmailChanged) {
           localStorage.removeItem('access_token');
           localStorage.removeItem('refresh_token');
-          navigate('/')
+          navigate('/login')
         }
       })
       .catch((error) => {
