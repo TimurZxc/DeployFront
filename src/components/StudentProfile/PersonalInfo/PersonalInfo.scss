@@ -206,6 +206,57 @@
     background-color: #f5f5f5;
     color: #11174b;
   }
+
+
+.upload1 {
+  width: 230px !important;
+  position: relative;
+  margin: auto;
+}
+
+.upload1 .puple-teach-img {
+  width: 220px;
+  height: 220px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 25%;
+}
+
+.upload1 .round {
+  margin-top: 45px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.939);
+  width: 65px;
+  height: 65px;
+  text-align: right;
+  border-radius: 35%;
+  overflow: hidden;
+}
+
+.upload1 .round input[type="file"] {
+  position: absolute;
+  cursor: pointer;
+  transform: scale(2);
+  margin-top: 20px;
+  height: 100px;
+
+}
+
+input[type=file]::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  color: #11174B;
+  margin-top: 7px;
+  margin-right: 5px;
+}
 }
 
 /* model css */
@@ -275,56 +326,6 @@
 
 .close-button:hover {
   background-color: #f5f5f5;
-}
-
-.upload1 {
-  width: 230px !important;
-  position: relative;
-  margin: auto;
-}
-
-.upload1 .puple-teach-img {
-  width: 220px;
-  height: 220px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 25%;
-}
-
-.upload1 .round {
-  margin-top: 45px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.939);
-  width: 65px;
-  height: 65px;
-  text-align: right;
-  border-radius: 35%;
-  overflow: hidden;
-}
-
-.upload1 .round input[type="file"] {
-  position: absolute;
-  cursor: pointer;
-  transform: scale(2);
-  margin-top: 20px;
-  height: 100px;
-
-}
-
-input[type=file]::-webkit-file-upload-button {
-  cursor: pointer;
-}
-
-.icon {
-  width: 35px;
-  height: 35px;
-  color: #11174B;
-  margin-top: 7px;
-  margin-right: 5px;
 }
 
 .img {
