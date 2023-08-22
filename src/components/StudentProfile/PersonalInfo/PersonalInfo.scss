@@ -144,9 +144,8 @@
       width: 230px !important;
       position: relative;
       margin: auto;
-    }
-
-    .upload1 .puple-teach-img {
+    
+    .puple-teach-img {
       width: 220px;
       height: 220px;
       background-repeat: no-repeat;
@@ -156,7 +155,7 @@
       border-radius: 25%;
     }
 
-    .upload1 .round {
+    .round {
       margin-top: 45px;
       position: absolute;
       bottom: 0;
@@ -169,7 +168,7 @@
       overflow: hidden;
     }
 
-    .upload1 .round input[type="file"] {
+    .round input[type="file"] {
       position: absolute;
       cursor: pointer;
       transform: scale(2);
@@ -187,6 +186,7 @@
       height: 65px;
       color: #11174B;
     }
+  }
   }
 
   .form--input {
