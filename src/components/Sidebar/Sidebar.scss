@@ -121,16 +121,15 @@
 }
 
 .toggle{
-  padding: 15px 18px;
+  padding: 10px 18px;
   gap: 17px;
   cursor: pointer;
   opacity: 0;
 
   svg {
     fill: #11174b;
-    width: 35px;
-    height: 35px;
-    transform: rotate(90deg);
+    width: 30px;
+    height: 30px;
   }
 }
 

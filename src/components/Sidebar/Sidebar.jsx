@@ -27,13 +27,11 @@ const Sidebar = () => {
   const is_teacher = decode?.is_teacher
   const is_student = decode?.is_student
 
-  const [isShown, setIsShown] = React.useState(true)
+  const [isShown, setIsShown] = React.useState(false)
 
   const toggleShown = (prevShown) => {
     setIsShown(!prevShown)
   }
-
-  console.log('isShown', isShown)
 
   return (
     <div className="sidebar-wrapper">
