@@ -243,7 +243,7 @@
   transform: scale(2);
   margin-top: 20px;
   height: 100px;
-
+  opacity: 0;
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -251,11 +251,10 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 svg {
-  width: 35px;
-  height: 35px;
+  width: 65px;
+  height: 65px;
   color: #11174B;
   margin-top: 7px;
-  margin-right: 5px;
 }
 }
 
