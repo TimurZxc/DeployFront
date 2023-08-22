@@ -161,11 +161,11 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.939);
+      background: rgba(255, 255, 255, 0.939) !important;
       width: 65px;
       height: 65px;
       text-align: right;
-      border-radius: 35%;
+      border-radius: 35% !important;
       overflow: hidden;
     }
 
@@ -186,7 +186,6 @@
       width: 65px;
       height: 65px;
       color: #11174B;
-      margin-top: 7px;
     }
   }
 
