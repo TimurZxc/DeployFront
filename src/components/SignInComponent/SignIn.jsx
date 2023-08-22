@@ -5,7 +5,7 @@ import axiosInstance from "../../axios";
 import Sidebar from "../Sidebar/Sidebar";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const SignIn = () => {
@@ -18,6 +18,7 @@ const SignIn = () => {
   const [passError, setPassError] = useState(null)
   const [emailError, setEmailError] = useState(null)
   const [signError, setSignError] = useState(null)
+  const [isPopupActive, setIsPopupActive] = useState(localStorage.getItem('popup_active'))
 
   const urlParams = new URLSearchParams(window.location.search);
   const trueParam = urlParams.get('True');
@@ -39,15 +40,15 @@ const SignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!formData.email & !formData.password){
+    if (!formData.email & !formData.password) {
       setSignError('Пожалуйста заполните все поля')
     }
-    
+
     else if (!formData.password) {
       setPassError('Пожалуйста введите ваш пароль')
     }
 
-    else if (!formData.email){
+    else if (!formData.email) {
       setEmailError('Пожалуйста введите вашу почту')
     }
     else {
@@ -61,10 +62,10 @@ const SignIn = () => {
           navigate('/');
           setRegistrationStatus('success: Вход в аккаунт произошел успешно!');
         }).catch((error) => {
-          if (error.response && error.response.status === 401){
+          if (error.response && error.response.status === 401) {
             setRegistrationStatus('error: Неверный логин или пароль')
           }
-          else{
+          else {
             setRegistrationStatus(`error: ${error.message}`);
           }
         });
@@ -74,6 +75,11 @@ const SignIn = () => {
   const handleModalClose = () => {
     setRegistrationStatus(null);
   };
+
+  const clocePopup = ()=> {
+    setIsPopupActive(false)
+    localStorage.removeItem('popup_active')
+  }
 
   React.useEffect(() => {
     // Set registration status based on the value of loggedIn parameter
@@ -143,6 +149,19 @@ const SignIn = () => {
           }
         >Нет аккаунта - Зарегиситрируйтесь!</div>
       </form>
+
+      {/* Info Modal */}
+      <Modal show={isPopupActive} onHide={clocePopup} backdrop="static" keyboard={false}>
+        <Modal.Body>
+          <p className="success-message">Пожалуйста подтвердите вашу новую почту по ссылке в письме</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={clocePopup} className="close-button">
+            Ок
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (

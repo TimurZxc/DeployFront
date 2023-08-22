@@ -8,9 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-// import userpic from '../../images/user-286.png'
-// import Sprite from '../Sprite/Sprite';
-// import { equal } from 'assert';
 
 
 const SignUp = () => {

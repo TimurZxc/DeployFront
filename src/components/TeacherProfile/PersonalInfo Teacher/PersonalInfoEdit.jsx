@@ -80,6 +80,7 @@ const PersonalInfoTeachEdit = (props) => {
   const [isModalOpen, setModalOpen] = useState(null);
 
   const [isEmailChanged, setIsEmailChanged] = useState(false);
+  const [popupActive, setPopupActive] = useState(false);
 
   function dataURLtoFile(dataURL, filename) {
     const arr = dataURL.split(',');
@@ -182,6 +183,8 @@ const PersonalInfoTeachEdit = (props) => {
     
     if (value !== props.email) {
       setIsEmailChanged(true);
+      setPopupActive(true);
+      localStorage.setItem('popup_active', popupActive)
     }
   
     setFormData(prevFormData => ({
