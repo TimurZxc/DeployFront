@@ -27,7 +27,7 @@ const Sidebar = () => {
   const is_teacher = decode?.is_teacher
   const is_student = decode?.is_student
 
-  const [isShown, setIsShown] = React.useState(false)
+  const [isShown, setIsShown] = React.useState(true)
 
   const toggleShown = (prevShown) => {
     setIsShown(!prevShown)
