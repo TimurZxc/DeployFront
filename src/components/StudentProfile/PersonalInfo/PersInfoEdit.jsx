@@ -30,6 +30,8 @@ const PersonalInfoEdit = (props) => {
     image_pr: props.image // ???
   });
 
+  const [popupActive, setPopupActive] = useState(false);
+
   const handleChange = event => {
     const { name, value } = event.target;
 
@@ -58,6 +60,8 @@ const PersonalInfoEdit = (props) => {
     
     if (value !== props.email) {
       setIsEmailChanged(true);
+      setPopupActive(true);
+      localStorage.setItem('popup_active', popupActive)
     }
   
     setFormData(prevFormData => ({
@@ -82,7 +86,7 @@ const PersonalInfoEdit = (props) => {
 
   function onClose() {
     setPreview(null);
-    handleDelete()
+    handleImgDelete()
   }
 
   const onCrop = (preview) => {
@@ -149,32 +153,44 @@ const PersonalInfoEdit = (props) => {
   }
 
   useEffect(() => {
-    if (isImageUpdated) {
-      // Reload the page
-      window.location.reload();
+    if (isImageUpdated || isDeleteClicked) {
+      // Delay for 2 seconds
+      const delay = 2000; // 2 seconds in milliseconds
+  
+      // Set up the timeout
+      const timeoutId = setTimeout(() => {
+        // Reload the page
+        window.location.reload();
+      }, delay);
+  
+      // Clear the timeout if the component unmounts or the dependencies change
+      return () => clearTimeout(timeoutId);
     }
-  }, [isImageUpdated]);
+  }, [isImageUpdated, isDeleteClicked]);
 
 
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-  //   setFormData(prevFormData => ({
-  //     ...prevFormData,
-  //     [name]: value
-  //   }));
-  // };
+  const handleImgDelete = ()=> {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
 
+    const requestDataImg = new FormData();
+    requestDataImg.append('image', '');
 
-  // const handleImageChange = (event) => {
-  //   setImage(event.target.files[0]);
-  // };
+    axiosInstance.patch('/update/teacher/', requestDataImg, config)
+    .then(() => {
+      setRegistrationStatus('success: Фото было успешно удалено!');
+      setIsDeleteClicked(true)
+    })
+    .catch((error) => {
+      console.log('error', error);
+      setRegistrationStatus(`error: ${error.message}`);
+    });
+  }
 
   const requestData = new FormData();
-
-  function handleDelete() {
-    setIsDeleteClicked(true);
-    setRegistrationStatus('success: Фото было успешно удалено! Сохраните изминения.');
-  }
 
   function handleUpdate() {
     const config = {
