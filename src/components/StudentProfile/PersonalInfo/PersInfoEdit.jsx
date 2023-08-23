@@ -179,7 +179,7 @@ const PersonalInfoEdit = (props) => {
     const requestDataImg = new FormData();
     requestDataImg.append('image', '');
 
-    axiosInstance.patch('/update/teacher/', requestDataImg, config)
+    axiosInstance.patch('/update/student/', requestDataImg, config)
     .then(() => {
       setRegistrationStatus('success: Фото было успешно удалено!');
       setIsDeleteClicked(true)
