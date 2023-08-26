@@ -44,7 +44,9 @@ const SubjComponent = (props) => {
           <div className="second-row">{props.date}</div>
           {currentDate > new Date(props.date) && <div className='time-over'>Урок просрочен</div>}
         <br />
+        { currentDate < new Date(props.date) &&
         <button onClick={handleSubmit} className="second-row_t_c">Записаться</button>
+        } 
       </div>
 
       <Modal show={registrationStatus !== null} onHide={handleModalClose}>
