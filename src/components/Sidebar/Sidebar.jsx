@@ -41,7 +41,15 @@ const Sidebar = () => {
           <h1 className="logo-title">Teach2U</h1>
         </div>
         <div className="menu">
+          <div className='toggle-block'>
           <h1 className="menu-title">Главное Меню</h1>
+          <div
+              onClick={() => { toggleShown(isShown) }}
+              className='toggle'
+            >
+              <Sprite id="toggle" />
+            </div>
+          </div>
           <div className="navigation">
           {isShown &&
           <>
@@ -144,13 +152,6 @@ const Sidebar = () => {
             }
             </>
           }
-            <div
-              onClick={() => { toggleShown(isShown) }}
-              className='toggle'
-            >
-              <Sprite id="toggle" />
-            </div>
-
           </div>
         </div>
       </div>
