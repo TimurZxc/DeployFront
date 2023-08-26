@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 
 const SignUp = () => {
