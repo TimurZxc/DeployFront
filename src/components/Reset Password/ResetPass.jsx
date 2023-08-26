@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// import bootstrap / dist / css / bootstrap.min.css
 const ResetPass = () => {
   const [formData, setFormData] = React.useState({
     email: ''
@@ -64,7 +63,7 @@ const ResetPass = () => {
         >Отправить</button>
       </form>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}  backdrop="dynamic" keyboard={true}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>

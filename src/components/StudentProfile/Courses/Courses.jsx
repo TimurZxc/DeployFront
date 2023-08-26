@@ -5,9 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// bootstrap/dist/css/bootstrap.min.css// bootstrap/dist/css/bootstrap.min.css
 const Courses = (props) => {
 
   const [studCourseList, setStudCourseList] = React.useState([])
@@ -28,7 +26,7 @@ const Courses = (props) => {
   function cancleLesson(id) {
     axiosInstance.delete(`cancel/${id}`).then(() => {
       setDeleteCount((prevCount) => prevCount + 1),
-      setConfirmationModal(false)
+        setConfirmationModal(false)
       setRegistrationStatus('success: Урок был успешно отменен!');
     }).catch((error) => {
       setRegistrationStatus(`Error cancelling lesson: ${error.message}`);
@@ -69,11 +67,11 @@ const Courses = (props) => {
     <section>
       {
         studCourseList.map((data) => (
-          <div className={`courses-body-${currentDate > new Date(data?.lessons?.date) ? 'time-is-over': ''}`} key={data?.lessons?.related_course?.id}>
+          <div className={`courses-body-${currentDate > new Date(data?.lessons?.date) ? 'time-is-over' : ''}`} key={data?.lessons?.related_course?.id}>
             <div className="first-col">
               <div className="first-row">Курс:</div>
               <div className="second-row">{data?.lessons?.related_course?.name}</div>
-              <button onClick={() => { setLessonId(data.id); setConfirmationModal(true)}} className='cancle-delete'>Отменить</button>
+              <button onClick={() => { setLessonId(data.id); setConfirmationModal(true) }} className='cancle-delete'>Отменить</button>
             </div>
             <div className="second-col">
               <div className="first-row">Дата проведения урока</div>
@@ -104,13 +102,13 @@ const Courses = (props) => {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}  backdrop="dynamic" keyboard={true}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
             <>
-              <Lottie animationData={animationData} />
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }}/>
               <p className="success-message">{registrationStatus.substr(9)}</p>
             </>
           ) : null}

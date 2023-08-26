@@ -8,8 +8,7 @@ import Button from 'react-bootstrap/Button';
 import React from 'react'
 import PersonalInfoEdit from './PersonalInfo/PersInfoEdit'
 import axiosInstance from '../../axios'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// bootstrap/dist/css/bootstrap.min.css
 const StudentEdit = () => {
 
   const [mainStudList, setMainStudList] = React.useState([])

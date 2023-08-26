@@ -7,8 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// import bootstrap / dist / css / bootstrap.min.css
 
 const EditCoursesTeach = (props) => {
 
@@ -42,18 +41,18 @@ const EditCoursesTeach = (props) => {
   }, []);
 
   const getData = () => {
-        if (mainTeachList?.teacher?.id) {
-          const id = mainTeachList?.teacher?.id
-          console.log('id', id)
-          axiosInstance
-            .get(`course-list/${id}`)
-            .then((response) => {
-              setMainCourseList(response.data[0].courses);
-            })
-            .catch((error) => {
-              console.error("Error fetching course data:", error);
-            });
-        }
+    if (mainTeachList?.teacher?.id) {
+      const id = mainTeachList?.teacher?.id
+      console.log('id', id)
+      axiosInstance
+        .get(`course-list/${id}`)
+        .then((response) => {
+          setMainCourseList(response.data[0].courses);
+        })
+        .catch((error) => {
+          console.error("Error fetching course data:", error);
+        });
+    }
   }
 
   let navigate = useNavigate()
@@ -106,7 +105,7 @@ const EditCoursesTeach = (props) => {
   }, [updateCount, deleteCount])
 
   return (
- 
+
     <div>
       <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
         <Modal.Body>

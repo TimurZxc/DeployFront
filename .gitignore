@@ -1,6 +1,7 @@
 .DS_STORE
 node_modules
 src/axios.jsx
+axios.jsx
 scripts/flow/*/.flowconfig
 .flowconfig
 *~

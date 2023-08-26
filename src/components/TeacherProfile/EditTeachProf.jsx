@@ -9,8 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// import bootstrap / dist / css / bootstrap.min.css
 const EditTeacherProfile = (props) => {
 
   const [isShown, setIsShown] = React.useState(false)
@@ -131,7 +130,7 @@ const EditTeacherProfile = (props) => {
     axiosInstance.delete(`/delete/course/${id}`)
       .then(() => {
         setDeleteCount((prevCount) => prevCount + 1),
-        setConfirmationModal(false)
+          setConfirmationModal(false)
         setRegistrationStatus('success: Курс был успешно удален!')
       })
       .catch((error) => {
@@ -271,7 +270,7 @@ const EditTeacherProfile = (props) => {
                   <div className="first-row"></div>
 
                   <button onClick={() => { handleUpdate(lesson.id, formDataList[index]) }} className="second-row_t_c">Сохранить</button>
-                  <button onClick={() => {setConfirmationModal(true); setCourseId(lesson.id)}} className="second-row_t_c">Удалить</button>
+                  <button onClick={() => { setConfirmationModal(true); setCourseId(lesson.id) }} className="second-row_t_c">Удалить</button>
                   <button onClick={() => routeHandler(`/subjectsByHoursEdit/${lesson.id}`)} className="second-row_t_c">Список занятий</button>
                 </div>
               </div>
@@ -299,8 +298,8 @@ const EditTeacherProfile = (props) => {
         </Modal.Footer>
       </Modal>
 
-       {/* Confirmation Modal Course */}
-       <Modal show={confirmationModal} onHide={cancelDeleteСourse} backdrop="dynamic" keyboard={true}>
+      {/* Confirmation Modal Course */}
+      <Modal show={confirmationModal} onHide={cancelDeleteСourse} backdrop="dynamic" keyboard={true}>
         <Modal.Body>
           <p className="error-message">Вы уверены, что хотите удалить курс? Это действие нельзя отменить.</p>
         </Modal.Body>

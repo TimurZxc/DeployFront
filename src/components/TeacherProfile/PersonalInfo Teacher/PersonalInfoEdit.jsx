@@ -10,8 +10,7 @@ import Avatar from 'react-avatar-edit';
 import axios from 'axios';
 import Lottie from 'lottie-react'
 import animationData from '../../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// import bootstrap / dist / css / bootstrap.min.css
 
 const PersonalInfoTeachEdit = (props) => {
 
@@ -125,18 +124,18 @@ const PersonalInfoTeachEdit = (props) => {
     if (isImageUpdated || isDeleteClicked) {
       // Delay for 2 seconds
       const delay = 2000; // 2 seconds in milliseconds
-  
+
       // Set up the timeout
       const timeoutId = setTimeout(() => {
         // Reload the page
         window.location.reload();
       }, delay);
-  
+
       // Clear the timeout if the component unmounts or the dependencies change
       return () => clearTimeout(timeoutId);
     }
   }, [isImageUpdated, isDeleteClicked]);
-  
+
 
 
   const handleChange = event => {
@@ -180,19 +179,19 @@ const PersonalInfoTeachEdit = (props) => {
 
   const handleEmailChange = event => {
     const { value } = event.target;
-    
+
     if (value !== props.email) {
       setIsEmailChanged(true);
       setPopupActive(true);
       localStorage.setItem('popup_active', popupActive)
     }
-  
+
     setFormData(prevFormData => ({
       ...prevFormData,
       email: value
     }));
   };
-  
+
 
   // const handleImageChange = (event) => {
   //   setImage(event.target.files[0]);
@@ -236,7 +235,7 @@ const PersonalInfoTeachEdit = (props) => {
       });
   };
 
-  const handleImgDelete = ()=> {
+  const handleImgDelete = () => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -247,14 +246,14 @@ const PersonalInfoTeachEdit = (props) => {
     requestDataImg.append('image', '');
 
     axiosInstance.patch('/update/teacher/', requestDataImg, config)
-    .then(() => {
-      setRegistrationStatus('success: Фото было успешно удалено!');
-      setIsDeleteClicked(true)
-    })
-    .catch((error) => {
-      console.log('error', error);
-      setRegistrationStatus(`error: ${error.message}`);
-    });
+      .then(() => {
+        setRegistrationStatus('success: Фото было успешно удалено!');
+        setIsDeleteClicked(true)
+      })
+      .catch((error) => {
+        console.log('error', error);
+        setRegistrationStatus(`error: ${error.message}`);
+      });
   }
 
   const handleModalClose = () => {

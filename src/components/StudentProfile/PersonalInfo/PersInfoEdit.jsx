@@ -8,7 +8,7 @@ import userpic from '../../../images/blue_user.png'
 import Sprite from '../../Sprite/Sprite';
 import Avatar from 'react-avatar-edit';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const PersonalInfoEdit = (props) => {
 

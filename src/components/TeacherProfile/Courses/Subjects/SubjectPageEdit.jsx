@@ -9,8 +9,7 @@ import Sidebar from '../../../Sidebar/Sidebar'
 import AddSubjComponentEdit from './AddSubjComp';
 import Lottie from 'lottie-react'
 import animationData from '../../../../assets/animation_lktzbjcg.json'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// import bootstrap / dist / css / bootstrap.min.css
 const SubjectPageEdit = (props) => {
 
 
@@ -108,6 +107,12 @@ const SubjectPageEdit = (props) => {
     getData();
   }, [updateCount, deleteCount])
 
+  const handleBackdropClick = (e) => {
+    if (e.target.classList.contains('modal-backdrop')) {
+      handleModalClose();
+    }
+  }
+
   return (
     <div className="main">
       <Sidebar />
@@ -151,7 +156,7 @@ const SubjectPageEdit = (props) => {
                     onChange={(e) => handleChange(e, index)}
                   />
                   <button onClick={() => { handleUpdate(lesson.related_course.id, lesson.id, formDataList[index]); }} className="second-row_t_c">Сохранить</button>
-                  <button onClick={() => { setRelatedCourseId(lesson.related_course.id); setLessonId(lesson.id); setConfirmationModal(true)}} className="second-row_t_c">Удалить</button>
+                  <button onClick={() => { setRelatedCourseId(lesson.related_course.id); setLessonId(lesson.id); setConfirmationModal(true) }} className="second-row_t_c">Удалить</button>
                 </div>
               </div>
             ))
@@ -177,7 +182,7 @@ const SubjectPageEdit = (props) => {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} centered>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
@@ -192,7 +197,8 @@ const SubjectPageEdit = (props) => {
           </Button>
         </Modal.Body>
       </Modal>
-
+      
+      {registrationStatus && <div className="modal-backdrop" onClick={handleBackdropClick}></div>}
     </div>
   )
 }

@@ -7,8 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
-// import 'bootstrap/dist/css/bootstrap.min.css'; 
-
+// bootstrap/dist/css/bootstrap.min.css
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -42,10 +41,10 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if(!formData.first_name || !formData.last_name || !formData.birth_date ||
-      !formData.email || !formData.password || !formData.password2 || !formData.phone){
-        setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
-      }
+    if (!formData.first_name || !formData.last_name || !formData.birth_date ||
+      !formData.email || !formData.password || !formData.password2 || !formData.phone) {
+      setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
+    }
 
     else if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
@@ -195,7 +194,7 @@ const SignUp = () => {
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
             <>
-              <Lottie animationData={animationData} />
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }} />
               <p className="success-message">{registrationStatus.substr(9)}</p>
             </>
           ) : null}

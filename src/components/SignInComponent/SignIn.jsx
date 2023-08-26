@@ -81,6 +81,12 @@ const SignIn = () => {
     localStorage.removeItem('popup_active')
   }
 
+  const handleBackdropClick = (e) => {
+    if (e.target.classList.contains('modal-backdrop')) {
+      handleModalClose();
+    }
+  }
+
   React.useEffect(() => {
     // Set registration status based on the value of loggedIn parameter
     if (trueParam != null) {
@@ -162,7 +168,7 @@ const SignIn = () => {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={registrationStatus !== null} onHide={handleModalClose} backdrop="dynamic" keyboard={true}>
+      <Modal show={registrationStatus !== null} onHide={handleModalClose} keyboard={true}>
         <Modal.Body>
           {registrationStatus && registrationStatus.startsWith('error') ? (
             <p className="error-message">{registrationStatus.substr(7)}</p>
@@ -174,6 +180,7 @@ const SignIn = () => {
           </Button>
         </Modal.Body>
       </Modal>
+      {registrationStatus && <div className="modal-backdrop" onClick={handleBackdropClick}></div>}
     </div>
   );
 };

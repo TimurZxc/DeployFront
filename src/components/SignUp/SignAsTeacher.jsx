@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lottie from 'lottie-react'
 import animationData from '../../assets/animation_lktzbjcg.json'
-// import 'bootstrap/dist/css/bootstrap.min.css'; 
+// bootstrap/dist/css/bootstrap.min.css
 
 const SignUpTeacher = () => {
   const [formData, setFormData] = useState({
@@ -75,26 +75,15 @@ const SignUpTeacher = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    if(!formData.first_name || !formData.last_name || !formData.birth_date ||
+    if (!formData.first_name || !formData.last_name || !formData.birth_date ||
       !formData.email || !formData.password || !formData.password2 || !formData.phone
-      || !formData.education ||!formData.experience){
-        setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
-      }
+      || !formData.education || !formData.experience) {
+      setRegistrationStatus('error: Пожалуйста заполните все поля корректно');
+    }
 
     else if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
-
-      // const config = {               ?????????
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //     accept: 'application/json',
-      //   }
-      // }
-      // if (image != null) {
-      //   formData.image = image
-      // }                              ???????
-
       console.log('data', formData)   // config ???????
       axiosInstance
         .post('signup/teacher/', formData)
@@ -254,8 +243,8 @@ const SignUpTeacher = () => {
             <p className="error-message">{registrationStatus.substr(7)}</p>
           ) : registrationStatus && registrationStatus.startsWith('success') ? (
             <>
-            <Lottie animationData={animationData} />
-            <p className="success-message">{registrationStatus.substr(9)}</p>
+              <Lottie animationData={animationData} style={{ height: 100, width: 100, marginInline: 'auto' }} />
+              <p className="success-message">{registrationStatus.substr(9)}</p>
             </>
           ) : null}
           <Button variant="secondary" onClick={handleModalClose} className="close-button">
