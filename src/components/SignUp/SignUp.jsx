@@ -50,18 +50,6 @@ const SignUp = () => {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
 
-      // const config = {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //     accept: 'application/json',
-      //   }
-      // }
-      // if (image != null) {
-      //   formData.image = image
-      // }
-
-      console.log('formData', formData) // config ???????
-
       axiosInstance.post('signup/student/', formData).then(() => {
         setRegistrationStatus('success: Регистрация прошла успешно! Подтвердите вашу почту.');
       }).catch((error) => {

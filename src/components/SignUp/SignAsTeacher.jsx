@@ -84,7 +84,6 @@ const SignUpTeacher = () => {
     else if (formData.password !== formData.password2) {
       setRegistrationStatus('error: Пароли не совпадают');
     } else {
-      console.log('data', formData)   // config ???????
       axiosInstance
         .post('signup/teacher/', formData)
         .then(() => {
