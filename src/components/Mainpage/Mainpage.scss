@@ -28,7 +28,7 @@
         justify-content: center;
         gap: 26px;
         flex-wrap: wrap;
-        height: 70vh !important;
+        // height: 70vh !important; hz nahuia eto
         padding: 20px 0;
       }
     }
@@ -55,6 +55,21 @@
     border-radius: 50px;
   }
 
+}
+
+.discount{
+  margin: 30px auto;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 15px;
+  border-radius: 30px;
+  background: linear-gradient(136.7deg, rgba(255, 255, 255, 0.2968) 31.56%, rgba(255, 255, 255, 0.3416) 45.49%, rgba(255, 255, 255, 0.56) 100%);
+}
+.discount ul{
+  padding-left: 25px;
+}
+.discount li{
+  list-style-type: none;
 }
 
 @media (orientation: portrait) or (max-width: 768px) {
